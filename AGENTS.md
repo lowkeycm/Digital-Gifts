@@ -53,7 +53,7 @@ Fifteen rules. Every agent, every platform, every operator. Nothing in `people/`
 | Live URL | No public application is live. Vercel has READY deployments for the bootstrap commits, but the deployment URLs are protected by Vercel Authentication. |
 | Repo | github.com/lowkeycm/Digital-Gifts |
 | Hosting | Vercel team `Pride Family Realty`, project `digital-gifts` (`prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`). The team account is shared across other businesses; confirm this exact project before any hosting operation. |
-| Database | Owner-confirmed target: Supabase organization **Digital Enterprise**, project **Digital Gifts**. Exact project ref is UNVERIFIED on this platform because the connected Supabase account currently exposes only the RelevAint organization. Do not use another existing project as a substitute. |
+| Database | Supabase organization **Digital Enterprise**, project **Digital Gifts**, project ref `hyjmlkowbhftisynztui`, region `us-west-2`. Verified ACTIVE_HEALTHY on 2026-09-23. Do not use another existing project as a substitute. |
 | Other systems | Marketing-Hub is the canonical marketing methodology. No payment, music-generation, email, analytics, or other runtime integration is configured in this repo yet. |
 | Owner | Clay. See `people/clay.md`. |
 
@@ -100,7 +100,7 @@ No application stack is committed yet. The repository currently contains only pr
 
 - Frontend: UNVERIFIED. No app config or package manifest exists yet.
 - Backend: UNVERIFIED. No runtime code exists yet.
-- Data: Owner-confirmed target is Supabase **Digital Enterprise → Digital Gifts**. Exact project ref and live connectivity are UNVERIFIED on this platform because the connected Supabase account currently exposes only RelevAint.
+- Data: Supabase **Digital Enterprise → Digital Gifts**, project ref `hyjmlkowbhftisynztui`, region `us-west-2`. Verified ACTIVE_HEALTHY on 2026-09-23.
 - Hosting: Vercel project `digital-gifts` is Git-linked to this repo. Branch pushes create preview deployments and `main` created a production-target deployment during bootstrap. Both tested URLs redirected to Vercel Authentication. Framework and runtime environment are still UNVERIFIED because no application exists.
 - Tooling: no package manager or lockfile exists yet.
 
@@ -219,7 +219,7 @@ Application folders do not exist yet. Update this map when the product scaffold 
 
 - **2026-09-23:** The repository was completely empty. GitHub requires a root commit before a branch can exist, so bootstrap used a one-time neutral `main` seed commit solely to create `clay/agent-scaffolding`. All actual scaffolding changes were made on the branch.
 - **2026-09-23:** Vercel exposes project `digital-gifts` under team `Pride Family Realty`, Git-linked to this repo with automatic branch previews and `main` production deploys. Tested deployment URLs are protected by Vercel Authentication. Confirm that exact project before any hosting operation because the account also contains unrelated businesses.
-- **2026-09-23:** Clay confirmed the database target is **Digital Enterprise → Digital Gifts**. The current Supabase connector exposes only RelevAint, so the exact project ref remains UNVERIFIED here. Do not reuse Heritage, Pride Family Realty, RelevAint or any other database as a shortcut.
+- **2026-09-23:** Verified **Digital Enterprise → Digital Gifts** at project ref `hyjmlkowbhftisynztui` in `us-west-2`, status ACTIVE_HEALTHY, on 2026-09-23. Do not reuse Heritage, Pride Family Realty, RelevAint or any other database as a shortcut.
 - **2026-09-23:** GitHub connector-authored commits use `nerdsandbots@gmail.com`; Clay confirmed that is his GitHub email. The shared scaffold still specifies the noreply address for normal local Git sessions.
 - **2026-09-23:** For personalized songs, earlier testing showed that over-structured LLM rewriting made the music result more generic. Preserve raw customer language and improve intake specificity instead.
 
