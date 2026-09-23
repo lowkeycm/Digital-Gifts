@@ -5,10 +5,11 @@ This file owns outcomes, dependencies and completion criteria, not session histo
 Read AGENTS.md and respect the existing acknowledgment and authorization rules.
 
 ## 1. Working personalized-song V1
-- Status: not started.
+- Status: foundation built on `clay/v1-app-foundation`; real music and payment integrations remain.
 - Result for the user: A customer can give specific personal story details, hear a personalized song preview, purchase the full song, receive it on a private delivery page and request one simple revision.
 - Done when: the full intake -> generation -> preview -> payment -> delivery -> revision path works end to end on a verified Vercel preview; customer raw language is preserved into the music-generation input; data is stored only in the dedicated Digital Gifts database; failure states are visible and recoverable.
-- Dependencies / owner decisions: confirm or create the dedicated Supabase project, connect an approved music-generation API, connect Stripe test mode, and establish the real application stack/build gate.
+- Current proof: dedicated Supabase persistence, private preview/delivery links, mock preview/full generation, demo checkout and one persisted revision work at the data layer; Vercel preview build is READY. Rendered visual QA remains incomplete.
+- Dependencies / owner decisions: official music-generation API access, Stripe test mode, and explicit production approval after visual preview review.
 
 ## 2. Conversion and operating polish
 - Status: not started.

@@ -48,13 +48,13 @@ Fifteen rules. Every agent, every platform, every operator. Nothing in `people/`
 
 | Field | Value |
 | --- | --- |
-| What it is | Consumer digital-gifts product, starting with guided personalized songs built from a customer's own memories and raw story details. Product implementation has not started in this repository yet. |
+| What it is | Consumer digital-gifts product, starting with guided personalized songs built from a customer's own memories and raw story details. V1 foundation is implemented on `clay/v1-app-foundation` with real Supabase persistence, mock music generation and demo checkout. |
 | Business | UNVERIFIED. No legal entity or DBA is established in the repository. |
-| Live URL | No public application is live. Vercel has READY deployments for the bootstrap commits, but the deployment URLs are protected by Vercel Authentication. |
+| Live URL | Production remains unchanged. A protected Vercel preview for `clay/v1-app-foundation` is READY; use the current branch alias/share link from Vercel for review. |
 | Repo | github.com/lowkeycm/Digital-Gifts |
 | Hosting | Vercel team `Pride Family Realty`, project `digital-gifts` (`prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`). The team account is shared across other businesses; confirm this exact project before any hosting operation. |
 | Database | Supabase organization **Digital Enterprise**, project **Digital Gifts**, project ref `hyjmlkowbhftisynztui`, region `us-west-2`. Verified ACTIVE_HEALTHY on 2026-09-23. Do not use another existing project as a substitute. |
-| Other systems | Marketing-Hub is the canonical marketing methodology. No payment, music-generation, email, analytics, or other runtime integration is configured in this repo yet. |
+| Other systems | Marketing-Hub is the canonical marketing methodology. Supabase is live. Music generation is intentionally mocked behind `MusicProvider`; checkout is a clearly labeled demo boundary. Stripe, official Suno and delivery email are not configured yet. |
 | Owner | Clay. See `people/clay.md`. |
 
 No compliance-sensitive identity strings are established yet. If they are added later, create one canonical source file and reference it rather than duplicating values.
@@ -96,21 +96,28 @@ Record the operator in the Last Session block of `HANDOFF.md`.
 
 ### 2.4 Stack
 
-No application stack is committed yet. The repository currently contains only project scaffolding and coordination files.
-
-- Frontend: UNVERIFIED. No app config or package manifest exists yet.
-- Backend: UNVERIFIED. No runtime code exists yet.
-- Data: Supabase **Digital Enterprise → Digital Gifts**, project ref `hyjmlkowbhftisynztui`, region `us-west-2`. Verified ACTIVE_HEALTHY on 2026-09-23.
-- Hosting: Vercel project `digital-gifts` is Git-linked to this repo. Branch pushes create preview deployments and `main` created a production-target deployment during bootstrap. Both tested URLs redirected to Vercel Authentication. Framework and runtime environment are still UNVERIFIED because no application exists.
-- Tooling: no package manager or lockfile exists yet.
-
-Update this section from actual config files as soon as the first application code lands.
+- Frontend: Next.js 16.3.6 App Router, React 19.3, TypeScript.
+- Backend: Next.js Route Handlers on Vercel.
+- Data: Supabase **Digital Enterprise → Digital Gifts**, project ref `hyjmlkowbhftisynztui`, region `us-west-2`. Four V1 tables plus constrained RPCs are live.
+- Hosting: Vercel team `Pride Family Realty`, project `digital-gifts` (`prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`). Git branch pushes create protected previews. A repo-level `vercel.json` forces the correct Next.js framework/build output because the project was previously configured as a static site.
+- Package manager: npm. Dependencies are pinned in `package.json`; no lockfile exists yet because package installation could not complete in this session's container.
+- Validation: Zod at API boundaries.
+- Marketing/design: Marketing-Hub pointers plus `docs/website-brief.md`.
 
 ### 2.5 Secrets map
 
 **Locations only. Never record a value here, in a commit, in a PR body, or in chat.**
 
-No runtime secrets are defined in this repository yet. Add each variable here when code begins reading it, with its storage location and consumer.
+| Name | Where it lives | Used by |
+| --- | --- | --- |
+| `SUPABASE_URL` | Vercel project env when configured; verified project URL also has a source fallback | `src/lib/supabase.ts` |
+| `SUPABASE_PUBLISHABLE_KEY` | Vercel project env when configured; public publishable key also has a source fallback | `src/lib/supabase.ts` |
+| `MUSIC_PROVIDER` | Vercel project env / default `mock` | `src/lib/music/index.ts` |
+| `DEMO_CHECKOUT` | Vercel project env / default demo unless explicitly set to `false` | `src/app/api/checkout/route.ts` |
+| `SUNO_API_KEY` | Future Vercel project secret env; not configured | future official Suno adapter |
+| `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID` | Future Vercel project secret env; not configured | future Stripe integration |
+
+The Supabase publishable key is intentionally public and low privilege. Secret/service-role credentials are not used by the current buyer flow.
 
 Rules:
 - Anything prefixed `VITE_` or `NEXT_PUBLIC_` is compiled into the browser bundle and is public by definition. Never put a secret behind such a name.
@@ -124,29 +131,29 @@ Rules:
 
 Run everything from the repo root.
 
-There is no application build, dependency install, typecheck, or test suite yet because no application code has been committed.
-
 | Command | What it does | Verified |
 | --- | --- | --- |
-| `git diff --check` | catches whitespace errors in repository changes | UNVERIFIED on this platform; container GitHub DNS was unavailable |
-| Application install command | not established yet | UNVERIFIED |
-| Application build command | not established yet | UNVERIFIED |
-| Test command | there is no test suite yet | 2026-09-23 bootstrap |
+| `npm install` | installs pinned dependencies; use `npm ci` once a lockfile is committed | Vercel install/build succeeded 2026-09-23; local container install was unavailable |
+| `npm run check` | ESLint plus TypeScript no-emit check | UNVERIFIED locally on 2026-09-23 |
+| `npm run build` | production Next.js build | Verified by READY Vercel preview for commit `876941f` on 2026-09-23 |
+| Test suite | none yet | no suite |
 
-**Current build gate:** file-content verification for documentation-only changes. `git diff --check` is the intended local check but could not be run on this platform because the container could not resolve GitHub for a checkout. Replace this with the real install, typecheck, test and build commands when application code lands. UI work still requires rendered visual verification.
+**Build gate:** `npm run check` and `npm run build`, plus rendered desktop/mobile verification for UI work. In the 2026-09-23 build session, Vercel proved the production build but the platform did not expose a usable protected-preview browser runner, so visual QA remains explicitly incomplete.
 
 ### 2.7 Deploy process
 
-- A Vercel project named `digital-gifts` exists in team `Pride Family Realty`.
-- Git linkage and automatic deploy behavior are verified: pushes to `clay/agent-scaffolding` produced READY preview deployments and the `main` seed produced a production-target deployment. The tested URLs redirected to Vercel Authentication, so there is no verified public application surface.
-- No Supabase migrations or edge functions exist yet.
-- After any future deploy, verify the actual deployed surface rather than relying on a successful build log.
+- Vercel project: `digital-gifts` in team `Pride Family Realty`.
+- Branch pushes create protected preview deployments automatically.
+- `main` creates a production-target deployment automatically. Because production changes require owner approval, do not merge a feature PR merely because checks pass; get Clay's explicit production approval first.
+- Repo-level `vercel.json` sets the Next.js framework, build command and `.next` output because the project had previously been configured to expect a static `public` build directory.
+- Supabase migrations are committed under `supabase/migrations/`. The V1 migration is registered in the live project as `personalized_song_v1`.
+- After every deployment, verify the actual preview/live surface and buyer flow. A READY build alone does not satisfy UI verification.
 
 ### 2.8 UI and design standards
 
 **Visual verification is required for any UI change, before committing.** Load the affected page, screenshot desktop at 1440x900 and mobile at 390x844, confirm the change and that nothing else broke. If your platform cannot render a browser, say so and hand the verification back (doctrine 15).
 
-No project design system is established yet. For website and landing-page strategy, use Marketing-Hub's `hub-website-system` skill and record approved product-specific direction in this repo.
+The current provisional visual direction is documented in `docs/website-brief.md`: premium/editorial with conversion-first structure, warm paper surfaces, tactile record-sleeve language and subtle motion. It is a V1 direction, not a locked brand identity. For future website/landing-page changes, use Marketing-Hub's `hub-website-system` skill.
 
 ### 2.9 Copy doctrine
 
@@ -203,17 +210,22 @@ If items 8, 9, or 10 fail, you can still do useful work. You cannot describe tha
 AGENTS.md                    canonical instructions for every platform
 CLAUDE.md                    one-line pointer to AGENTS.md
 HANDOFF.md                   current state, last session and platform capability notes
-ROADMAP.md                   ordered product outcomes, not session history
-README.md                    repository title only during bootstrap
-people/clay.md               operator profile and communication preferences
-.claude/settings.json        Claude Code permissions and SessionStart hook registration
-.claude/hooks/session-start.sh
-                             remote-session bootstrap: git identity, dependencies, Hub pointer refresh
-.claude/skills/hub-*/SKILL.md
-                             committed pointers to canonical Marketing-Hub skills
+ROADMAP.md                   ordered product outcomes
+README.md                    local run/build and current milestone
+docs/PRODUCT.md              confirmed V1 product rules and deferred scope
+docs/ARCHITECTURE.md         runtime/data/security design
+docs/website-brief.md        provisional V1 design research and visual execution
+src/app/                     Next.js pages and API route handlers
+src/components/              buyer-flow UI components
+src/lib/intake.ts            intake validation and raw-language music brief
+src/lib/music/               provider abstraction, mock and official-Suno placeholder
+src/lib/song-repository.ts   constrained Supabase RPC repository
+src/lib/supabase.ts          low-privilege Supabase client
+supabase/migrations/         committed database schema/RPC migration
+vercel.json                  repo-level Next.js deployment override
+people/clay.md               operator profile
+.claude/                     Claude settings, hook and Marketing-Hub pointers
 ```
-
-Application folders do not exist yet. Update this map when the product scaffold lands.
 
 ### 2.14 Gotchas
 
@@ -222,6 +234,9 @@ Application folders do not exist yet. Update this map when the product scaffold 
 - **2026-09-23:** Verified **Digital Enterprise → Digital Gifts** at project ref `hyjmlkowbhftisynztui` in `us-west-2`, status ACTIVE_HEALTHY, on 2026-09-23. Do not reuse Heritage, Pride Family Realty, RelevAint or any other database as a shortcut.
 - **2026-09-23:** GitHub connector-authored commits use `nerdsandbots@gmail.com`; Clay confirmed that is his GitHub email. The shared scaffold still specifies the noreply address for normal local Git sessions.
 - **2026-09-23:** For personalized songs, earlier testing showed that over-structured LLM rewriting made the music result more generic. Preserve raw customer language and improve intake specificity instead.
+- **2026-09-23:** Vercel project settings were inherited as a static-site build expecting `public`. V1 initially failed with `STATIC_BUILD_NO_OUT_DIR`; `vercel.json` now forces the Next.js framework/build output.
+- **2026-09-23:** The V1 accountless preview uses anonymous `SECURITY DEFINER` RPCs protected by per-song UUID capability tokens while direct table privileges remain revoked. Supabase advisor warns about anonymous executable definer functions by design. Before public launch, provider generation/payment mutations must move behind backend credentials and rate limits.
+- **2026-09-23:** No npm lockfile is committed yet because dependency installation timed out in this platform container. Vercel successfully built pinned package versions, but create and commit a lockfile when a normal package environment is available.
 
 ### 2.15 Marketing work and Marketing-Hub
 

@@ -7,6 +7,17 @@ Every session ends by updating this file, committing, and pushing. Not committed
 ## Last Session
 
 - **When:** 2026-09-23
+- **Who:** Clay
+- **Platform:** ChatGPT with connected GitHub, Supabase and Vercel tools, branch `clay/v1-app-foundation`
+- **Request:** Build the first real personalized-song V1 foundation: real Supabase persistence, mock music provider, guided intake, preview, $29 demo checkout boundary, private delivery page and one revision, then verify a Vercel preview without launching production.
+- **Changed:** Added the Next.js 16 / React 19 application, Marketing-Hub-informed premium/editorial V1 UI, raw-language-preserving intake, provider abstraction, mock preview/full generation, private capability-link pages, demo checkout, persisted one-revision flow, health endpoint, documentation and the V1 Supabase schema/RPC layer. Corrected the inherited Vercel static-site configuration with `vercel.json`.
+- **Verification:** Live Supabase transaction proved intake -> preview -> paid -> full -> revision -> readback and rolled back the test data. Migration `personalized_song_v1` is registered. Supabase advisors were run; the missing FK index was fixed. Vercel preview for commit `876941f` reached READY after correcting the framework/output configuration. Local npm/build could not run because the container lacked working network resolution. The protected preview could not be rendered/screenshot from the available platform tools, so desktop/mobile visual QA is still incomplete.
+- **Status:** feature branch pushed; PR to be opened. Not merged because merge to `main` auto-deploys production and requires Clay's explicit approval.
+- **Next:** Open/review the protected Vercel preview. If the visual flow looks right, merge with explicit production approval. After that, the next product integration is official music generation, with Stripe test-mode checkout following it.
+
+## Prior Session (2026-09-23, repository bootstrap)
+
+- **When:** 2026-09-23
 - **Who:** Clay; authenticated GitHub account `lowkeycm` was visible on this platform.
 - **Platform:** ChatGPT with connected GitHub, Supabase and Vercel tools, branch `clay/agent-scaffolding`
 - **Request:** Bootstrap this empty repo from `lowkeycm/clay-config/templates/` on the same cadence as Clay's other projects, install Marketing-Hub pointers, merge the scaffolding PR, update the central project map, then stop before product implementation.
@@ -15,57 +26,39 @@ Every session ends by updating this file, committing, and pushing. Not committed
 - **Status:** merged
 - **Next:** First real build session should bring in the V1 personalized-song application foundation, establish the actual package/build commands, confirm or provision a dedicated Supabase target, and produce the first Vercel preview before any production work.
 
-## Prior Session
-
-No prior repository sessions. This was the bootstrap.
-
 ## Where We Are
 
-**What works.** Cross-platform agent scaffolding is installed. The repo has one canonical instruction file, Clay's operator profile, a durable handoff, a product roadmap, Claude Code bootstrap settings and committed Marketing-Hub pointers.
+**What works.** The V1 buyer flow exists on `clay/v1-app-foundation`. Raw answers persist in the dedicated Digital Gifts database. Preview/full records, demo payment state and one revision persist through constrained token-checked RPCs. The branch builds successfully on Vercel.
 
-**What is in progress.** Nothing. This bootstrap intentionally stops before application implementation.
+**What is in progress.** Visual/browser review of the protected preview and PR review. Production remains unchanged.
 
-**What is broken or unresolved.** No application code or package tooling exists yet. Supabase **Digital Enterprise → Digital Gifts** is now verified through the connector at project ref `hyjmlkowbhftisynztui`, region `us-west-2`, status ACTIVE_HEALTHY. Official music-generation API access, payment integration and customer delivery infrastructure are not configured in this repo.
+**What is broken or unresolved.** Music is mocked; Stripe is not connected; email delivery is not connected; there is no authenticated admin. The brand name is still provisional. No npm lockfile is committed yet.
 
-**What could not be determined from here.** Vercel project-detail lookup failed through one connector path, but deployment listing independently verified Git linkage and auto-deploy behavior. Framework settings and runtime environment remain UNVERIFIED because no application exists. The deployment URLs are protected, so there is no public live application to inspect.
+**What could not be determined from here.** Rendered desktop/mobile fidelity and interactive browser behavior could not be inspected because this platform session did not expose a browser runner that could authenticate into the protected Vercel preview.
 
-**Open owner actions.** When database work begins, use only **Digital Enterprise → Digital Gifts**, project ref `hyjmlkowbhftisynztui`. Obtain or confirm official music-provider API access before the generation integration is implemented.
+**Open owner actions.** Review the protected preview visually. Explicitly approve merge/production when ready. Continue pursuing official Suno Platform/API access.
 
-**Next concrete step.** Import or rebuild the agreed V1 application foundation in this repo, then verify the actual stack end to end on a Vercel preview.
+**Next concrete step.** Visual review the preview, then either fix any UI misses or approve the PR for production merge.
 
 ## Platform capability notes
 
-These are dated observations, not permanent truths. Retest any "cannot" older than its date before relying on it, and update when reality changes (doctrine 15).
+These are dated observations, not permanent truths. Retest any "cannot" older than its date before relying on it, and update when reality changes.
 
 ### ChatGPT connected tools, measured 2026-09-23
 
 | Capability | Result |
 | --- | --- |
-| Build gate | File-content checks available. Intended `git diff --check` could not be run because the container could not resolve GitHub for a checkout; no application build exists yet |
-| Screenshot a local dev server | No app/server exists yet, so not testable |
-| Reach the live site | Vercel deployments are reachable but redirect to Vercel Authentication; no public application is live |
-| Query the database | Supabase connector reaches **Digital Enterprise → Digital Gifts** (`hyjmlkowbhftisynztui`), ACTIVE_HEALTHY |
-| Run the test suite | No suite exists yet |
-| Push and open a PR | Yes, through the connected GitHub API |
-
-Bootstrap checklist notes:
-1. Handoff source template read before writing this file.
-2. Operator identified as Clay from the active conversation; GitHub `lowkeycm` is connected.
-3. This platform writes commits through the authenticated GitHub connector; local `git config` does not govern connector commits. GitHub resolves the commits to user `lowkeycm` with `nerdsandbots@gmail.com`, which Clay confirmed is his GitHub email. The shared scaffold still sets the noreply address for normal local Git sessions.
-4. Required branch `clay/agent-scaffolding` created after the empty-repo seed.
-5. Repository began with no branches containing work other than the one-time seed on `main`.
-6. Full repository contents were verified through GitHub API reads; there was no sparse application checkout to recover.
-7. No dependencies exist yet.
-8. No application build exists yet. Documentation contents were verified through the GitHub API; `git diff --check` could not be run because the container could not resolve GitHub for a checkout.
-9. Browser rendering cannot be meaningfully tested because there is no application surface; Vercel URL fetches were tested separately.
-10. Vercel deployments exist and return a redirect to Vercel Authentication. No public application is live.
-11. Supabase connector works, but no dedicated database target exists for this repo.
-12. GitHub read/write, branching, PR and merge access are available.
+| Build gate | Vercel production build passes for commit `876941f`; local npm/check unavailable due container DNS/network |
+| Screenshot a local/protected preview | No usable authenticated browser runner exposed in this session |
+| Reach Vercel deploy status | Yes; branch preview is READY and share link can be generated |
+| Query/migrate database | Yes; Digital Enterprise -> Digital Gifts `hyjmlkowbhftisynztui` |
+| Run test suite | No suite exists yet |
+| Push and open a PR | Yes, through connected GitHub API |
 
 ## Recovery checkpoints
 
-Push meaningful work to the branch during long sessions, not only at the end.
-Label incomplete checkpoints honestly. Track separately: local save, remote push
-(with SHA), merge (PR), deployment (URL and code SHA), and verification evidence.
-A later documentation commit does not imply the deployed application changed.
-Keep doctrine 12's acknowledgment rule intact so work by other operators is visible.
+- Database: V1 schema/functions live; migration `personalized_song_v1` registered.
+- Branch: `clay/v1-app-foundation`.
+- Latest verified build commit: `876941fd0df82170d22424eeb6c3c037cc2afb32`.
+- Preview: Vercel branch alias `digital-gifts-git-clay-v1-app-foundation-pridefamilyrealty.vercel.app`, protected.
+- Production: unchanged from main. Do not infer the preview has shipped to production.
