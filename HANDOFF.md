@@ -11,7 +11,7 @@ Every session ends by updating this file, committing, and pushing. Not committed
 - **Platform:** ChatGPT with connected GitHub, Supabase and Vercel tools, branch `clay/agent-scaffolding`
 - **Request:** Bootstrap this empty repo from `lowkeycm/clay-config/templates/` on the same cadence as Clay's other projects, install Marketing-Hub pointers, merge the scaffolding PR, update the central project map, then stop before product implementation.
 - **Changed:** Added the shared cross-platform agent doctrine, operator profile, handoff, roadmap, Claude Code settings/hook and Marketing-Hub skill pointers. No product application code, database schema or runtime integration was added.
-- **Verification:** Fetched the source templates directly from `clay-config` main and Marketing-Hub installation instructions from Marketing-Hub main. Verified the GitHub target is `lowkeycm/Digital-Gifts`; verified Vercel exposes project `digital-gifts`; listed the connected Supabase projects and found no Digital Gifts database. GitHub branch, PR and merge were verified through the connected GitHub API. There is no application build, local server, live site or test suite to verify yet.
+- **Verification:** Fetched the source templates directly from `clay-config` main and Marketing-Hub installation instructions from Marketing-Hub main. Verified the GitHub target is `lowkeycm/Digital-Gifts`; verified Vercel exposes project `digital-gifts`, is Git-linked to this repo, and created READY deployments for both the scaffolding branch and the `main` seed; tested deployment URLs redirect to Vercel Authentication. Listed the connected Supabase projects and found no Digital Gifts database. GitHub branch, PR and merge were verified through the connected GitHub API. There is no application build, local server, public live app or test suite to verify yet.
 - **Status:** merged
 - **Next:** First real build session should bring in the V1 personalized-song application foundation, establish the actual package/build commands, confirm or provision a dedicated Supabase target, and produce the first Vercel preview before any production work.
 
@@ -27,7 +27,7 @@ No prior repository sessions. This was the bootstrap.
 
 **What is broken or unresolved.** No application code or package tooling exists yet. No dedicated Digital Gifts Supabase project is visible. Official music-generation API access, payment integration and customer delivery infrastructure are not configured in this repo.
 
-**What could not be determined from here.** Vercel project detail lookup failed through the connector despite the project appearing in project listing, so Git linkage, framework settings, environment variables and deployment behavior remain UNVERIFIED until the first real build session. No live deployment exists to inspect.
+**What could not be determined from here.** Vercel project-detail lookup failed through one connector path, but deployment listing independently verified Git linkage and auto-deploy behavior. Framework settings and runtime environment remain UNVERIFIED because no application exists. The deployment URLs are protected, so there is no public live application to inspect.
 
 **Open owner actions.** When database work begins, confirm which Supabase organization should own the Digital Gifts project and approve project creation/cost if a new project is needed. Obtain or confirm official music-provider API access before the generation integration is implemented.
 
@@ -41,9 +41,9 @@ These are dated observations, not permanent truths. Retest any "cannot" older th
 
 | Capability | Result |
 | --- | --- |
-| Build gate | Documentation-only gate available; no application build exists yet |
+| Build gate | File-content checks available. Intended `git diff --check` could not be run because the container could not resolve GitHub for a checkout; no application build exists yet |
 | Screenshot a local dev server | No app/server exists yet, so not testable |
-| Reach the live site | No verified live deployment yet |
+| Reach the live site | Vercel deployments are reachable but redirect to Vercel Authentication; no public application is live |
 | Query the database | Supabase account is reachable, but no repo-specific Digital Gifts project is visible |
 | Run the test suite | No suite exists yet |
 | Push and open a PR | Yes, through the connected GitHub API |
@@ -51,14 +51,14 @@ These are dated observations, not permanent truths. Retest any "cannot" older th
 Bootstrap checklist notes:
 1. Handoff source template read before writing this file.
 2. Operator identified as Clay from the active conversation; GitHub `lowkeycm` is connected.
-3. This platform writes commits through the authenticated GitHub connector; local `git config` does not govern connector commits. The connector-authored seed commit resolved to GitHub user `lowkeycm`.
+3. This platform writes commits through the authenticated GitHub connector; local `git config` does not govern connector commits, and the connector does not expose an author-email override. GitHub resolves the commits to user `lowkeycm`, but the requested noreply author email could not be enforced from this platform.
 4. Required branch `clay/agent-scaffolding` created after the empty-repo seed.
 5. Repository began with no branches containing work other than the one-time seed on `main`.
 6. Full repository contents were verified through GitHub API reads; there was no sparse application checkout to recover.
 7. No dependencies exist yet.
-8. No application build exists yet; documentation verification is the only current gate.
-9. Browser rendering cannot be meaningfully tested because there is no application.
-10. No live application deployment exists to reach.
+8. No application build exists yet. Documentation contents were verified through the GitHub API; `git diff --check` could not be run because the container could not resolve GitHub for a checkout.
+9. Browser rendering cannot be meaningfully tested because there is no application surface; Vercel URL fetches were tested separately.
+10. Vercel deployments exist and return a redirect to Vercel Authentication. No public application is live.
 11. Supabase connector works, but no dedicated database target exists for this repo.
 12. GitHub read/write, branching, PR and merge access are available.
 

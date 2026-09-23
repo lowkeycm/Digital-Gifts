@@ -50,7 +50,7 @@ Fifteen rules. Every agent, every platform, every operator. Nothing in `people/`
 | --- | --- |
 | What it is | Consumer digital-gifts product, starting with guided personalized songs built from a customer's own memories and raw story details. Product implementation has not started in this repository yet. |
 | Business | UNVERIFIED. No legal entity or DBA is established in the repository. |
-| Live URL | Not deployed yet. A Vercel project exists, but no live deployment was verified during bootstrap. |
+| Live URL | No public application is live. Vercel has READY deployments for the bootstrap commits, but the deployment URLs are protected by Vercel Authentication. |
 | Repo | github.com/lowkeycm/Digital-Gifts |
 | Hosting | Vercel team `Pride Family Realty`, project `digital-gifts` (`prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`). The team account is shared across other businesses; confirm this exact project before any hosting operation. |
 | Database | UNVERIFIED. The connected Supabase organization currently exposes no Digital Gifts project. Do not use another existing project as a substitute. |
@@ -101,7 +101,7 @@ No application stack is committed yet. The repository currently contains only pr
 - Frontend: UNVERIFIED. No app config or package manifest exists yet.
 - Backend: UNVERIFIED. No runtime code exists yet.
 - Data: UNVERIFIED for this product. No dedicated Supabase project is visible from the connected account.
-- Hosting: Vercel project `digital-gifts` exists, but framework, Git linkage, environment variables and deploy behavior are not yet verified from the repo.
+- Hosting: Vercel project `digital-gifts` is Git-linked to this repo. Branch pushes create preview deployments and `main` created a production-target deployment during bootstrap. Both tested URLs redirected to Vercel Authentication. Framework and runtime environment are still UNVERIFIED because no application exists.
 - Tooling: no package manager or lockfile exists yet.
 
 Update this section from actual config files as soon as the first application code lands.
@@ -128,17 +128,17 @@ There is no application build, dependency install, typecheck, or test suite yet 
 
 | Command | What it does | Verified |
 | --- | --- | --- |
-| `git diff --check` | catches whitespace errors in repository changes | 2026-09-23 bootstrap |
+| `git diff --check` | catches whitespace errors in repository changes | UNVERIFIED on this platform; container GitHub DNS was unavailable |
 | Application install command | not established yet | UNVERIFIED |
 | Application build command | not established yet | UNVERIFIED |
 | Test command | there is no test suite yet | 2026-09-23 bootstrap |
 
-**Current build gate:** `git diff --check` plus file-content verification for documentation-only changes. Replace this with the real install, typecheck, test and build commands when application code lands. UI work still requires rendered visual verification.
+**Current build gate:** file-content verification for documentation-only changes. `git diff --check` is the intended local check but could not be run on this platform because the container could not resolve GitHub for a checkout. Replace this with the real install, typecheck, test and build commands when application code lands. UI work still requires rendered visual verification.
 
 ### 2.7 Deploy process
 
 - A Vercel project named `digital-gifts` exists in team `Pride Family Realty`.
-- Git linkage, automatic preview deployments, production branch behavior and environment configuration are UNVERIFIED until application code is connected and a preview is observed.
+- Git linkage and automatic deploy behavior are verified: pushes to `clay/agent-scaffolding` produced READY preview deployments and the `main` seed produced a production-target deployment. The tested URLs redirected to Vercel Authentication, so there is no verified public application surface.
 - No Supabase migrations or edge functions exist yet.
 - After any future deploy, verify the actual deployed surface rather than relying on a successful build log.
 
@@ -218,7 +218,7 @@ Application folders do not exist yet. Update this map when the product scaffold 
 ### 2.14 Gotchas
 
 - **2026-09-23:** The repository was completely empty. GitHub requires a root commit before a branch can exist, so bootstrap used a one-time neutral `main` seed commit solely to create `clay/agent-scaffolding`. All actual scaffolding changes were made on the branch.
-- **2026-09-23:** Vercel exposes project `digital-gifts` under team `Pride Family Realty`. Confirm that exact project before any hosting operation because the account also contains unrelated businesses.
+- **2026-09-23:** Vercel exposes project `digital-gifts` under team `Pride Family Realty`, Git-linked to this repo with automatic branch previews and `main` production deploys. Tested deployment URLs are protected by Vercel Authentication. Confirm that exact project before any hosting operation because the account also contains unrelated businesses.
 - **2026-09-23:** No Digital Gifts Supabase project is visible in the connected organization. Do not reuse Heritage, Pride Family Realty, RelevAint or any other existing database as a shortcut.
 - **2026-09-23:** For personalized songs, earlier testing showed that over-structured LLM rewriting made the music result more generic. Preserve raw customer language and improve intake specificity instead.
 
