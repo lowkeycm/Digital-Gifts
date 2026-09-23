@@ -25,11 +25,11 @@ No prior repository sessions. This was the bootstrap.
 
 **What is in progress.** Nothing. This bootstrap intentionally stops before application implementation.
 
-**What is broken or unresolved.** No application code or package tooling exists yet. No dedicated Digital Gifts Supabase project is visible. Official music-generation API access, payment integration and customer delivery infrastructure are not configured in this repo.
+**What is broken or unresolved.** No application code or package tooling exists yet. Clay confirmed the intended database is Supabase **Digital Enterprise → Digital Gifts**, but the current connector exposes only RelevAint, so the exact project ref and live connectivity remain unverified here. Official music-generation API access, payment integration and customer delivery infrastructure are not configured in this repo.
 
 **What could not be determined from here.** Vercel project-detail lookup failed through one connector path, but deployment listing independently verified Git linkage and auto-deploy behavior. Framework settings and runtime environment remain UNVERIFIED because no application exists. The deployment URLs are protected, so there is no public live application to inspect.
 
-**Open owner actions.** When database work begins, confirm which Supabase organization should own the Digital Gifts project and approve project creation/cost if a new project is needed. Obtain or confirm official music-provider API access before the generation integration is implemented.
+**Open owner actions.** When database work begins, use only the owner-confirmed **Digital Enterprise → Digital Gifts** Supabase target and verify its exact ref once that organization is visible to the connector. Obtain or confirm official music-provider API access before the generation integration is implemented.
 
 **Next concrete step.** Import or rebuild the agreed V1 application foundation in this repo, then verify the actual stack end to end on a Vercel preview.
 
@@ -44,14 +44,14 @@ These are dated observations, not permanent truths. Retest any "cannot" older th
 | Build gate | File-content checks available. Intended `git diff --check` could not be run because the container could not resolve GitHub for a checkout; no application build exists yet |
 | Screenshot a local dev server | No app/server exists yet, so not testable |
 | Reach the live site | Vercel deployments are reachable but redirect to Vercel Authentication; no public application is live |
-| Query the database | Supabase account is reachable, but no repo-specific Digital Gifts project is visible |
+| Query the database | Supabase connector is reachable, but only the RelevAint organization is visible; owner-confirmed target is Digital Enterprise → Digital Gifts |
 | Run the test suite | No suite exists yet |
 | Push and open a PR | Yes, through the connected GitHub API |
 
 Bootstrap checklist notes:
 1. Handoff source template read before writing this file.
 2. Operator identified as Clay from the active conversation; GitHub `lowkeycm` is connected.
-3. This platform writes commits through the authenticated GitHub connector; local `git config` does not govern connector commits, and the connector does not expose an author-email override. GitHub resolves the commits to user `lowkeycm`, but the requested noreply author email could not be enforced from this platform.
+3. This platform writes commits through the authenticated GitHub connector; local `git config` does not govern connector commits. GitHub resolves the commits to user `lowkeycm` with `nerdsandbots@gmail.com`, which Clay confirmed is his GitHub email. The shared scaffold still sets the noreply address for normal local Git sessions.
 4. Required branch `clay/agent-scaffolding` created after the empty-repo seed.
 5. Repository began with no branches containing work other than the one-time seed on `main`.
 6. Full repository contents were verified through GitHub API reads; there was no sparse application checkout to recover.
