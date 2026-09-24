@@ -30,7 +30,7 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 **What works.** The V1 buyer flow exists on `clay/v1-app-foundation`. Raw answers persist in the dedicated Digital Gifts database. Preview/full records, demo payment state and one revision persist through constrained token-checked RPCs. The branch builds successfully on Vercel.
 
-**What is in progress.** Visual/browser review of the protected preview and PR review. Production remains unchanged.
+**What is in progress.** Visual/browser review of the protected preview and PR review. Production remains unchanged. Paid-social recon is now saved under `campaigns/ad-recon/`, with a first four-cell Meta static test batch under `campaigns/launch-v1/ads/`.
 
 **What is broken or unresolved.** Music is mocked; Stripe is not connected; email delivery is not connected; there is no authenticated admin. The brand name is still provisional. No npm lockfile is committed yet.
 
@@ -38,7 +38,7 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 **Open owner actions.** Review the protected preview visually. Explicitly approve merge/production when ready. Continue pursuing official Suno Platform/API access.
 
-**Next concrete step.** Visual review the preview, then either fix any UI misses or approve the PR for production merge.
+**Next concrete step.** Review the V1 preview and the ad-recon concepts. For marketing, produce the four static thumbnails, then prioritize real first-listen reaction creative as soon as early customers exist. For product, keep the branch unmerged until visual review and production approval.
 
 ## Platform capability notes
 
