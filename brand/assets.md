@@ -12,3 +12,6 @@
 - 2026-09-28 — `public/images/first-listen.webp` — generated illustrative listening scene for the digital song hero. Not a customer testimonial.
 - 2026-09-28 — `public/images/couple-keepsake.webp`, `mother-keepsake.webp`, `framed-song-concept.webp` — Clay’s three generated framed-gift scenes, optimized from supplied PNGs; concept gallery only, not proof of available fulfillment.
 - 2026-09-28 — `docs/qa/` — rendered desktop/mobile evidence and functional verification.
+
+- 2026-09-28 — `public/audio/*.mp3` — three full-length tracks of Clay-supplied songs, used on home and Your Song; original files retained unchanged outside repository.
+- 2026-09-28 — `docs/LAUNCH-SIGNUP.md` and `docs/qa/launch-*` — working consented launch signup, sample players and rendered/functional evidence.

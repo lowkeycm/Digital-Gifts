@@ -52,7 +52,7 @@ export function StoryNotes() {
           “{note.detail}”
         </p>
         <span className="note-caption">
-          Illustrative story, not a customer quote.
+          Example
         </span>
       </div>
     </div>

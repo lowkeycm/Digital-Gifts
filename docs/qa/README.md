@@ -16,3 +16,7 @@ Music generation, payments and email remain unconnected. This verifies the exist
 
 ## Evidence
 The JPG files are full-page screenshots. `local-checks.json` records the local functional checks. Research provenance and design rationale are in `../website-brief.md`.
+
+## Launch signup refinement
+
+`launch-*.jpg` show home/product at 1440x900 and 390x844, the samples, signup and success state. `launch-checks.json` records 320/390/768/1440 overflow, playable full-length media and seeking beyond 30 seconds, exclusive playback and signup validation. Browser submit persisted the synthetic example.com QA row, confirmed by SQL; repeat with uppercase retained one row and initial source. Simulated HTTP 503 preserved input and retry succeeded. No email sent.

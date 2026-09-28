@@ -3,7 +3,8 @@ import Link from "next/link";
 import { DigitalGiftsNav } from "@/components/DigitalGiftsNav";
 import { Arrow, GiftFooter } from "@/components/GiftBrand";
 import { StoryNotes } from "@/components/StoryNotes";
-import { KeepsakeGallery } from "@/components/KeepsakeGallery";
+import { SongSamples } from "@/components/SongSamples";
+import { LaunchSignup } from "@/components/LaunchSignup";
 
 export default function Home() {
   return (
@@ -20,16 +21,16 @@ export default function Home() {
               <em>everything.</em>
             </h1>
             <p>
-              A song about your story. A keepsake full of memories. Gifts that
-              say, “I know you,” in a way nothing off a shelf can.
+              A song about your story. A gift that
+              says, “I know you,” in a way nothing off a shelf can.
             </p>
             <div className="hero-actions">
               <Link href="/your-song" className="gift-button">
                 Discover Your Song
                 <Arrow />
               </Link>
-              <a href="#gifts" className="quiet-link">
-                Meet the collection <span aria-hidden="true">↓</span>
+              <a href="#samples" className="quiet-link">
+                Hear a sample <span aria-hidden="true">↓</span>
               </a>
             </div>
             <div className="hero-footnote">
@@ -115,13 +116,15 @@ export default function Home() {
                     <Arrow />
                   </Link>
                   <p className="small-note">
-                    Try the experience in demo mode. Launch price: $29.
+                    Launch price: $29. Full song + one revision.
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <SongSamples />
+        <LaunchSignup source="/" />
         <section id="how" className="section shell story-section">
           <div className="story-intro">
             <span className="eyebrow">02 / Made personal</span>
@@ -137,7 +140,7 @@ export default function Home() {
             </p>
             <p>That’s the material a personal gift is made of.</p>
             <Link className="quiet-link" href="/create">
-              Start with your memories <span aria-hidden="true">↗</span>
+              Explore the story form (demo) <span aria-hidden="true">↗</span>
             </Link>
           </div>
           <StoryNotes />
@@ -169,31 +172,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="keepsakes" className="section keepsake-section">
-          <div className="shell">
-            <div className="keepsake-heading">
-              <div>
-                <span className="eyebrow">03 / A little look ahead</span>
-                <h2>
-                  First, the song.
-                  <br />
-                  Then, <em>something to hold.</em>
-                </h2>
-              </div>
-              <div>
-                <span className="development-label">In development</span>
-                <p>
-                  We’re working on a framed photo gift that opens your song with
-                  a scan. Something for their shelf, with a story inside.
-                </p>
-                <p className="small-note">
-                  Concept shown. Not available to order yet.
-                </p>
-              </div>
-            </div>
-            <KeepsakeGallery />
-          </div>
-        </section>
+        <aside id="keepsakes" className="shell keepsake-teaser">
+          <span className="eyebrow">Coming next</span>
+          <p>Something to hold. A framed photo, with your song a scan away.</p>
+        </aside>
         <section className="gift-close">
           <div className="shell">
             <span className="eyebrow">
@@ -204,11 +186,11 @@ export default function Home() {
               <br />
               <em>while you were here?</em>
             </h2>
-            <Link href="/your-song" className="gift-button">
-              Make it personal
+            <Link href="#launch" className="gift-button">
+              Get notified at launch
               <Arrow />
             </Link>
-            <p>Start with Your Song.</p>
+            <p>A song for the person you’re thinking of.</p>
           </div>
         </section>
       </main>

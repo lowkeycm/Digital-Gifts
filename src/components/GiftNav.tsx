@@ -8,19 +8,18 @@ export function GiftNav({ product = false }: { product?: boolean }) {
   const links = product
     ? [
         { href: "/your-song#how", name: "How it works" },
-        { href: "/your-song#included", name: "What’s included" },
+        { href: "/your-song#samples", name: "Hear a sample" },
         { href: "/your-song#questions", name: "Questions" },
       ]
     : [
         { href: "/#gifts", name: "The collection" },
         { href: "/#how", name: "Made personal" },
-        { href: "/#keepsakes", name: "Coming next" },
+        { href: "/#samples", name: "Hear a sample" },
       ];
   return (
     <>
       <div className="preview-banner">
-        Preview edition <span>·</span> Song generation and payments are not live
-        yet.
+        Your Song is coming soon. <span>·</span> Listen to the samples and join the launch list.
       </div>
       <header id="top" className="gift-header">
         <div className="shell gift-nav">
@@ -35,9 +34,9 @@ export function GiftNav({ product = false }: { product?: boolean }) {
           <div className="nav-actions">
             <Link
               className="gift-button nav-button"
-              href={product ? "/create" : "/your-song"}
+              href={product ? "/your-song#launch" : "/#launch"}
             >
-              {product ? "Start your story" : "Explore Your Song"}
+              Get launch updates
               <Arrow />
             </Link>
             <button

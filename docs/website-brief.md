@@ -151,3 +151,26 @@ Proposed measure after a real launch: homepage-to-product click-through and inta
 The Vercel preview for commit `c2ba9022` reached READY. Rendered home and product matched local screenshots. Through the actual UI, a synthetic story for Gift Smith QA reached its saved private preview, demo unlock, private gift page, revision request and persisted revision confirmation after reload. No real payment or email was sent. The same saved private routes were rendered locally against the existing database at 1440x900 and 390x844, with no horizontal overflow. Screenshots: `preview-*.jpg` and `song-*.jpg`.
 
 This run exposed a pre-existing React button-reuse issue: Continue on step 3 could become the submit button during the same event, showing a premature validation message on step 4. Distinct Continue/Submit keys fix it; Enter on earlier steps now advances through validation. The regression check confirms arrival at step 4 has no error, then failed submission keeps answers and permits retry. No backend contract changed.
+
+
+## Launch signup and sample refinement (2026-09-28)
+
+Clay requested email capture, supplied three sample MP3s, fewer repeated disclaimers, a compact framed-gift teaser, practical delivery FAQs and AI disclosure. Reuse the rendered reference research above and the established cream/olive/oxblood editorial system; this is a focused conversion improvement, not a new visual direction. Read the current Marketing-Hub root, website-system, all five website references and editorial calibration. Shared context was loaded manually from the project's available brand assets and product/website documents; no complete brand profiles exist.
+
+Page jobs: home explains personal gifts, offers audible evidence and captures launch interest; Your Song lets a gift buyer hear examples, understand the $29 planned offer and join the launch list. Primary action is launch signup; demo is secondary and labeled where entered. Preserve distinctive story examples.
+
+Execution: cream listening section with three numbered track rows, actual full-length songs and native accessible audio controls, no autoplay; one track plays at a time. Place below the hero/product introduction, close to an oxblood signup panel with one email field and explicit launch-email consent. Compact single-line framed-gift teaser replaces the large concept gallery. Mobile stacks the introduction and track list, full-width form and touch targets. No new motion or image assets needed.
+
+Claims: supplied music is sample work, not testimonials or proof of automated fulfillment. No inferred genre, customer story or fictional attribution. Original files stay unchanged; distribute full-length copies as explicitly approved. One top status banner and one ordering FAQ answer on marketing surfaces. Keep demo-boundary notices inside the actual demo. AI is explained once in the product FAQ. Delivery link/download are described as planned; turnaround remains unconfirmed until provider testing. No invented deadline, refund terms or scarcity.
+
+Signup intent: permission for the launch announcement only; persist normalized email, consent version/time and entry page in the Digital Gifts database. No email is sent by signup. No ads pixels or story data are introduced. Success means persisted entry, not confirmed delivery. Measure real signup conversion after launch; no conversion uplift claimed here.
+
+### Rendered review and copy calibration
+
+Visual pass: compared home and product desktop/mobile renders with the established editorial direction. The three track rows carry proof without fake album art; oxblood signup panel provides a distinct conversion stop; framed-gift teaser no longer dominates. Original photo hero, olive story block and cream offer remain coherent. Desktop 1440x900 and mobile 390x844 screenshots: `docs/qa/launch-*`. Layout checks at 320/390/768/1440 passed.
+
+Conversion pass: sample action near the hero; launch signup directly after samples; one email field, clear announcement consent, retained input on error, confirmed saved state. Demo secondary. Planned deliverables and unknown turnaround distinguished in FAQ. No urgency or customer testimonial fabricated.
+
+Copy calibration (self-review, not performance data): Clarity 9 (hear a sample / launch signup); Specificity 8 (three actual named songs, full-length audio, $29 + revision); Voice 8 (retains specific memories and restrained emotional headings); Desire 8 (audible product and recognizable recipient); Proof 8 (real supplied music, untested delivery disclosed); Urgency 7 (honest launch reminder only); Flow 8 (hear, sign up, understand). Total 56/70. No dimensions below 7. The absence of a measured turnaround is a product limitation, not something to polish away.
+
+Technical pass: lint/typecheck/build; playback and pause-on-other-track; actual database persistence, duplicate handling and privacy grants; invalid/oversized/cross-origin submissions; failure/retry; menu/FAQ and zero runtime errors. React review: small client islands, native media controls, no effects/fetch waterfalls or new dependencies. Clay resolved the publication blocker by explicitly approving publication and requested full songs instead of excerpts. Full-length media verification and release status are recorded in HANDOFF.

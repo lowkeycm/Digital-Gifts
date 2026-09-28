@@ -18,7 +18,7 @@ export function GiftBrand() {
     <Link href="/" className="gift-brand" aria-label="The Gift Smith home">
       <GiftMark />
       <span>
-        <small>The</small>Gift Smith
+        <small>The</small>{" "}Gift Smith
       </span>
     </Link>
   );
@@ -45,14 +45,14 @@ export function GiftFooter() {
           </p>
           <nav aria-label="Footer">
             <Link href="/your-song">Your Song</Link>
-            <Link href="/#keepsakes">Framed gifts</Link>
+            <Link href="/your-song#samples">Hear a sample</Link>
             <Link href="/your-song#questions">Questions & answers</Link>
           </nav>
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} The Gift Smith</span>
           <span>
-            Illustrative imagery. Framed gifts are concepts in development.
+            Personal gifts. Real stories.
           </span>
           <a href="#top">Back to top ↑</a>
         </div>
