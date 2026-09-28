@@ -14,8 +14,8 @@ Every session ends by updating this file, committing, and pushing. Not committed
 - **Changed:** Photo-led Gift Smith homepage; distinct Your Song product page; shared navigation/wordmark/footer; working mobile menu, story-example selector and three-image framed concept gallery; numbered native FAQs; coordinated intake/private-flow styling and accessible labels; honest demo copy; retry handling for revision network errors. Added four optimized WebP images and pinned self-hosted fonts. Committed a package lock.
 - **Research:** Used canonical Marketing-Hub website-system and direct-response calibration. Inspected Wonderbly, Songfinch, Flower Dose, Superpower and a live 21st accordion; separated static-gallery evidence from observed interaction. Decisions and exact URLs are in `docs/website-brief.md`.
 - **Verification:** Local lint/type and production build pass. Chromium rendered 1440x900 and 390x844 screenshots; 320px and 768px overflow checks also pass. Gallery, story selectors, menu, FAQ, intake validation/back-retention and failed-submit retry passed with no browser runtime errors. See `docs/qa/`.
-- **Deploy status:** Preview publication and deployed-flow verification in progress; update this block after checks.
-- **Database:** No schema changes. Existing target remains Digital Enterprise / Digital Gifts (`hyjmlkowbhftisynztui`).
+- **Deploy status:** Redesign preview for code commit `c2ba9022` reached READY and was inspected in the cloud browser. The deployed intake -> private preview -> demo unlock -> gift page -> revision -> reload journey passed. A follow-up fix prevents premature validation when advancing to the final intake step; its local regression check passed. Work is delivered through PR #6 into the parent feature branch. Use its latest Vercel preview; production remains unchanged.
+- **Database:** No schema changes. Existing target remains Digital Enterprise / Digital Gifts (`hyjmlkowbhftisynztui`). One clearly marked test intake for recipient `Gift Smith QA`, email `gift-smith-qa@example.com`, was created through the UI and retained, with demo order and revision. No real payment or email was sent.
 - **Production:** Unchanged. Explicit Clay approval is still required before any merge that reaches `main`.
 
 ## Prior Session (2026-09-27, parent architecture)
@@ -40,7 +40,7 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Where We Are
 
-The requested visual redesign is implemented and locally verified. The Gift Smith is the consumer parent name; Your Song is the first product. Repository, Vercel and Supabase identifiers remain Digital Gifts.
+The requested visual redesign is implemented and verified locally and on Vercel. The Gift Smith is the consumer parent name; Your Song is the first product. Repository, Vercel and Supabase identifiers remain Digital Gifts.
 
 Music generation, payments and email are still unconnected. Framed Song Gift remains a concept and cannot be ordered. These are existing product limitations, not visual-redesign omissions.
 
@@ -55,6 +55,6 @@ Music generation, payments and email are still unconnected. Framed Song Gift rem
 
 - Base product branch: `clay/v1-app-foundation`, PR #4, unmerged to main.
 - Parent branch: `clay/digital-gifts-parent-site`, PR #5, stacked on foundation.
-- Redesign: `clay/gift-smith-redesign`, stacked on parent.
+- Redesign: PR #6 from `clay/gift-smith-redesign` into the parent branch.
 - Parent route `/`; product `/your-song`; funnel `/create`, `/preview/[id]`, `/song/[id]`.
 - Research: `docs/website-brief.md`; assets: `brand/assets.md`; screenshot evidence: `docs/qa/`.

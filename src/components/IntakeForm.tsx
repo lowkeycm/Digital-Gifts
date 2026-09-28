@@ -65,6 +65,10 @@ export function IntakeForm() {
 
   async function submit(e: FormEvent) {
     e.preventDefault();
+    if (step < steps.length - 1) {
+      next();
+      return;
+    }
     if (data.whatYouWantToSay.trim().length < 10 || !data.email.includes("@")) {
       setError("Tell us what you want them to feel and where to send the song.");
       return;
@@ -114,7 +118,7 @@ export function IntakeForm() {
       {error && <p role="alert" className="error-copy">{error}</p>}
       <div className="form-actions">
         <button type="button" className="ghost" disabled={step === 0 || busy} onClick={() => { setError(""); setStep((current) => Math.max(0, current - 1)); }}>Back</button>
-        {step < steps.length - 1 ? <button type="button" className="pill primary" onClick={next}>Continue</button> : <button className="pill primary" disabled={busy}>{busy ? "Building your preview..." : "Create my preview"}</button>}
+        {step < steps.length - 1 ? <button key="continue" type="button" className="pill primary" onClick={next}>Continue</button> : <button key="submit" type="submit" className="pill primary" disabled={busy}>{busy ? "Building your preview..." : "Create my preview"}</button>}
       </div>
     </form>
   );

@@ -145,4 +145,9 @@ Proposed measure after a real launch: homepage-to-product click-through and inta
 - Conversion: one primary route to Your Song; framing is a separate in-development concept; intended launch price and one revision are visible; demo limits are explicit above the fold and near the offer. No fabricated reviews, urgency, sales counts or performance claims.
 - Interaction: story examples, gallery thumbnails, mobile navigation and native FAQ all work. Intake validates missing fields, preserves answers when going back and allows retry after server failure. Inputs have programmatic labels; errors are announced.
 - Technical: lint, TypeScript and production build pass. No browser runtime errors. No horizontal overflow at 320, 390, 768 or 1440 pixels on home, product or intake. Self-hosted variable fonts and responsive WebP delivery.
-- Evidence: `docs/qa/*-desktop.jpg`, `*-mobile.jpg` and `local-checks.json`. Preview/delivery persistence must also be checked on the deployed preview before calling the session complete.
+- Evidence: `docs/qa/*-desktop.jpg`, `*-mobile.jpg` and `local-checks.json`. Deployed persistence was also verified, as recorded below.
+
+### Deployed QA results · 2026-09-28
+The Vercel preview for commit `c2ba9022` reached READY. Rendered home and product matched local screenshots. Through the actual UI, a synthetic story for Gift Smith QA reached its saved private preview, demo unlock, private gift page, revision request and persisted revision confirmation after reload. No real payment or email was sent. The same saved private routes were rendered locally against the existing database at 1440x900 and 390x844, with no horizontal overflow. Screenshots: `preview-*.jpg` and `song-*.jpg`.
+
+This run exposed a pre-existing React button-reuse issue: Continue on step 3 could become the submit button during the same event, showing a premature validation message on step 4. Distinct Continue/Submit keys fix it; Enter on earlier steps now advances through validation. The regression check confirms arrival at step 4 has no error, then failed submission keeps answers and permits retry. No backend contract changed.
