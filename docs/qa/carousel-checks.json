@@ -1,0 +1,297 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "width": 1440,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 1278,
+        "left": 338,
+        "positions": [
+          [
+            474,
+            330
+          ],
+          [
+            812,
+            330
+          ],
+          [
+            1150,
+            330
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.743815, 0, -0.464787, 0, 0, 0.877091, 0, 0, 0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.743815, 0, 0.464787, 0, 0, 0.877091, 0, 0, -0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)"
+      ]
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 368,
+        "left": 220,
+        "positions": [
+          [
+            54,
+            260
+          ],
+          [
+            274,
+            260
+          ],
+          [
+            494,
+            260
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.799987, 0, -0.408967, 0, 0, 0.898462, 0, 0, 0.455186, 0, 0.890396, 0, 0, 0, -63.4615, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.799987, 0, 0.408967, 0, 0, 0.898462, 0, 0, -0.455186, 0, 0.890396, 0, 0, 0, -63.4615, 1)"
+      ]
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 298,
+        "left": 194,
+        "positions": [
+          [
+            32,
+            234
+          ],
+          [
+            226,
+            234
+          ],
+          [
+            419,
+            234
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.80569, 0, -0.402228, 0, 0, 0.900513, 0, 0, 0.446665, 0, 0.894701, 0, 0, 0, -62.1795, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.807107, 0, 0.400531, 0, 0, 0.901026, 0, 0, -0.444528, 0, 0.895765, 0, 0, 0, -61.859, 1)"
+      ]
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 702,
+        "left": 338,
+        "positions": [
+          [
+            186,
+            330
+          ],
+          [
+            524,
+            330
+          ],
+          [
+            862,
+            330
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.743815, 0, -0.464787, 0, 0, 0.877091, 0, 0, 0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.743815, 0, 0.464787, 0, 0, 0.877091, 0, 0, -0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)"
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 1440,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 1278,
+        "left": 338,
+        "positions": [
+          [
+            474,
+            330
+          ],
+          [
+            812,
+            330
+          ],
+          [
+            1150,
+            330
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.743815, 0, -0.464787, 0, 0, 0.877091, 0, 0, 0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.743815, 0, 0.464787, 0, 0, 0.877091, 0, 0, -0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)"
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 390,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 368,
+        "left": 220,
+        "positions": [
+          [
+            54,
+            260
+          ],
+          [
+            274,
+            260
+          ],
+          [
+            494,
+            260
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.799987, 0, -0.408967, 0, 0, 0.898462, 0, 0, 0.455186, 0, 0.890396, 0, 0, 0, -63.4615, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.799987, 0, 0.408967, 0, 0, 0.898462, 0, 0, -0.455186, 0, 0.890396, 0, 0, 0, -63.4615, 1)"
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 320,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 298,
+        "left": 194,
+        "positions": [
+          [
+            32,
+            234
+          ],
+          [
+            226,
+            234
+          ],
+          [
+            419,
+            234
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.80569, 0, -0.402228, 0, 0, 0.900513, 0, 0, 0.446665, 0, 0.894701, 0, 0, 0, -62.1795, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.807107, 0, 0.400531, 0, 0, 0.901026, 0, 0, -0.444528, 0, 0.895765, 0, 0, 0, -61.859, 1)"
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 768,
+      "overflow": false,
+      "selected": "THE GIFT SMITH 02Son to MotherThe Way I See You↗Son to MotherSong 02 · 3:55",
+      "rail": {
+        "width": 702,
+        "left": 338,
+        "positions": [
+          [
+            186,
+            330
+          ],
+          [
+            524,
+            330
+          ],
+          [
+            862,
+            330
+          ]
+        ]
+      },
+      "turns": [
+        "matrix3d(0.743815, 0, -0.464787, 0, 0, 0.877091, 0, 0, 0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)",
+        "matrix(1, 0, 0, 1, 0, 0)",
+        "matrix3d(0.743815, 0, 0.464787, 0, 0, 0.877091, 0, 0, -0.529919, 0, 0.848048, 0, 0, 0, -76.8182, 1)"
+      ]
+    }
+  ],
+  "playback": [
+    [
+      {
+        "paused": false,
+        "duration": 244.8,
+        "time": 45.009776
+      },
+      {
+        "paused": true,
+        "duration": null,
+        "time": 0
+      },
+      {
+        "paused": true,
+        "duration": null,
+        "time": 0
+      }
+    ],
+    [
+      {
+        "paused": true,
+        "duration": 244.8,
+        "time": 45.114651
+      },
+      {
+        "paused": false,
+        "duration": 234.96,
+        "time": 45.01526
+      },
+      {
+        "paused": true,
+        "duration": null,
+        "time": 0
+      }
+    ],
+    [
+      {
+        "paused": true,
+        "duration": 244.8,
+        "time": 45.114651
+      },
+      {
+        "paused": true,
+        "duration": 234.96,
+        "time": 45.116933
+      },
+      {
+        "paused": false,
+        "duration": 269.92,
+        "time": 45.009424
+      }
+    ]
+  ],
+  "errors": [],
+  "interactions": [
+    "keyboard Home/ArrowRight",
+    "mouse drag",
+    "reduced motion",
+    "native touch swipe",
+    "audio error fallback"
+  ]
+}

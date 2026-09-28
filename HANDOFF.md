@@ -6,7 +6,21 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
-- **When:** 2026-09-28 UTC / September 28, New York
+- **When:** 2026-09-28 UTC / September 27 evening, New York
+- **Who:** Clay
+- **Platform:** ChatGPT Work Mode
+- **Request:** Improve song selection with a physically scrollable 3D music-service-style album carousel. Song 1 Brother to Sister, Song 2 Son to Mother, Song 3 Husband to Wife.
+- **Branch:** `clay/song-album-carousel`, from main `0bf90dc` after the logo release.
+- **Changed:** Shared home/product song section now has three illustrated album covers in a navy listening room. Native horizontal scroll and touch swipe, mouse drag, previous/next buttons, card selection, keyboard Left/Right/Home/End. Covers rotate/recede with scroll and the center album comes forward. Reduced-motion removes 3D transformations. Native full-track player, track length and relationship remain visible; changing selection pauses the previous track. No autoplay or signup barrier. Same full MP3 files.
+- **Mapping:** Ebony, I Love You = Brother to Sister; The Way I See You = Son to Mother; Traci, My Rock = Husband to Wife. Explicitly supplied by Clay, not inferred from names or lyrics. Cover art depicts fictional people and is labeled illustrative.
+- **QA:** Lint/typecheck/build and Chromium desktop 1440x900/mobile 390x844; 320/390/768/1440 overflow and image loading. Touch swipe (emulated), mouse drag, keyboard, edge buttons, reduced motion, audio fallback, all three tracks decoded and sought past 45 seconds with only one playing. No runtime errors. See `docs/qa/carousel-room-*` and `carousel-checks.json`. Real physical-device touch performance is not measured.
+- **Publication:** Continuing Clay's explicit website publication authorization and requested follow-up. Verified target digital-gifts, project `prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`, team `team_K0quIbtPFw7RIl9M7bG54yTE`, www.yourgiftsmith.com. Merge this branch PR after preview checks; verify live after deployment.
+- **Logo release:** PR #10 merged at `0bf90dc5a170db775c5f0ff59416e5ef1259f56c`, production `dpl_E2HWjXQ98W8ep4Yifo7j4cLPbmAi` READY. New logo loaded on the live domain in browser. Old branch deleted.
+- **Remaining:** Music, paid checkout and sending-email integrations remain unchanged and incomplete. No database changes or new signup submissions in this visual update.
+
+## Prior Session (supplied logo)
+
+- **When:** 2026-09-28 UTC / September 27 evening, New York
 - **Who:** Clay
 - **Platform:** ChatGPT Work Mode
 - **Request / authorization:** Remove the supplied logo background and “add it to the site,” continuing the explicit publish authorization. Apply this requested logo update to the live website.
