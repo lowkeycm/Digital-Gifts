@@ -1,10 +1,22 @@
 # Digital Gifts
 
-V1 of a consumer digital-gifts platform, starting with personalized songs.
+Digital Gifts is the parent consumer brand for personalized gifts built from real stories and specific personal details.
 
-## Current milestone
+The first product is **Your Song**, a personalized-song experience.
 
-The customer journey is real end to end with:
+## Site structure
+
+- `/` — Digital Gifts parent brand
+- `/your-song` — Your Song product landing page
+- `/create` — guided song intake
+- `/preview/[id]` — private preview
+- `/song/[id]` — private delivery/revision page
+
+The parent site also shows the **Framed Song Gift** as an in-development concept so the brand can expand beyond one digital format without pretending unfinished products are available.
+
+## Current Your Song milestone
+
+The customer journey currently includes:
 
 - a guided four-step intake that preserves raw customer language
 - real persistence in the dedicated Digital Gifts Supabase project
@@ -23,7 +35,7 @@ npm install
 npm run dev
 ```
 
-The verified Digital Gifts Supabase project URL and publishable key have safe built-in fallbacks for this public V1 flow. Secret keys never belong in source code.
+The verified Digital Gifts Supabase project URL and publishable key have safe built-in fallbacks for this protected V1 flow. Secret keys never belong in source code.
 
 ## Build gate
 
