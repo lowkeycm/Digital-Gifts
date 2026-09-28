@@ -1,0 +1,209 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "width": 1440,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 1440,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 390,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 320,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/your-song",
+      "width": 768,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        },
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/create",
+      "width": 1440,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/create",
+      "width": 390,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/create",
+      "width": 320,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 150,
+          "height": 62.6875,
+          "alt": "The Gift Smith"
+        }
+      ]
+    },
+    {
+      "path": "/create",
+      "width": 768,
+      "overflow": false,
+      "logos": [
+        {
+          "loaded": true,
+          "width": 210,
+          "height": 87.765625,
+          "alt": "The Gift Smith"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -15,3 +15,5 @@
 
 - 2026-09-28 — `public/audio/*.mp3` — three full-length tracks of Clay-supplied songs, used on home and Your Song; original files retained unchanged outside repository.
 - 2026-09-28 — `docs/LAUNCH-SIGNUP.md` and `docs/qa/launch-*` — working consented launch signup, sample players and rendered/functional evidence.
+
+- 2026-09-28 — `public/images/gift-smith-logo.webp` — Clay-supplied navy/gold logo with background removed, transparent lossless WebP for shared header/footer.

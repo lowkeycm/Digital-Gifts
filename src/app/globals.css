@@ -1120,6 +1120,7 @@ summary:focus-visible {
 }
 .gift-brand {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 10px;
   font-family: var(--serif);
@@ -1127,6 +1128,11 @@ summary:focus-visible {
   line-height: 0.8;
   letter-spacing: -0.04em;
   white-space: nowrap;
+}
+.gift-brand-logo {
+  display: block;
+  width: 210px;
+  height: auto;
 }
 .gift-brand svg {
   width: 35px;
@@ -2359,6 +2365,9 @@ textarea {
   .gift-brand {
     font-size: 26px;
     gap: 7px;
+  }
+  .gift-brand-logo {
+    width: 150px;
   }
   .gift-brand svg {
     width: 28px;
