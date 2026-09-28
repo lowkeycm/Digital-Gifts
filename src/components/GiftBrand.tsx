@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function GiftMark() {
   return (
@@ -16,10 +17,14 @@ export function GiftMark() {
 export function GiftBrand() {
   return (
     <Link href="/" className="gift-brand" aria-label="The Gift Smith home">
-      <GiftMark />
-      <span>
-        <small>The</small>{" "}Gift Smith
-      </span>
+      <Image
+        src="/images/gift-smith-logo.webp"
+        alt="The Gift Smith"
+        width={1000}
+        height={419}
+        className="gift-brand-logo"
+        sizes="(max-width: 760px) 150px, 210px"
+      />
     </Link>
   );
 }

@@ -6,6 +6,18 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When:** 2026-09-28 UTC / September 28, New York
+- **Who:** Clay
+- **Platform:** ChatGPT Work Mode
+- **Request / authorization:** Remove the supplied logo background and “add it to the site,” continuing the explicit publish authorization. Apply this requested logo update to the live website.
+- **Branch:** `clay/gift-smith-logo`, from main `8678a1f`.
+- **Changed:** Transparent navy/gold supplied logo replaces the provisional wordmark in the shared header and footer, including the intake. Background removed with image editing; lossless transparent WebP is 117 KB, responsive Next image delivery. Original upload unchanged.
+- **Verification:** Lint/typecheck and production build pass. Actual Chromium renders inspected at 1440x900 and 390x844. Home, Your Song and intake have loaded logos and no overflow at 320/390/768/1440. Mobile menu and logo home link work; no browser runtime errors. Evidence: `docs/qa/logo-*`.
+- **Target:** Verified Vercel `digital-gifts`, project `prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`, team `team_K0quIbtPFw7RIl9M7bG54yTE`; www.yourgiftsmith.com. Publish through the branch PR after its deployment checks pass; verify live asset after merge.
+- **Remaining:** Existing music, payment and sending-email integration work. No backend, signup or audio behavior changed.
+
+## Prior Session (launch signup and full songs)
+
 - **When:** 2026-09-28 UTC / September 27 evening, New York
 - **Who:** Clay
 - **Platform:** ChatGPT Work Mode
