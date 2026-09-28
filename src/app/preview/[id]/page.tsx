@@ -16,8 +16,8 @@ export default async function PreviewPage({ params, searchParams }: { params: Pr
   if (!song || !song.preview) notFound();
 
   return (
-    <><Nav/><main className="shell section preview-shell">
-      <div className="gift-kicker"><span className="status">PREVIEW READY</span><span>Made for {song.recipientName}</span></div>
+    <><Nav/><main id="main-content" className="shell section preview-shell">
+      <div className="gift-kicker"><span className="status">DEMO PREVIEW</span><span>Made for {song.recipientName}</span></div>
       <div className="preview-grid">
         <section className="record-sleeve compact-sleeve" aria-label="Personalized record sleeve">
           <div className="sleeve-label">FOR {song.recipientName.toUpperCase()}</div>
@@ -27,12 +27,12 @@ export default async function PreviewPage({ params, searchParams }: { params: Pr
         <section className="preview-copy">
           <span className="eyebrow">The first listen</span>
           <h1 className="preview-title">Does this feel like the two of you?</h1>
-          <p className="lede">This demo uses a placeholder player while the Suno connection is pending. The important part is real: your story is saved, this private preview link works, and the purchase and revision flow are wired end to end.</p>
+          <p className="lede">Your story is saved. This is a demo of your private preview, so no real song has been generated yet. You can try the gift page and revision experience without paying.</p>
           <div className="audio-shell">
             <div className="audio-label"><strong>Personalized preview</strong><span>Demo mode</span></div>
-            <div className="mock-player"><span className="play-dot">▶</span><div><strong>Preview placeholder</strong><small>Real Suno audio plugs in here.</small></div></div>
+            <div className="mock-player"><span className="play-dot" aria-hidden="true">♪</span><div><strong>Preview placeholder</strong><small>Your song will be available here when generation is connected.</small></div></div>
           </div>
-          <div className="price-row"><div><div className="price">$29</div><div className="help">Full song + one revision</div></div><CheckoutButton songId={id} accessToken={key} /></div>
+          <div className="price-row"><div><div className="price">$29</div><div className="help">Planned price: full song + one revision</div></div><CheckoutButton songId={id} accessToken={key} /></div>
           <div className="help-line">Small detail off later? Fix the detail. You do not have to start over.</div>
           <Link className="text-link" href="/create">Change the story instead</Link>
         </section>

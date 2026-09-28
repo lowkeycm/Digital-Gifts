@@ -48,7 +48,7 @@ Fifteen rules. Every agent, every platform, every operator. Nothing in `people/`
 
 | Field | Value |
 | --- | --- |
-| What it is | Consumer parent brand for personalized digital gifts built from real stories, memories and specific personal details. Your Song is the first product. The parent-brand extension is on `clay/digital-gifts-parent-site`; the song V1 uses real Supabase persistence, mock music generation and demo checkout. |
+| What it is | The Gift Smith consumer parent brand for personalized digital gifts built from real stories, memories and specific personal details. Your Song is the first product. The parent-brand extension is on `clay/digital-gifts-parent-site`; the song V1 uses real Supabase persistence, mock music generation and demo checkout. |
 | Business | UNVERIFIED. No legal entity or DBA is established in the repository. |
 | Live URL | Production remains unchanged. A protected Vercel preview for `clay/v1-app-foundation` is READY; use the current branch alias/share link from Vercel for review. |
 | Repo | github.com/lowkeycm/Digital-Gifts |
@@ -100,7 +100,7 @@ Record the operator in the Last Session block of `HANDOFF.md`.
 - Backend: Next.js Route Handlers on Vercel.
 - Data: Supabase **Digital Enterprise → Digital Gifts**, project ref `hyjmlkowbhftisynztui`, region `us-west-2`. Four V1 tables plus constrained RPCs are live.
 - Hosting: Vercel team `Pride Family Realty`, project `digital-gifts` (`prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`). Git branch pushes create protected previews. A repo-level `vercel.json` forces the correct Next.js framework/build output because the project was previously configured as a static site.
-- Package manager: npm. Dependencies are pinned in `package.json`; no lockfile exists yet because package installation could not complete in this session's container.
+- Package manager: npm. Dependencies are pinned in `package.json` and locked in `package-lock.json`. Use `npm ci`.
 - Validation: Zod at API boundaries.
 - Marketing/design: Marketing-Hub pointers plus `docs/website-brief.md`.
 
@@ -133,12 +133,12 @@ Run everything from the repo root.
 
 | Command | What it does | Verified |
 | --- | --- | --- |
-| `npm install` | installs pinned dependencies; use `npm ci` once a lockfile is committed | Vercel install/build succeeded 2026-09-23; local container install was unavailable |
-| `npm run check` | ESLint plus TypeScript no-emit check | UNVERIFIED locally on 2026-09-23 |
-| `npm run build` | production Next.js build | Verified by READY Vercel preview for commit `876941f` on 2026-09-23 |
+| `npm ci` | installs pinned and locked dependencies | Verified locally 2026-09-28 |
+| `npm run check` | ESLint plus TypeScript no-emit check | Passed locally 2026-09-28 |
+| `npm run build` | production Next.js build | Passed locally 2026-09-28 |
 | Test suite | none yet | no suite |
 
-**Build gate:** `npm run check` and `npm run build`, plus rendered desktop/mobile verification for UI work. In the 2026-09-23 build session, Vercel proved the production build but the platform did not expose a usable protected-preview browser runner, so visual QA remains explicitly incomplete.
+**Build gate:** `npm run check` and `npm run build`, plus rendered desktop/mobile verification for UI work. The redesign session on 2026-09-28 rendered the production build in Chromium at 1440x900 and 390x844. Additional overflow checks cover 320px and 768px widths. See `docs/qa/` for evidence.
 
 ### 2.7 Deploy process
 
@@ -153,7 +153,7 @@ Run everything from the repo root.
 
 **Visual verification is required for any UI change, before committing.** Load the affected page, screenshot desktop at 1440x900 and mobile at 390x844, confirm the change and that nothing else broke. If your platform cannot render a browser, say so and hand the verification back (doctrine 15).
 
-The current provisional visual direction is documented in `docs/website-brief.md`: Digital Gifts is the premium/editorial parent brand; Your Song inherits its warm paper/ink/rust system with tactile record-sleeve language. The parent adds framed/stacked gift objects and subtle motion. It is a V1 direction, not a locked brand identity. For future website/landing-page changes, use Marketing-Hub's `hub-website-system` skill.
+The current provisional visual direction is documented in `docs/website-brief.md`: The Gift Smith is the photo-led editorial parent brand; Your Song inherits its ivory/olive/oxblood system with Cormorant Garamond and DM Sans. Three framed-gift concept images sit in an explicitly unavailable gallery; the listening hero depicts the digital song idea. It is a V1 direction, not a locked brand identity. For future website/landing-page changes, use Marketing-Hub's `hub-website-system` skill.
 
 ### 2.9 Copy doctrine
 
@@ -236,7 +236,7 @@ people/clay.md               operator profile
 - **2026-09-23:** For personalized songs, earlier testing showed that over-structured LLM rewriting made the music result more generic. Preserve raw customer language and improve intake specificity instead.
 - **2026-09-23:** Vercel project settings were inherited as a static-site build expecting `public`. V1 initially failed with `STATIC_BUILD_NO_OUT_DIR`; `vercel.json` now forces the Next.js framework/build output.
 - **2026-09-23:** The V1 accountless preview uses anonymous `SECURITY DEFINER` RPCs protected by per-song UUID capability tokens while direct table privileges remain revoked. Supabase advisor warns about anonymous executable definer functions by design. Before public launch, provider generation/payment mutations must move behind backend credentials and rate limits.
-- **2026-09-23:** No npm lockfile is committed yet because dependency installation timed out in this platform container. Vercel successfully built pinned package versions, but create and commit a lockfile when a normal package environment is available.
+- **2026-09-28:** Dependency installation works in Work Mode; `package-lock.json` is now committed. Local browser checks use a production Next server and Chromium in the same execution session because separate sessions have isolated loopback networking.
 
 ### 2.15 Marketing work and Marketing-Hub
 
@@ -245,3 +245,13 @@ For marketing, copywriting, SEO, website strategy, landing pages, social, email,
 Read Marketing-Hub's root `README.md` first and load only the skills relevant to the task. Every Hub skill has a pointer in this repo under `.claude/skills/hub-<name>/`; invoke the `hub-` skill for the job rather than reading the Hub as a folder, and prefer it over any same-named marketplace skill. The pointers are generated by `Marketing-Hub/install/hub-skills.mjs` and refreshed by `.claude/hooks/session-start.sh`.
 
 Marketing-Hub is reference intelligence. Do not modify it while working on this project unless explicitly instructed. Client-specific facts, decisions, brand context, and learnings belong to this project in `brand/` and `docs/canonical/`, never in the Hub. Anything marked proposed or provisional in `brand/` is not confirmed direction until Clay says so.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

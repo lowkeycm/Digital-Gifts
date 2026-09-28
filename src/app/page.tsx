@@ -1,147 +1,218 @@
+import Image from "next/image";
 import Link from "next/link";
 import { DigitalGiftsNav } from "@/components/DigitalGiftsNav";
+import { Arrow, GiftFooter } from "@/components/GiftBrand";
+import { StoryNotes } from "@/components/StoryNotes";
+import { KeepsakeGallery } from "@/components/KeepsakeGallery";
 
 export default function Home() {
   return (
-    <><DigitalGiftsNav/><main>
-      <section className="shell dg-hero">
-        <div className="dg-hero-copy">
-          <span className="eyebrow">Personal, on purpose</span>
-          <h1 className="dg-title">Gifts made from the stories only you know.</h1>
-          <p className="dg-lede">Digital Gifts turns memories, photos and the little details into gifts made for one person. Start with a personalized song. More formats are being built around the same idea.</p>
-          <div className="actions">
-            <Link className="pill primary" href="/your-song">Create a personalized song</Link>
-            <a className="pill" href="#gifts">See what we are building</a>
+    <>
+      <DigitalGiftsNav />
+      <main id="main-content">
+        <section className="shell gift-hero">
+          <div className="gift-hero-copy">
+            <span className="eyebrow">Personal gifts. Real stories.</span>
+            <h1>
+              For the person{" "}<br />
+              who means
+              <br />
+              <em>everything.</em>
+            </h1>
+            <p>
+              A song about your story. A keepsake full of memories. Gifts that
+              say, “I know you,” in a way nothing off a shelf can.
+            </p>
+            <div className="hero-actions">
+              <Link href="/your-song" className="gift-button">
+                Discover Your Song
+                <Arrow />
+              </Link>
+              <a href="#gifts" className="quiet-link">
+                Meet the collection <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <div className="hero-footnote">
+              <span className="tiny-star" aria-hidden="true">
+                ✳
+              </span>
+              <span>
+                You bring the memories.
+                <br />
+                We help you make them a gift.
+              </span>
+            </div>
           </div>
-          <div className="dg-hero-note">
-            <span className="dg-note-number">01</span>
-            <p>The best gift is not the most expensive one. It is the one that makes them say, “How did you know to put that in there?”</p>
+          <div className="hero-photo-stage">
+            <div className="hero-photo">
+              <Image
+                src="/images/first-listen.webp"
+                alt="A woman listening to music beside her smiling partner in a sunlit home"
+                fill
+                preload
+                sizes="(max-width: 760px) 100vw, 57vw"
+              />
+            </div>
+            <div className="photo-note">
+              <span>The best part?</span>
+              <p>
+                The moment
+                <br />
+                they realize
+                <br />
+                <em>it’s about them.</em>
+              </p>
+              <div className="note-line" />
+            </div>
+            <span className="photo-side-label">A little more personal.</span>
+          </div>
+        </section>
+        <div className="gift-ribbon">
+          <div className="shell">
+            <span>Inside jokes.</span>
+            <i aria-hidden="true" />
+            <span>Ordinary Tuesdays.</span>
+            <i aria-hidden="true" />
+            <span>Your kind of love.</span>
+            <i aria-hidden="true" />
+            <span>All worth giving.</span>
           </div>
         </div>
-
-        <div className="dg-hero-art" aria-label="A collection of personalized gift concepts">
-          <div className="dg-frame">
-            <div className="dg-frame-photo">
-              <span>YOUR<br/>MEMORY</span>
+        <section id="gifts" className="collection-section">
+          <div className="shell">
+            <div className="section-label">
+              <span>01 / The collection</span>
+              <span>Made from what matters</span>
             </div>
-            <div className="dg-frame-caption">
-              <strong>For the moments worth keeping</strong>
-              <span className="qr-mark" aria-hidden="true" />
+            <div className="song-feature">
+              <div className="song-feature-title">
+                <span className="eyebrow light">Meet our first gift</span>
+                <h2>
+                  Your story.
+                  <br />
+                  <em>Their song.</em>
+                </h2>
+                <div className="sound-line" aria-hidden="true">
+                  {Array.from({ length: 33 }, (_, i) => (
+                    <i
+                      key={i}
+                      style={{ height: `${12 + ((i * 19) % 53)}px` }}
+                    />
+                  ))}
+                </div>
+                <div className="song-feature-copy">
+                  <p>
+                    The first date. The terrible dancing. The person who stayed.
+                    Your Song turns the details only you know into a
+                    personalized song for someone you love.
+                  </p>
+                  <div className="feature-details">
+                    <span>Digital song</span>
+                    <span>One revision included</span>
+                  </div>
+                  <Link className="gift-button cream-button" href="/your-song">
+                    Explore Your Song
+                    <Arrow />
+                  </Link>
+                  <p className="small-note">
+                    Try the experience in demo mode. Launch price: $29.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="dg-song-card">
-            <span className="dg-card-kicker">YOUR SONG</span>
-            <strong>A song made from the details that matter.</strong>
-            <div className="dg-mini-player"><span>▶</span><i /></div>
+        </section>
+        <section id="how" className="section shell story-section">
+          <div className="story-intro">
+            <span className="eyebrow">02 / Made personal</span>
+            <h2>
+              The little things
+              <br />
+              are <em>the big things.</em>
+            </h2>
+            <p>
+              You don’t need the perfect words. You need the ones that are
+              yours. The nickname, the late-night drive, the joke that stopped
+              being funny to everyone else.
+            </p>
+            <p>That’s the material a personal gift is made of.</p>
+            <Link className="quiet-link" href="/create">
+              Start with your memories <span aria-hidden="true">↗</span>
+            </Link>
           </div>
-          <div className="dg-gift-tag">
-            <span>MADE FOR</span>
-            <strong>one person</strong>
-          </div>
-        </div>
-      </section>
-
-      <section id="gifts" className="dg-product-section">
-        <div className="shell">
-          <div className="dg-section-intro">
+          <StoryNotes />
+        </section>
+        <section className="method-strip">
+          <div className="shell method-grid">
             <div>
-              <span className="eyebrow">Digital Gifts</span>
-              <h2>One idea. Different ways to give it.</h2>
+              <span>01</span>
+              <p>
+                <strong>Tell us about them.</strong>
+                <br />
+                Follow a few thoughtful questions.
+              </p>
             </div>
-            <p>We are building around the part people remember: seeing themselves in the gift. The format can change. The personal details stay at the center.</p>
+            <div>
+              <span>02</span>
+              <p>
+                <strong>Make it yours.</strong>
+                <br />
+                Add the details only you would know.
+              </p>
+            </div>
+            <div>
+              <span>03</span>
+              <p>
+                <strong>Give them the feeling.</strong>
+                <br />A gift with your story at its heart.
+              </p>
+            </div>
           </div>
-
-          <div className="dg-product-grid">
-            <article className="dg-product-card dg-product-live">
-              <div className="dg-product-topline"><span className="dg-status-live">First product</span><span>01</span></div>
-              <div className="dg-product-visual dg-vinyl-visual"><div className="dg-vinyl-disc" /></div>
+        </section>
+        <section id="keepsakes" className="section keepsake-section">
+          <div className="shell">
+            <div className="keepsake-heading">
               <div>
-                <span className="eyebrow light">Your Song</span>
-                <h3>Turn the story into their song.</h3>
-                <p>Tell us the memories, inside jokes and small details. Hear a personalized preview, then unlock the full song.</p>
-                <Link className="pill inverse" href="/your-song">Explore Your Song</Link>
-              </div>
-            </article>
-
-            <article className="dg-product-card dg-product-soon">
-              <div className="dg-product-topline"><span className="dg-status-soon">In development</span><span>02</span></div>
-              <div className="dg-product-visual dg-frame-visual">
-                <div className="dg-mini-frame"><span>PHOTO</span><i className="qr-mark"/></div>
-              </div>
-              <div>
-                <span className="eyebrow">Framed Song Gift</span>
-                <h3>Something they can open before they hear it.</h3>
-                <p>A framed photo or print with a private QR experience that opens the song. The physical product and fulfillment are still being developed.</p>
-                <span className="dg-coming-copy">Coming after the digital song experience is proven.</span>
-              </div>
-            </article>
-
-            <article className="dg-product-card dg-product-lab">
-              <div className="dg-product-topline"><span>Gift lab</span><span>03+</span></div>
-              <div className="dg-product-visual dg-stack-visual">
-                <span className="dg-stack-card one">PHOTO</span>
-                <span className="dg-stack-card two">STORY</span>
-                <span className="dg-stack-card three">MOMENT</span>
+                <span className="eyebrow">03 / A little look ahead</span>
+                <h2>
+                  First, the song.
+                  <br />
+                  Then, <em>something to hold.</em>
+                </h2>
               </div>
               <div>
-                <span className="eyebrow">More formats</span>
-                <h3>The brand is bigger than one product.</h3>
-                <p>Digital Gifts is the home for new ways to turn real stories into personal digital experiences and keepsakes. We will add products here as they are actually ready.</p>
+                <span className="development-label">In development</span>
+                <p>
+                  We’re working on a framed photo gift that opens your song with
+                  a scan. Something for their shelf, with a story inside.
+                </p>
+                <p className="small-note">
+                  Concept shown. Not available to order yet.
+                </p>
               </div>
-            </article>
+            </div>
+            <KeepsakeGallery />
           </div>
-        </div>
-      </section>
-
-      <section id="how" className="section dg-how-section">
-        <div className="shell">
-          <div className="dg-how-heading">
-            <span className="eyebrow">The Digital Gifts method</span>
-            <h2>Start with the person.<br/>Then choose the format.</h2>
+        </section>
+        <section className="gift-close">
+          <div className="shell">
+            <span className="eyebrow">
+              You already have the best part: the story.
+            </span>
+            <h2>
+              Who came to mind
+              <br />
+              <em>while you were here?</em>
+            </h2>
+            <Link href="/your-song" className="gift-button">
+              Make it personal
+              <Arrow />
+            </Link>
+            <p>Start with Your Song.</p>
           </div>
-          <div className="dg-how-grid">
-            <article><span>01</span><h3>Tell us what makes them them</h3><p>Names are easy. The good material is the trip that went wrong, the phrase they always say, the old photo, the inside joke.</p></article>
-            <article><span>02</span><h3>We turn those details into the gift</h3><p>The product might be a song today and a different keepsake tomorrow. The source material stays personal.</p></article>
-            <article><span>03</span><h3>You get the reveal</h3><p>The point is not the technology. It is the moment they recognize themselves in what you gave them.</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section dg-recognition-section">
-        <div className="shell dg-recognition-grid">
-          <div>
-            <span className="eyebrow light">The detail is the difference</span>
-            <h2>“I love you” is nice.<br/>“Remember Miami?” is yours.</h2>
-          </div>
-          <div className="dg-detail-stack">
-            <div className="dg-detail-card muted"><span>Generic</span><p>“You are always there for me.”</p></div>
-            <div className="dg-detail-card"><span>Personal</span><p>“You drove four hours after work so I would not sit there alone.”</p></div>
-            <div className="dg-detail-card accent"><span>The little stuff</span><p>“You still steal my fries after saying you do not want any.”</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section dg-occasions">
-        <div className="shell">
-          <span className="eyebrow">For the reasons people give</span>
-          <div className="dg-occasion-row" aria-label="Gift occasions">
-            <span>Birthdays</span><span>Anniversaries</span><span>Weddings</span><span>Parents</span><span>Milestones</span><span>Remembrance</span><span>Just because</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="section close-section">
-        <div className="shell dg-close-card">
-          <div>
-            <span className="eyebrow light">Start with the first Digital Gift</span>
-            <h2>Tell us the story. We will turn it into a song.</h2>
-            <p>Your Song is the first product under Digital Gifts, with a guided story intake and a private preview before the full song.</p>
-          </div>
-          <Link className="pill inverse" href="/your-song">Go to Your Song</Link>
-        </div>
-      </section>
-    </main>
-    <footer className="dg-footer"><div className="shell footer-grid"><strong>Digital Gifts</strong><p>Personalized gift experiences built from real stories. Your Song is available in V1; additional formats are still in development.</p></div></footer>
+        </section>
+      </main>
+      <GiftFooter />
     </>
   );
 }
