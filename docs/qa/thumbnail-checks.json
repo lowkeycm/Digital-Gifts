@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "center cover starts full song",
+    "same cover pauses",
+    "side cover centers and keeps playing alone",
+    "native pause syncs thumbnail",
+    "Enter/Space toggle cover playback",
+    "drag browses without playing",
+    "first click after drag plays",
+    "mobile tap starts playback",
+    "mobile second tap pauses"
+  ],
+  "errors": []
+}

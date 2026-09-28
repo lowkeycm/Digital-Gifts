@@ -6,6 +6,18 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When:** 2026-09-28, shortly after midnight New York
+- **Who / platform:** Clay / ChatGPT Work Mode
+- **Request:** Play directly from song thumbnails; continue the requested live-site refinement.
+- **Branch:** `clay/thumbnail-playback` from main `765638c`.
+- **Changed:** The entire cover toggles its full song with a visible 48px gold play/pause affordance. Clicking a side cover centers it immediately and starts playback inside the user gesture, avoiding a scroll-selection pause race and mobile autoplay restrictions. Native player and cover states stay synchronized. Dragging still browses without autoplay, and only one track plays.
+- **Verified:** Check/build pass. Actual desktop 1440x900 and mobile 390x844 renders inspected, 320px overflow check passes. Center and side thumbnail play, second click pause, native pause synchronization, Enter/Space, drag without play, first click after drag, and mobile touch play/pause pass with no runtime errors. Evidence: `docs/qa/thumbnail-*`.
+- **Target / authorization:** Continued website publication authorization; verified digital-gifts Vercel project `prj_naAJ6e1cVre7JrijE52Ox8tM60Jr`, team `team_K0quIbtPFw7RIl9M7bG54yTE`, www.yourgiftsmith.com. Publish after branch checks and verify live.
+- **Previous release confirmed:** Carousel PR #11 merged at `765638c076e75ad8584fb41392511d4c88824b53`; production `dpl_G5TZSGya6MKMbmZEyqki6BjcSyyS` READY. All covers loaded, correct track switching and real full-song playback verified on live domain. Branch deleted.
+- **Remaining:** Existing music/Stripe/sending-email integration work. No backend changes.
+
+## Prior Session (album carousel)
+
 - **When:** 2026-09-28 UTC / September 27 evening, New York
 - **Who:** Clay
 - **Platform:** ChatGPT Work Mode
