@@ -2,7 +2,15 @@
 
 import { FormEvent, useState } from "react";
 
-export function RevisionForm({ songId, accessToken, alreadyRequested = false }: { songId: string; accessToken: string; alreadyRequested?: boolean }) {
+export function RevisionForm({
+  songId,
+  accessToken,
+  alreadyRequested = false,
+}: {
+  songId: string;
+  accessToken: string;
+  alreadyRequested?: boolean;
+}) {
   const [type, setType] = useState("Fix a detail");
   const [notes, setNotes] = useState("");
   const [sent, setSent] = useState(alreadyRequested);
@@ -13,15 +21,25 @@ export function RevisionForm({ songId, accessToken, alreadyRequested = false }: 
     e.preventDefault();
     setBusy(true);
     setError("");
-    const res = await fetch("/api/revisions", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ songId, accessToken, type, notes }),
-    });
-    const body = await res.json();
-    setBusy(false);
-    if (res.ok) setSent(true);
-    else setError(body.error || "We could not save that revision.");
+    try {
+      const res = await fetch("/api/revisions", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ songId, accessToken, type, notes }),
+      });
+      const body = await res.json();
+      if (!res.ok)
+        throw new Error(body.error || "We could not save that revision.");
+      setSent(true);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "We could not save that revision. Please try again.",
+      );
+    } finally {
+      setBusy(false);
+    }
   }
 
   if (sent) {
@@ -29,7 +47,7 @@ export function RevisionForm({ songId, accessToken, alreadyRequested = false }: 
       <div className="card revision-success">
         <span className="status">REVISION SAVED</span>
         <h3>We have your correction.</h3>
-        <p>The production version will send this instruction to the music provider while preserving the original song.</p>
+        <p>Your correction is saved. No audio is generated in this demo.</p>
       </div>
     );
   }
@@ -42,8 +60,12 @@ export function RevisionForm({ songId, accessToken, alreadyRequested = false }: 
         <p>Tell us what missed. You do not need to rewrite the whole song.</p>
       </div>
       <div className="field">
-        <label>What needs changing?</label>
-        <select value={type} onChange={(e) => setType(e.target.value)}>
+        <label htmlFor="revision-type">What needs changing?</label>
+        <select
+          id="revision-type"
+          value={type}
+          onChange={(e) => setType(e.target.value)}
+        >
           <option>Fix a detail</option>
           <option>Change a lyric</option>
           <option>Make it more emotional</option>
@@ -53,11 +75,22 @@ export function RevisionForm({ songId, accessToken, alreadyRequested = false }: 
         </select>
       </div>
       <div className="field">
-        <label>What should we change?</label>
-        <textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="It says we met in 2018, but we met in 2017..." />
+        <label htmlFor="revision-notes">What should we change?</label>
+        <textarea
+          id="revision-notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="It says we met in 2018, but we met in 2017..."
+        />
       </div>
-      {error ? <p className="error-copy">{error}</p> : null}
-      <button className="pill primary" disabled={busy || notes.length < 5}>{busy ? "Saving..." : "Request my revision"}</button>
+      {error ? (
+        <p role="alert" className="error-copy">
+          {error}
+        </p>
+      ) : null}
+      <button className="pill primary" disabled={busy || notes.length < 5}>
+        {busy ? "Saving..." : "Request my revision"}
+      </button>
     </form>
   );
 }

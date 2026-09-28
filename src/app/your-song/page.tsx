@@ -1,51 +1,217 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
-
+import { Arrow, GiftFooter } from "@/components/GiftBrand";
 export const metadata: Metadata = {
-  title: "Your Song by Digital Gifts | A personalized song from your story",
-  description: "Tell us the details that matter. Hear a personalized preview, then unlock the full song.",
+  title: "Your Song | The Gift Smith",
+  description:
+    "Turn your memories, inside jokes and real stories into a personalized song. Explore Your Song by The Gift Smith.",
 };
-
+const questions = [
+  [
+    "Do I need to write the lyrics?",
+    "No. Answer the guided questions in your own words. Names, places, little habits and specific memories give the song its personal details. You do not need to make them rhyme.",
+  ],
+  [
+    "What kind of song can I make?",
+    "The story form includes R&B, country, pop, acoustic, rock, hip-hop and gospel, plus an option to describe another style. You can also choose a male or female vocal, or leave it open.",
+  ],
+  [
+    "What if a detail needs changing?",
+    "The planned $29 offer includes one revision. Use it to explain a missed detail or correction. Your original story stays saved, so you do not have to begin again.",
+  ],
+  [
+    "Can I order a song today?",
+    "You can explore the story form and private gift-page demo. Real music generation and paid checkout are not live yet. The demo does not produce an actual song or collect payment.",
+  ],
+  [
+    "Does the song come with a frame?",
+    "Your Song is a digital gift. The framed photo and song gift shown in the collection is a separate concept in development, and is not currently available to order.",
+  ],
+];
 export default function YourSongPage() {
   return (
-    <><Nav/><main>
-      <section className="shell hero">
-        <div className="hero-copy">
-          <span className="eyebrow">A real story, turned into music</span>
-          <h1>Give them a song nobody else could have.</h1>
-          <p className="lede">Tell us the little things: how you met, the joke only you get, the moment they showed up when it mattered. Those details become the song.</p>
-          <div className="actions"><Link className="pill primary" href="/create">Start your song · $29</Link><a className="pill" href="#how">See how it works</a></div>
-          <div className="hero-proof"><span>Preview before you unlock</span><span>One revision included</span><span>No writing skills required</span></div>
-        </div>
-        <div className="hero-art" aria-label="Record sleeve illustration">
-          <div className="record-sleeve">
-            <div className="sleeve-copy"><span>ONE OF ONE</span><strong>THE SONG<br/>ONLY YOU<br/>COULD GIVE.</strong></div>
-            <div className="record-disc"><div className="record-label">FOR YOU</div></div>
-            <div className="sleeve-signature">made from the details that matter</div>
+    <>
+      <Nav />
+      <main id="main-content">
+        <section className="song-hero">
+          <Image
+            src="/images/first-listen.webp"
+            alt="A couple sharing a quiet moment while she listens to music"
+            fill
+            preload
+            sizes="100vw"
+          />
+          <div className="song-hero-shade" />
+          <div className="shell song-hero-content">
+            <span className="eyebrow light">Your Song / by The Gift Smith</span>
+            <h1>
+              They’ve heard
+              <br />
+              “I love you.”
+              <br />
+              <em>Not like this.</em>
+            </h1>
+            <p>
+              A personalized song made from your memories, your inside jokes,
+              and the things you’ve been meaning to say.
+            </p>
+            <Link className="gift-button cream-button" href="/create">
+              Start your story
+              <Arrow />
+            </Link>
+            <span className="song-price-note">
+              Launch price $29 · Full song + one revision
+            </span>
           </div>
-          <div className="story-slip"><span className="eyebrow">Story note 03</span><p>“She steals my fries every time and still says she didn’t want any.”</p></div>
-        </div>
-      </section>
-
-      <section id="how" className="section section-dark"><div className="shell">
-        <div className="section-heading"><span className="eyebrow light">How it works</span><h2>Tell it messy.<br/>That is the good part.</h2><p>We are not asking you to write lyrics. We are asking for the stuff only the two of you know.</p></div>
-        <div className="steps-row">
-          <article className="step-card"><span>01</span><h3>Tell us about them</h3><p>Answer a short set of guided questions about the memories, habits and moments that actually matter.</p></article>
-          <article className="step-card featured"><span>02</span><h3>Hear your preview</h3><p>We turn those details into a song. You hear a personalized preview before paying for the full version.</p></article>
-          <article className="step-card"><span>03</span><h3>Unlock + revise</h3><p>Get the full song for $29. If one detail misses, use the included revision to correct it.</p></article>
-        </div>
-      </div></section>
-
-      <section id="why" className="section paper-section"><div className="shell specificity-grid">
-        <div><span className="eyebrow">Why the questions matter</span><h2>Generic answers make generic songs.</h2><p className="lede">“She is always there for me” is true, but it gives the songwriter almost nothing. The specific moment is where the song starts to feel like yours.</p></div>
-        <div className="before-after">
-          <div className="comparison muted-card"><span>Too thin</span><p>“We met in college. She is funny and always supports me.”</p></div>
-          <div className="comparison strong-card"><span>Something to write from</span><p>“We met at Howard. I thought she was stuck up at first. Years later she drove four hours after work so I would not sit alone at the hospital.”</p></div>
-        </div>
-      </div></section>
-
-      <section className="section close-section"><div className="shell close-card"><div><span className="eyebrow light">The gift is the recognition</span><h2>They should hear one line and know exactly who made it.</h2></div><Link className="pill inverse" href="/create">Tell us your story</Link></div></section>
-    </main><footer><div className="shell footer-grid"><strong>Digital Gifts <span>/ Your Song</span></strong><p>Your Song is the first Digital Gifts product. The V1 preview still uses mock music and demo checkout while the production integrations are being connected.</p></div></footer></>
+        </section>
+        <section id="how" className="section shell song-process">
+          <div className="process-heading">
+            <span className="eyebrow">
+              From your words to their first listen
+            </span>
+            <h2>
+              No songwriting skills.
+              <br />
+              <em>Just a story worth telling.</em>
+            </h2>
+          </div>
+          <div className="process-steps">
+            <article>
+              <span>01 / The story</span>
+              <h3>Tell it your way.</h3>
+              <p>
+                A few guided questions help you find the memories, quirks and
+                moments you want in the song. Rough notes are welcome.
+              </p>
+            </article>
+            <article>
+              <span>02 / The first listen</span>
+              <h3>Hear yourself in it.</h3>
+              <p>
+                The song experience is designed around a personal preview before
+                you decide to unlock the full version.
+              </p>
+            </article>
+            <article>
+              <span>03 / The gift</span>
+              <h3>Make it their moment.</h3>
+              <p>
+                The full song belongs on a private gift page. One included
+                revision gives you room to correct a detail.
+              </p>
+            </article>
+          </div>
+          <p className="demo-note">
+            You can try this journey now in demo mode. Real audio and payments
+            are still being connected.
+          </p>
+        </section>
+        <section className="song-story-section">
+          <div className="shell song-story-grid">
+            <div>
+              <span className="eyebrow light">
+                The detail they’ll recognize
+              </span>
+              <h2>
+                “You always
+                <br />
+                steal <em>my fries.</em>”
+              </h2>
+              <p>
+                It doesn’t have to sound profound. If it means something to you,
+                it belongs in the story.
+              </p>
+            </div>
+            <div className="song-story-note">
+              <span>Try thinking about…</span>
+              <ul>
+                <li>The first thing you noticed about them.</li>
+                <li>The tiny habit you’d miss the most.</li>
+                <li>The moment you knew they were your person.</li>
+                <li>The words you don’t say often enough.</li>
+              </ul>
+              <Link href="/create" className="quiet-link">
+                I have a story <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+        <section id="included" className="section shell purchase-section">
+          <div>
+            <span className="eyebrow">One gift. All your details.</span>
+            <h2>
+              A song for them.
+              <br />
+              <em>From you.</em>
+            </h2>
+            <p>
+              Built around the person, not a name dropped into a generic love
+              song.
+            </p>
+          </div>
+          <div className="song-offer">
+            <div className="offer-top">
+              <span>Your Song</span>
+              <span className="development-label">Preview edition</span>
+            </div>
+            <div className="offer-price">
+              $29<span>planned launch price</span>
+            </div>
+            <ul>
+              <li>A full personalized digital song</li>
+              <li>Your choice of style and vocal preference</li>
+              <li>A private song page</li>
+              <li>One revision for a missed detail</li>
+            </ul>
+            <Link href="/create" className="gift-button">
+              Try the story experience
+              <Arrow />
+            </Link>
+            <p>
+              No payment collected in this demo. No real audio generated yet.
+            </p>
+          </div>
+        </section>
+        <section id="questions" className="section shell faq-section">
+          <div>
+            <span className="eyebrow">Before you begin</span>
+            <h2>
+              A few
+              <br />
+              <em>good questions.</em>
+            </h2>
+          </div>
+          <div className="faq-list">
+            {questions.map(([q, a], i) => (
+              <details key={q}>
+                <summary>
+                  <span className="faq-number">0{i + 1}</span>
+                  <span>{q}</span>
+                  <span className="faq-plus" aria-hidden="true" />
+                </summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+        <section className="gift-close">
+          <div className="shell">
+            <span className="eyebrow">You know them better than anyone.</span>
+            <h2>
+              That’s a pretty
+              <br />
+              <em>good place to start.</em>
+            </h2>
+            <Link href="/create" className="gift-button">
+              Tell your story
+              <Arrow />
+            </Link>
+          </div>
+        </section>
+      </main>
+      <GiftFooter />
+    </>
   );
 }

@@ -1,12 +1,12 @@
-# Digital Gifts
+# The Gift Smith
 
-Digital Gifts is the parent consumer brand for personalized gifts built from real stories and specific personal details.
+The Gift Smith is the parent consumer brand for personalized gifts built from real stories and specific personal details.
 
 The first product is **Your Song**, a personalized-song experience.
 
 ## Site structure
 
-- `/` — Digital Gifts parent brand
+- `/` — The Gift Smith parent brand
 - `/your-song` — Your Song product landing page
 - `/create` — guided song intake
 - `/preview/[id]` — private preview
@@ -31,7 +31,7 @@ Suno and Stripe are deliberately not faked. They plug into existing provider/pay
 ## Local development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -45,3 +45,9 @@ npm run build
 ```
 
 See `AGENTS.md`, `HANDOFF.md`, `ROADMAP.md`, `docs/PRODUCT.md`, `docs/ARCHITECTURE.md`, and `docs/website-brief.md` before changing product behavior.
+
+## Website redesign
+
+The Gift Smith is Clay’s selected consumer name. The GitHub, Vercel and Supabase project identifiers remain Digital Gifts. The photo-led parent page routes into Your Song, with framed gifts explicitly marked in development.
+
+Research and design decisions: `docs/website-brief.md`. Rendered desktop/mobile captures and verification notes: `docs/qa/`.
