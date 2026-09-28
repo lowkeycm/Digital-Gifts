@@ -45,3 +45,55 @@ The design uses the physical language of giving music: sleeve, record, story-sli
 
 ## QA target
 Desktop 1440x900 and mobile 390x844. Verify home, create, preview, delivery, form submission, demo checkout, revision persistence, no horizontal overflow, focus states and reduced-motion behavior.
+
+
+---
+
+## Parent-brand extension — 2026-09-27
+
+### Business objective
+Make Digital Gifts the durable consumer brand while keeping Your Song as a focused conversion product. The parent site must explain the broader idea quickly, route visitors into the live/first product, and create honest space for future gift formats without turning into a catalog of placeholders.
+
+### Page jobs
+- **Digital Gifts /**: explain the parent idea, show the product architecture, route into Your Song.
+- **/your-song**: retain the focused personalized-song sales experience.
+- **/create** and private preview/delivery routes: stay product-specific and visibly connected back to Digital Gifts.
+
+### Research evidence
+- **Wonderbly homepage, inspected 2026-09-27 via current public page content:** organizes a parent personalization brand around multiple products and recipient/occasion paths, while keeping the personalization process simple and gift-outcome-led. Useful adaptation: Digital Gifts should own the broader emotional/category idea while each product keeps its own conversion page. Evidence: https://www.wonderbly.com/
+- Existing personalized-song recon continues to support keeping the song product focused on the recipient reaction and specific memories rather than explaining generation technology.
+- Browser-rendered interaction research was not available in this ChatGPT session. These observations are structural/content evidence, not claims about animation or live interaction behavior.
+
+### Selected visual execution
+**Family:** premium/editorial parent brand with product/demonstration moments.
+**Interaction:** subtle motion only.
+**Scope:** Digital Gifts parent page plus inherited Your Song visual system.
+
+#### Composition
+Parent hero pairs a direct brand promise with a layered gift still-life: framed memory concept, song card and gift tag. The page then moves through a three-product architecture, a universal personalization method, a specificity demonstration, occasion routing and a final handoff into Your Song.
+
+#### Surfaces and depth
+Reuse the warm paper/ink/rust palette so Your Song feels native to the parent brand. The parent page adds framed-object and stacked-card forms rather than inventing a second visual language.
+
+#### Components
+- Digital Gifts parent navigation
+- product shelf with explicit status labels
+- framed-QR concept shown as in development
+- universal three-step personalization method
+- Your Song retains record sleeve / listening motifs
+
+#### Motion
+Hover and small state movement only. No scroll-craft or 3D is needed for this parent page at this stage. The job is brand clarity and product routing.
+
+#### Honesty / conversion guardrails
+- Your Song is the first product but its real Suno/Stripe integrations are still incomplete.
+- Framed Song Gift is labeled in development.
+- Future formats are described as product space, not fabricated available offers.
+- Memorial/funeral B2B positioning stays off the consumer parent page until separately decided.
+
+### Parent-site QA target
+- Root clearly reads as Digital Gifts, not Your Song renamed.
+- Your Song at /your-song still reads as a focused product page.
+- /create, preview and delivery remain connected to Your Song and Digital Gifts.
+- No future product is presented as purchasable before it exists.
+- Desktop and mobile rendered review remains required.
