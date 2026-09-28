@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Arrow, GiftFooter } from "@/components/GiftBrand";
+import { SongSamples } from "@/components/SongSamples";
+import { LaunchSignup } from "@/components/LaunchSignup";
+
 export const metadata: Metadata = {
   title: "Your Song | The Gift Smith",
   description:
@@ -14,20 +17,28 @@ const questions = [
     "No. Answer the guided questions in your own words. Names, places, little habits and specific memories give the song its personal details. You do not need to make them rhyme.",
   ],
   [
+    "What will I get, and can I download it?",
+    "The planned $29 offer includes a full personalized song, a private song page you can share with the recipient, and an MP3 download to keep. One revision is included. Your Song is a digital gift; a frame is not included.",
+  ],
+  [
+    "How quickly will my song be ready?",
+    "We’re testing delivery times before setting a turnaround. The expected wait will be shown before you place an order. If your gift is for a specific date, wait for that timing before making plans around it.",
+  ],
+  [
+    "Is the music made with AI?",
+    "Yes. We use AI music tools to turn your story into a song. Your own words, memories and details are the source material. It isn’t a commission performed by a human recording artist.",
+  ],
+  [
     "What kind of song can I make?",
     "The story form includes R&B, country, pop, acoustic, rock, hip-hop and gospel, plus an option to describe another style. You can also choose a male or female vocal, or leave it open.",
   ],
   [
     "What if a detail needs changing?",
-    "The planned $29 offer includes one revision. Use it to explain a missed detail or correction. Your original story stays saved, so you do not have to begin again.",
+    "The $29 launch offer includes one revision for a missed detail or correction. Your original story stays saved, so you do not have to begin again.",
   ],
   [
     "Can I order a song today?",
-    "You can explore the story form and private gift-page demo. Real music generation and paid checkout are not live yet. The demo does not produce an actual song or collect payment.",
-  ],
-  [
-    "Does the song come with a frame?",
-    "Your Song is a digital gift. The framed photo and song gift shown in the collection is a separate concept in development, and is not currently available to order.",
+    "Not yet. The samples are real songs you can listen to now. You can also explore the story form and gift-page demo, but it does not generate a song or collect payment. Join the launch list and we’ll email you when ordering opens.",
   ],
 ];
 export default function YourSongPage() {
@@ -57,8 +68,8 @@ export default function YourSongPage() {
               A personalized song made from your memories, your inside jokes,
               and the things you’ve been meaning to say.
             </p>
-            <Link className="gift-button cream-button" href="/create">
-              Start your story
+            <Link className="gift-button cream-button" href="#samples">
+              Hear a sample
               <Arrow />
             </Link>
             <span className="song-price-note">
@@ -66,6 +77,8 @@ export default function YourSongPage() {
             </span>
           </div>
         </section>
+        <SongSamples />
+        <LaunchSignup source="/your-song" />
         <section id="how" className="section shell song-process">
           <div className="process-heading">
             <span className="eyebrow">
@@ -103,10 +116,6 @@ export default function YourSongPage() {
               </p>
             </article>
           </div>
-          <p className="demo-note">
-            You can try this journey now in demo mode. Real audio and payments
-            are still being connected.
-          </p>
         </section>
         <section className="song-story-section">
           <div className="shell song-story-grid">
@@ -133,7 +142,7 @@ export default function YourSongPage() {
                 <li>The words you don’t say often enough.</li>
               </ul>
               <Link href="/create" className="quiet-link">
-                I have a story <span aria-hidden="true">↗</span>
+                Explore the story form (demo) <span aria-hidden="true">↗</span>
               </Link>
             </div>
           </div>
@@ -154,24 +163,21 @@ export default function YourSongPage() {
           <div className="song-offer">
             <div className="offer-top">
               <span>Your Song</span>
-              <span className="development-label">Preview edition</span>
+              <span>Full song + one revision</span>
             </div>
             <div className="offer-price">
-              $29<span>planned launch price</span>
+              $29<span>launch price</span>
             </div>
             <ul>
               <li>A full personalized digital song</li>
               <li>Your choice of style and vocal preference</li>
-              <li>A private song page</li>
+              <li>A private song page and MP3 download</li>
               <li>One revision for a missed detail</li>
             </ul>
-            <Link href="/create" className="gift-button">
-              Try the story experience
+            <Link href="#launch" className="gift-button">
+              Get notified at launch
               <Arrow />
             </Link>
-            <p>
-              No payment collected in this demo. No real audio generated yet.
-            </p>
           </div>
         </section>
         <section id="questions" className="section shell faq-section">
@@ -204,8 +210,8 @@ export default function YourSongPage() {
               <br />
               <em>good place to start.</em>
             </h2>
-            <Link href="/create" className="gift-button">
-              Tell your story
+            <Link href="#launch" className="gift-button">
+              Get notified at launch
               <Arrow />
             </Link>
           </div>

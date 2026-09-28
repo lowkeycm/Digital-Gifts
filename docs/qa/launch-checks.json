@@ -1,0 +1,124 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "path": "/",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "path": "/your-song",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "path": "/your-song",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "path": "/your-song",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "path": "/your-song",
+      "width": 768,
+      "overflow": false
+    }
+  ],
+  "audio": [
+    [
+      {
+        "paused": false,
+        "duration": 244.8,
+        "time": 0.119149
+      },
+      {
+        "paused": true,
+        "duration": null,
+        "time": 0
+      },
+      {
+        "paused": true,
+        "duration": null,
+        "time": 0
+      }
+    ],
+    [
+      {
+        "paused": true,
+        "duration": 244.8,
+        "time": 45.008634
+      },
+      {
+        "paused": false,
+        "duration": 234.96,
+        "time": 0.104606
+      },
+      {
+        "paused": true,
+        "duration": null,
+        "time": 0
+      }
+    ],
+    [
+      {
+        "paused": true,
+        "duration": 244.8,
+        "time": 45.008634
+      },
+      {
+        "paused": true,
+        "duration": 234.96,
+        "time": 45.011537
+      },
+      {
+        "paused": false,
+        "duration": 269.92,
+        "time": 0.107589
+      }
+    ]
+  ],
+  "api": [
+    {
+      "label": "duplicate",
+      "status": 200
+    },
+    {
+      "label": "invalid",
+      "status": 400
+    },
+    {
+      "label": "no consent",
+      "status": 400
+    },
+    {
+      "label": "honeypot",
+      "status": 200
+    },
+    {
+      "label": "foreign origin",
+      "status": 403
+    },
+    {
+      "label": "oversized",
+      "status": 413
+    }
+  ],
+  "errors": []
+}
