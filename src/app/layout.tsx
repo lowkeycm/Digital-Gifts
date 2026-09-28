@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Your Song | Personalized songs from real memories",
-  description: "Turn the details that matter into a one-of-one song.",
+  title: "Digital Gifts | Personal gifts built from real stories",
+  description: "Personal gifts made from memories, photos and the details only you know.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
