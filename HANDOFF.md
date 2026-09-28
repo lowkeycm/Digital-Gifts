@@ -6,59 +6,58 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
-- **When:** 2026-09-23
+- **When:** 2026-09-27
 - **Who:** Clay
-- **Platform:** ChatGPT with connected GitHub, Supabase and Vercel tools, branch `clay/v1-app-foundation`
-- **Request:** Build the first real personalized-song V1 foundation: real Supabase persistence, mock music provider, guided intake, preview, $29 demo checkout boundary, private delivery page and one revision, then verify a Vercel preview without launching production.
-- **Changed:** Added the Next.js 16 / React 19 application, Marketing-Hub-informed premium/editorial V1 UI, raw-language-preserving intake, provider abstraction, mock preview/full generation, private capability-link pages, demo checkout, persisted one-revision flow, health endpoint, documentation and the V1 Supabase schema/RPC layer. Corrected the inherited Vercel static-site configuration with `vercel.json`.
-- **Verification:** Live Supabase transaction proved intake -> preview -> paid -> full -> revision -> readback and rolled back the test data. Migration `personalized_song_v1` is registered. Supabase advisors were run; the missing FK index was fixed. Vercel preview for commit `876941f` reached READY after correcting the framework/output configuration. Local npm/build could not run because the container lacked working network resolution. The protected preview could not be rendered/screenshot from the available platform tools, so desktop/mobile visual QA is still incomplete.
-- **Status:** feature branch pushed; PR to be opened. Not merged because merge to `main` auto-deploys production and requires Clay's explicit approval.
-- **Next:** Open/review the protected Vercel preview. If the visual flow looks right, merge with explicit production approval. After that, the next product integration is official music generation, with Stripe test-mode checkout following it.
+- **Platform:** ChatGPT with connected GitHub and Vercel tools, branch `clay/digital-gifts-parent-site` stacked on `clay/v1-app-foundation`
+- **Request:** Make Digital Gifts the single-page parent brand/site and turn the existing Your Song landing page/funnel into the first product extension so the business can add additional gift services later.
+- **Changed:** Replaced `/` with the Digital Gifts parent page; moved the existing song landing experience to `/your-song`; kept `/create`, private preview and delivery routes intact; connected Your Song navigation back to the parent brand; added a parent-level product shelf, personalization method, occasion routing and closing handoff into Your Song. Added Framed Song Gift as an explicitly in-development concept and reserved the rest of the product space without inventing live offers. Updated metadata, README, architecture, product decisions, website brief, roadmap and AGENTS project context.
+- **Design direction:** Reused the warm paper/ink/rust premium-editorial language so Your Song feels like a product of Digital Gifts rather than a separate site. Parent hero uses a framed-memory concept, song card and gift tag. Wonderbly was used as current structural evidence for how a parent personalization brand can route into specific products/occasions; no live browser interaction behavior was claimed from that research.
+- **Verification:** Vercel successfully built the parent-site code on the branch. Final branch-head build must still be checked after this handoff commit. This platform still does not expose a usable browser/screenshot runner for the protected preview, so desktop/mobile visual QA remains incomplete.
+- **Database:** No schema/data changes this session. Existing Digital Gifts Supabase target remains `hyjmlkowbhftisynztui`.
+- **Production:** unchanged. Do not merge to `main` without Clay's explicit production approval.
+- **Next:** Review the protected Digital Gifts preview. Confirm the parent-brand direction and mobile/desktop rendering. Then continue Your Song provider/payment integration or refine parent-site copy/visuals from review.
 
-## Prior Session (2026-09-23, repository bootstrap)
+## Prior Session (2026-09-23, Your Song V1 foundation)
 
-- **When:** 2026-09-23
-- **Who:** Clay; authenticated GitHub account `lowkeycm` was visible on this platform.
-- **Platform:** ChatGPT with connected GitHub, Supabase and Vercel tools, branch `clay/agent-scaffolding`
-- **Request:** Bootstrap this empty repo from `lowkeycm/clay-config/templates/` on the same cadence as Clay's other projects, install Marketing-Hub pointers, merge the scaffolding PR, update the central project map, then stop before product implementation.
-- **Changed:** Added the shared cross-platform agent doctrine, operator profile, handoff, roadmap, Claude Code settings/hook and Marketing-Hub skill pointers. No product application code, database schema or runtime integration was added.
-- **Verification:** Fetched the source templates directly from `clay-config` main and Marketing-Hub installation instructions from Marketing-Hub main. Verified the GitHub target is `lowkeycm/Digital-Gifts`; verified Vercel exposes project `digital-gifts`, is Git-linked to this repo, and created READY deployments for both the scaffolding branch and the `main` seed; tested deployment URLs redirect to Vercel Authentication. Listed the connected Supabase projects and found no Digital Gifts database. GitHub branch, PR and merge were verified through the connected GitHub API. There is no application build, local server, public live app or test suite to verify yet.
-- **Status:** merged
-- **Next:** First real build session should bring in the V1 personalized-song application foundation, establish the actual package/build commands, confirm or provision a dedicated Supabase target, and produce the first Vercel preview before any production work.
+- **Request:** Build the first personalized-song V1 foundation with real Supabase persistence, mock music provider, guided intake, preview, $29 demo checkout boundary, private delivery page and one revision.
+- **Changed:** Next.js/React app, Marketing-Hub-informed Your Song UI, raw-language-preserving intake, provider abstraction, private preview/delivery, demo checkout, one revision, health endpoint and V1 Supabase schema/RPC layer.
+- **Verification:** Live Supabase transaction proved intake -> preview -> paid -> full -> revision -> readback and rolled back the test data. Migration `personalized_song_v1` is registered. Vercel preview reached READY.
+- **Status:** `clay/v1-app-foundation` remains open in PR #4 and unmerged because `main` auto-deploys production.
 
 ## Where We Are
 
-**What works.** The V1 buyer flow exists on `clay/v1-app-foundation`. Raw answers persist in the dedicated Digital Gifts database. Preview/full records, demo payment state and one revision persist through constrained token-checked RPCs. The branch builds successfully on Vercel.
+**What works.** Digital Gifts now has a parent/product information architecture on the stacked feature branch. Your Song remains the first conversion product and the existing V1 data flow is unchanged.
 
-**What is in progress.** Visual/browser review of the protected preview and PR review. Production remains unchanged. Paid-social recon is now saved under `campaigns/ad-recon/`, with a first four-cell Meta static test batch under `campaigns/launch-v1/ads/`.
+**What is in progress.** Visual review of the Digital Gifts parent page and Your Song route hierarchy. Production remains unchanged.
 
-**What is broken or unresolved.** Music is mocked; Stripe is not connected; email delivery is not connected; there is no authenticated admin. The brand name is still provisional. No npm lockfile is committed yet.
+**What is broken or unresolved.** Music is mocked; Stripe is not connected; email delivery is not connected; no authenticated admin exists; no npm lockfile is committed. Framed Song Gift is only a concept and must not be sold until fulfillment is proven.
 
-**What could not be determined from here.** Rendered desktop/mobile fidelity and interactive browser behavior could not be inspected because this platform session did not expose a browser runner that could authenticate into the protected Vercel preview.
+**What could not be determined from here.** Rendered desktop/mobile fidelity and interaction behavior could not be inspected because this ChatGPT session has no browser runner that can authenticate into the protected Vercel preview.
 
-**Open owner actions.** Review the protected preview visually. Explicitly approve merge/production when ready. Continue pursuing official Suno Platform/API access.
+**Open owner actions.** Review the protected preview. Continue official music-provider evaluation/access. Approve production only after the UI and product hierarchy are acceptable.
 
-**Next concrete step.** Review the V1 preview and the ad-recon concepts. For marketing, produce the four static thumbnails, then prioritize real first-listen reaction creative as soon as early customers exist. For product, keep the branch unmerged until visual review and production approval.
+**Next concrete step.** Visually review `/` and `/your-song`, then fix any design/copy issues before considering merge.
 
 ## Platform capability notes
 
 These are dated observations, not permanent truths. Retest any "cannot" older than its date before relying on it, and update when reality changes.
 
-### ChatGPT connected tools, measured 2026-09-23
+### ChatGPT connected tools, measured 2026-09-27
 
 | Capability | Result |
 | --- | --- |
-| Build gate | Vercel production build passes for commit `876941f`; local npm/check unavailable due container DNS/network |
-| Screenshot a local/protected preview | No usable authenticated browser runner exposed in this session |
-| Reach Vercel deploy status | Yes; branch preview is READY and share link can be generated |
-| Query/migrate database | Yes; Digital Enterprise -> Digital Gifts `hyjmlkowbhftisynztui` |
-| Run test suite | No suite exists yet |
-| Push and open a PR | Yes, through connected GitHub API |
+| Vercel build gate | Branch code build reached READY; check final handoff-head deployment before stopping |
+| Screenshot protected preview | No usable authenticated browser runner exposed in this session |
+| Reach Vercel deploy status | Yes; protected preview/share links available |
+| Database | Existing Digital Gifts Supabase remains available; not modified this session |
+| GitHub branching/PR | Yes |
+| Production | unchanged |
 
 ## Recovery checkpoints
 
-- Database: V1 schema/functions live; migration `personalized_song_v1` registered.
-- Branch: `clay/v1-app-foundation`.
-- Latest verified build commit: `876941fd0df82170d22424eeb6c3c037cc2afb32`.
-- Preview: Vercel branch alias `digital-gifts-git-clay-v1-app-foundation-pridefamilyrealty.vercel.app`, protected.
-- Production: unchanged from main. Do not infer the preview has shipped to production.
+- Base product branch: `clay/v1-app-foundation`, PR #4.
+- Parent-site branch: `clay/digital-gifts-parent-site`.
+- Parent route: `/`.
+- Your Song route: `/your-song`.
+- Existing funnel routes: `/create`, `/preview/[id]`, `/song/[id]`.
+- Production: unchanged from `main`.
