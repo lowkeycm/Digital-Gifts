@@ -17,3 +17,6 @@
 - 2026-09-28 — `docs/LAUNCH-SIGNUP.md` and `docs/qa/launch-*` — working consented launch signup, sample players and rendered/functional evidence.
 
 - 2026-09-28 — `public/images/gift-smith-logo.webp` — Clay-supplied navy/gold logo with background removed, transparent lossless WebP for shared header/footer.
+
+- 2026-09-28 — `public/images/album-brother-to-sister.webp`, `album-son-to-mother.webp`, `album-husband-to-wife.webp` — generated illustrative album art for the three owner-labeled full songs, not customer portraits.
+- 2026-09-28 — `docs/qa/carousel-room-*` and `carousel-checks.json` — album carousel desktop/mobile renders and gesture/playback evidence.
