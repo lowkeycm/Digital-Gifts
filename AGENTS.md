@@ -48,7 +48,7 @@ Fifteen rules. Every agent, every platform, every operator. Nothing in `people/`
 
 | Field | Value |
 | --- | --- |
-| What it is | Consumer digital-gifts product, starting with guided personalized songs built from a customer's own memories and raw story details. V1 foundation is implemented on `clay/v1-app-foundation` with real Supabase persistence, mock music generation and demo checkout. |
+| What it is | Consumer parent brand for personalized digital gifts built from real stories, memories and specific personal details. Your Song is the first product. The parent-brand extension is on `clay/digital-gifts-parent-site`; the song V1 uses real Supabase persistence, mock music generation and demo checkout. |
 | Business | UNVERIFIED. No legal entity or DBA is established in the repository. |
 | Live URL | Production remains unchanged. A protected Vercel preview for `clay/v1-app-foundation` is READY; use the current branch alias/share link from Vercel for review. |
 | Repo | github.com/lowkeycm/Digital-Gifts |
@@ -153,7 +153,7 @@ Run everything from the repo root.
 
 **Visual verification is required for any UI change, before committing.** Load the affected page, screenshot desktop at 1440x900 and mobile at 390x844, confirm the change and that nothing else broke. If your platform cannot render a browser, say so and hand the verification back (doctrine 15).
 
-The current provisional visual direction is documented in `docs/website-brief.md`: premium/editorial with conversion-first structure, warm paper surfaces, tactile record-sleeve language and subtle motion. It is a V1 direction, not a locked brand identity. For future website/landing-page changes, use Marketing-Hub's `hub-website-system` skill.
+The current provisional visual direction is documented in `docs/website-brief.md`: Digital Gifts is the premium/editorial parent brand; Your Song inherits its warm paper/ink/rust system with tactile record-sleeve language. The parent adds framed/stacked gift objects and subtle motion. It is a V1 direction, not a locked brand identity. For future website/landing-page changes, use Marketing-Hub's `hub-website-system` skill.
 
 ### 2.9 Copy doctrine
 
