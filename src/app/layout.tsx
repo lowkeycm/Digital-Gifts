@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import "@fontsource-variable/cormorant-garamond";
+import "@fontsource-variable/dm-sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Your Song | Personalized songs from real memories",
-  description: "Turn the details that matter into a one-of-one song.",
+  title: "The Gift Smith | Gifts made personal",
+  description: "Personal gifts made from memories, photos and the details only you know.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><a className="skip-link" href="#main-content">Skip to content</a>{children}</body>
     </html>
   );
 }

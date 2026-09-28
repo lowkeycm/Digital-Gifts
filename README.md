@@ -1,10 +1,22 @@
-# Digital Gifts
+# The Gift Smith
 
-V1 of a consumer digital-gifts platform, starting with personalized songs.
+The Gift Smith is the parent consumer brand for personalized gifts built from real stories and specific personal details.
 
-## Current milestone
+The first product is **Your Song**, a personalized-song experience.
 
-The customer journey is real end to end with:
+## Site structure
+
+- `/` — The Gift Smith parent brand
+- `/your-song` — Your Song product landing page
+- `/create` — guided song intake
+- `/preview/[id]` — private preview
+- `/song/[id]` — private delivery/revision page
+
+The parent site also shows the **Framed Song Gift** as an in-development concept so the brand can expand beyond one digital format without pretending unfinished products are available.
+
+## Current Your Song milestone
+
+The customer journey currently includes:
 
 - a guided four-step intake that preserves raw customer language
 - real persistence in the dedicated Digital Gifts Supabase project
@@ -19,11 +31,11 @@ Suno and Stripe are deliberately not faked. They plug into existing provider/pay
 ## Local development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-The verified Digital Gifts Supabase project URL and publishable key have safe built-in fallbacks for this public V1 flow. Secret keys never belong in source code.
+The verified Digital Gifts Supabase project URL and publishable key have safe built-in fallbacks for this protected V1 flow. Secret keys never belong in source code.
 
 ## Build gate
 
@@ -33,3 +45,9 @@ npm run build
 ```
 
 See `AGENTS.md`, `HANDOFF.md`, `ROADMAP.md`, `docs/PRODUCT.md`, `docs/ARCHITECTURE.md`, and `docs/website-brief.md` before changing product behavior.
+
+## Website redesign
+
+The Gift Smith is Clay’s selected consumer name. The GitHub, Vercel and Supabase project identifiers remain Digital Gifts. The photo-led parent page routes into Your Song, with framed gifts explicitly marked in development.
+
+Research and design decisions: `docs/website-brief.md`. Rendered desktop/mobile captures and verification notes: `docs/qa/`.

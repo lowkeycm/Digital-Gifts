@@ -6,6 +6,14 @@
 - MusicProvider adapter with mock and official-Suno placeholder
 - Stripe boundary reserved for the production payment milestone
 
+## Route hierarchy
+- `/` is the Digital Gifts parent-brand page.
+- `/your-song` is the focused Your Song product landing page.
+- `/create`, `/preview/[id]` and `/song/[id]` remain the Your Song conversion/delivery flow.
+- Future Digital Gifts products should get their own product routes rather than bloating the parent page into one giant funnel.
+
+The parent route is presentation/routing only. It does not introduce new database tables or mix data between future products.
+
 ## Data path
 1. `/create` posts raw customer answers to a server Route Handler.
 2. Server validates with Zod and calls the constrained `create_song_intake` RPC.

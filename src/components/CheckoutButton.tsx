@@ -32,7 +32,7 @@ export function CheckoutButton({ songId, accessToken }: { songId: string; access
       <button className="pill primary" onClick={checkout} disabled={busy}>
         {busy ? "Unlocking your demo..." : "Demo unlock full song · $29"}
       </button>
-      {error ? <p className="error-copy">{error}</p> : null}
+      {error ? <p role="alert" className="error-copy">{error}</p> : null}
     </div>
   );
 }
