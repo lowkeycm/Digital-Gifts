@@ -12,7 +12,7 @@ Every session ends by updating this file, committing, and pushing. Not committed
 - **Request:** Make Digital Gifts the single-page parent brand/site and turn the existing Your Song landing page/funnel into the first product extension so the business can add additional gift services later.
 - **Changed:** Replaced `/` with the Digital Gifts parent page; moved the existing song landing experience to `/your-song`; kept `/create`, private preview and delivery routes intact; connected Your Song navigation back to the parent brand; added a parent-level product shelf, personalization method, occasion routing and closing handoff into Your Song. Added Framed Song Gift as an explicitly in-development concept and reserved the rest of the product space without inventing live offers. Updated metadata, README, architecture, product decisions, website brief, roadmap and AGENTS project context.
 - **Design direction:** Reused the warm paper/ink/rust premium-editorial language so Your Song feels like a product of Digital Gifts rather than a separate site. Parent hero uses a framed-memory concept, song card and gift tag. Wonderbly was used as current structural evidence for how a parent personalization brand can route into specific products/occasions; no live browser interaction behavior was claimed from that research.
-- **Verification:** Vercel successfully built the parent-site code on the branch. Final branch-head build must still be checked after this handoff commit. This platform still does not expose a usable browser/screenshot runner for the protected preview, so desktop/mobile visual QA remains incomplete.
+- **Verification:** Vercel successfully built the final branch head `569042f` to READY after the parent-site and handoff changes. This platform still does not expose a usable browser/screenshot runner for the protected preview, so desktop/mobile visual QA remains incomplete.
 - **Database:** No schema/data changes this session. Existing Digital Gifts Supabase target remains `hyjmlkowbhftisynztui`.
 - **Production:** unchanged. Do not merge to `main` without Clay's explicit production approval.
 - **Next:** Review the protected Digital Gifts preview. Confirm the parent-brand direction and mobile/desktop rendering. Then continue Your Song provider/payment integration or refine parent-site copy/visuals from review.
@@ -46,7 +46,7 @@ These are dated observations, not permanent truths. Retest any "cannot" older th
 
 | Capability | Result |
 | --- | --- |
-| Vercel build gate | Branch code build reached READY; check final handoff-head deployment before stopping |
+| Vercel build gate | Final branch head `569042f` reached READY on Vercel |
 | Screenshot protected preview | No usable authenticated browser runner exposed in this session |
 | Reach Vercel deploy status | Yes; protected preview/share links available |
 | Database | Existing Digital Gifts Supabase remains available; not modified this session |
