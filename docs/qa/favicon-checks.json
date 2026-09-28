@@ -1,0 +1,32 @@
+[
+  {
+    "width": 1440,
+    "icons": [
+      {
+        "href": "http://127.0.0.1:3005/favicon.ico?favicon.1ryzoa6ht_r2w.ico",
+        "type": "image/x-icon",
+        "sizes": "48x48"
+      },
+      {
+        "href": "http://127.0.0.1:3005/icon.png?icon.334b99e102r8u.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ]
+  },
+  {
+    "width": 390,
+    "icons": [
+      {
+        "href": "http://127.0.0.1:3005/favicon.ico?favicon.1ryzoa6ht_r2w.ico",
+        "type": "image/x-icon",
+        "sizes": "48x48"
+      },
+      {
+        "href": "http://127.0.0.1:3005/icon.png?icon.334b99e102r8u.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ]
+  }
+]

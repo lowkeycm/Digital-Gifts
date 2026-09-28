@@ -6,6 +6,17 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When / who:** 2026-09-28 after midnight New York / Clay / ChatGPT Work Mode
+- **Request:** Use the gift part of the logo as the favicon.
+- **Branch:** `clay/gift-favicon` from main `5bf5f2d`.
+- **Changed:** Isolated transparent gift-and-music mark with no lettering. Added root App Router `favicon.ico` containing 16/32/48px PNG frames and `icon.png` at 192px. Next automatically advertises both throughout the site. Source logo unchanged.
+- **QA:** Check/build pass; desktop/mobile pages render and both advertised icon URLs return 200. Inspected icon artwork and page renders. `docs/qa/favicon-*` records evidence.
+- **Target / authorization:** Requested live-site refinement under existing publication authorization. Verified digital-gifts project `prj_naAJ6e1cVre7JrijE52Ox8tM60Jr` / team `team_K0quIbtPFw7RIl9M7bG54yTE`, www.yourgiftsmith.com. Publish through PR and verify deployed icon metadata/assets.
+- **Previous release:** Thumbnail playback PR #12 merged at `5bf5f2d932460566181c17abbd0460f951dce0aa`; production `dpl_4psxKN2avcLB8wWEUgCryqmN9PLo` READY, actual thumbnail play/pause verified live. Branch deleted.
+- **Remaining:** Music/Stripe/sending-email integration work remains unchanged.
+
+## Prior Session (thumbnail playback)
+
 - **When:** 2026-09-28, shortly after midnight New York
 - **Who / platform:** Clay / ChatGPT Work Mode
 - **Request:** Play directly from song thumbnails; continue the requested live-site refinement.
