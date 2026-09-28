@@ -28,6 +28,26 @@ export function SongSamples() {
     });
   }
 
+  function togglePlayback(index: number) {
+    const player = players.current[index];
+    if (!player) return;
+    // Center immediately so scroll selection cannot pause the clicked track in transit.
+    select(index, false);
+    setActive(index);
+    if (!player.paused) {
+      player.pause();
+      return;
+    }
+    players.current.forEach((other, i) => { if (i !== index) other?.pause(); });
+    // Keep play inside the click gesture for mobile browser permission.
+    void player.play().then(() => {
+      setFailed((previous) => previous.filter((file) => file !== tracks[index].file));
+    }).catch((error: unknown) => {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      setFailed((previous) => previous.includes(tracks[index].file) ? previous : [...previous, tracks[index].file]);
+    });
+  }
+
   useEffect(() => {
     const node = rail.current;
     if (!node) return;
@@ -112,8 +132,8 @@ export function SongSamples() {
           {tracks.map((track, index) => (
             <button
               type="button" key={track.file} ref={(node) => { cards.current[index] = node; }}
-              className="album-card" aria-label={`Select song ${index + 1}: ${track.relationship}, ${track.title}`}
-              aria-pressed={active === index} onClick={() => select(index)}
+              className="album-card" aria-label={`${playing === index ? "Pause" : "Play"} ${track.title}, ${track.relationship}`}
+              data-selected={active === index} onClick={() => togglePlayback(index)}
               onFocus={() => select(index)}
             >
               <span className="album-sleeve">
@@ -121,7 +141,11 @@ export function SongSamples() {
                 <span className="album-shade" />
                 <span className="album-edition">THE GIFT SMITH <span>0{index + 1}</span></span>
                 <span className="album-cover-copy"><span>{track.relationship}</span><strong>{track.title}</strong></span>
-                <span className="album-corner" aria-hidden="true">{playing === index ? "Ⅱ" : "↗"}</span>
+                <span className="album-corner" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    {playing === index ? <path d="M6 4h4v16H6zm8 0h4v16h-4z" /> : <path d="M7 3.5v17L21 12z" />}
+                  </svg>
+                </span>
               </span>
               <span className="album-under"><strong>{track.relationship}</strong><span>Song 0{index + 1} · {track.duration}</span></span>
             </button>
