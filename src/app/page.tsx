@@ -53,7 +53,7 @@ export default function Home() {
 
           <div className="dg-product-grid">
             <article className="dg-product-card dg-product-live">
-              <div className="dg-product-topline"><span className="dg-status-live">Available now</span><span>01</span></div>
+              <div className="dg-product-topline"><span className="dg-status-live">First product</span><span>01</span></div>
               <div className="dg-product-visual dg-vinyl-visual"><div className="dg-vinyl-disc" /></div>
               <div>
                 <span className="eyebrow light">Your Song</span>
