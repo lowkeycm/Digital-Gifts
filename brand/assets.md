@@ -20,3 +20,5 @@
 
 - 2026-09-28 — `public/images/album-brother-to-sister.webp`, `album-son-to-mother.webp`, `album-husband-to-wife.webp` — generated illustrative album art for the three owner-labeled full songs, not customer portraits.
 - 2026-09-28 — `docs/qa/carousel-room-*` and `carousel-checks.json` — album carousel desktop/mobile renders and gesture/playback evidence.
+
+- 2026-09-28 — `src/app/favicon.ico` and `src/app/icon.png` — isolated gift-and-music symbol from the supplied logo, transparent browser icons without lettering.
