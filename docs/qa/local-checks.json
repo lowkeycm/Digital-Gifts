@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-28",
+  "checks": [
+    "home: desktop/mobile/tablet layouts and one h1",
+    "your-song: desktop/mobile/tablet layouts and one h1",
+    "intake: desktop/mobile/tablet layouts and one h1",
+    "Story example selector and framed-gallery switch",
+    "Mobile menu opens, navigates and closes",
+    "FAQ expands",
+    "Intake validation, back/forward retention and all four steps",
+    "Submission failure preserves input and permits retry",
+    "No browser runtime errors"
+  ]
+}
