@@ -118,7 +118,7 @@ export function IntakeForm() {
       {error && <p role="alert" className="error-copy">{error}</p>}
       <div className="form-actions">
         <button type="button" className="ghost" disabled={step === 0 || busy} onClick={() => { setError(""); setStep((current) => Math.max(0, current - 1)); }}>Back</button>
-        {step < steps.length - 1 ? <button key="continue" type="button" className="pill primary" onClick={next}>Continue</button> : <button key="submit" type="submit" className="pill primary" disabled={busy}>{busy ? "Building your preview..." : "Create my preview"}</button>}
+        {step < steps.length - 1 ? <button key="continue" type="submit" className="pill primary">Continue</button> : <button key="submit" type="submit" className="pill primary" disabled={busy}>{busy ? "Building your preview..." : "Create my preview"}</button>}
       </div>
     </form>
   );
