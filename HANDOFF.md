@@ -6,6 +6,20 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When:** 2026-09-28 UTC / September 27 evening, New York
+- **Who:** Clay
+- **Platform:** ChatGPT Work Mode, GitHub/Vercel connectors and browser
+- **Request:** “Merge everything”; Clay is securing Suno API access and wants the remaining path to a functional paid funnel and custom domain.
+- **Authorization:** Explicit owner approval to merge the pending work into main and deploy it to production. This does not authorize provider purchases, ad spend or arbitrary future production changes.
+- **Merged:** PR #5 into foundation, then PR #4 into main. PR #6 was already merged. Production code commit `bdc95db2100c6c5deb9f52c5a679333096388344`.
+- **Verified:** Vercel production deployment `dpl_AbPFsq2TVMWs1bSKeKT7huXC3W1S` READY. Production home -> Your Song -> intake routing and validation checked in browser. `/api/health` returned HTTP 200, database OK, mock music and demo checkout. No error/fatal logs found for this deployment in the one-hour scan; that is a smoke check, not evidence under customer load. Full demo flow and desktop/mobile screenshots were verified in the preceding redesign session.
+- **Production URL:** https://digital-gifts-vert.vercel.app
+- **Launch status:** Website deployed; paid fulfillment not ready. No custom domain selected. No music/payment/email secrets changed. No database schema/data changes in this merge session.
+- **Audit:** `docs/LAUNCH-READINESS.md` records the exact missing components, domain steps, owner inputs and acceptance gates. Notable blockers: placeholder Suno adapter, demo payment mutation, no async completion handling, placeholder audio, no email/admin; current checkout requests a second unrelated full generation instead of unlocking the previewed track.
+- **Next:** Implement the paid funnel with a simulated provider while Clay secures exact API docs/access. Move privileged mutations behind backend authorization before enabling billable generation. Connect real provider and verify end to end before ads.
+
+## Prior Session (2026-09-28 UTC, redesign)
+
 - **When:** 2026-09-28
 - **Who:** Clay
 - **Platform:** ChatGPT Work Mode, local checkout plus connected GitHub/Vercel and rendered browser tools.
@@ -40,7 +54,7 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Where We Are
 
-The requested visual redesign is implemented and verified locally and on Vercel. The Gift Smith is the consumer parent name; Your Song is the first product. Repository, Vercel and Supabase identifiers remain Digital Gifts.
+All application/design work is now merged to main and deployed. The requested visual redesign is implemented and verified locally and on Vercel. The Gift Smith is the consumer parent name; Your Song is the first product. Repository, Vercel and Supabase identifiers remain Digital Gifts.
 
 Music generation, payments and email are still unconnected. Framed Song Gift remains a concept and cannot be ordered. These are existing product limitations, not visual-redesign omissions.
 
@@ -53,8 +67,8 @@ Music generation, payments and email are still unconnected. Framed Song Gift rem
 
 ## Recovery checkpoints
 
-- Base product branch: `clay/v1-app-foundation`, PR #4, unmerged to main.
-- Parent branch: `clay/digital-gifts-parent-site`, PR #5, stacked on foundation.
-- Redesign: PR #6 from `clay/gift-smith-redesign` into the parent branch.
+- Canonical application: `main`. PR #4 is merged.
+- Parent-site PR #5 is merged.
+- Redesign PR #6 is merged.
 - Parent route `/`; product `/your-song`; funnel `/create`, `/preview/[id]`, `/song/[id]`.
 - Research: `docs/website-brief.md`; assets: `brand/assets.md`; screenshot evidence: `docs/qa/`.
