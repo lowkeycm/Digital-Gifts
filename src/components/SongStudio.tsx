@@ -113,7 +113,9 @@ export function SongStudio({
       );
     } catch {
       setCopy(
-        "Copy the link from your browser’s address bar to save this page.",
+        gift
+          ? "Clipboard unavailable. Open the recipient’s gift page below and copy its address to share."
+          : "Copy the link from your browser’s address bar to save this page.",
       );
     }
   }
@@ -261,6 +263,9 @@ export function SongStudio({
           <button className="pill primary" onClick={() => void copyLink(true)}>
             Copy recipient’s gift link
           </button>
+          <a className="pill" href={`/gift/${id}?key=${state.giftToken}`} target="_blank" rel="noreferrer">
+            Open recipient’s gift page
+          </a>
         </div>
       )}
       {originals.some((j) => j.status === "complete") && (
