@@ -523,3 +523,10 @@ Scoped continuation of the existing funnel, not a replacement marketing homepage
 ### Live acceptance follow-up
 
 The visual contract above records the original rendered UI revision. Subsequent transport-only fixes left its layouts and styles unchanged. Final production commit d7e8efec549d6aa8006bdd6c659f361effc84606 was inspected in the live cloud browser with a real uploaded photo, one selected revision, and successful playback/pause. `qa/gift-live-recipient.jpg` shows that production state; `qa/gift-live-checks.json` records actual photo and multi-chunk video acceptance. The live failure and corrected signed-upload endpoint are documented in the release notes, not hidden by the earlier local pass.
+
+
+### Needle and full-photo correction, September 30
+
+User's screenshots exposed a real stacking bug: the platter was raised 12px but the arm remained on the board plane; detached CSS parts also made the cartridge look disconnected. The corrected connected SVG assembly pivots at its bearing, stays 32px above the board and visibly lands on the vinyl grooves. Actual hit-testing verifies the stylus above the record during playback and outside the record when resting, on desktop and mobile. Play/pause, native player events, end and reduced motion are covered in `qa/tonearm-checks.json`.
+
+The user's follow-up explicitly replaces the earlier overlapping photo-sleeve treatment: the complete uploaded picture must be visible. It now has a separate framed position beside the player on desktop and above it on phones, with `object-fit: contain` and a full-size view link. Its geometry does not intersect the player. No-photo gifts keep the illustrated sleeve. This is a correction to the existing gift surface, preserving its occasion palettes, typography and dimensional styling. Current scoped visual evidence: `qa/tonearm-playing-1440.jpg`, `qa/tonearm-playing-390.jpg`, and `qa/tonearm-resting.jpg`.

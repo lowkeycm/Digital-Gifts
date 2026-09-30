@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "environment": "Actual Next production build with local PostgreSQL and stored MP3 fixture; no provider call",
+  "checks": [
+    {
+      "width": 1440,
+      "photoLayout": {
+        "fit": "contain",
+        "loaded": true,
+        "overlap": false
+      },
+      "resting": {
+        "above": true,
+        "overRecord": false
+      },
+      "playing": {
+        "above": true,
+        "overRecord": true
+      },
+      "pauseReturnsToRest": true,
+      "nativeAudioSynchronized": true,
+      "endedReturnsToRest": true
+    },
+    {
+      "width": 390,
+      "photoLayout": {
+        "fit": "contain",
+        "loaded": true,
+        "overlap": false
+      },
+      "resting": {
+        "above": true,
+        "overRecord": false
+      },
+      "playing": {
+        "above": true,
+        "overRecord": true
+      },
+      "pauseReturnsToRest": true,
+      "nativeAudioSynchronized": true,
+      "endedReturnsToRest": true
+    }
+  ],
+  "reducedMotion": "Arm changes position immediately above vinyl; record does not spin",
+  "rendering": "Actual stylus hit-testing: SVG above record when playing, off record when resting; screenshots inspected"
+}
