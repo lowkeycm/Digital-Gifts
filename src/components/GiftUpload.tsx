@@ -6,6 +6,7 @@ type Prepared = {
   path: string;
   bucket: string;
   token: string;
+  apiKey: string;
   endpoint: string;
   ready: boolean;
 };
@@ -70,7 +71,7 @@ export function GiftUpload({
         await new Promise<void>((resolve, reject) => {
           const task = new Upload(file, {
             endpoint: p.endpoint,
-            headers: { "x-signature": p.token },
+            headers: { "x-signature": p.token, apikey: p.apiKey },
             metadata: {
               bucketName: p.bucket,
               objectName: p.path,
