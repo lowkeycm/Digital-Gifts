@@ -33,6 +33,9 @@ export async function GET(
         genre: session.raw_answers.genre,
         occasion: session.raw_answers.occasion,
         giftToken: session.gift_token,
+        selectedTrackId: session.selected_track_id,
+        giftPhotoId: session.gift_photo_id,
+        reactionAssetId: session.reaction_asset_id,
         jobs: jobs.map((j) => ({
           id: j.id,
           kind: j.kind,

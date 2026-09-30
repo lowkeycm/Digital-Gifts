@@ -197,3 +197,324 @@ QA gates: visual desktop/mobile renders compared to the chosen perspective-sleev
 
 ### Thumbnail playback correction (2026-09-28)
 Clay correctly identified that a music-service thumbnail should play the song directly. Whole-cover click/tap and keyboard activation now toggle play/pause; a visible gold 48px control replaces the ambiguous arrow. Selected cover and playing state are separate, and the native timeline remains available. Side-cover playback centers instantly so intermediate scroll selection cannot stop the new track. Dragging and arrow browsing do not autoplay. Rendered desktop/mobile review and focused interaction regression checks pass; evidence in docs/qa/thumbnail-*.
+
+
+## Personal gift listening room, 2026-09-30
+
+Scoped continuation of the existing funnel, not a replacement marketing homepage. Reuses the project’s previously inspected Flowerdose occasion-led warmth, Godly editorial composition, and 21st.dev accessible disclosure behavior documented above. No new conversion claim or testimonial is introduced. The record is a CSS-built dimensional object, so playback remains native and usable without WebGL. Photo is optional; authored sleeve art is the finished fallback. Contract recorded after the initial implementation and before rendered review; no claim of a pre-build gate.
+
+```website-contract
+{
+  "version": 1,
+  "surface": "funnel",
+  "request": "Reaction videos must be uploads. The buyer chooses one version to send and keeps all versions. The gift page should show a 3D spinning record, an occasion background, and an optional uploaded image.",
+  "hub_revision": "9fe5b4cdef6bf66b3c455d257e8fec4eb9676d04",
+  "pages": [
+    {
+      "route": "/gift/[id]",
+      "kind": "utility",
+      "sections": [
+        "dedication",
+        "record",
+        "player"
+      ],
+      "job": "Give the recipient one personal song in a memorable listening room."
+    },
+    {
+      "route": "/song/[id]",
+      "kind": "funnel",
+      "sections": [
+        "versions",
+        "gift preparation",
+        "reaction upload"
+      ],
+      "job": "Choose the gift version, add a photo and upload private feedback."
+    },
+    {
+      "route": "/studio",
+      "kind": "utility",
+      "sections": [
+        "sessions",
+        "reaction review"
+      ],
+      "job": "Let the owner privately review uploaded reactions."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "selected",
+      "route": "/gift/[id]",
+      "category": "components",
+      "sections": [
+        "player"
+      ],
+      "source": "user",
+      "acceptance": "Only the chosen version appears and can be fetched with the gift key.",
+      "implementation": "Server selection and audio authorization.",
+      "status": "pass",
+      "observation": "Actual rendered browser flow passed; see gift-flow-checks.json. Desktop/mobile inspected; no horizontal overflow at 320, 390, 768 and 1440 pixels.",
+      "evidence": [
+        {
+          "path": "qa/gift-recipient-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-recipient-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-flow-checks.json",
+          "viewport": "desktop",
+          "kind": "browser-log",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    },
+    {
+      "id": "record",
+      "route": "/gift/[id]",
+      "category": "3d",
+      "sections": [
+        "record"
+      ],
+      "source": "user",
+      "acceptance": "A dimensional record spins on play, stops on pause, and respects reduced motion.",
+      "implementation": "CSS perspective, layered plinth, vinyl grooves, state linked to native audio.",
+      "status": "pass",
+      "observation": "Actual rendered browser flow passed; see gift-flow-checks.json. Desktop/mobile inspected; no horizontal overflow at 320, 390, 768 and 1440 pixels.",
+      "evidence": [
+        {
+          "path": "qa/gift-recipient-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-recipient-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-flow-checks.json",
+          "viewport": "desktop",
+          "kind": "browser-log",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-reduced-motion.jpg",
+          "viewport": "reduced-motion",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-flow-checks.json",
+          "viewport": "reduced-motion",
+          "kind": "browser-log",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    },
+    {
+      "id": "occasion",
+      "route": "/gift/[id]",
+      "category": "imagery",
+      "sections": [
+        "dedication",
+        "record"
+      ],
+      "source": "user",
+      "acceptance": "Birthday, anniversary, wedding, reconnection, and just-because have distinct treatments. Optional uploaded photo appears as sleeve art.",
+      "implementation": "Six authored themes and private photo URL.",
+      "status": "pass",
+      "observation": "Actual rendered browser flow passed; see gift-flow-checks.json. Desktop/mobile inspected; no horizontal overflow at 320, 390, 768 and 1440 pixels.",
+      "evidence": [
+        {
+          "path": "qa/gift-recipient-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-recipient-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-flow-checks.json",
+          "viewport": "desktop",
+          "kind": "browser-log",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    },
+    {
+      "id": "selection",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "versions",
+        "gift preparation"
+      ],
+      "source": "user",
+      "acceptance": "Buyer chooses one version before sharing and retains every original and revision.",
+      "implementation": "Explicit version selection and preview link.",
+      "status": "pass",
+      "observation": "Actual rendered browser flow passed; see gift-flow-checks.json. Desktop/mobile inspected; no horizontal overflow at 320, 390, 768 and 1440 pixels.",
+      "evidence": [
+        {
+          "path": "qa/gift-owner-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-owner-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-flow-checks.json",
+          "viewport": "desktop",
+          "kind": "browser-log",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    },
+    {
+      "id": "upload",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "reaction upload",
+        "gift preparation"
+      ],
+      "source": "user",
+      "acceptance": "Files upload with consent, progress and retry. Photos up to 8 MB and reaction videos up to 50 MB.",
+      "implementation": "Signed resumable private Storage uploads and server verification.",
+      "status": "pass",
+      "observation": "Actual rendered browser flow passed; see gift-flow-checks.json. Desktop/mobile inspected; no horizontal overflow at 320, 390, 768 and 1440 pixels.",
+      "evidence": [
+        {
+          "path": "qa/gift-owner-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-owner-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-flow-checks.json",
+          "viewport": "desktop",
+          "kind": "browser-log",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    },
+    {
+      "id": "private",
+      "route": "/studio",
+      "category": "components",
+      "sections": [
+        "reaction review"
+      ],
+      "source": "user",
+      "acceptance": "Owner can view and download uploaded videos; gift recipient cannot fetch them.",
+      "implementation": "Owner studio cookie or buyer key, never gift key.",
+      "status": "pass",
+      "observation": "Actual rendered browser flow passed; see gift-flow-checks.json. Desktop/mobile inspected; no horizontal overflow at 320, 390, 768 and 1440 pixels.",
+      "evidence": [
+        {
+          "path": "qa/gift-studio-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-studio-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-flow-checks.json",
+          "viewport": "desktop",
+          "kind": "browser-log",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    }
+  ],
+  "limitations": [],
+  "build_revision": "gift-source-6dee1750b6f1d91d",
+  "reviews": [
+    {
+      "route": "/gift/[id]",
+      "status": "pass",
+      "observation": "Rendered and visually inspected. The recipient record and sleeve preserve depth on phones; occasion palette and native controls remain legible. Owner selection and upload controls are usable; studio shows private video review.",
+      "evidence": [
+        {
+          "path": "qa/gift-recipient-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-recipient-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    },
+    {
+      "route": "/song/[id]",
+      "status": "pass",
+      "observation": "Rendered and visually inspected. The recipient record and sleeve preserve depth on phones; occasion palette and native controls remain legible. Owner selection and upload controls are usable; studio shows private video review.",
+      "evidence": [
+        {
+          "path": "qa/gift-owner-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-owner-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    },
+    {
+      "route": "/studio",
+      "status": "pass",
+      "observation": "Rendered and visually inspected. The recipient record and sleeve preserve depth on phones; occasion palette and native controls remain legible. Owner selection and upload controls are usable; studio shows private video review.",
+      "evidence": [
+        {
+          "path": "qa/gift-studio-1440.jpg",
+          "viewport": "desktop",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        },
+        {
+          "path": "qa/gift-studio-390.jpg",
+          "viewport": "mobile",
+          "kind": "screenshot",
+          "revision": "gift-source-6dee1750b6f1d91d"
+        }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,97 @@
+{
+  "surface": "funnel",
+  "request": "Reaction videos must be uploads. The buyer chooses one version to send and keeps all versions. The gift page should show a 3D spinning record, an occasion background, and an optional uploaded image.",
+  "pages": [
+    {
+      "route": "/gift/[id]",
+      "kind": "utility",
+      "sections": [
+        "dedication",
+        "record",
+        "player"
+      ]
+    },
+    {
+      "route": "/song/[id]",
+      "kind": "funnel",
+      "sections": [
+        "versions",
+        "gift preparation",
+        "reaction upload"
+      ]
+    },
+    {
+      "route": "/studio",
+      "kind": "utility",
+      "sections": [
+        "sessions",
+        "reaction review"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "selected",
+      "route": "/gift/[id]",
+      "category": "components",
+      "sections": [
+        "player"
+      ],
+      "source": "user",
+      "acceptance": "Only the chosen version appears and can be fetched with the gift key."
+    },
+    {
+      "id": "record",
+      "route": "/gift/[id]",
+      "category": "3d",
+      "sections": [
+        "record"
+      ],
+      "source": "user",
+      "acceptance": "A dimensional record spins on play, stops on pause, and respects reduced motion."
+    },
+    {
+      "id": "occasion",
+      "route": "/gift/[id]",
+      "category": "imagery",
+      "sections": [
+        "dedication",
+        "record"
+      ],
+      "source": "user",
+      "acceptance": "Birthday, anniversary, wedding, reconnection, and just-because have distinct treatments. Optional uploaded photo appears as sleeve art."
+    },
+    {
+      "id": "selection",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "versions",
+        "gift preparation"
+      ],
+      "source": "user",
+      "acceptance": "Buyer chooses one version before sharing and retains every original and revision."
+    },
+    {
+      "id": "upload",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "reaction upload",
+        "gift preparation"
+      ],
+      "source": "user",
+      "acceptance": "Files upload with consent, progress and retry. Photos up to 8 MB and reaction videos up to 50 MB."
+    },
+    {
+      "id": "private",
+      "route": "/studio",
+      "category": "components",
+      "sections": [
+        "reaction review"
+      ],
+      "source": "user",
+      "acceptance": "Owner can view and download uploaded videos; gift recipient cannot fetch them."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { GiftUpload } from "./GiftUpload";
 import { RevisionForm } from "./RevisionForm";
 
 type Job = {
@@ -21,6 +22,9 @@ type State = {
   genre: string;
   occasion: string;
   giftToken: string;
+  selectedTrackId: string | null;
+  giftPhotoId: string | null;
+  reactionAssetId: string | null;
   jobs: Job[];
   tracks: Track[];
   feedbackSaved: boolean;
@@ -38,7 +42,6 @@ export function SongStudio({
     [copy, setCopy] = useState("");
   const [rating, setRating] = useState("5"),
     [comments, setComments] = useState(""),
-    [reactionUrl, setReactionUrl] = useState(""),
     [mayContact, setMayContact] = useState(false),
     [feedback, setFeedback] = useState(false);
   const [polling, setPolling] = useState(true);
@@ -218,7 +221,10 @@ export function SongStudio({
       )}
       <div className="studio-tracks">
         {state.tracks.map((t, i) => (
-          <article className="studio-track" key={t.id}>
+          <article
+            className={`studio-track ${state.selectedTrackId === t.id ? "is-gift-choice" : ""}`}
+            key={t.id}
+          >
             <div className="studio-record" aria-hidden="true">
               <span>{state.recipientName.slice(0, 1)}</span>
             </div>
@@ -248,6 +254,17 @@ export function SongStudio({
               >
                 Download MP3
               </a>
+              <button
+                className="pill gift-choice"
+                type="button"
+                aria-pressed={state.selectedTrackId === t.id}
+                disabled={busy}
+                onClick={() => void action("/api/song-gift", { trackId: t.id })}
+              >
+                {state.selectedTrackId === t.id
+                  ? "Selected for their gift"
+                  : "Choose this version for their gift"}
+              </button>
               {t.lyrics && (
                 <details>
                   <summary>Read the lyrics</summary>
@@ -259,14 +276,59 @@ export function SongStudio({
         ))}
       </div>
       {state.tracks.length > 0 && (
-        <div className="delivery-actions">
-          <button className="pill primary" onClick={() => void copyLink(true)}>
-            Copy recipient’s gift link
-          </button>
-          <a className="pill" href={`/gift/${id}?key=${state.giftToken}`} target="_blank" rel="noreferrer">
-            Open recipient’s gift page
-          </a>
-        </div>
+        <section className="gift-preparation card">
+          <span className="eyebrow">Make it theirs</span>
+          <h2>Your gift, ready to give.</h2>
+          <p>
+            {state.selectedTrackId
+              ? "Their gift page plays only your selected version. All your other versions stay here. Changing your selection updates the same gift link."
+              : "Listen above and choose the version you want them to hear. Then add a photo if you like, preview their gift, and share the link."}
+          </p>
+          <GiftUpload
+            songId={id}
+            accessKey={accessKey}
+            kind="photo"
+            assetId={state.giftPhotoId}
+            onSaved={refresh}
+          />
+          {state.giftPhotoId && (
+            <button
+              type="button"
+              className="ghost"
+              disabled={busy}
+              onClick={() =>
+                void action("/api/song-gift", { removePhoto: true })
+              }
+            >
+              Remove photo from gift
+            </button>
+          )}
+          <div className="delivery-actions">
+            <button
+              type="button"
+              className="pill primary"
+              disabled={!state.selectedTrackId || busy}
+              onClick={() => void copyLink(true)}
+            >
+              Copy recipient’s gift link
+            </button>
+            {state.selectedTrackId && (
+              <a
+                className="pill"
+                href={`/gift/${id}?key=${state.giftToken}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Preview their gift
+              </a>
+            )}
+          </div>
+          {!state.selectedTrackId && (
+            <p className="help">
+              Choose a song version above to unlock the gift link.
+            </p>
+          )}
+        </section>
       )}
       {originals.some((j) => j.status === "complete") && (
         <RevisionForm
@@ -277,6 +339,17 @@ export function SongStudio({
         />
       )}
       {state.tracks.length > 0 && (
+        <div className="card reaction-upload-card">
+          <GiftUpload
+            songId={id}
+            accessKey={accessKey}
+            kind="reaction"
+            assetId={state.reactionAssetId}
+            onSaved={refresh}
+          />
+        </div>
+      )}
+      {state.tracks.length > 0 && (
         <form
           className="card beta-feedback"
           onSubmit={async (e) => {
@@ -285,7 +358,6 @@ export function SongStudio({
               await action("/api/song-feedback", {
                 rating: Number(rating),
                 comments,
-                reactionUrl,
                 mayContact,
               })
             )
@@ -320,21 +392,6 @@ export function SongStudio({
               value={comments}
               onChange={(e) => setComments(e.target.value)}
             />
-          </div>
-          <div className="field">
-            <label htmlFor="reaction">Reaction video link (optional)</label>
-            <input
-              id="reaction"
-              type="url"
-              maxLength={2000}
-              placeholder="https://..."
-              value={reactionUrl}
-              onChange={(e) => setReactionUrl(e.target.value)}
-            />
-            <p className="help">
-              Use a shareable video link. Submitting it does not give us
-              permission to publish it.
-            </p>
           </div>
           <label className="beta-consent">
             <input

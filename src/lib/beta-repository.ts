@@ -6,6 +6,9 @@ export type BetaSession = {
   id: string;
   access_token: string;
   gift_token: string;
+  selected_track_id: string | null;
+  gift_photo_id: string | null;
+  reaction_asset_id: string | null;
   raw_answers: Intake;
   created_at: string;
 };
