@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "Migration applies",
+    "Selected track constrained to same session",
+    "Gift photo constrained to same session",
+    "Upload reservation idempotent",
+    "SVG and oversized photos rejected",
+    "Six-file per-kind/session ceiling",
+    "Anon table and RPC access denied"
+  ],
+  "database": "Local PostgreSQL (PGlite)"
+}

@@ -73,8 +73,8 @@ export default async function StudioPage() {
         No payment is collected.
       </p>
       <p>
-        Private links below manage each test song. Reaction links are for review
-        only; ask the tester before publishing.
+        Private links below manage each test song. Reaction videos are for
+        review only; ask the tester before publishing.
       </p>
       <div className="studio-tracks">
         {(sessions.data as BetaSession[]).map((s) => {
@@ -108,6 +108,26 @@ export default async function StudioPage() {
                     )}
                   </div>
                 ))}
+              {s.reaction_asset_id && (
+                <section className="studio-reaction">
+                  <h3>Uploaded reaction</h3>
+                  <video
+                    className="reaction-preview"
+                    controls
+                    preload="metadata"
+                    src={`/api/songs/${s.id}/media?asset=${s.reaction_asset_id}&studio=1`}
+                  />
+                  <a
+                    className="pill"
+                    href={`/api/songs/${s.id}/media?asset=${s.reaction_asset_id}&studio=1&download=1`}
+                  >
+                    Download original video
+                  </a>
+                  <p className="help">
+                    Private review only. Ask before publishing.
+                  </p>
+                </section>
+              )}
               {f && (
                 <div>
                   <h3>Feedback: {f.rating} / 5</h3>

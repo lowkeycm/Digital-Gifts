@@ -262,3 +262,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ### 2.16 Free test integration (2026-09-29)
 
 Clay selected Kie for a no-paywall test release. New backend-owned resources: song_beta_sessions, song_beta_jobs, song_beta_tracks, song_beta_feedback; reserve_beta_song, reserve_beta_job, claim_beta_sync; private song-beta-audio bucket. Only backend secrets may access them. Never expose service keys to browsers or revive demo-paid mutations for free testers. See docs/KIE-TEST-RELEASE.md for current workflow, limits and activation checks. Keep original recordings when revisions create a new rendition. No silent raw-story truncation or AI rewriting. A provider timeout may have incurred a charge: do not auto-submit again.
+
+
+### 2.17 Personal gifts and uploaded reactions (2026-09-30)
+
+Additional owned resources: song_beta_media; reserve_beta_media; private song-gift-photos (8 MiB) and song-reaction-videos (50 MiB). Only backend secrets access the table/RPC. Browser uploads use scoped signed Tus tokens. Explicitly selected_track_id controls recipient audio access; keep all other tracks in the owner's private session. Gift media must belong to the same session. Reaction uploads are private and never accessible through gift tokens or automatically approved for advertising. Photo/reaction limits, consent and storage-retention boundaries are in docs/KIE-TEST-RELEASE.md.

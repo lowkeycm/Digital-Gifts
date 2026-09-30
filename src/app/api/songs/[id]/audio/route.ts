@@ -14,7 +14,9 @@ export async function GET(
       track = u.searchParams.get("track") ?? "";
     if (!z.string().uuid().safeParse(track).success)
       return new Response(null, { status: 404 });
-    if (!(await sessionFor(id, key, u.searchParams.get("gift") === "1")))
+    const gift = u.searchParams.get("gift") === "1";
+    const session = await sessionFor(id, key, gift);
+    if (!session || (gift && session.selected_track_id !== track))
       return new Response(null, { status: 404 });
     const { data, error } = await db()
       .from("song_beta_tracks")

@@ -6,6 +6,17 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When / who:** 2026-09-30 / Clay / ChatGPT Work Mode.
+- **Request:** Reaction files rather than links; explicitly chosen gift song with private alternate versions; a 3D spinning-record gift page, occasion backgrounds, optional uploaded image.
+- **Branch:** clay/personal-gift-player, based on main 40c0b16577fdd6cfbefa3aea0acb1448bcd6220d. Continuing existing publication authorization.
+- **Changed:** Selected version is enforced server-side for gift page/audio. Owner retains every version. Six occasion treatments, CSS dimensional turntable, optional photo sleeve, native MP3 player/download, reduced-motion fallback. Private signed resumable file uploads with progress, retries, consent, MIME/size/signature checks. Owner studio can review/download reaction video. No Kie or paywall changes.
+- **Infrastructure:** Verified Digital Enterprise / Digital Gifts hyjmlkowbhftisynztui; additive personalized_gift_media migration applied. Media table RLS/backend-only grants and two private buckets verified. Vercel target remains digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr, team_K0quIbtPFw7RIl9M7bG54yTE, www.yourgiftsmith.com.
+- **Validation:** Lint/type/build pass. PostgreSQL constraints, idempotency and upload limits pass. Actual production-build browser test passes file uploads, consent, owner/recipient/studio boundaries, song selection and preservation, playback rotation/pause, reduced motion and six themes. Desktop/mobile screenshots inspected, widths 320/390/768/1440 checked. Local provider/storage fixtures are explicit; no new generation credits used. Marketing-Hub 9fe5b4cdef6bf66b3c455d257e8fec4eb9676d04 applied with existing inspected project references; scoped contract and evidence in docs/website-brief.md. Plan baseline was recorded after initial code and before rendered QA, not before implementation.
+- **Release:** Branch ready for PR/preview and authorized merge. Verify exact deployed commit and perform real private uploads after production deploy; update release evidence separately.
+- **Boundaries:** 8 MiB photos, 50 MiB reaction videos, six reservations per kind/song. Reactions private by default; permission to publish remains separate. No email delivery; sharing uses recipient link. Old gifts need an explicit selection. Automated upload cleanup is not implemented. Existing test session remains synthetic and excluded from customer/marketing reporting.
+
+## Prior Session (Kie free test)
+
 - **When / who:** 2026-09-30 UTC / September 29 evening New York / Clay / ChatGPT Work Mode.
 - **Request:** Connect Kie for real test users, full operation without Stripe/paywall; collect feedback/reaction videos. Existing publication authorization continues. Optional voice-cloning add-on is not in this core song test.
 - **Branch:** clay/kie-test-funnel, based on main 54430e459286502293f58bb405f29dae9518c653.

@@ -1,6 +1,6 @@
 # Free test release
 
-Owner request: functional Your Song testing with Kie, no Stripe/paywall. Testers create a full song, listen, download, share a read-only gift link, request one new rendition, and leave feedback or an optional reaction-video link. This is the core song test; voice cloning and other proposed paid add-ons are not part of this release. No emails are sent or promised. Publication rights to reaction videos must be obtained separately.
+Owner request: functional Your Song testing with Kie, no Stripe/paywall. Testers create a full song, listen, download, share a read-only gift link, request one new rendition, and leave feedback or an optional reaction-video upload. This is the core song test; voice cloning and other proposed paid add-ons are not part of this release. No emails are sent or promised. Publication rights to reaction videos must be obtained separately.
 
 ## Exact infrastructure
 
@@ -23,7 +23,7 @@ No NEXT_PUBLIC_ prefix. Never paste values into chat or commit them. No provider
 
 /create -> /song/[id]?key=owner-token. Free full songs, no orders or paid flags. /preview routes beta sessions to their full song. Legacy demo sessions remain identifiable and their checkout endpoint is disabled.
 
-/gift/[id]?key=gift-token permits audio and download only. It does not expose the customer's story/email, feedback, revision controls, or owner token. Save the private URL because there is no email recovery in this test release. /studio lists recent sessions, jobs, notes/ratings and reaction links for the owner.
+/gift/[id]?key=gift-token permits audio and download only. It does not expose the customer's story/email, feedback, revision controls, or owner token. Save the private URL because there is no email recovery in this test release. /studio lists recent sessions, jobs, notes/ratings and uploaded reaction videos for the owner.
 
 Kie V6 uses the documented Market createTask route with ai-music-api/generate, non-custom prompt and separate style. Original wording is preserved with a visible 2,400-character brief budget, leaving 600 characters under Kie's 3,000-character limit for revision instructions. A revision is a new rendition and can change melody; the original recordings remain. There is no LLM rewriting step.
 
@@ -50,3 +50,16 @@ Feedback permission only allows contact to discuss sharing. It does not authoriz
 ## Verification
 
 See docs/qa/beta-*.json and screenshots. Provider contract tests use mocked responses; full browser testing uses an explicitly simulated provider and local PostgreSQL. The production schema and access privileges are checked independently through Supabase. Live production verification passed on September 30: two original tracks and two revised tracks arrived through real Kie callbacks, were stored privately, and played in the browser. MP3 download returned a 5,452,085-byte audio/mpeg attachment from Supabase. The requested Pine Street to Maple Street revision appeared in both new tracks while the original tracks retained Pine Street. Feedback persisted. The synthetic release QA session and its rating must be excluded from customer/marketing reporting. Production credentials are configured; Preview remains setup-pending. See docs/qa/beta-live-checks.json for scope and limitations.
+
+
+## Personal gift update, September 30
+
+The buyer must choose one completed version before sharing. Every original/revised track stays in the private song studio. The recipient page and audio endpoint expose only selected_track_id; selecting another version updates the existing gift link. Existing gifts without a selection show a finishing-touch message until the buyer chooses.
+
+Recipient experience: occasion-led color/motifs, CSS 3D turntable with playback-synchronized rotation, native full-song controls/download/lyrics, and optional uploaded photo as sleeve art. Reduced motion stops the spin. No autoplay. Six themes cover the current intake occasions.
+
+Uploads use signed resumable Tus transfers directly to private Supabase Storage. Photos: JPEG/PNG/WebP, 8 MiB. Reactions: MP4/MOV/WebM, 50 MiB. Six reservations per media kind per song cap test storage; retry uses the same request. Some MOV codecs require download. File extension is server assigned; size, MIME and file signature checked before publishing the pointer. Permission is explicit and its version recorded; reaction permission is private-review-only, not publication permission. Gift keys can read only the current gift photo, never reaction media. Studio owners can view/download uploaded reactions. Replacement retains older objects privately; automated cleanup is not configured.
+
+Migration personalized_gift_media adds song_beta_media, session selection/media pointers, same-session foreign keys, reserve_beta_media, private song-gift-photos and song-reaction-videos buckets. Live RLS, grants and bucket limits verified. Advisor reports the expected backend-only no-policy information; six pre-existing legacy anonymous SECURITY DEFINER warnings are unchanged (https://supabase.com/docs/guides/database/database-linter).
+
+Local QA: docs/qa/gift-db-checks.json and gift-flow-checks.json. Real PostgreSQL semantics and actual Next production build were used with an explicit Storage/Tus fixture. Provider generation was not repeated. Native media and direct upload need the separate production check recorded in the release handoff.
