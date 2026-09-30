@@ -85,8 +85,8 @@ export function GiftUpload({
               setProgress(Math.round((sent / total) * 100)),
             onError: (failure) => {
               // Never log signed URLs, request headers or upload tokens.
-              const status = failure.originalResponse?.getStatus() ?? 0;
-              const stage = failure.originalRequest ? "transfer" : "file-read";
+              const status = "originalResponse" in failure ? failure.originalResponse?.getStatus() ?? 0 : 0;
+              const stage = "originalRequest" in failure && failure.originalRequest ? "transfer" : "file-read";
               console.warn("gift_upload_failed", {
                 status,
                 stage,
