@@ -6,6 +6,15 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When / who:** 2026-09-30 / Clay / ChatGPT Work Mode, same-day continuation.
+- **Request:** Fix the detached-looking needle and arm disappearing beneath the spinning record. Follow-up: show the whole uploaded photo instead of covering it with the player.
+- **Branch:** clay/fix-turntable-tonearm from main e6dde00a4512d454fb8d30ebe0a18d03fdc5e378. Continuing existing publication authorization.
+- **Changed:** Replaced disconnected CSS arm/cartridge with a connected SVG assembly, counterweight, bearing, headshell, finger lift and stylus. Arm rotates around the bearing at translateZ(32px), above the 12px platter. It swings into the grooves on playback and returns outside them on pause/end. Existing native audio and reduced-motion behavior retained. Uploaded photo now sits in a separate paper frame beside the player on desktop and above it on mobile, uses contain instead of cover, and opens full size. No-photo sleeve artwork remains.
+- **Validation:** Lint/type/build pass. Actual production-build Chromium checks at 1440x900 and 390x844 locate the stylus and hit-test its rendered layer: above vinyl while playing, off vinyl at rest. Play/pause, native audio, ended event and reduced motion pass. Full photo loaded, contain fit and zero player overlap verified on both layouts; no overflow at 320/768. Screenshots visually inspected in docs/qa/tonearm-*. Local audio/database fixture, no paid generation call. No backend/schema changes.
+- **Release:** Publish through this branch PR after Vercel check, then verify live gift play/pause and full photo. Target verified digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr, Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE, www.yourgiftsmith.com. Previous release is merged through PR 20.
+
+## Prior Session (personal gift release)
+
 - **When / who:** 2026-09-30 / Clay / ChatGPT Work Mode.
 - **Request:** Reaction files rather than links; explicitly chosen gift song with private alternate versions; a 3D spinning-record gift page, occasion backgrounds, optional uploaded image.
 - **Branch:** clay/personal-gift-player, based on main 40c0b16577fdd6cfbefa3aea0acb1448bcd6220d. Continuing existing publication authorization.

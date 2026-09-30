@@ -1,5 +1,6 @@
 "use client";
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
+import Image from "next/image";
 import { giftTheme } from "@/lib/gift-themes";
 import { GiftBrand } from "./GiftBrand";
 export function GiftExperience({
@@ -17,6 +18,7 @@ export function GiftExperience({
   audioUrl: string;
   photoUrl: string | null;
 }) {
+  const armId = useId();
   const theme = giftTheme(occasion),
     audio = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false),
@@ -54,45 +56,41 @@ export function GiftExperience({
         <span>A gift with you in it.</span>
       </header>
       <main id="main-content" className="gift-world-main">
-        <section className="gift-listening-room">
+        <section className={`gift-listening-room ${photoUrl ? "has-memory" : ""}`}>
           <div className="gift-dedication">
             <span className="gift-occasion">{theme.label}</span>
             <h1>
               For <em>{recipient}.</em>
             </h1>
             <p>{theme.note}</p>
-            <div className="gift-handwritten">
-              Made from the little things
-              <br />
-              that mean everything.
-            </div>
+            {photoUrl ? (
+              <a className="gift-memory" href={photoUrl} target="_blank" rel="noopener noreferrer" aria-label="Open the full gift photo">
+                <Image src={photoUrl} alt={`A photo chosen for ${recipient}`} width={640} height={640} unoptimized />
+                <span>A memory worth keeping. <small>Open photo ↗</small></span>
+              </a>
+            ) : (
+              <div className="gift-handwritten">
+                Made from the little things
+                <br />
+                that mean everything.
+              </div>
+            )}
           </div>
           <div className={`gift-scene ${playing ? "is-playing" : ""}`}>
             <div className="gift-scene-light" />
-            <div className={`gift-sleeve ${photoUrl ? "has-photo" : ""}`}>
-              {photoUrl ? (
-                <div
-                  className="gift-cover-photo"
-                  role="img"
-                  aria-label={`A photo chosen for ${recipient}`}
-                  style={{ backgroundImage: `url("${photoUrl}")` }}
-                />
-              ) : (
+            {!photoUrl && (
+              <div className="gift-sleeve">
                 <div className="gift-cover-art">
-                  <span>
-                    YOUR
-                    <br />
-                    SONG.
-                  </span>
+                  <span>YOUR<br />SONG.</span>
                   <div className="sleeve-orbit" />
                 </div>
-              )}
-              <div className="sleeve-caption">
-                <span>THE GIFT SMITH</span>
-                <strong>{recipient}</strong>
-                <span>ONE OF A KIND</span>
+                <div className="sleeve-caption">
+                  <span>THE GIFT SMITH</span>
+                  <strong>{recipient}</strong>
+                  <span>ONE OF A KIND</span>
+                </div>
               </div>
-            </div>
+            )}
             <div className="turntable">
               <div className="turntable-plinth" />
               <span className="turntable-maker">
@@ -119,8 +117,39 @@ export function GiftExperience({
                 </span>
               </button>
               <div className="tonearm" aria-hidden="true">
-                <i />
-                <b />
+                <svg viewBox="0 0 140 560" className="tonearm-assembly">
+                  <defs>
+                    <linearGradient id={`${armId}-metal`} x1="0" x2="1" y1="0" y2="0">
+                      <stop offset="0" stopColor="#555750" />
+                      <stop offset=".3" stopColor="#c6c7b5" />
+                      <stop offset=".55" stopColor="#f3efdb" />
+                      <stop offset=".8" stopColor="#a2a38f" />
+                      <stop offset="1" stopColor="#54594f" />
+                    </linearGradient>
+                    <radialGradient id={`${armId}-pivot`}>
+                      <stop offset="0" stopColor="#e3dfcc" />
+                      <stop offset=".35" stopColor="#8d9282" />
+                      <stop offset=".65" stopColor="#4d554b" />
+                      <stop offset="1" stopColor="#161e1d" />
+                    </radialGradient>
+                  </defs>
+                  {/* One continuous arm, with its rotation pinned to the bearing. */}
+                  <circle cx="70" cy="60" r="33" fill="#111b1d" />
+                  <circle cx="70" cy="60" r="28" fill={`url(#${armId}-pivot)`} stroke="#949987" strokeWidth="2" />
+                  <path d="M70 22 V387 Q70 414 54 437 L43 454" fill="none" stroke="#41483f" strokeWidth="14" strokeLinecap="round" />
+                  <path d="M70 22 V387 Q70 414 54 437 L43 454" fill="none" stroke={`url(#${armId}-metal)`} strokeWidth="10" strokeLinecap="round" />
+                  <rect x="50" y="8" width="40" height="32" rx="7" fill={`url(#${armId}-metal)`} stroke="#494e46" strokeWidth="2" />
+                  <path d="M55 15 H85 M55 22 H85 M55 29 H85" stroke="#5c6257" strokeWidth="1" opacity=".6" />
+                  <circle cx="70" cy="60" r="7" fill="#d2d0bb" stroke="#50574c" strokeWidth="3" />
+                  <g transform="translate(43 452) rotate(26)">
+                    <path d="M-15 -5 H15 L13 44 H-13 Z" fill={`url(#${armId}-metal)`} stroke="#555d55" strokeWidth="2" />
+                    <path d="M-7 4 V27 M0 4 V27 M7 4 V27" stroke="#3c4743" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M14 4 H31 V-13" fill="none" stroke="#d4d5c2" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                    <rect x="-10" y="37" width="20" height="21" rx="3" fill="#1e292c" stroke="#8c9387" strokeWidth="1.5" />
+                    <path d="M0 56 V65" stroke="#e2dfbd" strokeWidth="3" />
+                    <circle className="tonearm-stylus" cx="0" cy="65" r="2.5" fill="#e9d796" />
+                  </g>
+                </svg>
               </div>
               <div className="turntable-light" aria-hidden="true" />
               <span className="turntable-speed">33⅓</span>
