@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { storagePublishableKey } from "@/lib/supabase";
 import { z } from "zod";
 import {
   bodyJSON,
@@ -75,7 +76,7 @@ export async function POST(request: Request) {
         ".supabase.co",
         ".storage.supabase.co",
       );
-      url.pathname = "/storage/v1/upload/resumable";
+      url.pathname = "/storage/v1/upload/resumable/sign";
       url.search = "";
       return NextResponse.json(
         {
@@ -83,6 +84,7 @@ export async function POST(request: Request) {
           path: media.storage_path,
           bucket,
           token: signed.token,
+          apiKey: storagePublishableKey(),
           endpoint: url.toString(),
           ready: media.status === "ready",
         },

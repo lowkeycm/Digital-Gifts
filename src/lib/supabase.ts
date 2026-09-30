@@ -21,3 +21,11 @@ export function createPrivateServerClient() {
     auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
   });
 }
+
+// The public gateway header is safe for the browser; never return a server key.
+export function storagePublishableKey() {
+  if (!publishableKey.startsWith("sb_publishable_")) {
+    throw new Error("Storage requires a publishable project key.");
+  }
+  return publishableKey;
+}
