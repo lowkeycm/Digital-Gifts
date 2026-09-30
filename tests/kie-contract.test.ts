@@ -134,3 +134,25 @@ test("private-link referrer policy does not block same-origin fetches", async ()
   assert.deepEqual(await bodyJSON(make("same-origin")), {});
   await assert.rejects(bodyJSON(make("cross-site")));
 });
+
+test("launch signup accepts same-origin no-referrer requests and rejects cross-site", async () => {
+  const { POST } = await import("../src/app/api/launch-signups/route");
+  const request = (site: string) =>
+    new Request("https://www.yourgiftsmith.com/api/launch-signups", {
+      method: "POST",
+      headers: {
+        origin: "null",
+        "sec-fetch-site": site,
+        "content-type": "application/json",
+      },
+      // The honeypot exits before storage, so this test never inserts a lead.
+      body: JSON.stringify({
+        email: "qa@example.com",
+        consent: true,
+        source: "/",
+        website: "honeypot",
+      }),
+    });
+  assert.equal((await POST(request("same-origin"))).status, 200);
+  assert.equal((await POST(request("cross-site"))).status, 403);
+});

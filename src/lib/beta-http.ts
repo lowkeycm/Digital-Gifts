@@ -7,18 +7,25 @@ export class ClientError extends Error {
     super(message);
   }
 }
-export async function bodyJSON(request: Request) {
+export function assertSameOrigin(request: Request) {
   const origin = request.headers.get("origin");
   const host = request.headers.get("host") ?? new URL(request.url).host;
   // Private-link pages use no-referrer, which can serialize Origin as "null".
   // Sec-Fetch-Site is a browser-controlled header and still proves same-origin.
-  const sameOriginFetch = request.headers.get("sec-fetch-site") === "same-origin";
+  const sameOriginFetch =
+    request.headers.get("sec-fetch-site") === "same-origin";
   let originMatches = false;
   if (origin && origin !== "null") {
-    try { const parsed = new URL(origin); originMatches = parsed.host === host && /^https?:$/.test(parsed.protocol); } catch {}
+    try {
+      const parsed = new URL(origin);
+      originMatches = parsed.host === host && /^https?:$/.test(parsed.protocol);
+    } catch {}
   }
   if (!originMatches && !((!origin || origin === "null") && sameOriginFetch))
     throw new ClientError("Please submit from the website.", 403);
+}
+export async function bodyJSON(request: Request) {
+  assertSameOrigin(request);
   if (!request.headers.get("content-type")?.includes("application/json"))
     throw new ClientError("Invalid request.", 415);
   const text = await request.text();

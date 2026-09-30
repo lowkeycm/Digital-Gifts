@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-30",
+  "provider": "Real Kie V6 request and callbacks, no fixture",
+  "deployment": "dpl_5JwwJK1a8Cxh2WWV1NbuHrnSqFSV",
+  "commit": "2771ae1b5979a5052a8a38446e472d3d7b3d7d5e",
+  "generationRequests": 2,
+  "originalTracks": 2,
+  "revisedTracks": 2,
+  "checks": [
+    "Live browser intake submission",
+    "Original and revision authentic callbacks persisted",
+    "Four MP3s copied to private Supabase bucket",
+    "Original playback at 112.58 seconds / 234.96 seconds, no media error",
+    "Revision playback at 32.02 seconds / 223.32 seconds, no media error",
+    "Playing revision pauses original",
+    "Download HTTP 200 audio/mpeg, attachment, ID3 header, 5452085 bytes, Supabase host",
+    "Both revised lyric sets use Maple Street and omit Pine Street; originals retain Pine Street",
+    "Feedback saved in live browser",
+    "Studio shows password form without exposing data",
+    "No checkout"
+  ],
+  "limitations": [
+    "Live owner login not attempted because real password is not known; locally verified with synthetic password",
+    "Recipient isolation verified in local browser/PostgreSQL fixture; cloud clipboard produced an invalid URL and browser navigation was blocked, no workaround attempted",
+    "No customer email sent; private links are delivery/recovery",
+    "No assessment of real customer satisfaction; QA story and rating are synthetic"
+  ],
+  "qaEmail": "gift-smith-kie-release-qa@example.com",
+  "excludeQAFromMarketing": true
+}

@@ -11,9 +11,9 @@ export function LaunchSignup({ source }: { source: "/" | "/your-song" }) {
     <section id="launch" className="launch-section" aria-labelledby="launch-heading">
       <div className="shell launch-grid">
         <div>
-          <span className="eyebrow light">Your next gift starts here</span>
-          <h2 id="launch-heading">Have someone<br /><em>in mind?</em></h2>
-          <p>We’ll let you know when you can turn that story into their song.</p>
+          <span className="eyebrow light">Keep in touch</span>
+          <h2 id="launch-heading">Here for<br /><em>the launch?</em></h2>
+          <p>You can try Your Song for free now. Leave your email if you’d also like the official launch announcement.</p>
         </div>
         <div className="launch-form-wrap">
           {status === "success" ? (
