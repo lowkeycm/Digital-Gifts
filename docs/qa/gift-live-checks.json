@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "date": "2026-09-30",
+  "production_commit": "d7e8efec549d6aa8006bdd6c659f361effc84606",
+  "deployment": "dpl_D2TrUgVRosChULUMuzZhY94WrhWo",
+  "domain": "www.yourgiftsmith.com",
+  "synthetic_data_only": true,
+  "checks": {
+    "chosen_revision_visible_on_gift": true,
+    "gift_audio_count": 1,
+    "owner_versions_retained": 4,
+    "live_audio_duration_seconds": 223.32,
+    "play_and_pause": true,
+    "photo_upload_saved_and_visible": true,
+    "photo_bytes": 139012,
+    "reaction_upload_saved": true,
+    "reaction_bytes": 7340032,
+    "video_duration_seconds": 2,
+    "video_ready_state": 4,
+    "video_decode_error": null,
+    "consent_version": "private-media-2026-09-30"
+  },
+  "upload_fix": "Signed resumable uploads require /storage/v1/upload/resumable/sign and a publishable apikey header in addition to the scoped x-signature. Original local fixture missed the route distinction; regression fixture now requires the signed route and headers.",
+  "scope": "Live cloud browser exercised actual Storage transfers and playback. Local browser/PostgreSQL tests cover recipient denial of other tracks/reaction videos, studio authentication, reduced motion and responsive layouts. Real owner studio password is not known; its flow was verified locally with a synthetic password. No new music generation calls."
+}
