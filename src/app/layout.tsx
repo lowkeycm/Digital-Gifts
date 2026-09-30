@@ -4,6 +4,7 @@ import "@fontsource-variable/dm-sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  referrer: "no-referrer",
   title: "The Gift Smith | Gifts made personal",
   description: "Personal gifts made from memories, photos and the details only you know.",
 };

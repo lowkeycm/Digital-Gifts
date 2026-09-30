@@ -116,7 +116,7 @@ export default function Home() {
                     <Arrow />
                   </Link>
                   <p className="small-note">
-                    Launch price: $29. Full song + one revision.
+                    Free during testing. Full song + one revision.
                   </p>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export default function Home() {
             </p>
             <p>That’s the material a personal gift is made of.</p>
             <Link className="quiet-link" href="/create">
-              Explore the story form (demo) <span aria-hidden="true">↗</span>
+              Start your song <span aria-hidden="true">↗</span>
             </Link>
           </div>
           <StoryNotes />
@@ -186,8 +186,8 @@ export default function Home() {
               <br />
               <em>while you were here?</em>
             </h2>
-            <Link href="#launch" className="gift-button">
-              Get notified at launch
+            <Link href="/create" className="gift-button">
+              Start your song
               <Arrow />
             </Link>
             <p>A song for the person you’re thinking of.</p>

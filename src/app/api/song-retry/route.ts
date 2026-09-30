@@ -2,28 +2,25 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/beta-repository";
 import { reserveAndStart } from "@/lib/beta-generation";
-import { kieBrief, KIE_PROMPT_LIMIT } from "@/lib/music/kie";
 import { requestOrigin, bodyJSON, apiError, ClientError } from "@/lib/beta-http";
 export const maxDuration = 60;
 const schema = z.object({
   songId: z.string().uuid(),
   accessToken: z.string().uuid(),
-  notes: z.string().trim().min(5).max(500),
+  kind: z.enum(["original", "revision"]),
 });
 export async function POST(request: Request) {
   try {
     const parsed = schema.safeParse(await bodyJSON(request));
-    if (!parsed.success)
-      throw new ClientError("Tell us what to change in 5 to 500 characters.");
+    if (!parsed.success) throw new ClientError("Invalid song request.");
     const p = parsed.data,
       session = await requireSession(p.songId, p.accessToken);
-    if (kieBrief(session.raw_answers, p.notes).length > KIE_PROMPT_LIMIT)
-      throw new ClientError("Please shorten your revision notes.");
     await reserveAndStart(
       session,
-      "revision",
+      p.kind,
       requestOrigin(request),
-      p.notes,
+      "",
+      true,
     );
     return NextResponse.json({ ok: true });
   } catch (e) {

@@ -6,10 +6,12 @@ export function RevisionForm({
   songId,
   accessToken,
   alreadyRequested = false,
+  onSubmitted,
 }: {
   songId: string;
   accessToken: string;
   alreadyRequested?: boolean;
+  onSubmitted?: () => void;
 }) {
   const [type, setType] = useState("Fix a detail");
   const [notes, setNotes] = useState("");
@@ -25,12 +27,18 @@ export function RevisionForm({
       const res = await fetch("/api/revisions", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ songId, accessToken, type, notes }),
+        body: JSON.stringify({
+          songId,
+          accessToken,
+          type,
+          notes: `${type}: ${notes}`,
+        }),
       });
       const body = await res.json();
       if (!res.ok)
         throw new Error(body.error || "We could not save that revision.");
       setSent(true);
+      onSubmitted?.();
     } catch (err) {
       setError(
         err instanceof Error
@@ -45,9 +53,11 @@ export function RevisionForm({
   if (sent) {
     return (
       <div className="card revision-success">
-        <span className="status">REVISION SAVED</span>
-        <h3>We have your correction.</h3>
-        <p>Your correction is saved. No audio is generated in this demo.</p>
+        <span className="status">YOUR INCLUDED REVISION</span>
+        <h3>Your new rendition is on this page.</h3>
+        <p>
+          Follow its progress above. Your original song stays available too.
+        </p>
       </div>
     );
   }
@@ -56,8 +66,11 @@ export function RevisionForm({
     <form onSubmit={submit} className="card revision-card">
       <div>
         <span className="eyebrow">One revision included</span>
-        <h3>One thing off? Fix that thing.</h3>
-        <p>Tell us what missed. You do not need to rewrite the whole song.</p>
+        <h3>Want to change something?</h3>
+        <p>
+          Tell us what missed. We’ll make a new rendition from your story and
+          these notes. The melody and delivery may change too.
+        </p>
       </div>
       <div className="field">
         <label htmlFor="revision-type">What needs changing?</label>
@@ -78,6 +91,7 @@ export function RevisionForm({
         <label htmlFor="revision-notes">What should we change?</label>
         <textarea
           id="revision-notes"
+          maxLength={450}
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="It says we met in 2018, but we met in 2017..."
@@ -89,7 +103,7 @@ export function RevisionForm({
         </p>
       ) : null}
       <button className="pill primary" disabled={busy || notes.length < 5}>
-        {busy ? "Saving..." : "Request my revision"}
+        {busy ? "Starting your revision..." : "Request my revision"}
       </button>
     </form>
   );

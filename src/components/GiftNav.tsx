@@ -12,14 +12,14 @@ export function GiftNav({ product = false }: { product?: boolean }) {
         { href: "/your-song#questions", name: "Questions" },
       ]
     : [
-        { href: "/#gifts", name: "The collection" },
+        { href: "/your-song", name: "Your Song" },
         { href: "/#how", name: "Made personal" },
         { href: "/#samples", name: "Hear a sample" },
       ];
   return (
     <>
       <div className="preview-banner">
-        Your Song is coming soon. <span>·</span> Listen to the samples and join the launch list.
+        Your Song is in testing. <span>·</span> No payment required.
       </div>
       <header id="top" className="gift-header">
         <div className="shell gift-nav">
@@ -34,9 +34,9 @@ export function GiftNav({ product = false }: { product?: boolean }) {
           <div className="nav-actions">
             <Link
               className="gift-button nav-button"
-              href={product ? "/your-song#launch" : "/#launch"}
+              href="/create"
             >
-              Get launch updates
+              Start your song
               <Arrow />
             </Link>
             <button
@@ -65,9 +65,9 @@ export function GiftNav({ product = false }: { product?: boolean }) {
             ))}
             <Link
               onClick={() => setOpen(false)}
-              href={product ? "/" : "/your-song"}
+              href={product ? "/" : "/#launch"}
             >
-              {product ? "All gifts" : "Your Song"}
+              {product ? "All gifts" : "Launch updates"}
               <span aria-hidden="true">↗</span>
             </Link>
           </nav>

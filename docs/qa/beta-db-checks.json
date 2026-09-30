@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "tests": [
+    "schema applies in PostgreSQL",
+    "duplicate intake returns same session",
+    "duplicate job returns same reservation",
+    "revision requires completed original",
+    "failed job retries create a new attempt",
+    "completed or pending revision cannot be duplicated",
+    "sync lease excludes concurrent workers",
+    "per-email daily limit enforced",
+    "anonymous table and RPC access denied"
+  ],
+  "scope": "Local PostgreSQL (PGlite); production schema/privileges separately inspected through Supabase connector. No customer rows modified."
+}
