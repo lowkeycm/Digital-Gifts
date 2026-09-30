@@ -87,11 +87,11 @@ export function GiftUpload({
               // Never log signed URLs, request headers or upload tokens.
               const status = "originalResponse" in failure ? failure.originalResponse?.getStatus() ?? 0 : 0;
               const stage = "originalRequest" in failure && failure.originalRequest ? "transfer" : "file-read";
-              console.warn("gift_upload_failed", {
+              console.warn("gift_upload_failed " + JSON.stringify({
                 status,
                 stage,
                 reason: failure.message.split(", originated from request")[0].replace(/https?:\/\/\S+/g, "[redacted]").slice(0, 250),
-              });
+              }));
               reject(new Error("Upload interrupted. Keep this page open and try again."));
             },
             onSuccess: () => resolve(),
