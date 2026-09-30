@@ -6,6 +6,18 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When / who:** 2026-09-29 evening New York / Clay / ChatGPT Work Mode.
+- **Request:** Connect Kie for real test users, full operation without Stripe/paywall; collect feedback/reaction videos. Existing publication authorization continues. Optional voice-cloning add-on is not in this core song test.
+- **Branch:** clay/kie-test-funnel, based on main 54430e459286502293f58bb405f29dae9518c653.
+- **Changed:** Kie V6 adapter, atomic free-test session/job reservation, completion callbacks with per-job secret, status polling fallback, private durable MP3 storage, full playback/download, one new-rendition revision preserving original, separate read-only recipient token, optional feedback/video link, password-protected owner studio. Restored Start your song navigation and product CTAs. No payment collection or paid/demo order mutation. Raw customer wording preserved with visible provider prompt budget.
+- **Infrastructure:** Verified Vercel digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr in team_K0quIbtPFw7RIl9M7bG54yTE, Supabase Digital Enterprise / Digital Gifts hyjmlkowbhftisynztui. Additive kie_test_funnel migration applied; 4 new beta tables RLS/private, service-role-only invoker RPCs and private song-beta-audio bucket verified. Existing legacy demo and launch-interest data unchanged. Advisor findings on new tables are expected no-policy information because backend-only access; existing legacy anonymous RPC warnings remain.
+- **Credential handoff:** Clay has a Kie API key, not supplied here. Asked him to add KIE_API_KEY, SUPABASE_SECRET_KEY, and TEST_STUDIO_PASSWORD (16+ characters) in exact project's Vercel Production/Preview settings. Keys never printed or committed. Generation stays disabled until Kie and storage credentials exist; owner studio requires its password.
+- **Validation:** Type/lint/build, 5 provider/origin contract tests, PostgreSQL reservation/security tests, and full rendered browser flow passed. Browser verified intake, playback/download, callback/storage, original-preserving revision, feedback, recipient isolation, owner login/readback and mobile layouts at 320/390/768/1440 with no runtime errors. Screens inspected. Browser provider/transport were explicit local fixtures; see docs/qa/beta-* for evidence. Live provider generation has not been verified without configured credentials. Sources, limits, known recovery boundaries and setup are in docs/KIE-TEST-RELEASE.md.
+- **Pending release:** Publish through PR after final rendered QA; report exact deployment and live readiness without calling a simulated provider test a real generation.
+- **Limitations:** No sending email, payments, voice cloning, or automatic reaction-publication consent. Private URL is the test delivery/recovery mechanism. Uncertain provider submissions are never automatically duplicated. Failed callbacks can be reconciled by reopening song or owner studio; no scheduled sweep. Before inviting testers, run one real Kie generation -> stored download -> revision on the deployed environment.
+
+## Prior Session (favicon)
+
 - **When / who:** 2026-09-28 after midnight New York / Clay / ChatGPT Work Mode
 - **Request:** Use the gift part of the logo as the favicon.
 - **Branch:** `clay/gift-favicon` from main `5bf5f2d`.

@@ -18,11 +18,11 @@ const questions = [
   ],
   [
     "What will I get, and can I download it?",
-    "The planned $29 offer includes a full personalized song, a private song page you can share with the recipient, and an MP3 download to keep. One revision is included. Your Song is a digital gift; a frame is not included.",
+    "During testing, you can create a full song, download the MP3 and share a listening page with the recipient for free. One new rendition is included if you want a revision. A frame is not included.",
   ],
   [
     "How quickly will my song be ready?",
-    "We’re testing delivery times before setting a turnaround. The expected wait will be shown before you place an order. If your gift is for a specific date, wait for that timing before making plans around it.",
+    "Generation can take several minutes. Your song page shows its progress and keeps your result so you can return using your private link. We are measuring turnaround during this test.",
   ],
   [
     "Is the music made with AI?",
@@ -34,11 +34,11 @@ const questions = [
   ],
   [
     "What if a detail needs changing?",
-    "The $29 launch offer includes one revision for a missed detail or correction. Your original story stays saved, so you do not have to begin again.",
+    "Your free test includes one new rendition using your original story and the changes you request. It may change the melody and delivery too. The original stays available.",
   ],
   [
-    "Can I order a song today?",
-    "Not yet. The samples are real songs you can listen to now. You can also explore the story form and gift-page demo, but it does not generate a song or collect payment. Join the launch list and we’ll email you when ordering opens.",
+    "Can I try it today?",
+    "We are opening a free test before the paid launch. Use Start your song to check availability. Testing has daily limits, and no card is required. Save your private song link so you can return; email delivery is not part of this test.",
   ],
 ];
 export default function YourSongPage() {
@@ -68,12 +68,12 @@ export default function YourSongPage() {
               A personalized song made from your memories, your inside jokes,
               and the things you’ve been meaning to say.
             </p>
-            <Link className="gift-button cream-button" href="#samples">
-              Hear a sample
+            <Link className="gift-button cream-button" href="/create">
+              Start your song
               <Arrow />
             </Link>
             <span className="song-price-note">
-              Launch price $29 · Full song + one revision
+              Free during testing · Full song + one revision
             </span>
           </div>
         </section>
@@ -103,8 +103,8 @@ export default function YourSongPage() {
               <span>02 / The first listen</span>
               <h3>Hear yourself in it.</h3>
               <p>
-                The song experience is designed around a personal preview before
-                you decide to unlock the full version.
+                Listen to your full song and choose the version that feels right.
+                No payment is needed during testing.
               </p>
             </article>
             <article>
@@ -142,7 +142,7 @@ export default function YourSongPage() {
                 <li>The words you don’t say often enough.</li>
               </ul>
               <Link href="/create" className="quiet-link">
-                Explore the story form (demo) <span aria-hidden="true">↗</span>
+                Start your song <span aria-hidden="true">↗</span>
               </Link>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function YourSongPage() {
               <span>Full song + one revision</span>
             </div>
             <div className="offer-price">
-              $29<span>launch price</span>
+              Free<span>during testing</span>
             </div>
             <ul>
               <li>A full personalized digital song</li>
@@ -174,8 +174,8 @@ export default function YourSongPage() {
               <li>A private song page and MP3 download</li>
               <li>One revision for a missed detail</li>
             </ul>
-            <Link href="#launch" className="gift-button">
-              Get notified at launch
+            <Link href="/create" className="gift-button">
+              Start your song
               <Arrow />
             </Link>
           </div>
@@ -210,8 +210,8 @@ export default function YourSongPage() {
               <br />
               <em>good place to start.</em>
             </h2>
-            <Link href="#launch" className="gift-button">
-              Get notified at launch
+            <Link href="/create" className="gift-button">
+              Start your song
               <Arrow />
             </Link>
           </div>

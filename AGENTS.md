@@ -115,6 +115,9 @@ Record the operator in the Last Session block of `HANDOFF.md`.
 | `MUSIC_PROVIDER` | Vercel project env / default `mock` | `src/lib/music/index.ts` |
 | `DEMO_CHECKOUT` | Vercel project env / default demo unless explicitly set to `false` | `src/app/api/checkout/route.ts` |
 | `SUNO_API_KEY` | Future Vercel project secret env; not configured | future official Suno adapter |
+| `KIE_API_KEY` | Exact Vercel digital-gifts project server environment | Kie V6 free-test generation |
+| `SUPABASE_SECRET_KEY` | Exact Vercel digital-gifts project server environment; obtain only from Digital Gifts API keys | Private beta tables/audio storage; legacy SUPABASE_SERVICE_ROLE_KEY also accepted |
+| `TEST_STUDIO_PASSWORD` | Exact Vercel digital-gifts project server environment | Owner-only /studio, minimum 16 characters |
 | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID` | Future Vercel project secret env; not configured | future Stripe integration |
 
 The Supabase publishable key is intentionally public and low privilege. Secret/service-role credentials are not used by the current buyer flow.
@@ -255,3 +258,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+### 2.16 Free test integration (2026-09-29)
+
+Clay selected Kie for a no-paywall test release. New backend-owned resources: song_beta_sessions, song_beta_jobs, song_beta_tracks, song_beta_feedback; reserve_beta_song, reserve_beta_job, claim_beta_sync; private song-beta-audio bucket. Only backend secrets may access them. Never expose service keys to browsers or revive demo-paid mutations for free testers. See docs/KIE-TEST-RELEASE.md for current workflow, limits and activation checks. Keep original recordings when revisions create a new rendition. No silent raw-story truncation or AI rewriting. A provider timeout may have incurred a charge: do not auto-submit again.

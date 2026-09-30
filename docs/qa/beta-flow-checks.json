@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "provider": "Explicit local Kie fixture; no live Kie requests or credits used",
+  "database": "Local PostgreSQL (PGlite) behind a minimal Supabase transport fixture",
+  "checks": [
+    "actual intake submission and redirect",
+    "callback completion and private MP3 storage",
+    "audio plays and downloads",
+    "real revision request preserves raw story",
+    "original and revised audio remain available",
+    "feedback persists with no publication permission",
+    "gift token rejected for owner API",
+    "read-only recipient page",
+    "studio sign-in and feedback readback",
+    "foreign-origin mutation rejected",
+    "home/product/create no overflow at 320/390/768/1440",
+    "restored product and header funnel links",
+    "no browser runtime errors"
+  ],
+  "generationCalls": 2
+}

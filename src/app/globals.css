@@ -2933,3 +2933,22 @@ textarea {
   .keepsake-teaser { display: block; padding: 28px 0; }
   .keepsake-teaser p { margin-top: 12px; line-height: 1.4; }
 }
+
+/* Free-test song studio: established ivory, ink and record-sleeve vocabulary. */
+.story-budget { margin: 1rem 0; }
+.beta-consent { display:flex; align-items:flex-start; gap:.75rem; font-size:.9rem; line-height:1.6; margin:1.25rem 0; }
+.beta-consent input { width:20px; height:20px; flex:0 0 20px; margin-top:3px; }
+.beta-honeypot { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.studio-tracks { display:grid; gap:1.5rem; margin:2rem 0; }
+.studio-track { display:grid; grid-template-columns:160px minmax(0,1fr); gap:2rem; padding:2rem; background:#fffdf7; border:1px solid #d5cbb7; box-shadow:0 16px 38px #2330360c; border-radius:8px; }
+.studio-track h2 { font-size:2rem; margin:.4rem 0 1rem; overflow-wrap:anywhere; }
+.studio-track audio { display:block; width:100%; margin-bottom:1rem; }
+.studio-track details { margin-top:1rem; }
+.studio-track summary { cursor:pointer; padding:.75rem 0; }
+.studio-record { align-self:start; aspect-ratio:1; border-radius:50%; display:grid; place-items:center; background:repeating-radial-gradient(circle,#172736 0 2px,#223645 3px 4px); box-shadow:4px 8px 16px #10233335; }
+.studio-record span { display:grid; place-items:center; width:42%; height:42%; border-radius:50%; background:#ddbd72; color:#172736; font-family:var(--font-display),serif; font-size:2.5rem; }
+.song-lyrics { white-space:pre-wrap; font-size:1rem; line-height:1.8; }
+.generation-status,.beta-feedback { margin:2rem 0; }
+.generation-status h2,.beta-feedback h2 { font-size:2.2rem; margin:.75rem 0; }
+.delivery-heading { flex-wrap:wrap; gap:.75rem; }
+@media(max-width:600px) { .studio-track { grid-template-columns:1fr; padding:1.25rem; gap:1rem; } .studio-record { width:100px; } .studio-track h2 { font-size:1.8rem; } }
