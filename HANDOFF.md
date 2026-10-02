@@ -4,7 +4,16 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session
+## Last Session (distinct parent hero)
+
+- **When / who:** 2026-10-02 / Clay / ChatGPT Work Mode, same-day continuation.
+- **Request:** Give The Gift Smith a different hero image from Your Song, with the same feeling.
+- **Branch:** clay/distinct-gift-smith-hero from cd43f50e7effc5d71b7ac605f65e7aeee007f798. Existing merge/publication authorization continues.
+- **Changed:** New generated mother/daughter personal-note scene on homepage only, optimized 157,620-byte WebP with descriptive alt. Desktop crop preserves both faces; mobile retains its existing crop. Your Song keeps first-listen.webp. No backend, provider, payment, secrets or data changes.
+- **Validation:** Lint/type/build pass. Production-build Chromium at 1440x900 and 390x844: image decodes, no overflow/runtime errors, Discover Your Song link works and product hero stays unchanged. Desktop and mobile screenshots visually inspected in docs/qa/gift-smith-hero-*. Hub completion evidence command passes; scoped rendered review in website brief. No new full-site research claim.
+- **Release target:** Verified digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr, Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE, www.yourgiftsmith.com. This commit is prepared for automatic preview, green-check merge and production verification; final release result is in its GitHub PR.
+
+## Prior Session
 
 - **When / who:** 2026-10-02 UTC (October 1 evening, New York) / Clay / ChatGPT Work Mode.
 - **Request:** Your Song must lead its product funnel while The Gift Smith remains the multi-product storefront; sender preview needs a clear action to share the correct recipient link.

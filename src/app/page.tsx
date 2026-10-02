@@ -47,8 +47,8 @@ export default function Home() {
           <div className="hero-photo-stage">
             <div className="hero-photo">
               <Image
-                src="/images/first-listen.webp"
-                alt="A woman listening to music beside her smiling partner in a sunlit home"
+                src="/images/personal-gift-moment.webp"
+                alt="A daughter beside her smiling mother, who holds a personal note close to her heart"
                 fill
                 preload
                 sizes="(max-width: 760px) 100vw, 57vw"

@@ -1324,7 +1324,7 @@ summary:focus-visible {
 }
 .hero-photo img {
   object-fit: cover;
-  object-position: 51% center;
+  object-position: 51% 20%;
   animation: photo-arrive 1.2s ease-out both;
 }
 .photo-note {

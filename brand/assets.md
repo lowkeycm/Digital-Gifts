@@ -24,3 +24,5 @@
 - 2026-09-28 — `src/app/favicon.ico` and `src/app/icon.png` — isolated gift-and-music symbol from the supplied logo, transparent browser icons without lettering.
 
 - 2026-10-02 — `src/components/YourSongBrand.tsx`, product funnel and `docs/qa/your-song-*` — owner-directed Your Song primary identity, parent footer connection, private sender gift preview and recipient-only sharing. Success measure: sender can select, preview and share the chosen gift without exposing editing access. No conversion data claimed.
+
+- 2026-10-02: `public/images/personal-gift-moment.webp`: generated illustrative mother/daughter personal-note scene, parent homepage only. Same warm editorial direction; Your Song retains first-listen.webp. Prompt and rendered review in docs/website-brief.md.

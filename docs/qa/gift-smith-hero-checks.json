@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "newHeroLoaded": true,
+      "noOverflow": true,
+      "discoverLinkWorks": true,
+      "yourSongHeroUnchanged": true
+    },
+    {
+      "width": 390,
+      "newHeroLoaded": true,
+      "noOverflow": true,
+      "discoverLinkWorks": true,
+      "yourSongHeroUnchanged": true
+    }
+  ],
+  "pageErrors": []
+}
