@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { YourSongFooter } from "@/components/YourSongBrand";
 import { Nav } from "@/components/Nav";
-import { Arrow, GiftFooter } from "@/components/GiftBrand";
+import { Arrow } from "@/components/GiftBrand";
 import { SongSamples } from "@/components/SongSamples";
 import { LaunchSignup } from "@/components/LaunchSignup";
 
@@ -56,7 +57,7 @@ export default function YourSongPage() {
           />
           <div className="song-hero-shade" />
           <div className="shell song-hero-content">
-            <span className="eyebrow light">Your Song / by The Gift Smith</span>
+            <span className="eyebrow light">Your Song / Made from your story</span>
             <h1>
               They’ve heard
               <br />
@@ -217,7 +218,7 @@ export default function YourSongPage() {
           </div>
         </section>
       </main>
-      <GiftFooter />
+      <YourSongFooter />
     </>
   );
 }

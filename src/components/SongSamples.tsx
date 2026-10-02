@@ -139,7 +139,7 @@ export function SongSamples() {
               <span className="album-sleeve">
                 <Image src={`/images/album-${track.cover}.webp`} alt="" width={800} height={800} sizes="(max-width: 760px) 260px, 340px" draggable={false} />
                 <span className="album-shade" />
-                <span className="album-edition">THE GIFT SMITH <span>0{index + 1}</span></span>
+                <span className="album-edition">YOUR SONG <span>0{index + 1}</span></span>
                 <span className="album-cover-copy"><span>{track.relationship}</span><strong>{track.title}</strong></span>
                 <span className="album-corner" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="currentColor">

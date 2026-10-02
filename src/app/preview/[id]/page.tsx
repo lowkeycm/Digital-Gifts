@@ -1,3 +1,4 @@
+import { YourSongFooter } from "@/components/YourSongBrand";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -7,7 +8,7 @@ import { Nav } from "@/components/Nav";
 import { getSongSession } from "@/lib/song-repository";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Your preview | Your Song", robots: { index: false, follow: false } };
 
 export default async function PreviewPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ key?: string }> }) {
   const { id } = await params;
@@ -39,6 +40,6 @@ export default async function PreviewPage({ params, searchParams }: { params: Pr
           <Link className="text-link" href="/create">Change the story instead</Link>
         </section>
       </div>
-    </main></>
+    </main><YourSongFooter/></>
   );
 }

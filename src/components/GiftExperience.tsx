@@ -1,8 +1,9 @@
 "use client";
 import { useId, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { giftTheme } from "@/lib/gift-themes";
-import { GiftBrand } from "./GiftBrand";
+import { YourSongBrand } from "./YourSongBrand";
 export function GiftExperience({
   recipient,
   occasion,
@@ -52,7 +53,7 @@ export function GiftExperience({
         </svg>
       </div>
       <header className="gift-world-header">
-        <GiftBrand />
+        <YourSongBrand />
         <span>A gift with you in it.</span>
       </header>
       <main id="main-content" className="gift-world-main">
@@ -85,7 +86,7 @@ export function GiftExperience({
                   <div className="sleeve-orbit" />
                 </div>
                 <div className="sleeve-caption">
-                  <span>THE GIFT SMITH</span>
+                  <span>YOUR SONG</span>
                   <strong>{recipient}</strong>
                   <span>ONE OF A KIND</span>
                 </div>
@@ -94,7 +95,7 @@ export function GiftExperience({
             <div className="turntable">
               <div className="turntable-plinth" />
               <span className="turntable-maker">
-                THE GIFT SMITH <small>STORY PLAYER / 01</small>
+                YOUR SONG <small>STORY PLAYER / 01</small>
               </span>
               <button
                 className="gift-vinyl-button"
@@ -202,9 +203,9 @@ export function GiftExperience({
         )}
         <footer className="gift-world-footer">
           <span>A real story. A very personal gift.</span>
-          <a href="https://www.yourgiftsmith.com/your-song">
-            Made with The Gift Smith
-          </a>
+          <Link href="/">
+            Your Song by The Gift Smith
+          </Link>
         </footer>
       </main>
     </div>

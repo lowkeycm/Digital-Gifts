@@ -6,6 +6,17 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 ## Last Session
 
+- **When / who:** 2026-10-02 UTC (October 1 evening, New York) / Clay / ChatGPT Work Mode.
+- **Request:** Your Song must lead its product funnel while The Gift Smith remains the multi-product storefront; sender preview needs a clear action to share the correct recipient link.
+- **Branch:** clay/your-song-brand-sharing from main eff16506d3269419d90fe917f874c15af91adb01. Existing publishing authorization continues for requested site updates.
+- **Changed:** Shared Your Song wordmark in product header, intake, owner pages and gift player; product sample-cover labels and private-page titles updated. Quiet parent footer links home. Added owner-authenticated /song/[id]/preview with actual selected gift, back-to-editor link and Send your gift toolbar. Studio Preview & send opens this route. Shared native-share/copy/selectable-link/email-draft controls only use the recipient URL. No automatic sending or delivery claim. Recipient page has no editing/share toolbar. All versions remain available to the owner.
+- **Validation:** Lint, TypeScript, production build and actual production-build Chromium desktop/mobile pass. Checks cover studio selection -> preview -> recipient, one chosen player, full photo containment, play/pause, native-share payload/cancel via controlled browser stubs, clipboard failure fallback and email draft recipient URL. Recipient/invalid tokens receive 404 on owner preview; missing selection returns to editor; unselected recipient audio is denied. No owner key in recipient page. No overflow at 320/768. Evidence docs/qa/your-song-{brand,preview,recipient}-*.jpg and your-song-sharing-checks.json. Local Supabase REST/storage fixture and supplied example audio, no paid generation calls. Native OS delivery is not asserted.
+- **Guidance:** Marketing-Hub 05fe2d3421819644678754eea9dd4ebfe442d3a3 website-system and references loaded via GitHub; shared profiles resolved manually. Scoped maintenance/utility change reuses established research and visual design, with three-gate rendered review. No full-site redesign or new-gallery-research claim. Next local docs and React review applied.
+- **Release path:** Verified exact Vercel digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Publish by PR after green preview check and verify live public product page plus existing synthetic owner -> preview -> recipient flow. No schema, provider, environment or payment changes. GitHub PR/deployment records are authoritative for publication status.
+- **Runtime notes:** Scratch was pruned; repository recovered from GitHub. Local Next start needs explicit -H 127.0.0.1 because networkInterfaces is unavailable. Browser QA uses packaged Chromium; fixture is not production data. Preview environment may lack beta credentials; real private flow acceptance belongs on authorized production test session.
+
+## Prior Session (tonearm and full photo)
+
 - **When / who:** 2026-09-30 / Clay / ChatGPT Work Mode, same-day continuation.
 - **Request:** Fix the detached-looking needle and arm disappearing beneath the spinning record. Follow-up: show the whole uploaded photo instead of covering it with the player.
 - **Branch:** clay/fix-turntable-tonearm from main e6dde00a4512d454fb8d30ebe0a18d03fdc5e378. Continuing existing publication authorization.

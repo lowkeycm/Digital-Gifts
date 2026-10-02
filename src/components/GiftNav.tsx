@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { GiftBrand, Arrow } from "./GiftBrand";
+import { YourSongBrand } from "./YourSongBrand";
 
 export function GiftNav({ product = false }: { product?: boolean }) {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ export function GiftNav({ product = false }: { product?: boolean }) {
       </div>
       <header id="top" className="gift-header">
         <div className="shell gift-nav">
-          <GiftBrand />
+          {product ? <YourSongBrand /> : <GiftBrand />}
           <nav className="gift-desktop-nav" aria-label="Main navigation">
             {links.map((l) => (
               <Link href={l.href} key={l.href}>
