@@ -4,7 +4,16 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (distinct parent hero)
+## Last Session (parent brand positioning)
+
+- **When / who:** 2026-10-02 UTC / October 1 evening New York / Clay / ChatGPT Work Mode.
+- **Request:** Make the homepage explain The Gift Smith as the personal-gift parent brand, then introduce Your Song as its first product.
+- **Branch:** clay/parent-brand-positioning from d1205654813e63fb12e7b4927443db6e4a9ff304. Continuing existing merge/publication approval.
+- **Changed:** Brand-led hero, Meet our first gift anchor, parent navigation/footer, explicit Our first gift / Your Song by The Gift Smith product introduction, product-attributed sample eyebrow and revised brand-story/closing links. Product funnel header, intake, audio, sharing and consent remain unchanged. No invented available catalog.
+- **Validation:** Lint/type/build pass. Actual production-build Chromium desktop/mobile screenshots inspected; anchor navigation, mobile menu close, full-song playback, product navigation, unchanged product header/image/sample copy, no overflow/page errors verified at 1440/390. Evidence docs/qa/gift-smith-positioning-*. Hub complete evidence gate passes; scoped visual/conversion/technical review in website brief. React review: primitive copy prop only, no new effects, fetching or dependencies.
+- **Release:** Target verified digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Prepared for checked PR merge and live acceptance; final release record in this change's PR. Previous hero change PR25 is merged at d120565, production dpl_8izWBF8NEh3e2BCTuDtSZtr89NFb READY and visually verified.
+
+## Prior Session (distinct parent hero)
 
 - **When / who:** 2026-10-02 / Clay / ChatGPT Work Mode, same-day continuation.
 - **Request:** Give The Gift Smith a different hero image from Your Song, with the same feeling.

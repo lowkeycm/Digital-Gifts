@@ -9,7 +9,7 @@ const tracks = [
   { title: "Traci, My Rock", relationship: "Husband to Wife", cover: "husband-to-wife", file: "traci-my-rock", duration: "4:30" },
 ];
 
-export function SongSamples() {
+export function SongSamples({ eyebrow = "Stories on repeat" }: { eyebrow?: string }) {
   const rail = useRef<HTMLDivElement>(null);
   const cards = useRef<(HTMLButtonElement | null)[]>([]);
   const players = useRef<(HTMLAudioElement | null)[]>([]);
@@ -85,7 +85,7 @@ export function SongSamples() {
     <section id="samples" className="section shell sample-section" aria-labelledby="samples-heading">
       <div className="sample-intro">
         <div>
-          <span className="eyebrow">Stories on repeat</span>
+          <span className="eyebrow">{eyebrow}</span>
           <h2 id="samples-heading">Some things sound<br /><em>better in a song.</em></h2>
         </div>
         <div className="sample-intro-copy">

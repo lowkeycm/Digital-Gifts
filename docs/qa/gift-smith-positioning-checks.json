@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "parentHeroLoaded": true,
+      "noOverflow": true,
+      "parentAnchorsWork": true,
+      "productLinkWorks": true,
+      "samplesPlay": true,
+      "yourSongFunnelUnchanged": true
+    },
+    {
+      "width": 390,
+      "parentHeroLoaded": true,
+      "noOverflow": true,
+      "parentAnchorsWork": true,
+      "productLinkWorks": true,
+      "samplesPlay": true,
+      "yourSongFunnelUnchanged": true
+    }
+  ],
+  "pageErrors": []
+}
