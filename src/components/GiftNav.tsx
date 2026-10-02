@@ -13,14 +13,14 @@ export function GiftNav({ product = false }: { product?: boolean }) {
         { href: "/your-song#questions", name: "Questions" },
       ]
     : [
-        { href: "/your-song", name: "Your Song" },
+        { href: "/#gifts", name: "Our first gift" },
         { href: "/#how", name: "Made personal" },
-        { href: "/#samples", name: "Hear a sample" },
+        { href: "/your-song", name: "Your Song" },
       ];
   return (
     <>
       <div className="preview-banner">
-        Your Song is in testing. <span>·</span> No payment required.
+        {product ? <>Your Song is in testing. <span>·</span> No payment required.</> : <>Our first gift, Your Song, is free to try.</>}
       </div>
       <header id="top" className="gift-header">
         <div className="shell gift-nav">
@@ -35,9 +35,9 @@ export function GiftNav({ product = false }: { product?: boolean }) {
           <div className="nav-actions">
             <Link
               className="gift-button nav-button"
-              href="/create"
+              href={product ? "/create" : "/#gifts"}
             >
-              Start your song
+              {product ? "Start your song" : "Explore gifts"}
               <Arrow />
             </Link>
             <button

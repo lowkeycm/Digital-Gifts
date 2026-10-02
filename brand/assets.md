@@ -26,3 +26,5 @@
 - 2026-10-02 — `src/components/YourSongBrand.tsx`, product funnel and `docs/qa/your-song-*` — owner-directed Your Song primary identity, parent footer connection, private sender gift preview and recipient-only sharing. Success measure: sender can select, preview and share the chosen gift without exposing editing access. No conversion data claimed.
 
 - 2026-10-02: `public/images/personal-gift-moment.webp`: generated illustrative mother/daughter personal-note scene, parent homepage only. Same warm editorial direction; Your Song retains first-listen.webp. Prompt and rendered review in docs/website-brief.md.
+
+- 2026-10-02: Homepage copy/navigation now express owner-confirmed hierarchy: The Gift Smith makes personal gifts; Your Song is the first product. Brand/product routing and rendered review in docs/website-brief.md and docs/qa/gift-smith-positioning-*.

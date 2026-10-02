@@ -49,9 +49,9 @@ export function GiftFooter() {
             For the feeling.
           </p>
           <nav aria-label="Footer">
+            <Link href="/#gifts">Our first gift</Link>
+            <Link href="/#how">Made personal</Link>
             <Link href="/your-song">Your Song</Link>
-            <Link href="/create">Start your song</Link>
-            <Link href="/your-song#samples">Hear a sample</Link>
             <Link href="/your-song#questions">Questions & answers</Link>
           </nav>
         </div>

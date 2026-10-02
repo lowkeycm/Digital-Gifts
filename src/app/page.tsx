@@ -21,16 +21,16 @@ export default function Home() {
               <em>everything.</em>
             </h1>
             <p>
-              A song about your story. A gift that
-              says, “I know you,” in a way nothing off a shelf can.
+              The Gift Smith turns your memories, inside jokes and the details
+              only you know into personal gifts that say, “I know you.”
             </p>
             <div className="hero-actions">
-              <Link href="/your-song" className="gift-button">
-                Discover Your Song
+              <a href="#gifts" className="gift-button">
+                Meet our first gift
                 <Arrow />
-              </Link>
-              <a href="#samples" className="quiet-link">
-                Hear a sample <span aria-hidden="true">↓</span>
+              </a>
+              <a href="#how" className="quiet-link">
+                Made personal <span aria-hidden="true">↓</span>
               </a>
             </div>
             <div className="hero-footnote">
@@ -82,16 +82,16 @@ export default function Home() {
         <section id="gifts" className="collection-section">
           <div className="shell">
             <div className="section-label">
-              <span>01 / The collection</span>
+              <span>01 / Our first gift</span>
               <span>Made from what matters</span>
             </div>
             <div className="song-feature">
               <div className="song-feature-title">
-                <span className="eyebrow light">Meet our first gift</span>
+                <span className="eyebrow light">Your Song by The Gift Smith</span>
                 <h2>
-                  Your story.
+                  Your
                   <br />
-                  <em>Their song.</em>
+                  <em>Song.</em>
                 </h2>
                 <div className="sound-line" aria-hidden="true">
                   {Array.from({ length: 33 }, (_, i) => (
@@ -103,9 +103,9 @@ export default function Home() {
                 </div>
                 <div className="song-feature-copy">
                   <p>
-                    The first date. The terrible dancing. The person who stayed.
-                    Your Song turns the details only you know into a
-                    personalized song for someone you love.
+                    Our first gift gives your memories a melody. Your Song turns
+                    the first date, the terrible dancing and the person who
+                    stayed into a personalized song they can keep.
                   </p>
                   <div className="feature-details">
                     <span>Digital song</span>
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <SongSamples />
+        <SongSamples eyebrow="Your Song / Hear what’s possible" />
         <LaunchSignup source="/" />
         <section id="how" className="section shell story-section">
           <div className="story-intro">
@@ -138,10 +138,10 @@ export default function Home() {
               yours. The nickname, the late-night drive, the joke that stopped
               being funny to everyone else.
             </p>
-            <p>That’s the material a personal gift is made of.</p>
-            <Link className="quiet-link" href="/create">
-              Start your song <span aria-hidden="true">↗</span>
-            </Link>
+            <p>At The Gift Smith, those details are where every gift begins.</p>
+            <a className="quiet-link" href="#gifts">
+              Find your starting point <span aria-hidden="true">↗</span>
+            </a>
           </div>
           <StoryNotes />
         </section>
@@ -186,11 +186,11 @@ export default function Home() {
               <br />
               <em>while you were here?</em>
             </h2>
-            <Link href="/create" className="gift-button">
-              Start your song
+            <Link href="/your-song" className="gift-button">
+              Discover Your Song
               <Arrow />
             </Link>
-            <p>A song for the person you’re thinking of.</p>
+            <p>Start with Your Song, our first way to give your story.</p>
           </div>
         </section>
       </main>
