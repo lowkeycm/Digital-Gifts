@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { sessionFor, db } from "@/lib/beta-repository";
 import { betaReady } from "@/lib/beta-config";
 import { GiftExperience } from "@/components/GiftExperience";
-import { GiftBrand } from "@/components/GiftBrand";
+import { YourSongBrand } from "@/components/YourSongBrand";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "A song for you | The Gift Smith",
+  title: "A song for you | Your Song",
   robots: { index: false, follow: false },
   referrer: "no-referrer",
 };
@@ -25,7 +25,7 @@ export default async function GiftPage({
   if (!session.selected_track_id)
     return (
       <main id="main-content" className="gift-waiting">
-        <GiftBrand />
+        <YourSongBrand />
         <span className="eyebrow">A little anticipation</span>
         <h1>Your gift is getting its finishing touch.</h1>
         <p>

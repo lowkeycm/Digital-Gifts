@@ -1,5 +1,21 @@
 # Website brief: V1
 
+## Scoped product-brand and sharing correction, 2026-10-02
+
+Owner direction: The Gift Smith remains the multi-product storefront. Your Song is the primary name throughout its product funnel, with parent attribution in the footer. Sender previews need a clear way to send the correct recipient link.
+
+Scope: maintenance of established editorial/record-player design, plus utility sharing flow. Reuse the inspected project research and current typography, paper surfaces, album motif, occasion scenery, full photo frame and record motion. No new marketing redesign or claim of fresh gallery research. Hub revision 05fe2d3421819644678754eea9dd4ebfe442d3a3; loaded website-system, visual-contract, design-research, design-router, conversion-architecture, copy-and-claims, website-qa and editorial calibration. Shared profiles resolved manually: only brand/assets.md exists; current owner direction supplies the brand hierarchy.
+
+Before-build decisions:
+- Storefront / keeps The Gift Smith identity. /your-song, /create and private song/gift routes use a coordinated Your Song wordmark linking to /your-song; quiet parent attribution links home.
+- Owner studio retains all versions and explicit selection. Its preview opens a new owner-authenticated /song/[id]/preview route, showing the actual selected gift plus a visible sender toolbar.
+- Toolbar clearly labels private preview, offers return to editing and Send your gift. Native sharing uses only the recipient URL; copy and selectable-link fallback work without native sharing. No automatic email delivery or sent confirmation.
+- Recipient /gift/[id] stays clean, showing only the chosen track/photo. A recipient token never unlocks the owner preview. Never infer sender rights from a query flag, cookie or browser storage.
+- Acceptance: desktop/mobile identity and hierarchy; full-image/player regression; selected version, recipient-only share payloads, clipboard failure, native-share cancellation, missing selection, invalid/recipient credentials and unchanged parent home. No paid generation needed.
+
+
+Scoped acceptance (2026-10-02): desktop/mobile screenshots in docs/qa/your-song-{brand,preview,recipient}-*.jpg inspected. Visual gate: coordinated record/serif product mark, clear cream sender toolbar over existing occasion world, full photo retained. Conversion gate: named Send your gift action, return to editing and recipient-link alternatives; no claim that opening a share sheet delivers a message. Technical gate: build/type/lint plus synthetic production-build flow, selected-track isolation, invalid-key rejection, clipboard fallback, native sharing/cancel, playback and overflow pass. See qa/your-song-sharing-checks.json for actual observations and fixture limits. This scoped maintenance review does not replace or rewrite the historical full-site contract/baseline below.
+
 Measured 2026-09-23.
 
 ## Business objective

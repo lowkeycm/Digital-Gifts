@@ -1,3 +1,4 @@
+import { YourSongFooter } from "@/components/YourSongBrand";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -8,13 +9,13 @@ import { sessionFor } from "@/lib/beta-repository";
 import { SongStudio } from "@/components/SongStudio";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Your private studio | Your Song", robots: { index: false, follow: false } };
 
 export default async function SongPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ key?: string }> }) {
   const { id } = await params;
   const { key } = await searchParams;
   if (!key) notFound();
-  if (betaReady() && await sessionFor(id, key)) return <><Nav/><main id="main-content" className="shell section delivery-shell"><SongStudio id={id} accessKey={key}/></main></>;
+  if (betaReady() && await sessionFor(id, key)) return <><Nav/><main id="main-content" className="shell section delivery-shell"><SongStudio id={id} accessKey={key}/></main><YourSongFooter/></>;
   const song = await getSongSession(id, key);
   if (!song) notFound();
   if (song.orderStatus !== "paid") redirect(`/preview/${id}?key=${key}`);
@@ -30,6 +31,6 @@ export default async function SongPage({ params, searchParams }: { params: Promi
       </div>
       <div className="delivery-actions"><button className="pill" disabled>Download unavailable in demo</button><Link className="pill" href={`/preview/${id}?key=${key}`}>Back to preview</Link></div>
       <p>This older demo does not generate audio. <Link href="/create">Start a new test song</Link>.</p>
-    </main></>
+    </main><YourSongFooter/></>
   );
 }

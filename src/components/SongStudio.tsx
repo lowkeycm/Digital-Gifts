@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { GiftShare } from "./GiftShare";
 import { GiftUpload } from "./GiftUpload";
 import { RevisionForm } from "./RevisionForm";
 
@@ -103,23 +104,12 @@ export function SongStudio({
       setBusy(false);
     }
   }
-  async function copyLink(gift: boolean) {
+  async function copyPrivateLink() {
     try {
-      const url = gift
-        ? `${location.origin}/gift/${id}?key=${state?.giftToken}`
-        : location.href;
-      await navigator.clipboard.writeText(url);
-      setCopy(
-        gift
-          ? "Gift link copied. This link only allows listening and downloads."
-          : "Private link copied. Keep this one for revisions and feedback.",
-      );
+      await navigator.clipboard.writeText(location.href);
+      setCopy("Private link copied. Keep this one for your songs and edits.");
     } catch {
-      setCopy(
-        gift
-          ? "Clipboard unavailable. Open the recipient’s gift page below and copy its address to share."
-          : "Copy the link from your browser’s address bar to save this page.",
-      );
+      setCopy("Copy the link from your browser’s address bar to save this page.");
     }
   }
   if (!state)
@@ -142,8 +132,8 @@ export function SongStudio({
   return (
     <>
       <div className="delivery-heading">
-        <span className="status">FREE TEST / YOUR SONG</span>
-        <button className="ghost" onClick={() => void copyLink(false)}>
+        <span className="status">YOUR SONG / PRIVATE STUDIO</span>
+        <button className="ghost" onClick={() => void copyPrivateLink()}>
           Save my private link
         </button>
       </div>
@@ -154,7 +144,7 @@ export function SongStudio({
       </p>
       <p className="help">
         Save this private link to return. It lets you manage the song; use the
-        gift link below when sharing with the recipient.
+        Send your gift below when sharing with the recipient.
       </p>
       {copy && <p role="status">{copy}</p>}
       {error && (
@@ -276,7 +266,7 @@ export function SongStudio({
         ))}
       </div>
       {state.tracks.length > 0 && (
-        <section className="gift-preparation card">
+        <section id="gift-preparation" className="gift-preparation card">
           <span className="eyebrow">Make it theirs</span>
           <h2>Your gift, ready to give.</h2>
           <p>
@@ -303,26 +293,14 @@ export function SongStudio({
               Remove photo from gift
             </button>
           )}
-          <div className="delivery-actions">
-            <button
-              type="button"
-              className="pill primary"
-              disabled={!state.selectedTrackId || busy}
-              onClick={() => void copyLink(true)}
-            >
-              Copy recipient’s gift link
-            </button>
-            {state.selectedTrackId && (
-              <a
-                className="pill"
-                href={`/gift/${id}?key=${state.giftToken}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Preview their gift
+          {state.selectedTrackId && (
+            <>
+              <a className="pill gift-preview-link" href={`/song/${id}/preview?key=${accessKey}`}>
+                Preview & send your gift <span aria-hidden="true">↗</span>
               </a>
-            )}
-          </div>
+              <GiftShare giftPath={`/gift/${id}?key=${state.giftToken}`} recipient={state.recipientName} />
+            </>
+          )}
           {!state.selectedTrackId && (
             <p className="help">
               Choose a song version above to unlock the gift link.
