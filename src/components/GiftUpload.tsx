@@ -134,7 +134,7 @@ export function GiftUpload({
           {photo ? "The finishing touch" : "The moment they heard it"}
         </span>
         <h3>
-          {photo ? "Put a memory on the cover." : "Upload their reaction."}
+          {photo ? "Add a photo to their gift." : "Upload their reaction."}
         </h3>
       </div>
       <p>

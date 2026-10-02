@@ -143,7 +143,7 @@ export function SongStudio({
         that feels right.
       </p>
       <p className="help">
-        Save this private link to return. It lets you manage the song; use the
+        Save this private link to return. It lets you manage the song; choose
         Send your gift below when sharing with the recipient.
       </p>
       {copy && <p role="status">{copy}</p>}
