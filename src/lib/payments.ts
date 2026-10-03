@@ -100,7 +100,8 @@ export async function createSongCheckout(session: BetaSession): Promise<string |
     if (!renewed?.length) throw new ClientError("Checkout is updating. Please try again.", 409);
     order = renewed[0] as CheckoutOrder;
   }
-  const checkout = await stripe.checkout.sessions.create({
+  let checkout: Stripe.Checkout.Session;
+  try { checkout = await stripe.checkout.sessions.create({
     mode: "payment", customer_email: session.raw_answers.email,
     integration_identifier: "your-song-preview-qmzlfnra",
     client_reference_id: order.id,
@@ -111,6 +112,19 @@ export async function createSongCheckout(session: BetaSession): Promise<string |
     success_url: `${order.origin}/checkout/return?order=${order.id}`,
     cancel_url: `${order.origin}/checkout/return?order=${order.id}&cancelled=1`,
   }, { idempotencyKey: `your-song-${mode}-${order.id}-${order.checkout_attempt}` });
+  } catch (error) {
+    if (error instanceof Stripe.errors.StripeError) {
+      // Checkout creation sends no memories, names or card data. Redact the only
+      // personal field and any key/opaque identifier before recording its reason.
+      const reason = error.message
+        .replace(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/gi, "[email]")
+        .replace(/(?:sk|rk|pk)_(?:test|live)_[\w.*-]+/g, "[key]")
+        .replace(/[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}/gi, "[id]")
+        .slice(0, 400);
+      console.error("stripe_checkout_create_failed", { type: error.type, code: error.code, param: error.param, requestId: error.requestId, reason });
+    }
+    throw error;
+  }
   if (!checkout.url || checkout.livemode !== (mode === "live")) throw new Error("checkout_response_invalid");
   const { data: bound, error: bindError } = await db().from("song_checkout_orders")
     .update({ stripe_checkout_id: checkout.id }).eq("id", order.id)
