@@ -4,7 +4,18 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (Stripe app connection and integration review)
+## Last Session (supplied Your Song logo)
+
+- **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode.
+- **Request:** Use supplied heart-shaped record logo on Your Song pages. Existing merge/publication authorization continues.
+- **Branch:** clay/your-song-logo from 27861f47c8040acda828a45d49a8ade37f7e69f8. Prior Stripe documentation PR32 merged; production dpl_EyRSTPLsnFENyqTbpRnqWgzUtENQ READY, health HTTP200/checkout free.
+- **Changed:** Background removed with image generation, then optimized to transparent lossless 1024x333 WebP. Shared YourSongBrand now uses supplied navy/gold heart record, wordmark and tagline. Product footer includes logo plus parent attribution. Responsive header widths and cream plaque on occasion pages preserve CTA/menu and dark-background contrast. Parent Gift Smith logo and gift favicon remain unchanged.
+- **Verification:** Lint/type/build pass. Actual production-build Chromium at 1440/390 verifies product, intake, owner song, sender preview, recipient, footer and all six occasion headers; 320/768 no overflow. Logo navigation, CTA, mobile menu, playback, selection, recipient-only sharing, clipboard/native share fallback and credential boundaries pass; no runtime errors. Synthetic REST/storage fixture only, no provider calls or production records. Evidence docs/qa/your-song-logo-*.jpg and checks JSON, visually inspected.
+- **Guidance:** Marketing-Hub 05fe2d3421819644678754eea9dd4ebfe442d3a3 website-system references and editorial anchors loaded anew through GitHub; established design/research retained for logo maintenance. Existing brief/baseline preserved; completion gate recorded before push.
+- **Release target:** digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Prepared for checked PR merge and live visual verification; final result in PR.
+- **Remaining payment work:** Stripe app tools are now available in subsequent session registry; recheck capabilities when resuming Payments. Website credentials/webhook and real sandbox acceptance remain separate. No payment settings changed in this logo task.
+
+## Prior Session (Stripe app connection and integration review)
 
 - **When / who:** October 3 UTC, 2026 / Clay / ChatGPT Work Mode.
 - **Request:** Install Stripe app, invoke implementation planner, then build or review Payments and Invoicing for yourgiftsmith.com; use official docs skill only if planner remains unavailable. Owner reported connected.
