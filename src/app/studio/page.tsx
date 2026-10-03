@@ -103,6 +103,14 @@ export default async function StudioPage() {
                     <p className="help">
                       Provider task: {j.task_id ?? "Not confirmed"}
                     </p>
+                    {j.music_direction && (
+                      <details className="studio-direction">
+                        <summary>Music direction</summary>
+                        <p>{Object.entries(j.music_direction.direction).filter(([key]) => key !== "negativeTags").map(([, value]) => Array.isArray(value) ? value.join(", ") : value).filter(Boolean).join(", ")}</p>
+                        <p className="help">Avoid: {j.music_direction.direction.negativeTags.join(", ") || "None requested"}</p>
+                        <p className="help">{j.music_direction.model} · {j.music_direction.usage.totalTokens ?? "Unknown"} tokens · {j.music_direction.usage.credits ?? "Unreported"} credits</p>
+                      </details>
+                    )}
                     {!["complete", "failed"].includes(j.status) && (
                       <StudioControls action="sync" jobId={j.id} />
                     )}

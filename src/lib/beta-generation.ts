@@ -9,6 +9,8 @@ import {
 } from "./beta-repository";
 import { KieError, startKie, queryKie, readKieTracks } from "./music/kie";
 import { storeAudio } from "./audio-storage";
+import { directionInput, directionFingerprint, translateDirection } from "./music/translate-direction";
+import { musicDirectionSchema } from "./music/direction";
 
 export async function reserveAndStart(
   session: BetaSession,
@@ -34,14 +36,29 @@ export async function reserveAndStart(
     .select("id");
   if (claimError) throw new Error("job_claim_failed");
   if (!claimed?.length) return job;
+  // Translate only after the single submission claim. Save before spending music credits.
+  let musicStarted = false;
   try {
+    const wanted = directionInput(session.raw_answers, job.notes);
+    const previous = await jobsFor(session.id);
+    const fingerprint = wanted ? directionFingerprint(wanted) : null;
+    const saved = [...previous].reverse().find((j) =>
+      fingerprint && j.music_direction?.fingerprint === fingerprint &&
+      musicDirectionSchema.safeParse(j.music_direction.direction).success,
+    )?.music_direction;
+    // Factual/lyric revisions inherit the original translated sound; style revisions
+    // include only their explicit musical instructions in the LLM input.
+    const direction = wanted ? (saved ?? await translateDirection(wanted, job.id)) : undefined;
+    if (direction) await updateJob(job.id, { music_direction: direction });
     const callback = new URL("/api/music/callback", baseUrl);
     callback.searchParams.set("job", job.id);
     callback.searchParams.set("token", job.callback_token);
+    musicStarted = true;
     const taskId = await startKie(
       session.raw_answers,
       callback.toString(),
       job.notes || undefined,
+      direction?.direction,
     );
     // An early callback may already have bound this task. Do not regress completed jobs.
     const { error: e } = await db()
@@ -52,7 +69,7 @@ export async function reserveAndStart(
     if (e) throw new Error("task_bind_failed");
   } catch (e) {
     // Transport timeouts may have incurred a generation. Never blindly resubmit them.
-    const definitive =
+    const definitive = !musicStarted ||
       e instanceof KieError && [400, 401, 402, 403, 422, 429].includes(e.code);
     // A callback can finish while submission is still awaiting its response.
     // Only annotate an unconfirmed submission, never regress that callback.
@@ -60,7 +77,7 @@ export async function reserveAndStart(
       .from("song_beta_jobs")
       .update({
         status: definitive ? "failed" : "uncertain",
-        error_code: definitive
+        error_code: !musicStarted ? "style_translation_failed" : definitive && e instanceof KieError
           ? `provider_${e.code}`
           : "submission_unconfirmed",
       })

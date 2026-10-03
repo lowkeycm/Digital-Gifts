@@ -1,11 +1,23 @@
 import { z } from "zod";
 
+export const musicPreferencesSchema = z.object({
+  description: z.string().max(400).optional().default(""),
+  mood: z.string().max(80).optional().default(""),
+  energy: z.string().max(80).optional().default(""),
+  vocals: z.string().max(250).optional().default(""),
+  instruments: z.string().max(200).optional().default(""),
+  inspiration: z.string().max(200).optional().default(""),
+  avoid: z.string().max(200).optional().default(""),
+});
+export type MusicPreferences = z.infer<typeof musicPreferencesSchema>;
+
 export const intakeSchema = z.object({
   recipientName: z.string().min(1).max(80),
   relationship: z.string().min(1).max(80),
   occasion: z.string().min(1).max(80),
   genre: z.string().min(1).max(80),
   vocalPreference: z.string().min(1).max(80),
+  musicPreferences: musicPreferencesSchema.optional(),
   howYouMet: z.string().min(10).max(1800),
   favoriteMemory: z.string().min(10).max(1800),
   smallDetails: z.string().min(10).max(1800),
