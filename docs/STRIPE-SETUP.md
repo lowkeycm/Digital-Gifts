@@ -1,6 +1,6 @@
 # Your Song Stripe setup
 
-The site is prepared for a $29 USD one-time purchase with three revisions. Public generation remains available without payment. No Stripe account is connected yet.
+The site is prepared for a $29 USD one-time purchase with three revisions. Public generation remains available without payment. The Stripe ChatGPT app is installed and the owner reported connecting it; website payment acceptance and the connected account identity remain unverified. See [the integration plan and review](STRIPE-INTEGRATION-PLAN.md) for launch findings and Invoicing recommendations.
 
 ## Account
 
@@ -11,7 +11,7 @@ This store sells its own product; Stripe Connect is unnecessary. Stripe document
 ## Sandbox first
 
 1. In the new account's sandbox, create an event destination for **https://www.yourgiftsmith.com/api/webhooks/stripe/test**. Select `checkout.session.completed` and `checkout.session.async_payment_succeeded`.
-2. Save the sandbox secret key as `STRIPE_TEST_SECRET_KEY` and endpoint signing secret as `STRIPE_TEST_WEBHOOK_SECRET`, directly in Vercel environment variables for **digital-gifts** in **Pride Family Realty**, Production environment. Never paste keys in chat. Keep `CHECKOUT_MODE=free`; set `STRIPE_SITE_URL=https://www.yourgiftsmith.com`.
+2. Prefer a minimally scoped restricted sandbox API key. Save it as `STRIPE_TEST_SECRET_KEY` and the endpoint signing secret as `STRIPE_TEST_WEBHOOK_SECRET`, directly in sensitive Vercel environment variables for **digital-gifts** in **Pride Family Realty**, Production environment. Never paste keys in chat. Keep `CHECKOUT_MODE=free`; set `STRIPE_SITE_URL=https://www.yourgiftsmith.com`.
 3. Redeploy after setting variables. Log into the private `/studio`; its sandbox status should show ready. Use **Test Stripe checkout**, which opens `/create?checkout=test`. Public `/create` stays without payment.
 4. Complete the questionnaire, then use Stripe's test card `4242 4242 4242 4242`, future expiry and any valid CVC. Sandbox payment takes no money; successful music generation still consumes real Kie credits.
 5. Confirm one saved paid order, one original generation job and two returned versions. Check that cancel/decline leaves the story saved with no music request, and duplicate webhook delivery does not generate again. Refresh the private song link to confirm recovery when the return page was closed. Verify three revisions and selected recipient sharing.

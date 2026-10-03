@@ -4,7 +4,17 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (three revisions and Stripe preparation)
+## Last Session (Stripe app connection and integration review)
+
+- **When / who:** October 3 UTC, 2026 / Clay / ChatGPT Work Mode.
+- **Request:** Install Stripe app, invoke implementation planner, then build or review Payments and Invoicing for yourgiftsmith.com; use official docs skill only if planner remains unavailable. Owner reported connected.
+- **App and fallback:** Plugin installation confirmed. No Stripe/planner tools exposed in registry after connection; account identity and credentials remain unverified. Ran requested npx official docs fallback, installed and validated stripe-best-practices, committed and pushed its personal skill checkout. No planner invocation claimed.
+- **Branch / deliverable:** clay/stripe-integration-review, based on ddc01642d8aa8c1a2e206170a6a61d3543b5f04c. docs/STRIPE-INTEGRATION-PLAN.md contains tailored plan, source-backed findings, Invoicing distinction and exact secure sandbox setup. STRIPE-SETUP.md now distinguishes app connection from server acceptance and recommends restricted keys.
+- **Review:** Existing Stripe 23.0.0 uses API 2026-09-30.endive. Core amount/signature/order/privacy/replay checks pass. Before paid launch, move long provider work out of webhook into durable recoverable execution, add account receipts and owner-link email/recovery, define refund/dispute handling. Broader payment methods require async failure handling. Checkout tracking label recommended. Optional paid invoices cost extra; standalone invoices do not trigger song fulfillment today.
+- **Verification / boundaries:** Nine Stripe server checks rerun successfully with real SDK signatures and controlled transport. No hosted sandbox acceptance, actual charge, invoice, database mutation, secrets change or runtime/UI change. Public CHECKOUT_MODE remains free by existing choice. Existing merge/publication authorization persists for documentation.
+- **Next:** Owner supplies website sandbox key and signing secret securely through exact Vercel digital-gifts sensitive variables, redeploy and run actual hosted acceptance. Do not ask for keys in chat or treat the app connection as completed website integration.
+
+## Prior Session (three revisions and Stripe preparation)
 
 - **When / who:** October 3 UTC, 2026 / Clay / ChatGPT Work Mode.
 - **Request / choice:** Three included revisions and set up Stripe. Owner selected test first, preserving public no-paywall generation until explicit paid launch. Existing merge/publication authorization persists.
