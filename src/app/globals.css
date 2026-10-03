@@ -2882,7 +2882,6 @@ textarea {
 .album-now > span:last-child { color: #c0c4c2; font-size: 11px; }
 .album-controls audio { display: block; width: 100%; height: 44px; color-scheme: dark; }
 .album-full { display: block; font-size: 9px; text-align: center; color: #bdc6c8; margin-top: 10px; letter-spacing: .03em; }
-.album-art-note { text-align: center; font-size: 9px; color: #aeb7b9; margin: 0; padding: 5px 20px 20px; }
 .sample-error { font-size: 12px; }
 .sample-error a { text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) {
@@ -2935,7 +2934,6 @@ textarea {
 }
 
 /* Free-test song studio: established ivory, ink and record-sleeve vocabulary. */
-.story-budget { margin: 1rem 0; }
 .beta-consent { display:flex; align-items:flex-start; gap:.75rem; font-size:.9rem; line-height:1.6; margin:1.25rem 0; }
 .beta-consent input { width:20px; height:20px; flex:0 0 20px; margin-top:3px; }
 .beta-honeypot { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }

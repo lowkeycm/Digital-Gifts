@@ -110,7 +110,7 @@ export function IntakeForm({ ready = true, checkoutMode = "free" }: { ready?: bo
     if (!consent || overBudget) {
       setError(
         overBudget
-          ? "Please shorten your story using the character counter below."
+          ? "Please shorten a few answers to continue."
           : "Please agree to the song creation notice.",
       );
       return;
@@ -343,10 +343,12 @@ export function IntakeForm({ ready = true, checkoutMode = "free" }: { ready?: bo
         </>
       )}
 
-      <div className="help story-budget" aria-live="polite">
-        Story budget: {storyLength.toLocaleString()} / 2,400 characters. We keep
-        your words exactly as written, with room reserved for your revisions.
-      </div>
+      {overBudget && (
+        <p role="alert" className="error-copy">
+          Your story is {(storyLength - 2400).toLocaleString()} characters over
+          the limit. Shorten a few answers to continue.
+        </p>
+      )}
       {step === 3 && (
         <>
           <label className="beta-consent">
