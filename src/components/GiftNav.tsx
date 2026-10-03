@@ -19,9 +19,6 @@ export function GiftNav({ product = false }: { product?: boolean }) {
       ];
   return (
     <>
-      <div className="preview-banner">
-        {product ? <>Your Song is in testing. <span>·</span> No payment required.</> : <>Our first gift, Your Song, is free to try.</>}
-      </div>
       <header id="top" className="gift-header">
         <div className="shell gift-nav">
           {product ? <YourSongBrand /> : <GiftBrand />}
@@ -66,9 +63,9 @@ export function GiftNav({ product = false }: { product?: boolean }) {
             ))}
             <Link
               onClick={() => setOpen(false)}
-              href={product ? "/" : "/#launch"}
+              href={product ? "/" : "/create"}
             >
-              {product ? "All gifts" : "Launch updates"}
+              {product ? "All gifts" : "Start your song"}
               <span aria-hidden="true">↗</span>
             </Link>
           </nav>

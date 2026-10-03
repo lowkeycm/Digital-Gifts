@@ -170,7 +170,7 @@ export function SongStudio({
                 {job.status === "failed"
                   ? "Your story is saved. You can retry without writing it again."
                   : job.status === "uncertain"
-                    ? "We’re checking whether the music service accepted it. We won’t start a duplicate song. If this stays here, let the person who invited you know."
+                    ? "We’re checking whether the music service accepted your request. We won’t start a duplicate song. Your story is saved; you can return using your private link to check its progress."
                     : "The music service is working on it. This can take several minutes. Your finished tracks will appear here."}
               </p>
               {job.status === "failed" && (
@@ -342,7 +342,7 @@ export function SongStudio({
               setFeedback(true);
           }}
         >
-          <span className="eyebrow">Help shape Your Song</span>
+          <span className="eyebrow">Your feedback</span>
           <h2>Did it feel like them?</h2>
           <p>
             The honest version helps us most. Tell us what landed and what
@@ -389,7 +389,7 @@ export function SongStudio({
           </button>
           {feedback && (
             <p role="status">
-              Saved. Thank you for helping us make this better.
+              Saved. Thank you for sharing your feedback.
             </p>
           )}
         </form>

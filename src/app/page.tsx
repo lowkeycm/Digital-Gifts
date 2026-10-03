@@ -4,7 +4,6 @@ import { DigitalGiftsNav } from "@/components/DigitalGiftsNav";
 import { Arrow, GiftFooter } from "@/components/GiftBrand";
 import { StoryNotes } from "@/components/StoryNotes";
 import { SongSamples } from "@/components/SongSamples";
-import { LaunchSignup } from "@/components/LaunchSignup";
 
 export default function Home() {
   return (
@@ -116,7 +115,7 @@ export default function Home() {
                     <Arrow />
                   </Link>
                   <p className="small-note">
-                    Free during testing. Full song + one revision.
+                    $29 · Full song + one revision.
                   </p>
                 </div>
               </div>
@@ -124,7 +123,6 @@ export default function Home() {
           </div>
         </section>
         <SongSamples eyebrow="Your Song / Hear what’s possible" />
-        <LaunchSignup source="/" />
         <section id="how" className="section shell story-section">
           <div className="story-intro">
             <span className="eyebrow">02 / Made personal</span>
@@ -172,10 +170,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <aside id="keepsakes" className="shell keepsake-teaser">
-          <span className="eyebrow">Coming next</span>
-          <p>Something to hold. A framed photo, with your song a scan away.</p>
-        </aside>
         <section className="gift-close">
           <div className="shell">
             <span className="eyebrow">

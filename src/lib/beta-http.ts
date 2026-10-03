@@ -46,7 +46,7 @@ export function apiError(error: unknown) {
   const code = error instanceof Error ? error.message : "";
   if (/beta_limit|retry_limit/.test(code))
     return NextResponse.json(
-      { error: "The test limit has been reached. Please try again tomorrow." },
+      { error: "The daily song limit has been reached. Please try again tomorrow." },
       { status: 429 },
     );
   console.error("song_request_failed", {

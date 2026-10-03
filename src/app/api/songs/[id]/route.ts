@@ -11,7 +11,7 @@ export async function GET(
   try {
     if (!betaReady())
       return NextResponse.json(
-        { error: "The test studio is being connected." },
+        { error: "Song creation is temporarily unavailable. Please try again shortly." },
         { status: 503 },
       );
     const { id } = await params,

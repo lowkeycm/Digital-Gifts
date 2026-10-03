@@ -23,13 +23,13 @@ export async function POST(request: Request) {
   try {
     if (!betaReady())
       throw new ClientError(
-        "The test studio is being connected. Please keep your story and try again shortly.",
+        "Song creation is temporarily unavailable. Please keep your story and try again shortly.",
         503,
       );
     const parsed = schema.safeParse(await bodyJSON(request));
     if (!parsed.success)
       throw new ClientError(
-        "Please complete the story details and agree to the test notice.",
+        "Please complete the story details and agree to the song creation notice.",
       );
     const { requestId, consent: _, website: __, ...input } = parsed.data;
     void _;
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       p_request_id: requestId,
       p_email: input.email,
       p_ip_hash: ipHash,
-      p_answers: { ...input, testConsent: { accepted: true, version: "free-test-2026-09-29" } },
+      p_answers: { ...input, testConsent: { accepted: true, version: "song-creation-2026-10-02" } },
     });
     if (error) throw new Error(error.message);
     const session = (Array.isArray(data) ? data[0] : data) as BetaSession;
