@@ -28,3 +28,5 @@
 - 2026-10-02: `public/images/personal-gift-moment.webp`: generated illustrative mother/daughter personal-note scene, parent homepage only. Same warm editorial direction; Your Song retains first-listen.webp. Prompt and rendered review in docs/website-brief.md.
 
 - 2026-10-02: Homepage copy/navigation now express owner-confirmed hierarchy: The Gift Smith makes personal gifts; Your Song is the first product. Brand/product routing and rendered review in docs/website-brief.md and docs/qa/gift-smith-positioning-*.
+
+- 2026-10-02 evening: `public/images/personal-gift-moment-black-family.webp`: owner-requested generated Black mother/daughter homepage scene; existing composition and feeling retained. Prompt/review in docs/website-brief.md.
