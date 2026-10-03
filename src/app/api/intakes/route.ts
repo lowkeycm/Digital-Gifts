@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       p_request_id: requestId,
       p_email: input.email,
       p_ip_hash: ipHash,
-      p_answers: { ...input, testConsent: { accepted: true, version: "song-creation-2026-10-02" } },
+      p_answers: { ...input, testConsent: { accepted: true, version: "song-creation-2026-10-03" } },
     });
     if (error) throw new Error(error.message);
     const session = (Array.isArray(data) ? data[0] : data) as BetaSession;

@@ -2,6 +2,7 @@ import { createPrivateServerClient } from "./supabase";
 import type { Intake } from "./intake";
 import { ClientError } from "./beta-http";
 import { z } from "zod";
+import type { SavedMusicDirection } from "./music/direction";
 export type BetaSession = {
   id: string;
   access_token: string;
@@ -23,6 +24,7 @@ export type BetaJob = {
   callback_payload: unknown;
   created_at: string;
   error_code: string | null;
+  music_direction?: SavedMusicDirection | null;
 };
 export type BetaTrack = {
   id: string;

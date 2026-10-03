@@ -1,0 +1,20 @@
+{
+  "environment": "Real TypeScript modules, controlled in-memory reservation repository and provider transport; no network or paid generations.",
+  "checks": [
+    "Old intake compatibility, blank preferences bypass, server input bounds",
+    "Real provider payload construction: separate style/exclusions, exact raw story, V6 non-custom",
+    "OpenAI and Gemini response envelopes, fenced JSON and thought filtering",
+    "Malformed, overlength, timeout and authentication failures rejected",
+    "Only musical revision categories enter translation, factual notes stay raw",
+    "Concurrent reservation replay spends one translation and one music request",
+    "Factual revision reuses saved sound and passes raw correction",
+    "Revision replay is idempotent",
+    "Translation failure spends no music credits, preferences preserved for safe retry",
+    "Definitive provider rejection retries using saved translation",
+    "Music timeout never blindly resubmits",
+    "Music submission waits for durable translation save",
+    "Basic path keeps existing sound and needs no LLM",
+    "Musical revisions produce new translated direction",
+    "Customer source objects never mutated"
+  ]
+}

@@ -3,6 +3,8 @@
 import { FormEvent, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { kieBrief } from "@/lib/music/kie";
+import { SoundPreferences } from "./SoundPreferences";
+import type { MusicPreferences } from "@/lib/intake";
 
 type FormData = {
   recipientName: string;
@@ -10,6 +12,7 @@ type FormData = {
   occasion: string;
   genre: string;
   vocalPreference: string;
+  musicPreferences: MusicPreferences;
   howYouMet: string;
   favoriteMemory: string;
   smallDetails: string;
@@ -25,6 +28,7 @@ const initial: FormData = {
   occasion: "Anniversary",
   genre: "R&B",
   vocalPreference: "No preference",
+  musicPreferences: { description: "", mood: "", energy: "", vocals: "", instruments: "", inspiration: "", avoid: "" },
   howYouMet: "",
   favoriteMemory: "",
   smallDetails: "",
@@ -67,8 +71,10 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
   const storyLength = kieBrief(data).length;
   const overBudget = storyLength > 2400;
   const progress = useMemo(() => ((step + 1) / steps.length) * 100, [step]);
-  const set = (key: keyof FormData, value: string) =>
+  const set = (key: Exclude<keyof FormData, "musicPreferences">, value: string) =>
     setData((current) => ({ ...current, [key]: value }));
+  const setSound = (key: keyof MusicPreferences, value: string) =>
+    setData((current) => ({ ...current, musicPreferences: { ...current.musicPreferences, [key]: value } }));
 
   function validateStep() {
     if (step === 0 && (!data.recipientName.trim() || !data.relationship.trim()))
@@ -213,8 +219,10 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
               <option>No preference</option>
               <option>Male vocal</option>
               <option>Female vocal</option>
+              <option>Duet</option>
             </select>
           </div>
+          <SoundPreferences value={data.musicPreferences} onChange={setSound} />
         </>
       )}
 
@@ -347,8 +355,8 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
               onChange={(e) => setConsent(e.target.checked)}
             />{" "}
             <span>
-              I understand my story is sent to Kie’s AI music
-              service to create my song. I have permission to share these
+              I understand my story and sound preferences are sent to Kie’s AI
+              services to create my song. I have permission to share these
               details.
             </span>
           </label>

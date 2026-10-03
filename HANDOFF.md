@@ -4,7 +4,19 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (customer-ready presentation)
+## Last Session (custom music direction)
+
+- **When / who:** October 2 evening New York / October 3 UTC, 2026 / Clay / ChatGPT Work Mode.
+- **Request:** Optional plain-language sound, mood, energy, vocals, instruments, inspiration and exclusions; backend LLM converts these into Suno direction while preserving the personal story. Existing merge/publication authorization continues.
+- **Branch:** clay/custom-song-direction from 5d2d904f8ecc321cd1bfec43b7d31c9d2b92eb46.
+- **Changed:** Optional collapsed controls in first intake step and Duet choice. Server-only Kie Gemini 3.8 Flash translation using existing KIE_API_KEY, validated structured output; separate V6 non-custom style/negative_tags, raw memories unchanged. Job-level direction fingerprint/model/version/usage saved before music call, replay claim prevents duplicate spend, matching retries/factual revisions reuse direction. Musical revisions translate explicit sound notes. Preparation failure is safely retryable before any music submission; ambiguous music timeouts stay uncertain. Owner dashboard can inspect saved direction. Consent notice/version now covers story plus musical preferences.
+- **Database:** Additive nullable song_beta_jobs.music_direction JSONB applied to Digital Gifts hyjmlkowbhftisynztui and verified; old songs compatible, RLS/grants untouched. Existing advisory set unchanged. Migration source supabase/migrations/20261003011523_custom_music_direction.sql. No credentials copied.
+- **Validation:** npm run check/build pass. node scripts/verify-music-direction.mjs --record covers provider payload, bounds/envelopes, no personal details in LLM input, raw spacing, cache, concurrent replay, revision categories and failures/retries. Production-build Chromium desktop/mobile with REST/storage fixture covers custom/empty paths, optional keyboard controls/back-forward, owner view and existing gift sharing/playback; no overflow or runtime errors. Screenshots inspected under docs/qa/custom-sound-*. Marketing-Hub complete gate passed with baseline intact.
+- **Guidance:** Marketing-Hub 05fe2d3421819644678754eea9dd4ebfe442d3a3 website references/editorial anchors, Supabase, AI persistence and React review applied. Live Kie/Suno docs researched; Musicful link treated as directional. Exact tempo/timing/voice replication not promised.
+- **Release:** Exact target digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Prepared for checked merge and live provider acceptance; final release record in PR.
+- **Boundaries:** No paywall, voice cloning, external messaging or story rewriting. Blank optional fields skip LLM. Personal memories go only to existing songwriting service. Source output/usage are private; recipient sees selected song only.
+
+## Prior Session (customer-ready presentation)
 
 - **When / who:** October 2 evening New York, 2026 / Clay / ChatGPT Work Mode.
 - **Request:** Remove all free-test, first-song-free and launch/signup promotion; present the normal customer offer and journey with no payment step yet. Existing publication authorization continues.

@@ -168,7 +168,9 @@ export function SongStudio({
               </h2>
               <p>
                 {job.status === "failed"
-                  ? "Your story is saved. You can retry without writing it again."
+                  ? job.error === "style_translation_failed"
+                    ? "We couldn’t prepare your music direction. Your story and sound preferences are saved. Try again below."
+                    : "Your story is saved. You can retry without writing it again."
                   : job.status === "uncertain"
                     ? "We’re checking whether the music service accepted your request. We won’t start a duplicate song. Your story is saved; you can return using your private link to check its progress."
                     : "The music service is working on it. This can take several minutes. Your finished tracks will appear here."}

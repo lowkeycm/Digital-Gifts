@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Intake } from "@/lib/intake";
+import { directionStyle, musicDirectionSchema, type MusicDirection } from "./direction";
 
 export const KIE_PROMPT_LIMIT = 3000;
 export function kieBrief(input: Intake, revision?: string) {
@@ -48,10 +49,12 @@ export async function startKie(
   input: Intake,
   callback: string,
   revision?: string,
+  direction?: MusicDirection,
 ) {
   const prompt = kieBrief(input, revision);
   if (prompt.length > KIE_PROMPT_LIMIT)
     throw new Error("Story is too long for music generation.");
+  const sound = direction ? musicDirectionSchema.parse(direction) : undefined;
   const result = await api("jobs/createTask", {
     model: "ai-music-api/generate",
     callBackUrl: callback,
@@ -60,7 +63,8 @@ export async function startKie(
       custom_mode: false,
       instrumental: false,
       prompt,
-      style: `${input.genre}, ${input.vocalPreference}. Complete song with verses, chorus and a finished ending.`,
+      style: sound ? directionStyle(sound) : `${input.genre}, ${input.vocalPreference}. Complete song with verses, chorus and a finished ending.`,
+      ...(sound?.negativeTags.length ? { negative_tags: sound.negativeTags.join(", ") } : {}),
     },
   });
   return z.object({ taskId: z.string().min(1).max(200) }).parse(result).taskId;
