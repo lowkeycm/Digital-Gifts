@@ -4,7 +4,18 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (hero price line removed)
+## Last Session (routine notices removed)
+
+- **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode.
+- **Request:** Remove illustrative cover caption and routine story-budget line; explain foundation and prevent repeated disclaimer clutter. Existing merge/publication authorization continues.
+- **Branch:** clay/remove-unnecessary-notes from 62f3a5cb0deb2583e98bd483c432eda49a2b0955.
+- **Changed:** Shared home/product album caption removed. Intake normal budget/implementation-assurance paragraph removed. Existing 2400-character validation remains with an actionable error only above the limit; message clears when corrected. Obsolete CSS removed. Owner copy direction recorded in AGENTS.md Section 2.9: notices require a specific customer need and relevant placement, internal provenance stays in records, no routine repeated caveats.
+- **Cause / Hub:** The Hub prohibits fake proof and asks to explain relevant limitations, not label all decorative artwork or expose internal prompt limits. These lines were implementation/editorial choices, traced to album carousel 38381ba9 and Kie test funnel 8c3aae42; revision wording updated ddc01642. Central Hub guidance reviewed but not modified by this website task; recommend a relevance/placement test in copy-and-claims plus website QA for cross-project prevention.
+- **Verification:** npm check/build and Hub completion gate pass. Actual desktop/mobile Chromium verifies both sample sections, full-track thumbnail playback, first form step and four-step navigation, conditional length feedback/clearing, enabled final action and no overflow/runtime errors. Screens visually inspected; evidence docs/qa/notices-*. No provider/database calls or real submissions.
+- **Guidance:** Marketing-Hub 05fe2d3421819644678754eea9dd4ebfe442d3a3 website-system and all references/editorial anchors reloaded; established research retained. React review completed. Local Hub helper unavailable, shared context manually resolved.
+- **Release target:** digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Checked PR merge and live verification follow; release outcome in PR. Payment configuration remains unchanged.
+
+## Prior Session (hero price line removed)
 
 - **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode.
 - **Request:** Remove the $29/full song/three revisions line below the Your Song hero CTA. Existing merge/publication authorization persists.

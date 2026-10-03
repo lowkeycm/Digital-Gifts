@@ -166,6 +166,7 @@ Doctrine item 10 applies. In addition for this project:
 - No brand voice profile is approved yet. Treat positioning, naming, tone and claims as proposed until Clay confirms them.
 - In the personalized-song product, the customer's raw story details are source material. Preserve specific language and details rather than rewriting them into generic, polished summaries before music generation.
 - When an answer is too vague to support a personalized result, get more specific source material from the customer rather than inventing details.
+- Owner direction, October 3, 2026: customer copy must help visitors understand the offer, decide or take the next step. Do not append routine illustrative-art labels, development status, internal prompt budgets or implementation assurances. Keep asset provenance in internal records. A disclosure needs a concrete customer consequence, consent requirement or material misleading impression to correct; put it once where relevant rather than repeating it across the funnel. Show technical limits as actionable validation when the limit is reached. This does not permit invented customer proof or hiding material terms.
 
 ### 2.11 Scope
 

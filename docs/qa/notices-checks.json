@@ -1,0 +1,52 @@
+{
+  "checks": [
+    {
+      "route": "/",
+      "width": 1440,
+      "captionRemoved": true,
+      "thumbnailPlaysFullSong": true,
+      "noOverflow": true
+    },
+    {
+      "route": "/your-song",
+      "width": 1440,
+      "captionRemoved": true,
+      "thumbnailPlaysFullSong": true,
+      "noOverflow": true
+    },
+    {
+      "route": "/create",
+      "width": 1440,
+      "normalNotesRemoved": true,
+      "overLimitFeedbackOnlyWhenNeeded": true,
+      "feedbackClearsAfterCorrection": true,
+      "allFourStepsReachEnabledSubmit": true,
+      "noOverflow": true
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "captionRemoved": true,
+      "thumbnailPlaysFullSong": true,
+      "noOverflow": true
+    },
+    {
+      "route": "/your-song",
+      "width": 390,
+      "captionRemoved": true,
+      "thumbnailPlaysFullSong": true,
+      "noOverflow": true
+    },
+    {
+      "route": "/create",
+      "width": 390,
+      "normalNotesRemoved": true,
+      "overLimitFeedbackOnlyWhenNeeded": true,
+      "feedbackClearsAfterCorrection": true,
+      "allFourStepsReachEnabledSubmit": true,
+      "noOverflow": true
+    }
+  ],
+  "pageErrors": [],
+  "noGenerationOrSubmission": true
+}

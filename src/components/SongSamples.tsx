@@ -174,7 +174,6 @@ export function SongSamples({ eyebrow = "Stories on repeat" }: { eyebrow?: strin
             <span className="album-full">Full song · {tracks[active].duration} · No signup needed</span>
           </div>
         </div>
-        <p className="album-art-note">Illustrative cover art. Full-length song examples.</p>
       </div>
     </section>
   );
