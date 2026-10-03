@@ -110,7 +110,7 @@ export default function YourSongPage() {
               <span>03 / The gift</span>
               <h3>Make it their moment.</h3>
               <p>
-                The full song belongs on a private gift page. One included
+                The full song belongs on a private gift page. Three included
                 revisions give you room to correct a detail.
               </p>
             </article>
