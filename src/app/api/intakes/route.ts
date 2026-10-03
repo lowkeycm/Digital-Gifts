@@ -63,8 +63,7 @@ export async function POST(request: Request) {
     });
     if (error) throw new Error(error.message);
     const session = (Array.isArray(data) ? data[0] : data) as BetaSession;
-    if ((session.checkout_mode ?? "free") === "free")
-      await reserveAndStart(session, "original", requestOrigin(request));
+    await reserveAndStart(session, "original", requestOrigin(request));
     return NextResponse.json(
       { id: session.id, accessToken: session.access_token },
       { headers: privateHeaders },

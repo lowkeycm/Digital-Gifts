@@ -5,6 +5,7 @@ import { sessionFor, db } from "@/lib/beta-repository";
 import { betaReady } from "@/lib/beta-config";
 import { GiftExperience } from "@/components/GiftExperience";
 import { GiftShare } from "@/components/GiftShare";
+import { hasFullSongAccess } from "@/lib/song-access";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default async function GiftPreviewPage({ params, searchParams }: {
   const session = await sessionFor(id, key);
   if (!session) notFound();
   const editPath = `/song/${id}?key=${key}`;
+  if (!hasFullSongAccess(session)) redirect(editPath);
   if (!session.selected_track_id) redirect(`${editPath}#gift-preparation`);
   const { data: track, error } = await db().from("song_beta_tracks")
     .select("id,title,lyrics").eq("session_id", id).eq("id", session.selected_track_id).maybeSingle();

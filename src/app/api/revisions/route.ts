@@ -1,3 +1,4 @@
+import { requireFullSongAccess } from "@/lib/song-access";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession, jobsFor } from "@/lib/beta-repository";
@@ -19,6 +20,7 @@ export async function POST(request: Request) {
       throw new ClientError("Tell us what to change in 5 to 500 characters.");
     const p = parsed.data,
       session = await requireSession(p.songId, p.accessToken);
+    requireFullSongAccess(session);
     const jobs = await jobsFor(session.id);
     const replay = jobs.find((j) => j.request_id === p.requestId);
     if (p.notes.length > revisionNotesAllowance(session.raw_answers, jobs, replay?.revision_number))

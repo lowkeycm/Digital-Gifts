@@ -1,3 +1,4 @@
+import { requireFullSongAccess } from "@/lib/song-access";
 import { NextResponse } from "next/server";
 import { storagePublishableKey } from "@/lib/supabase";
 import { z } from "zod";
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
         "Choose a supported file and confirm you have permission to upload it.",
       );
     const p = parsed.data;
-    await requireSession(p.songId, p.accessToken);
+    requireFullSongAccess(await requireSession(p.songId, p.accessToken));
     if (p.action === "prepare") {
       if (
         (p.kind === "photo" &&

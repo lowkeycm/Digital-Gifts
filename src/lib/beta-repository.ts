@@ -3,6 +3,7 @@ import type { Intake } from "./intake";
 import { ClientError } from "./beta-http";
 import { z } from "zod";
 import type { SavedMusicDirection } from "./music/direction";
+import { hasFullSongAccess } from "./song-access";
 export type BetaSession = {
   id: string;
   access_token: string;
@@ -37,6 +38,7 @@ export type BetaTrack = {
   lyrics: string;
   storage_path: string;
   duration: number | null;
+  preview_storage_path?: string | null;
 };
 export function db() {
   return createPrivateServerClient();
@@ -58,7 +60,7 @@ export async function sessionFor(
     .eq(gift ? "gift_token" : "access_token", key)
     .maybeSingle();
   if (error) throw new Error("session_read_failed");
-  return data;
+  return data && (!gift || hasFullSongAccess(data)) ? data : null;
 }
 export async function requireSession(id: string, key: string) {
   const session = await sessionFor(id, key);

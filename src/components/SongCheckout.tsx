@@ -14,11 +14,11 @@ export function SongCheckout({ id, accessKey, mode, onPaid }: { id: string; acce
     } catch (e) { setError(e instanceof Error ? e.message : "Checkout could not open. Please try again."); setBusy(false); }
   }
   return <section className="card song-offer">
-    <span className="eyebrow">Your Song</span><h2>Your story is saved.</h2>
-    <p>Complete checkout to turn it into music. You’ll get two original versions, three revisions, MP3 downloads and a private gift page.</p>
+    <span className="eyebrow">Make it theirs</span><h2>Keep the whole song.</h2>
+    <p>Unlock both full versions you just heard, MP3 downloads, three revisions and a personal gift page to send to them.</p>
     <div className="price">$29</div><p className="help">One payment. Three revisions included.</p>
-    {mode === "test" && <p className="help">Private Stripe test checkout. No real charge. Music generation still uses Kie credits.</p>}
-    <button className="pill primary" type="button" disabled={busy} onClick={() => void checkout()}>{busy ? "Opening secure checkout..." : "Continue to secure checkout"}</button>
+    {mode === "test" && <p className="help">Private Stripe test checkout. No real charge.</p>}
+    <button className="pill primary" type="button" disabled={busy} onClick={() => void checkout()}>{busy ? "Opening secure checkout..." : "Unlock my full songs"}</button>
     {error && <p role="alert" className="error-copy">{error}</p>}
     <p className="help">Already paid? <button className="ghost" type="button" onClick={onPaid}>Check my payment</button></p>
   </section>;

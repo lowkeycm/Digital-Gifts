@@ -6,9 +6,9 @@ Reviewed October 3, 2026 against main `ddc01642d8aa8c1a2e206170a6a61d3543b5f04c`
 
 Sell personalized digital gifts through yourgiftsmith.com. Your Song currently offers a $29 USD one-time purchase, two original versions, three revisions, downloads and a recipient page containing the selected version. RelevAInt, LLC is the owner-provided legal entity; account identity and activation have not been verified through Stripe.
 
-The user installed and connected the Stripe ChatGPT app. Installation was confirmed, but neither the implementation planner nor account tools were exposed in this session. This is a documentation-based plan using the explicitly requested fallback, `npx skills add https://docs.stripe.com`, and Stripe's official `stripe-best-practices` skill. It is not output from `stripe_implementation_planner`.
+The installed Stripe app's implementation planner was run October 3, 2026 against TheGiftSmith sandbox (`acct_1UMJrORblVwGH16G`, test mode), using this business context. Guide `iguide_61VVyGl3Gm1NfmGzd41RblVwGH16G` accepted `out_of_box_hosted`: hosted Checkout, web origin. The connected app also exposes TheGiftSmith test-mode account (`acct_1UMJrFDKtoosbyUS`). The website key's actual account still needs hosted verification; never substitute accounts silently.
 
-The site already has a server-side Stripe Checkout integration. Connecting the ChatGPT app does not establish the website's API credentials, signing secret or successful payment acceptance. Public generation remains without a payment requirement until the owner authorizes paid launch. No account settings, invoices, charges, secrets or database records were changed during this review.
+The existing website integration now generates two 60-second previews before checkout. A verified one-time $29 payment unlocks the same originals, MP3 downloads, three revisions and selected-version gifting. No second song generation runs in the payment webhook. Public generation remains free until the owner authorizes paid launch. Separate private sandbox entry remains owner-authenticated.
 
 ## Recommended product setup
 
@@ -36,9 +36,9 @@ Stripe documents post-payment invoice creation separately from Invoicing. The pu
 | Webhook authenticity | Actual SDK verifies raw-body signatures and mode | Retain; configure real endpoint secret |
 | Replay | Checkout idempotency, saved paid state and atomic generation reservation | Retain; verify concurrent real deliveries |
 | Return-page recovery | Server reconciliation exists; webhook can fulfill without browser return | Retain; validate closed-return and missing-cookie cases |
-| Long-running work | Webhook waits for LLM/music submission inside a 60-second route | Before paid launch, persist a recoverable generation job and acknowledge payment promptly; execute via durable worker and recovery mechanism |
-| Payment methods | Explicit card allowlist; success events handled, async failure not handled | For broader dashboard-managed methods, remove allowlist and first implement failure/pending states and retry UX |
-| Checkout tracking | No `integration_identifier` | Add stable flow label with eight-letter suffix as recommended by the official skill |
+| Long-running work | Music begins before purchase; payment webhook only validates and persists access | Generation retains existing claim/callback/reconciliation recovery; no music work in webhook |
+| Payment methods | Dashboard-managed dynamic methods; completed and async success events verified | Async payment failure/retry UX remains a paid-launch acceptance item if delayed methods are enabled |
+| Checkout tracking | Stable `your-song-preview-qmzlfnra` label | Implemented with eight-letter suffix |
 | Receipt and invoice emails | No account settings verified; no automatic invoice creation | Configure receipts; choose optional invoice PDFs separately |
 | Refunds and disputes | No app lifecycle handling | Define owner workflow and record status; do not automatically revoke gifts or refund without a product decision |
 | Song delivery email | Private link retained in browser; no automated delivery email | Add reliable owner-link delivery and recovery before broad paid traffic |
@@ -61,8 +61,8 @@ Access policies must match the application's actual egress. Do not restrict a dy
 
 ## Required hosted sandbox acceptance
 
-- Successful $29 checkout saves payment and starts one original generation, even if the buyer closes the return page.
-- Cancellation and a declined payment preserve the story and start no music.
+- Successful $29 checkout saves payment and unlocks the existing previewed originals, even if the buyer closes the return page.
+- Cancellation and a declined payment preserve previews and do not unlock full songs.
 - Duplicate and concurrent webhook deliveries do not repeat provider spend; wrong mode, signature, amount or order cannot grant access.
 - Interrupted processing recovers from saved paid state; ambiguous provider outcomes never cause blind resubmission.
 - Buyer retains both versions, can use all three revisions and shares only the selected version. Recipient cannot access owner controls.

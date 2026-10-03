@@ -149,13 +149,14 @@ export async function syncJob(jobId: string) {
         .maybeSingle();
       if (readError) throw new Error("track_read_failed");
       if (existing) continue;
-      await storeAudio(path, track.url);
+      const previewPath = await storeAudio(path, track.url);
       const { error: e } = await db().from("song_beta_tracks").upsert(
         {
           session_id: job.session_id,
           job_id: job.id,
           provider_audio_id: track.id,
           storage_path: path,
+          preview_storage_path: previewPath,
           title: track.title,
           lyrics: track.lyrics,
           duration: track.duration,

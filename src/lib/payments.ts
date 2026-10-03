@@ -1,8 +1,7 @@
 import "server-only";
 import Stripe from "stripe";
 import { ClientError } from "./beta-http";
-import { db, type BetaSession } from "./beta-repository";
-import { reserveAndStart } from "./beta-generation";
+import { db, jobsFor, tracksFor, type BetaSession } from "./beta-repository";
 import { SONG_PRICE_CENTS, SONG_CURRENCY, INCLUDED_REVISIONS } from "./offer";
 
 export type PaymentMode = "test" | "live";
@@ -69,13 +68,19 @@ export async function fulfillCheckout(checkoutId: string, mode: PaymentMode, exp
   });
   if (paidError) throw new Error("payment_save_failed");
   const session = (Array.isArray(paid) ? paid[0] : paid) as BetaSession;
-  await reserveAndStart(session, "original", order.origin);
+  // The purchase unlocks the existing previewed originals. Never regenerate here.
   return session;
 }
 export async function createSongCheckout(session: BetaSession): Promise<string | null> {
   if (!session.checkout_mode || session.checkout_mode === "free") throw new ClientError("This song does not need checkout.", 409);
   const mode = session.checkout_mode;
   if (!stripeReady(mode)) throw new ClientError("Checkout is temporarily unavailable. Your story is saved.", 503);
+  if (session.payment_status !== "paid") {
+    const [jobs, tracks] = await Promise.all([jobsFor(session.id), tracksFor(session.id)]);
+    const originals = new Set(jobs.filter(j => j.kind === "original" && j.status === "complete").map(j => j.id));
+    if (tracks.filter(t => originals.has(t.job_id) && t.preview_storage_path).length < 2)
+      throw new ClientError("Your previews are still being prepared. Listen to them before checkout.", 409);
+  }
   const { data, error } = await db().rpc("reserve_song_checkout", { p_session_id: session.id, p_origin: paymentSiteOrigin() });
   if (error) throw new Error("checkout_reserve_failed");
   let order = (Array.isArray(data) ? data[0] : data) as CheckoutOrder;
@@ -96,7 +101,8 @@ export async function createSongCheckout(session: BetaSession): Promise<string |
     order = renewed[0] as CheckoutOrder;
   }
   const checkout = await stripe.checkout.sessions.create({
-    mode: "payment", allowed_payment_method_types: ["card"], customer_email: session.raw_answers.email,
+    mode: "payment", customer_email: session.raw_answers.email,
+    integration_identifier: "your-song-preview-qmzlfnra",
     client_reference_id: order.id,
     metadata: { app: "your_song", order_id: order.id, song_id: session.id },
     payment_intent_data: { metadata: { app: "your_song", order_id: order.id, song_id: session.id } },

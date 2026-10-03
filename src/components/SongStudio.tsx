@@ -24,7 +24,7 @@ type State = {
   recipientName: string;
   genre: string;
   occasion: string;
-  giftToken: string;
+  giftToken: string | null;
   selectedTrackId: string | null;
   giftPhotoId: string | null;
   reactionAssetId: string | null;
@@ -32,7 +32,7 @@ type State = {
   tracks: Track[];
   feedbackSaved: boolean;
   revisionNotesLimit?: number;
-  checkout?: { mode: "free" | "test" | "live"; status: string };
+  checkout?: { mode: "free" | "test" | "live"; status: string; previewReady?: boolean };
 };
 export function SongStudio({
   id,
@@ -133,6 +133,7 @@ export function SongStudio({
   const latest = [originals.at(-1), revisions.at(-1)].filter((j): j is Job =>
     Boolean(j),
   );
+  const previewOnly = state.checkout?.mode !== "free" && state.checkout?.status === "pending";
   return (
     <>
       <div className="delivery-heading">
@@ -143,17 +144,12 @@ export function SongStudio({
       </div>
       <h1 className="delivery-title">For {state.recipientName}.</h1>
       <p className="lede delivery-lede">
-        Your story, made into music. Listen to each version and keep the one
-        that feels right.
+        {previewOnly ? "Your story, made into music. Hear a 60-second preview of each version and find the one that feels like them." : "Your story, made into music. Listen to each version and keep the one that feels right."}
       </p>
       <p className="help">
-        Save this private link to return. It lets you manage the song; choose
-        Send your gift below when sharing with the recipient.
+        {previewOnly ? "Save this private link to return to your previews." : "Save this private link to return. It lets you manage the song; choose Send your gift below when sharing with the recipient."}
       </p>
       {copy && <p role="status">{copy}</p>}
-      {state.checkout && state.checkout.mode !== "free" && state.checkout.status === "pending" && (
-        <SongCheckout id={id} accessKey={accessKey} mode={state.checkout.mode} onPaid={() => { started.current = Date.now(); setPolling(true); void refresh(); }} />
-      )}
       {error && (
         <p className="error-copy" role="alert">
           {error}
@@ -235,7 +231,9 @@ export function SongStudio({
                 / Version {i + 1}
               </span>
               <h2>{t.title}</h2>
+              {previewOnly && <p className="help">60-second preview</p>}
               <audio
+                key={`${t.id}-${previewOnly ? "preview" : "full"}`}
                 controls
                 preload="none"
                 onPlay={(e) =>
@@ -247,6 +245,7 @@ export function SongStudio({
               >
                 Your browser does not support audio playback.
               </audio>
+              {!previewOnly && <>
               <a
                 className="pill"
                 href={`/api/songs/${id}/audio?key=${accessKey}&track=${t.id}&download=1`}
@@ -264,6 +263,7 @@ export function SongStudio({
                   ? "Selected for their gift"
                   : "Choose this version for their gift"}
               </button>
+              </>}
               {t.lyrics && (
                 <details>
                   <summary>Read the lyrics</summary>
@@ -274,7 +274,13 @@ export function SongStudio({
           </article>
         ))}
       </div>
-      {state.tracks.length > 0 && (
+      {previewOnly && state.checkout?.previewReady && (
+        <SongCheckout id={id} accessKey={accessKey} mode={state.checkout.mode as "test" | "live"} onPaid={() => { started.current = Date.now(); setPolling(true); void refresh(); }} />
+      )}
+      {previewOnly && originals.some(j => j.status === "complete") && !state.checkout?.previewReady && (
+        <div className="card" role="status"><h2>Preparing your previews.</h2><p>Your songs are made. We’re getting them ready for your first listen.</p></div>
+      )}
+      {!previewOnly && state.tracks.length > 0 && (
         <section id="gift-preparation" className="gift-preparation card">
           <span className="eyebrow">Make it theirs</span>
           <h2>Your gift, ready to give.</h2>
@@ -317,7 +323,7 @@ export function SongStudio({
           )}
         </section>
       )}
-      {originals.some((j) => j.status === "complete") && (
+      {!previewOnly && originals.some((j) => j.status === "complete") && (
         <RevisionForm
           key={`revision-${revisions.at(-1)?.id ?? "first"}-${revisions.at(-1)?.status ?? "ready"}`}
           songId={id}
@@ -329,7 +335,7 @@ export function SongStudio({
           onSubmitted={() => { started.current = Date.now(); setPolling(true); void refresh(); }}
         />
       )}
-      {state.tracks.length > 0 && (
+      {!previewOnly && state.tracks.length > 0 && (
         <div className="card reaction-upload-card">
           <GiftUpload
             songId={id}
@@ -340,7 +346,7 @@ export function SongStudio({
           />
         </div>
       )}
-      {state.tracks.length > 0 && (
+      {!previewOnly && state.tracks.length > 0 && (
         <form
           className="card beta-feedback"
           onSubmit={async (e) => {

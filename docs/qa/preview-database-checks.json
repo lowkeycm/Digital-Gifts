@@ -1,0 +1,7 @@
+{
+  "project": "Digital Enterprise / Digital Gifts / hyjmlkowbhftisynztui",
+  "migration": "preview_before_checkout",
+  "fixture": "Transaction rolled back; created_at offsets represent separate revision submissions",
+  "checks": ["Unpaid original permitted", "Repeated original returns same job", "Unpaid revision denied", "Paid revisions one through three permitted", "Fourth revision denied", "Customer roles cannot execute reservation", "Track RLS preserved"],
+  "advisors": "Existing backend-only no-policy notices, six legacy demo function notices and existing leaked-password setting warning unchanged. No new notice from nullable preview path."
+}
