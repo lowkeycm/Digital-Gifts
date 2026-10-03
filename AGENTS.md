@@ -117,7 +117,7 @@ Record the operator in the Last Session block of `HANDOFF.md`.
 | `SUNO_API_KEY` | Future Vercel project secret env; not configured | future official Suno adapter |
 | `KIE_API_KEY` | Exact Vercel digital-gifts project server environment | Kie V6 free-test generation |
 | `SUPABASE_SECRET_KEY` | Exact Vercel digital-gifts project server environment; obtain only from Digital Gifts API keys | Private beta tables/audio storage; legacy SUPABASE_SERVICE_ROLE_KEY also accepted |
-| `TEST_STUDIO_PASSWORD` | Exact Vercel digital-gifts project server environment | Owner-only /studio, minimum 16 characters |
+| Studio account credentials | Supabase Auth in Digital Gifts, with backend-only song_studio_owners authorization | Owner-only /studio. Never store a human login password in Vercel or invent a shared-password gate. |
 | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID` | Future Vercel project secret env; not configured | future Stripe integration |
 
 The Supabase publishable key is intentionally public and low privilege. Secret/service-role credentials are not used by the current buyer flow.
@@ -268,3 +268,7 @@ Clay selected Kie for a no-paywall test release. New backend-owned resources: so
 ### 2.17 Personal gifts and uploaded reactions (2026-09-30)
 
 Additional owned resources: song_beta_media; reserve_beta_media; private song-gift-photos (8 MiB) and song-reaction-videos (50 MiB). Only backend secrets access the table/RPC. Browser uploads use scoped signed Tus tokens. Explicitly selected_track_id controls recipient audio access; keep all other tracks in the owner's private session. Gift media must belong to the same session. Reaction uploads are private and never accessible through gift tokens or automatically approved for advertising. Photo/reaction limits, consent and storage-retention boundaries are in docs/KIE-TEST-RELEASE.md.
+
+### 2.18 Studio account access (2026-10-03)
+
+Owner requested replacing the inaccessible Vercel-password gate with ordinary account login and recovery. Use Supabase Auth, verified server getUser identity and the private song_studio_owners allowlist. Only a confirmed email may bind the pre-authorized owner row to an Auth user ID; later users cannot replace that binding. No public owner signup or user_metadata-based authorization. Additional owned resources: song_studio_owners, song_studio_auth_attempts; claim_studio_owner and reserve_studio_auth_attempt, all backend-only with RLS and revoked public/customer privileges. Supabase SSR cookies are HttpOnly, secure in production and refreshed before rendering. Email callbacks stay on the site with PKCE verification. Login, setup, recovery, logout and password changes must be exercised; a rendered form alone is not real account acceptance. Keep email delivery/URL configuration dependencies explicit until verified. Owner chooses their own password through the site; never enter it on their behalf or require a deploy to change it.

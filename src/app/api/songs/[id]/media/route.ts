@@ -3,7 +3,7 @@ import { z } from "zod";
 import { sessionFor } from "@/lib/beta-repository";
 import { db } from "@/lib/beta-repository";
 import { mediaBucket, mediaFor } from "@/lib/gift-media";
-import { isStudioOwner } from "@/lib/studio-auth";
+import { isStudioOwner } from "@/lib/studio-account";
 import { privateHeaders } from "@/lib/beta-http";
 export async function GET(
   request: Request,
