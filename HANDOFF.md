@@ -4,7 +4,16 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (studio account login repair, provider configuration complete)
+## Last Session (studio signup feedback repair)
+
+- **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode. Same ongoing authorized login repair.
+- **Production base:** PR36 merged as 3553bda0b0490d2746b7532aaa43d49e0a46d45d; dpl_3BYAegV6bAwynHMSPhu83FJvy2jE READY on www.yourgiftsmith.com. Auth URLs, email provider/confirmation and owner's default-mailer eligibility verified in preceding session.
+- **Reported failure:** Owner clicked Create my account, saw cleared form. Actual live browser displayed If this email has studio access, check your inbox for the next step, the exact unlisted-email branch. Live Auth query returned no owner account; runtime logs show two POST /api/studio HTTP200 requests. No password or redacted email read. Inference from actual response and code: submitted email failed the private allowlist. Do not infer the exact submitted address or say an email was sent. Authorized address remains the recorded nerdsandbots@gmail.com.
+- **Changed:** Unlisted signup and recovery return explicit HTTP403 access feedback without provider calls; login stays generic401. Error preserves submitted fields. Successful setup/recovery displays distinct Check your email state including entered address, hides password form and repeated-submit button, and retains Back to sign in. Permission scope unchanged.
+- **Branch / release:** clay/studio-setup-feedback based on exact production tree. Existing publication authorization persists. Check and clean production build passed. Eighteen real-SDK production-build browser checks pass, including explicit unlisted signup/error/input retention/no-email calls and dedicated accepted confirmation screen. Error/confirmation screenshots visually inspected at 390px, existing 1440/390 and 320/768 cases pass. A stale local Next incremental build initially served the old code; discarded generated .next and verified a fresh build before publishing. Deploy evidence follows in PR. Keep CHECKOUT_MODE=free; no music calls, real payment, agent-created owner password, account deletion or bypass.
+- **Acceptance still pending:** Owner must enter the authorized email and choose their own password, confirm the emailed link in the same browser, then real owner dashboard/recovery can be verified. Do not mark owner login accepted from fixture checks or HTTP200 markup.
+
+## Prior Session (studio account login repair, provider configuration complete)
 
 - **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode.
 - **Request:** Fix inaccessible studio login, replace Vercel password gate with ordinary owner account/recovery. Owner explicitly said do what is needed; existing publication authorization persists.
