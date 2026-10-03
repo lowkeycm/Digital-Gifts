@@ -103,6 +103,8 @@ export async function createSongCheckout(session: BetaSession): Promise<string |
   let checkout: Stripe.Checkout.Session;
   try { checkout = await stripe.checkout.sessions.create({
     mode: "payment", customer_email: session.raw_answers.email,
+    // Keep this direct-sale Checkout integration independent of account defaults.
+    managed_payments: { enabled: false },
     integration_identifier: "your-song-preview-qmzlfnra",
     client_reference_id: order.id,
     metadata: { app: "your_song", order_id: order.id, song_id: session.id },

@@ -84,3 +84,9 @@ Sandbox payments do not charge money. The current music backend still uses real 
 - Receipts and optional paid invoices: https://docs.stripe.com/receipts
 - Invoicing: https://docs.stripe.com/invoicing
 - Post-payment invoice pricing: https://support.stripe.com/questions/pricing-for-post-payment-invoices-for-one-time-purchases-via-checkout-and-payment-links
+
+## Account-default Checkout compatibility (October 3, 2026)
+
+The actual sandbox account defaults new Checkout Sessions to Managed Payments. Its product-tax-code requirement blocked this ordinary direct-sale Checkout integration. Session creation explicitly sets `managed_payments: { enabled: false }`, retaining the accepted hosted Checkout plan and $29 USD price. This is a per-session setting; it does not alter account-wide configuration. Dashboard-managed payment methods remain enabled. Merchant tax obligations and live launch acceptance remain separate launch decisions.
+
+Official reference: https://docs.stripe.com/payments/managed-payments/update-checkout

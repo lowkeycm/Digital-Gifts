@@ -5,7 +5,7 @@
     "Checkout waits for two completed real previews",
     "Checkout setup reason redacts email, keys and private identifiers",
     "Hosted checkout reuses the saved order, ignores client price and never creates another song at checkout",
-    "Server fixes $29 USD offer; Stripe receives no private song key or story details",
+    "Standard hosted Checkout overrides Managed Payments account defaults, fixes $29 USD and excludes private story/key",
     "Actual Stripe SDK rejects forged signatures; unpaid events never grant access",
     "Payment validation rejects wrong amount, currency, mode, song and order",
     "Signed paid event saves payment and duplicate confirmation unlocks the previewed song without generation",
