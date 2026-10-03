@@ -1,0 +1,14 @@
+{
+  "environment": "Real TypeScript routes and payment modules, real Stripe SDK signature verification, controlled provider transport and database fixture. No real payment or provider charge.",
+  "checks": [
+    "Public path remains no-paywall; sandbox/live credentials cannot cross modes",
+    "Hosted checkout reuses the saved order, ignores client price and starts no unpaid music",
+    "Server fixes $29 USD offer; Stripe receives no private song key or story details",
+    "Actual Stripe SDK rejects forged signatures; unpaid events never grant access",
+    "Payment validation rejects wrong amount, currency, mode, song and order",
+    "Signed paid event saves payment and duplicate confirmation invokes one generation claim",
+    "Return reconciles paid checkout; missing owner cookie cannot reveal a private song link",
+    "Expired checkout renews safely with a new attempt and idempotency key",
+    "Cross-origin checkout creation blocked"
+  ]
+}

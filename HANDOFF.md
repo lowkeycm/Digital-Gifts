@@ -4,7 +4,19 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (custom music direction)
+## Last Session (three revisions and Stripe preparation)
+
+- **When / who:** October 3 UTC, 2026 / Clay / ChatGPT Work Mode.
+- **Request / choice:** Three included revisions and set up Stripe. Owner selected test first, preserving public no-paywall generation until explicit paid launch. Existing merge/publication authorization persists.
+- **Branch:** clay/three-revisions-stripe, based on main 04c447622f68bc09b12c34f6310e46d6d8c4ccff.
+- **Changed:** Three atomic revision rounds with UUID replay protection, separate retry budgets, cumulative original correction notes and persistent musical direction. All tracks retained. Public offer says $29 and three revisions; private studio shows remaining/pending/retry/exhausted states. Server-only Stripe 23 hosted checkout with exact server-owned $29 USD, isolated test/live keys, signed raw-body webhooks, saved paid confirmation before music, return/poll reconciliation and replay-safe reservations. Owner-only sandbox intake; public payments default off.
+- **Database:** Confirmed Digital Enterprise / Digital Gifts hyjmlkowbhftisynztui. Applied supabase/migrations/20261003024938_three_revisions_stripe.sql, additive checkout state/order table and revision rounds. Five pre-existing sessions remain free/not_required. Real transaction tests passed and rolled back; new table/RPCs service-only with RLS. Existing legacy demo advisories unchanged, new RLS-without-policy informational warning is intentional for backend-only orders.
+- **Verification:** Lint/type/build; 17 source-module music checks; nine Stripe SDK/server tests (real signature generation/validation against controlled transport, no real charge); real database constraints and replay; production-build desktop/mobile browser checks including three actual API revision submissions, original preservation, pending/failed/exhausted, saved checkout error, owner-only sandbox, no overflow/runtime errors. QA images/json under docs/qa/stripe-*. Marketing-Hub scoped review and completion gate recorded in website brief.
+- **Stripe account:** Clay asked about a subaccount. Official Stripe multiple-account guidance supports a dedicated ordinary The Gift Smith account under the same login, legal entity RelevAInt, LLC, tax ID and optionally bank. No Stripe Connect setup needed. Domain is yourgiftsmith.com. Account is not created/connected; owner onboarding/agreements required. Sign-in reached authenticator then expired back to login. No credentials, webhook or settings changed. Vercel Stripe variables absent; no real hosted checkout acceptance yet. See docs/STRIPE-SETUP.md for exact safe setup.
+- **Release target:** digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Prepared for checked PR merge and live verification; final release result in PR.
+- **Remaining:** Dedicated Stripe sandbox credentials and webhook, then real sandbox success/cancel/decline/replay acceptance. Keep CHECKOUT_MODE=free until owner explicitly launches payments. Email delivery, tax/legal launch policy and real paid acceptance remain separate launch work. Never request keys in chat.
+
+## Prior Session (custom music direction)
 
 - **When / who:** October 2 evening New York / October 3 UTC, 2026 / Clay / ChatGPT Work Mode.
 - **Request:** Optional plain-language sound, mood, energy, vocals, instruments, inspiration and exclusions; backend LLM converts these into Suno direction while preserving the personal story. Existing merge/publication authorization continues.

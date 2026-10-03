@@ -18,7 +18,7 @@ const questions = [
   ],
   [
     "What will I get, and can I download it?",
-    "You get a full personalized song, an MP3 you can download and keep, and a private listening page to share with the recipient. Choose the version they’ll hear and add a photo to make the gift page theirs. One revision is included.",
+    "You get a full personalized song, an MP3 you can download and keep, and a private listening page to share with the recipient. Choose the version they’ll hear and add a photo to make the gift page theirs. Three revisions are included.",
   ],
   [
     "How quickly will my song be ready?",
@@ -34,7 +34,7 @@ const questions = [
   ],
   [
     "What if a detail needs changing?",
-    "One revision is included. Tell us what to change, and we’ll make a new rendition using your original story and your notes. The melody and delivery may change too. Your original versions stay available.",
+    "Three revisions are included. Tell us what to change, and we’ll make a new rendition using your original story and your notes. The melody and delivery may change too. Your original versions stay available.",
   ],
   [
     "How do I send it to them?",
@@ -73,7 +73,7 @@ export default function YourSongPage() {
               <Arrow />
             </Link>
             <span className="song-price-note">
-              $29 · Full song + one revision
+              $29 · Full song + three revisions
             </span>
           </div>
         </section>
@@ -111,7 +111,7 @@ export default function YourSongPage() {
               <h3>Make it their moment.</h3>
               <p>
                 The full song belongs on a private gift page. One included
-                revision gives you room to correct a detail.
+                revisions give you room to correct a detail.
               </p>
             </article>
           </div>
@@ -162,7 +162,7 @@ export default function YourSongPage() {
           <div className="song-offer">
             <div className="offer-top">
               <span>Your Song</span>
-              <span>Full song + one revision</span>
+              <span>Full song + three revisions</span>
             </div>
             <div className="offer-price">
               $29<span>one personalized gift</span>
@@ -171,7 +171,7 @@ export default function YourSongPage() {
               <li>A full personalized digital song</li>
               <li>Your choice of style and vocal preference</li>
               <li>A private song page and MP3 download</li>
-              <li>One revision for a missed detail</li>
+              <li>Three revisions for a missed detail</li>
             </ul>
             <Link href="/create" className="gift-button">
               Start your song

@@ -6,6 +6,8 @@ import { betaReady } from "@/lib/beta-config";
 import { kieBrief, KIE_PROMPT_LIMIT } from "@/lib/music/kie";
 import { db, type BetaSession } from "@/lib/beta-repository";
 import { reserveAndStart } from "@/lib/beta-generation";
+import { publicCheckoutMode, stripeReady } from "@/lib/payments";
+import { requireStudioOwner } from "@/lib/studio-auth";
 import {
   requestOrigin,
   bodyJSON,
@@ -18,6 +20,7 @@ const schema = intakeSchema.extend({
   requestId: z.string().uuid(),
   consent: z.literal(true),
   website: z.string().max(0).optional(),
+  checkoutTest: z.boolean().optional(),
 });
 export async function POST(request: Request) {
   try {
@@ -31,7 +34,10 @@ export async function POST(request: Request) {
       throw new ClientError(
         "Please complete the story details and agree to the song creation notice.",
       );
-    const { requestId, consent: _, website: __, ...input } = parsed.data;
+    const { requestId, consent: _, website: __, checkoutTest, ...input } = parsed.data;
+    if (checkoutTest) await requireStudioOwner();
+    const mode = checkoutTest ? "test" : publicCheckoutMode();
+    if (mode !== "free" && !stripeReady(mode)) throw new ClientError("Checkout is temporarily unavailable. Please keep your story and try again shortly.", 503);
     void _;
     void __;
     if (kieBrief(input).length > KIE_PROMPT_LIMIT - 600)
@@ -53,10 +59,12 @@ export async function POST(request: Request) {
       p_email: input.email,
       p_ip_hash: ipHash,
       p_answers: { ...input, testConsent: { accepted: true, version: "song-creation-2026-10-03" } },
+      p_checkout_mode: mode,
     });
     if (error) throw new Error(error.message);
     const session = (Array.isArray(data) ? data[0] : data) as BetaSession;
-    await reserveAndStart(session, "original", requestOrigin(request));
+    if ((session.checkout_mode ?? "free") === "free")
+      await reserveAndStart(session, "original", requestOrigin(request));
     return NextResponse.json(
       { id: session.id, accessToken: session.access_token },
       { headers: privateHeaders },

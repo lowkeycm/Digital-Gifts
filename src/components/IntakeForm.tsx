@@ -59,7 +59,7 @@ const steps = [
   },
 ];
 
-export function IntakeForm({ ready = true }: { ready?: boolean }) {
+export function IntakeForm({ ready = true, checkoutMode = "free" }: { ready?: boolean; checkoutMode?: "free" | "test" | "live" }) {
   const router = useRouter();
   const [requestId] = useState(() => crypto.randomUUID());
   const [consent, setConsent] = useState(false);
@@ -121,7 +121,7 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
       const res = await fetch("/api/intakes", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...data, requestId, consent, website }),
+        body: JSON.stringify({ ...data, requestId, consent, website, ...(checkoutMode === "test" ? { checkoutTest: true } : {}) }),
       });
       const body = await res.json();
       if (!res.ok) throw new Error(body.error || "Could not save your story.");
@@ -310,6 +310,7 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
 
       {step === 3 && (
         <>
+          {checkoutMode !== "free" && <div className="aside-note"><strong>$29 · Full song + three revisions</strong><p>Next, complete secure checkout. We’ll start your song after payment is confirmed.{checkoutMode === "test" ? " This private checkout uses Stripe test mode. No real payment is collected; music generation still uses Kie credits." : ""}</p></div>}
           <div className="field">
             <label htmlFor="whatYouWantToSay">
               What do you want them to understand or feel when they hear it?
@@ -407,7 +408,7 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
             className="pill primary"
             disabled={busy || !ready || overBudget || !consent}
           >
-            {busy ? "Starting your song..." : "Create my song"}
+            {busy ? "Saving your story..." : checkoutMode === "free" ? "Create my song" : "Continue to checkout"}
           </button>
         )}
       </div>

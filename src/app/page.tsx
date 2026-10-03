@@ -108,14 +108,14 @@ export default function Home() {
                   </p>
                   <div className="feature-details">
                     <span>Digital song</span>
-                    <span>One revision included</span>
+                    <span>Three revisions included</span>
                   </div>
                   <Link className="gift-button cream-button" href="/your-song">
                     Explore Your Song
                     <Arrow />
                   </Link>
                   <p className="small-note">
-                    $29 · Full song + one revision.
+                    $29 · Full song + three revisions.
                   </p>
                 </div>
               </div>
