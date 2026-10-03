@@ -72,9 +72,6 @@ export default function YourSongPage() {
               Start your song
               <Arrow />
             </Link>
-            <span className="song-price-note">
-              $29 · Full song + three revisions
-            </span>
           </div>
         </section>
         <SongSamples />

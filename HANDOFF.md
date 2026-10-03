@@ -4,7 +4,17 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (supplied Your Song logo)
+## Last Session (hero price line removed)
+
+- **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode.
+- **Request:** Remove the $29/full song/three revisions line below the Your Song hero CTA. Existing merge/publication authorization persists.
+- **Branch:** clay/remove-hero-price from d4c4cd1a6cb38fac825ddfaeb65c10e48feccf03.
+- **Changed:** Removed only the hero helper span; pricing and revision allowance elsewhere remain. Shared logo, photography, CTA and payment settings preserved.
+- **Verification:** npm check/build pass. Actual production-build Chromium at 1440/390 confirms absence in hero, retained offer price, CTA navigation to intake, no overflow or runtime errors; screenshots visually inspected. Evidence docs/qa/hero-price-*. Website brief scoped maintenance review and Hub completion gate recorded.
+- **Guidance:** Marketing-Hub website-system and all six references plus editorial anchors reloaded; established design and inspected research retained. Shared context manually resolved because local Hub helper is unavailable.
+- **Release target:** digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Checked PR merge and actual live verification follow; final release result recorded in PR. No provider calls, real customer records or Stripe settings touched.
+
+## Prior Session (supplied Your Song logo)
 
 - **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode.
 - **Request:** Use supplied heart-shaped record logo on Your Song pages. Existing merge/publication authorization continues.

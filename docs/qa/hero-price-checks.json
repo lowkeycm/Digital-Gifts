@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "heroPriceAndRevisionsRemoved": true,
+      "offerPriceRetained": true,
+      "ctaReachesIntake": true,
+      "noOverflow": true
+    },
+    {
+      "width": 390,
+      "heroPriceAndRevisionsRemoved": true,
+      "offerPriceRetained": true,
+      "ctaReachesIntake": true,
+      "noOverflow": true
+    }
+  ],
+  "pageErrors": []
+}
