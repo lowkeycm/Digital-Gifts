@@ -1,0 +1,24 @@
+{
+  "fixture": "Local Supabase REST/storage fixture, real Next production build; synthetic content; no generation calls. Native share and clipboard tested with controlled browser stubs; native OS delivery not asserted.",
+  "checks": [
+    "Parent brand remains at 1440",
+    "Product header/footer logos and navigation 1440",
+    "Private preview recipient-only link and player 1440",
+    "Clipboard fallback and email draft 1440",
+    "Clean recipient page and no owner key 1440",
+    "Parent brand remains at 390",
+    "Product header/footer logos and navigation 390",
+    "Private preview recipient-only link and player 390",
+    "Clipboard fallback and email draft 390",
+    "Clean recipient page and no owner key 390",
+    "Native share payload only contains recipient link",
+    "Native share cancellation is not reported sent",
+    "Gift and invalid keys denied private preview",
+    "Unselected audio denied",
+    "Missing selection returns sender to editor",
+    "Selection persists and preview follows chosen track",
+    "320 and 768 product/intake/gift no horizontal overflow",
+    "Original navy/gold logo readable on all occasion headers",
+    "No browser runtime errors"
+  ]
+}
