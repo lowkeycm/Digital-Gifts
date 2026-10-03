@@ -3,6 +3,7 @@
   "checks": [
     "Public path remains no-paywall; sandbox/live credentials cannot cross modes",
     "Checkout waits for two completed real previews",
+    "Checkout setup reason redacts email, keys and private identifiers",
     "Hosted checkout reuses the saved order, ignores client price and never creates another song at checkout",
     "Server fixes $29 USD offer; Stripe receives no private song key or story details",
     "Actual Stripe SDK rejects forged signatures; unpaid events never grant access",
