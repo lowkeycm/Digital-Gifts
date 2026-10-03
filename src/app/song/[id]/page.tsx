@@ -30,7 +30,7 @@ export default async function SongPage({ params, searchParams }: { params: Promi
         <div className="player-copy"><span className="eyebrow">Full song</span><h3>{song.occasion} edition</h3><div className="mock-player dark"><span className="play-dot" aria-hidden="true">♪</span><div><strong>Full-song placeholder</strong><small>Your finished song will be available here.</small></div></div></div>
       </div>
       <div className="delivery-actions"><button className="pill" disabled>Download unavailable in demo</button><Link className="pill" href={`/preview/${id}?key=${key}`}>Back to preview</Link></div>
-      <p>This older demo does not generate audio. <Link href="/create">Start a new test song</Link>.</p>
+      <p>This older demo does not generate audio. <Link href="/create">Start a new song</Link>.</p>
     </main><YourSongFooter/></>
   );
 }

@@ -4,7 +4,18 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (Black family homepage image)
+## Last Session (customer-ready presentation)
+
+- **When / who:** October 2 evening New York, 2026 / Clay / ChatGPT Work Mode.
+- **Request:** Remove all free-test, first-song-free and launch/signup promotion; present the normal customer offer and journey with no payment step yet. Existing publication authorization continues.
+- **Branch:** clay/customer-ready-song-flow from 4fdd1e978c9e52a7a4abd7d53606d82bcf5d7749.
+- **Changed:** Removed parent/product announcement bars, both launch signup sections, mobile Launch updates link and framed-product teaser. Restored established $29/full song/one revision presentation. Practical download/revision/sharing FAQ; neutral intake CTA and customer errors; preserved Kie AI/permission notice with song-creation-2026-10-02 consent version. Feedback no longer reads like a test invitation. Legacy demos remain truthfully labeled; owner admin/internal beta names unchanged. Launch subscriber data/API retained, no expanded marketing consent.
+- **Validation:** Lint/type/build pass. Production-build Chromium 1440/390 render and four-step intake through actual API/local synthetic database pass without checkout. Raw customer wording and new notice version verified. Selected song -> private preview -> recipient, playback, alternate preservation, invalid-key boundaries, clipboard fallback/native-share payload/cancel, mobile navigation and 320/768 overflow pass; no browser errors. Evidence docs/qa/customer-ready-*. No provider credits or production records created.
+- **Guidance:** Marketing-Hub 05fe2d3421819644678754eea9dd4ebfe442d3a3 website-system references and editorial anchors applied. Established art direction/research reused for copy maintenance. Shared profiles resolved manually, no invented new brand strategy. React/Next review preserves boundaries/hooks/accessibility.
+- **Release:** Target confirmed digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Prepared for checked PR merge and live verification; final release record in PR. Previous PR27 merged at 4fdd1e9 with production READY.
+- **Boundaries:** Payments remain disabled. API generation/revision/upload limits, private-link recovery and sharing behavior unchanged. Email sending and paid checkout still require separate launch work. No environment/schema changes.
+
+## Prior Session (Black family homepage image)
 
 - **When / who:** 2026-10-02 evening New York / Clay / ChatGPT Work Mode.
 - **Request:** Show Black people in the homepage image.
@@ -192,7 +203,7 @@ Every session ends by updating this file, committing, and pushing. Not committed
 
 All application/design work is now merged to main and deployed. The requested visual redesign is implemented and verified locally and on Vercel. The Gift Smith is the consumer parent name; Your Song is the first product. Repository, Vercel and Supabase identifiers remain Digital Gifts.
 
-Music generation, payments and email are still unconnected. Framed Song Gift remains a concept and cannot be ordered. These are existing product limitations, not visual-redesign omissions.
+Real Kie generation, revisions, MP3 storage, selected gift sharing and media uploads are connected and previously accepted live. Payments and delivery email remain unconnected. Framed Song Gift remains a concept and cannot be ordered. These are existing product limitations, not visual-redesign omissions.
 
 ## Platform capability notes (2026-09-28)
 

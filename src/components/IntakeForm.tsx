@@ -105,7 +105,7 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
       setError(
         overBudget
           ? "Please shorten your story using the character counter below."
-          : "Please agree to the test notice.",
+          : "Please agree to the song creation notice.",
       );
       return;
     }
@@ -327,8 +327,8 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
               placeholder="you@example.com"
             />
             <div className="help">
-              For matching your test feedback to your song. Save your private
-              song link; email delivery is not enabled for this test.
+              Keep your private song link so you can return to your versions and
+              gift page.
             </div>
           </div>
         </>
@@ -347,7 +347,7 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
               onChange={(e) => setConsent(e.target.checked)}
             />{" "}
             <span>
-              I understand this free test sends my story to Kie’s AI music
+              I understand my story is sent to Kie’s AI music
               service to create my song. I have permission to share these
               details.
             </span>
@@ -367,8 +367,8 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
       )}
       {!ready && (
         <p className="help">
-          The test studio is being connected. You can explore the questions now;
-          generation will open shortly.
+          Song creation is temporarily unavailable. Please keep your story and
+          try again shortly.
         </p>
       )}
       {error && (
@@ -399,7 +399,7 @@ export function IntakeForm({ ready = true }: { ready?: boolean }) {
             className="pill primary"
             disabled={busy || !ready || overBudget || !consent}
           >
-            {busy ? "Starting your song..." : "Create my free song"}
+            {busy ? "Starting your song..." : "Create my song"}
           </button>
         )}
       </div>

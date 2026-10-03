@@ -5,7 +5,6 @@ import { YourSongFooter } from "@/components/YourSongBrand";
 import { Nav } from "@/components/Nav";
 import { Arrow } from "@/components/GiftBrand";
 import { SongSamples } from "@/components/SongSamples";
-import { LaunchSignup } from "@/components/LaunchSignup";
 
 export const metadata: Metadata = {
   title: "Your Song | The Gift Smith",
@@ -19,11 +18,11 @@ const questions = [
   ],
   [
     "What will I get, and can I download it?",
-    "During testing, you can create a full song, download the MP3 and share a listening page with the recipient for free. One new rendition is included if you want a revision. A frame is not included.",
+    "You get a full personalized song, an MP3 you can download and keep, and a private listening page to share with the recipient. Choose the version they’ll hear and add a photo to make the gift page theirs. One revision is included.",
   ],
   [
     "How quickly will my song be ready?",
-    "Generation can take several minutes. Your song page shows its progress and keeps your result so you can return using your private link. We are measuring turnaround during this test.",
+    "Your song can take several minutes to generate. Your private song page shows its progress and keeps your finished versions so you can return using the same link.",
   ],
   [
     "Is the music made with AI?",
@@ -35,11 +34,11 @@ const questions = [
   ],
   [
     "What if a detail needs changing?",
-    "Your free test includes one new rendition using your original story and the changes you request. It may change the melody and delivery too. The original stays available.",
+    "One revision is included. Tell us what to change, and we’ll make a new rendition using your original story and your notes. The melody and delivery may change too. Your original versions stay available.",
   ],
   [
-    "Can I try it today?",
-    "We are opening a free test before the paid launch. Use Start your song to check availability. Testing has daily limits, and no card is required. Save your private song link so you can return; email delivery is not part of this test.",
+    "How do I send it to them?",
+    "Choose your favorite version on your private song page, then select Preview & send your gift. Use Send your gift or copy the recipient’s link into a text or email. Keep your own private link so you can return to all your versions.",
   ],
 ];
 export default function YourSongPage() {
@@ -74,12 +73,11 @@ export default function YourSongPage() {
               <Arrow />
             </Link>
             <span className="song-price-note">
-              Free during testing · Full song + one revision
+              $29 · Full song + one revision
             </span>
           </div>
         </section>
         <SongSamples />
-        <LaunchSignup source="/your-song" />
         <section id="how" className="section shell song-process">
           <div className="process-heading">
             <span className="eyebrow">
@@ -105,7 +103,7 @@ export default function YourSongPage() {
               <h3>Hear yourself in it.</h3>
               <p>
                 Listen to your full song and choose the version that feels right.
-                No payment is needed during testing.
+                Your other versions stay available too.
               </p>
             </article>
             <article>
@@ -167,7 +165,7 @@ export default function YourSongPage() {
               <span>Full song + one revision</span>
             </div>
             <div className="offer-price">
-              Free<span>during testing</span>
+              $29<span>one personalized gift</span>
             </div>
             <ul>
               <li>A full personalized digital song</li>
