@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GiftBrand } from "@/components/GiftBrand";
 import { StudioControls } from "@/components/StudioControls";
-import { isStudioOwner, studioConfigured } from "@/lib/studio-auth";
+import { isStudioOwner } from "@/lib/studio-account";
+import { StudioSignIn } from "@/components/StudioSignIn";
+import { YourSongBrand } from "@/components/YourSongBrand";
 import { betaReady } from "@/lib/beta-config";
 import { publicCheckoutMode, stripeReady } from "@/lib/payments";
 import {
@@ -13,25 +15,20 @@ import {
 } from "@/lib/beta-repository";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "Test studio | The Gift Smith",
+  title: "Studio | Your Song",
   robots: { index: false, follow: false },
   referrer: "no-referrer",
 };
-export default async function StudioPage() {
+export default async function StudioPage({ searchParams }: { searchParams: Promise<{ auth?: string }> }) {
   const owner = await isStudioOwner();
   if (!owner)
     return (
-      <main id="main-content" className="shell section delivery-shell">
-        <GiftBrand />
-        <h1>Test studio</h1>
-        {studioConfigured() ? (
-          <StudioControls />
-        ) : (
-          <p>
-            Add a TEST_STUDIO_PASSWORD of at least 16 characters in this
-            project’s server environment to enable the private owner dashboard.
-          </p>
-        )}
+      <main id="main-content" className="shell section studio-sign-in">
+        <YourSongBrand />
+        <section className="card studio-login-card">
+          <h1>Your Song studio</h1>
+          <StudioSignIn expired={(await searchParams).auth === "expired"} />
+        </section>
       </main>
     );
   if (!betaReady())
@@ -66,7 +63,8 @@ export default async function StudioPage() {
     <main id="main-content" className="shell section">
       <GiftBrand />
       <div className="delivery-heading">
-        <h1>Test studio</h1>
+        <h1>Your Song studio</h1>
+        <Link href="/studio/password">Change password</Link>
         <StudioControls action="logout" />
       </div>
       <p>

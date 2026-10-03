@@ -4,7 +4,7 @@ import { Nav } from "@/components/Nav";
 import { IntakeForm } from "@/components/IntakeForm";
 
 import { betaReady } from "@/lib/beta-config";
-import { isStudioOwner } from "@/lib/studio-auth";
+import { isStudioOwner } from "@/lib/studio-account";
 import { publicCheckoutMode, stripeReady } from "@/lib/payments";
 import { notFound } from "next/navigation";
 export const metadata: Metadata = { title: "Create your song | Your Song" };

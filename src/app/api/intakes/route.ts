@@ -7,7 +7,7 @@ import { kieBrief, KIE_PROMPT_LIMIT } from "@/lib/music/kie";
 import { db, type BetaSession } from "@/lib/beta-repository";
 import { reserveAndStart } from "@/lib/beta-generation";
 import { publicCheckoutMode, stripeReady } from "@/lib/payments";
-import { requireStudioOwner } from "@/lib/studio-auth";
+import { requireStudioOwner } from "@/lib/studio-account";
 import {
   requestOrigin,
   bodyJSON,

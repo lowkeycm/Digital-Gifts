@@ -3045,3 +3045,16 @@ textarea {
 .sound-preferences .help { margin: 0; }
 .studio-direction { margin: 16px 0; }
 .studio-direction summary { cursor: pointer; }
+/* Private owner sign-in reuses the existing paper and oxblood UI. */
+.studio-sign-in { max-width: 620px; }
+.studio-login-card { margin-top: 2rem; padding: clamp(1.5rem, 5vw, 3rem); }
+.studio-login-card h1 { font-size: clamp(2.3rem, 7vw, 3.6rem); }
+.studio-login-card h2 { margin: 1.25rem 0; font-size: 1.65rem; }
+.studio-login-card form { display: grid; gap: 1.25rem; }
+.studio-login-card .field { margin: 0; }
+.studio-login-card form .pill { justify-self: start; }
+.studio-login-actions { display: flex; gap: 1rem 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.studio-text-button { appearance: none; border: 0; padding: .25rem 0; background: transparent; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; font: inherit; cursor: pointer; }
+.studio-login-card > .studio-text-button, .studio-login-card > a { display: inline-block; margin-top: 1.5rem; }
+.studio-text-button:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.studio-text-button:disabled { opacity: .6; cursor: wait; }

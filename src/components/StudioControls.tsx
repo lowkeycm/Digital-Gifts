@@ -2,14 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 export function StudioControls({
-  action = "login",
+  action = "logout",
   jobId,
 }: {
-  action?: "login" | "logout" | "sync";
+  action?: "logout" | "sync";
   jobId?: string;
 }) {
-  const [password, setPassword] = useState(""),
-    [error, setError] = useState(""),
+  const [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
   const router = useRouter();
   return (
@@ -22,7 +21,7 @@ export function StudioControls({
           const r = await fetch("/api/studio", {
             method: "POST",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ action, password, jobId }),
+            body: JSON.stringify({ action, jobId }),
           });
           const b = await r.json();
           if (!r.ok) throw new Error(b.error);
@@ -34,25 +33,10 @@ export function StudioControls({
         }
       }}
     >
-      {action === "login" && (
-        <div className="field">
-          <label htmlFor="studio-password">Studio password</label>
-          <input
-            id="studio-password"
-            type="password"
-            autoComplete="current-password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-      )}
       <button className="pill" disabled={busy}>
         {busy
           ? "Working..."
-          : action === "login"
-            ? "Open studio"
-            : action === "logout"
+          : action === "logout"
               ? "Sign out"
               : "Check provider status"}
       </button>

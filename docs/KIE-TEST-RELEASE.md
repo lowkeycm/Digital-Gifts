@@ -15,7 +15,7 @@ Set in this Vercel project's Production and Preview environments, then redeploy:
 
 - KIE_API_KEY: Kie API key with a small available credit balance.
 - SUPABASE_SECRET_KEY: backend secret key from the exact Supabase project's API keys. Legacy SUPABASE_SERVICE_ROLE_KEY is accepted alternatively.
-- TEST_STUDIO_PASSWORD: at least 16 characters, for owner-only /studio access.
+- Studio access: Supabase Auth email/password with a private owner allowlist. See docs/STUDIO-ACCESS.md. No Vercel login-password variable.
 
 No NEXT_PUBLIC_ prefix. Never paste values into chat or commit them. No provider call can run without Kie and private-storage credentials. Missing configuration leaves the intake readable but disables submission. The owner studio is disabled without its password.
 
