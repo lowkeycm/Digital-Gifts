@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { betaReady } from "@/lib/beta-config";
 import { requireSession, tracksFor, db } from "@/lib/beta-repository";
 import { syncSession } from "@/lib/beta-generation";
@@ -6,7 +6,9 @@ import { apiError, privateHeaders } from "@/lib/beta-http";
 import { orderFor, fulfillCheckout, paymentSiteOrigin } from "@/lib/payments";
 import { reserveAndStart } from "@/lib/beta-generation";
 import { revisionNotesAllowance } from "@/lib/revisions";
-export const maxDuration = 60;
+import { hasFullSongAccess, SONG_PREVIEW_SECONDS } from "@/lib/song-access";
+import { ensureTrackPreview } from "@/lib/audio-storage";
+export const maxDuration = 120;
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
@@ -26,8 +28,10 @@ export async function GET(
         try { session = await fulfillCheckout(order.stripe_checkout_id, order.mode, id) ?? session; }
         catch { /* Keep the saved order available while webhook/reconciliation retries. */ }
       }
-    } else if (session.payment_status === "paid") {
-      // Recover a webhook interrupted after saving payment but before reserving music.
+    }
+    if (session.checkout_mode && session.checkout_mode !== "free") {
+      // Recover previously saved intakes and interrupted submissions. Reservation
+      // returns the original job and never starts another generation after payment.
       await reserveAndStart(session, "original", paymentSiteOrigin());
     }
     const [jobs, tracks, feedback] = await Promise.all([
@@ -39,17 +43,27 @@ export async function GET(
         .eq("session_id", id)
         .maybeSingle(),
     ]);
+    if (!hasFullSongAccess(session) && tracks.some(t => !t.preview_storage_path)) {
+      after(async () => {
+        for (const track of tracks.filter(t => !t.preview_storage_path)) {
+          try { await ensureTrackPreview(track); }
+          catch { console.error("song_preview_prepare_failed", { trackId: track.id }); }
+        }
+      });
+    }
+    const originalJobs = new Set(jobs.filter(j => j.kind === "original" && j.status === "complete").map(j => j.id));
+    const previewReady = tracks.filter(t => originalJobs.has(t.job_id) && t.preview_storage_path).length >= 2;
     return NextResponse.json(
       {
         id,
         recipientName: session.raw_answers.recipientName,
         genre: session.raw_answers.genre,
         occasion: session.raw_answers.occasion,
-        giftToken: session.gift_token,
+        giftToken: hasFullSongAccess(session) ? session.gift_token : null,
         selectedTrackId: session.selected_track_id,
         giftPhotoId: session.gift_photo_id,
         reactionAssetId: session.reaction_asset_id,
-        checkout: { mode: session.checkout_mode ?? "free", status: session.payment_status ?? "not_required" },
+        checkout: { mode: session.checkout_mode ?? "free", status: session.payment_status ?? "not_required", previewSeconds: SONG_PREVIEW_SECONDS, previewReady },
         revisionNotesLimit: revisionNotesAllowance(session.raw_answers, jobs),
         jobs: jobs.map((j) => ({
           id: j.id,
@@ -59,12 +73,12 @@ export async function GET(
           createdAt: j.created_at,
           revisionNumber: j.revision_number ?? (j.kind === "revision" ? 1 : 0),
         })),
-        tracks: tracks.map((t) => ({
+        tracks: tracks.filter((t) => hasFullSongAccess(session) || t.preview_storage_path).map((t) => ({
           id: t.id,
           jobId: t.job_id,
           title: t.title,
-          lyrics: t.lyrics,
-          duration: t.duration,
+          lyrics: hasFullSongAccess(session) ? t.lyrics : "",
+          duration: hasFullSongAccess(session) ? t.duration : Math.min(t.duration ?? SONG_PREVIEW_SECONDS, SONG_PREVIEW_SECONDS),
         })),
         feedbackSaved: Boolean(feedback.data),
       },

@@ -310,7 +310,7 @@ export function IntakeForm({ ready = true, checkoutMode = "free" }: { ready?: bo
 
       {step === 3 && (
         <>
-          {checkoutMode !== "free" && <div className="aside-note"><strong>$29 · Full song + three revisions</strong><p>Next, complete secure checkout. We’ll start your song after payment is confirmed.{checkoutMode === "test" ? " This private checkout uses Stripe test mode. No real payment is collected; music generation still uses Kie credits." : ""}</p></div>}
+          {checkoutMode !== "free" && <div className="aside-note"><strong>Hear your song first.</strong><p>Listen to a 60-second preview of each version. Then unlock both full songs, three revisions and your gift page for $29.</p></div>}
           <div className="field">
             <label htmlFor="whatYouWantToSay">
               What do you want them to understand or feel when they hear it?
@@ -410,7 +410,7 @@ export function IntakeForm({ ready = true, checkoutMode = "free" }: { ready?: bo
             className="pill primary"
             disabled={busy || !ready || overBudget || !consent}
           >
-            {busy ? "Saving your story..." : checkoutMode === "free" ? "Create my song" : "Continue to checkout"}
+            {busy ? "Saving your story..." : checkoutMode === "free" ? "Create my song" : "Create my previews"}
           </button>
         )}
       </div>

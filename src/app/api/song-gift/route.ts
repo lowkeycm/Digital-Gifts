@@ -1,3 +1,4 @@
+import { requireFullSongAccess } from "@/lib/song-access";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import {
@@ -18,7 +19,7 @@ export async function POST(request: Request) {
     const parsed = schema.safeParse(await bodyJSON(request));
     if (!parsed.success) throw new ClientError("Choose a song or photo to update.");
     const p = parsed.data;
-    await requireSession(p.songId, p.accessToken);
+    requireFullSongAccess(await requireSession(p.songId, p.accessToken));
     const updates: Record<string, unknown> = {};
     if (p.trackId) {
       const { data, error } = await db()

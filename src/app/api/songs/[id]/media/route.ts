@@ -1,3 +1,4 @@
+import { hasFullSongAccess } from "@/lib/song-access";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sessionFor } from "@/lib/beta-repository";
@@ -23,7 +24,7 @@ export async function GET(
     const studio =
       u.searchParams.get("studio") === "1" && (await isStudioOwner());
     const s = studio ? null : await sessionFor(id, key, gift);
-    if (!studio && !s) return new Response(null, { status: 404 });
+    if (!studio && (!s || !hasFullSongAccess(s))) return new Response(null, { status: 404 });
     const media = await mediaFor(asset, id);
     if (
       !media ||

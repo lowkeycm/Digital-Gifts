@@ -1,3 +1,4 @@
+import { requireFullSongAccess } from "@/lib/song-access";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/beta-repository";
@@ -15,6 +16,7 @@ export async function POST(request: Request) {
     if (!parsed.success) throw new ClientError("Invalid song request.");
     const p = parsed.data,
       session = await requireSession(p.songId, p.accessToken);
+    if (p.kind === "revision") requireFullSongAccess(session);
     await reserveAndStart(
       session,
       p.kind,

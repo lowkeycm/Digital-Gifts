@@ -2,7 +2,7 @@ import { after, NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/lib/beta-repository";
 import { syncJob } from "@/lib/beta-generation";
-export const maxDuration = 60;
+export const maxDuration = 120;
 export async function POST(request: Request) {
   try {
     const url = new URL(request.url),

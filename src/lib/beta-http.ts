@@ -49,7 +49,7 @@ export function apiError(error: unknown) {
     revision_pending: "Your current revision is still being made. Listen to it before requesting another.",
     revision_retry_required: "Retry the unfinished revision above before requesting another.",
     original_not_ready: "Wait until your original song is ready before requesting a revision.",
-    payment_required: "Complete checkout before creating your song.",
+    payment_required: "Unlock your full song before requesting a revision.",
     retry_limit: "This generation could not finish after three attempts. Please contact us for help.",
   };
   if (revisionErrors[code]) return NextResponse.json({ error: revisionErrors[code] }, { status: 409, headers: privateHeaders });
@@ -60,6 +60,13 @@ export function apiError(error: unknown) {
     );
   console.error("song_request_failed", {
     type: error instanceof Error ? error.name : "unknown",
+    // Stripe's structured diagnostics identify configuration failures without
+    // logging the message, request body, story, credentials or private song links.
+    ...(error && typeof error === "object" && "type" in error && typeof error.type === "string" && error.type.startsWith("Stripe")
+      ? Object.fromEntries(["type", "code", "param", "requestId", "statusCode"].map(k => {
+          const v = (error as Record<string, unknown>)[k];
+          return [k, typeof v === "number" || (typeof v === "string" && /^[\w.\[\]-]{1,120}$/.test(v)) ? v : undefined];
+        })) : {}),
   });
   return NextResponse.json(
     {

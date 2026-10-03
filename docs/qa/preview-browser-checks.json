@@ -1,0 +1,18 @@
+{
+  "environment": "Actual production Next build, real Supabase SDK with controlled REST/storage, real FFmpeg and supplied sample MP3. Payment transition controlled; signature/Stripe API contract verified separately. No real charge, generation credits or customer data.",
+  "clipDuration": 60.024,
+  "checks": [
+    "Real FFmpeg produces a playable 60-second file and rejects invalid audio",
+    "Unpaid state exposes previews and no gift token or full lyrics",
+    "Unpaid audio signs only the physical clip; downloads and recipient/invalid keys are denied",
+    "Gift preparation, revision requests/retries and uploads are enforced on the server",
+    "Previews play and end at 60 seconds before the purchase offer 1440",
+    "Previews play and end at 60 seconds before the purchase offer 390",
+    "Checkout failure preserves both previews and enables retry",
+    "Payment unlocks the same two full tracks, downloads and three revisions",
+    "Unlocked sender preview and recipient gift use only the selected version",
+    "Existing free songs retain full access without preview files or checkout",
+    "320/768 layouts and client runtime pass",
+    "Production function trace contains the FFmpeg executable"
+  ]
+}
