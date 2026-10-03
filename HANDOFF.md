@@ -4,7 +4,16 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (parent brand positioning)
+## Last Session (Black family homepage image)
+
+- **When / who:** 2026-10-02 evening New York / Clay / ChatGPT Work Mode.
+- **Request:** Show Black people in the homepage image.
+- **Branch:** clay/black-family-home-hero from 34f69556e2198de184d6212b785bb15b12d23514. Existing merge/publication authorization continues.
+- **Changed:** Generated edit of the illustrative mother/daughter scene, now featuring a Black mother and daughter. Preserves warm lighting, emotional interaction, personal note, setting and composition. New 161,938-byte WebP and alt text, homepage only. Your Song image and all copy preserved.
+- **Validation:** Lint/type/build pass. Production-build browser desktop/mobile image loading, crop and no overflow/runtime errors verified, product navigation works and Your Song hero preserved. Screenshots visually inspected in docs/qa/gift-smith-black-family-*. Restricted runtime blocked child processes with EPERM; build and browser passed with normal subprocess permissions. Chromium recovered through packaged extractor.
+- **Release:** Verified exact digital-gifts project prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / team_K0quIbtPFw7RIl9M7bG54yTE / www.yourgiftsmith.com. Prepared for checked PR merge/live acceptance; final release record in PR.
+
+## Prior Session (parent brand positioning)
 
 - **When / who:** 2026-10-02 UTC / October 1 evening New York / Clay / ChatGPT Work Mode.
 - **Request:** Make the homepage explain The Gift Smith as the personal-gift parent brand, then introduce Your Song as its first product.
