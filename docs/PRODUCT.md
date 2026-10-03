@@ -11,24 +11,24 @@ Products should be able to share the same underlying personalization infrastruct
 **Your Song** is the first The Gift Smith product.
 
 ### Core promise
-Tell us the real story. Hear a personalized preview. Unlock the full song for $29.
+Tell us the real story. Get a full personalized song, two original versions, three revisions and a private gift page for $29.
 
 ### Product rules
 1. Preserve customer specificity. Do not pre-polish their story into generic AI language.
 2. The music-specialized provider is the songwriter/composer. A general LLM is not the default final lyric writer.
 3. Intake should pull concrete details, not literary prose.
 4. V1 uses a short guided questionnaire. Adaptive follow-up questioning is V2.
-5. The customer is the primary QA layer. V1 includes one simple revision rather than elaborate automated QA.
-6. One revision is included with the $29 purchase.
+5. The customer is the primary QA layer. The customer can request three revisions rather than relying on elaborate automated QA.
+6. Three revisions are included with the $29 purchase.
 7. Clay selected The Gift Smith as the parent consumer name. The visual identity is a preview proposal. Legal language and exact upsells remain unapproved.
 
 ### Funnel
-The Gift Smith parent site -> Your Song product page -> guided intake -> preview generation -> private preview page -> $29 checkout -> full generation -> private song page -> optional revision.
+The Gift Smith parent site -> Your Song product page -> guided intake -> private studio -> generation -> choose a version -> preview and send recipient link. In paid mode, $29 Stripe checkout and verified payment come before generation. The owner-only Stripe sandbox follows the same paid sequence without a real payment.
 
 ### Current integration state
 - Supabase: live and dedicated to Digital Gifts.
-- Music: mock provider.
-- Checkout: demo boundary, clearly labeled. No money is collected.
+- Music: Kie Suno V6, real original and revision generations. Optional musical preferences use a separate backend LLM translation; raw personal memories stay intact.
+- Checkout: hosted Stripe integration prepared. Public CHECKOUT_MODE defaults to free; owner chose test-first. Sandbox/live keys and webhook signing secrets are separate. Existing songs retain free access. Stripe account connection and real sandbox acceptance remain required before enabling live checkout.
 - Email: not connected.
 
 ## Product 2 concept: Framed Song Gift

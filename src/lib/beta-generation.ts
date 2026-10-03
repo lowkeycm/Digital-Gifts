@@ -11,6 +11,7 @@ import { KieError, startKie, queryKie, readKieTracks } from "./music/kie";
 import { storeAudio } from "./audio-storage";
 import { directionInput, directionFingerprint, translateDirection } from "./music/translate-direction";
 import { musicDirectionSchema } from "./music/direction";
+import { revisionHistory, revisionNotes, latestMusicalNotes } from "./revisions";
 
 export async function reserveAndStart(
   session: BetaSession,
@@ -18,12 +19,14 @@ export async function reserveAndStart(
   baseUrl: string,
   notes = "",
   retry = false,
+  requestId?: string,
 ) {
   const { data, error } = await db().rpc("reserve_beta_job", {
     p_session_id: session.id,
     p_kind: kind,
     p_notes: notes,
     p_retry: retry,
+    p_request_id: requestId ?? null,
   });
   if (error) throw new Error(error.message);
   const job = (Array.isArray(data) ? data[0] : data) as BetaJob;
@@ -39,8 +42,9 @@ export async function reserveAndStart(
   // Translate only after the single submission claim. Save before spending music credits.
   let musicStarted = false;
   try {
-    const wanted = directionInput(session.raw_answers, job.notes);
     const previous = await jobsFor(session.id);
+    const history = kind === "revision" ? revisionHistory(previous, job.revision_number ?? 1) : [];
+    const wanted = directionInput(session.raw_answers, latestMusicalNotes([...history, job.notes]));
     const fingerprint = wanted ? directionFingerprint(wanted) : null;
     const saved = [...previous].reverse().find((j) =>
       fingerprint && j.music_direction?.fingerprint === fingerprint &&
@@ -57,7 +61,7 @@ export async function reserveAndStart(
     const taskId = await startKie(
       session.raw_answers,
       callback.toString(),
-      job.notes || undefined,
+      (kind === "revision" ? revisionNotes(previous, job.notes, job.revision_number ?? 1) : job.notes) || undefined,
       direction?.direction,
     );
     // An early callback may already have bound this task. Do not regress completed jobs.

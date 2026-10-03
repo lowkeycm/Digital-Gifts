@@ -72,8 +72,8 @@ const repo = {
   db:()=>({
     rpc:async (_name,p)=>{
       let latest=jobs.filter(j=>j.kind===p.p_kind).at(-1);
-      if (!latest || (latest.status==='failed' && p.p_retry)) {
-        latest={id:String(++nextId),session_id:p.p_session_id,kind:p.p_kind,notes:latest?.notes??p.p_notes,status:'submitting',task_id:null,callback_token:'synthetic-callback'};
+      if (!latest || (latest.status==='failed' && p.p_retry) || (latest.status==='complete' && p.p_request_id && latest.request_id !== p.p_request_id)) {
+        latest={id:String(++nextId),session_id:p.p_session_id,kind:p.p_kind,notes:p.p_retry ? (latest?.notes??p.p_notes) : p.p_notes,revision_number:p.p_kind==='original'?0:p.p_retry?(latest?.revision_number??1):(latest?.revision_number??0)+1,request_id:p.p_request_id,status:'submitting',task_id:null,callback_token:'synthetic-callback'};
         jobs.push(latest);
       }
       return {data:[structuredClone(latest)],error:null};
@@ -105,5 +105,23 @@ jobs=[]; calls=[]; musicBehavior='timeout'; await reserveAndStart(session,'origi
 jobs=[]; calls=[]; failSave=true; await reserveAndStart(session,'original','https://example.com'); failSave=false; assert.equal(jobs[0].status,'failed'); assert.equal(calls.length,1); pass('Music submission waits for durable translation save');
 jobs=[]; calls=[]; await reserveAndStart({...session,raw_answers:{...input,musicPreferences:undefined}},'original','https://example.com'); assert.equal(calls.length,1); assert.ok(calls[0].url.includes('/jobs/createTask')); pass('Basic path keeps existing sound and needs no LLM');
 jobs=[]; calls=[]; await reserveAndStart(session,'original','https://example.com'); await reserveAndStart(session,'revision','https://example.com','Change the style: Make it gospel.'); assert.equal(calls.filter(c=>c.url.includes('/chat/')).length,2); pass('Musical revisions produce new translated direction');
+jobs=[]; calls=[]; await reserveAndStart(session,'original','https://example.com');
+await reserveAndStart(session,'revision','https://example.com','Fix a detail: Maple Road, not Maple Street.',false,'round-one'); jobs.at(-1).status='complete';
+await reserveAndStart(session,'revision','https://example.com','Change the style: Make it gospel.',false,'round-two'); jobs.at(-1).status='complete';
+await reserveAndStart(session,'revision','https://example.com','Fix a detail: 2017, not 2018.',false,'round-three');
+assert.equal(jobs.at(-1).revision_number,3); assert.equal(calls.filter(c=>c.url.includes('/chat/')).length,2);
+const finalPrompt=calls.at(-1).body.input.prompt;for(const text of ['Maple Road, not Maple Street.','Make it gospel.','2017, not 2018.',input.favoriteMemory])assert.ok(finalPrompt.includes(text));
+assert.equal(calls.at(-1).body.input.style,directionStyle(direction));pass('Third revision preserves both earlier raw corrections and the last translated style without another LLM charge');
 assert.equal(JSON.stringify(input),originalInput); pass('Customer source objects never mutated');
+const {revisionNotesAllowance,revisionNotes}=require('../src/lib/revisions.ts');
+const longStory={...input,howYouMet:'a'.repeat(600),favoriteMemory:'b'.repeat(600),smallDetails:'c'.repeat(600),whatYouWantToSay:'d'.repeat(600)};
+const longRounds=[];
+for(let round=1;round<=3;round++){
+  const allowance=revisionNotesAllowance(longStory,longRounds);
+  assert.ok(allowance>=40,`Round ${round} retains useful correction space`);
+  const note='Fix a detail: '+'x'.repeat(allowance-'Fix a detail: '.length);
+  assert.ok(kieBrief(longStory,revisionNotes(longRounds,note)).length<=3000);
+  longRounds.push({kind:'revision',status:'complete',revision_number:round,notes:note});
+}
+pass('Maximum-length story retains usable correction space across all three included revisions and stays within the provider prompt limit');
 if(process.argv.includes('--record')) fs.writeFileSync(path.join(root,'docs/qa/music-direction-checks.json'),JSON.stringify({environment:'Real TypeScript modules, controlled in-memory reservation repository and provider transport; no network or paid generations.',checks},null,2)+'\n');

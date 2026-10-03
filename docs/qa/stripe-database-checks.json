@@ -1,0 +1,7 @@
+{
+  "project": "Digital Enterprise / Digital Gifts",
+  "projectRef": "hyjmlkowbhftisynztui",
+  "migration": "20261003024938_three_revisions_stripe",
+  "environment": "Live database, transaction with synthetic rows, rolled back without persistent test records",
+  "verification": "PASS: unpaid block, wrong amount rejection, paid replay, three revisions, duplicate/pending block, retry rounds and limits, RLS/backend-only permissions"
+}

@@ -35,7 +35,7 @@ export default async function PreviewPage({ params, searchParams }: { params: Pr
             <div className="audio-label"><strong>Personalized preview</strong><span>Demo mode</span></div>
             <div className="mock-player"><span className="play-dot" aria-hidden="true">♪</span><div><strong>Preview placeholder</strong><small>Your song will be available here when generation is connected.</small></div></div>
           </div>
-          <div className="price-row"><div><div className="price">$29</div><div className="help">Planned price: full song + one revision</div></div><Link className="pill primary" href="/create">Start your song</Link></div>
+          <div className="price-row"><div><div className="price">$29</div><div className="help">Planned price: full song + three revisions</div></div><Link className="pill primary" href="/create">Start your song</Link></div>
           <div className="help-line">Small detail off later? Fix the detail. You do not have to start over.</div>
           <Link className="text-link" href="/create">Change the story instead</Link>
         </section>

@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { GiftShare } from "./GiftShare";
 import { GiftUpload } from "./GiftUpload";
 import { RevisionForm } from "./RevisionForm";
+import { SongCheckout } from "./SongCheckout";
 
 type Job = {
   id: string;
@@ -10,6 +11,7 @@ type Job = {
   status: string;
   error: string | null;
   createdAt: string;
+  revisionNumber?: number;
 };
 type Track = {
   id: string;
@@ -29,6 +31,8 @@ type State = {
   jobs: Job[];
   tracks: Track[];
   feedbackSaved: boolean;
+  revisionNotesLimit?: number;
+  checkout?: { mode: "free" | "test" | "live"; status: string };
 };
 export function SongStudio({
   id,
@@ -70,7 +74,7 @@ export function SongStudio({
     const timer = setTimeout(() => void refresh(), 0);
     return () => clearTimeout(timer);
   }, [refresh]);
-  const pending = state?.jobs.some(
+  const pending = state?.checkout?.status === "pending" || state?.jobs.some(
     (j) => !["complete", "failed"].includes(j.status),
   );
   useEffect(() => {
@@ -147,6 +151,9 @@ export function SongStudio({
         Send your gift below when sharing with the recipient.
       </p>
       {copy && <p role="status">{copy}</p>}
+      {state.checkout && state.checkout.mode !== "free" && state.checkout.status === "pending" && (
+        <SongCheckout id={id} accessKey={accessKey} mode={state.checkout.mode} onPaid={() => { started.current = Date.now(); setPolling(true); void refresh(); }} />
+      )}
       {error && (
         <p className="error-copy" role="alert">
           {error}
@@ -312,10 +319,14 @@ export function SongStudio({
       )}
       {originals.some((j) => j.status === "complete") && (
         <RevisionForm
+          key={`revision-${revisions.at(-1)?.id ?? "first"}-${revisions.at(-1)?.status ?? "ready"}`}
           songId={id}
           accessToken={accessKey}
-          alreadyRequested={Boolean(revisions.length)}
-          onSubmitted={refresh}
+          used={Math.max(0, ...revisions.map((j) => j.revisionNumber ?? 1))}
+          pending={revisions.some((j) => !["complete", "failed"].includes(j.status))}
+          failed={revisions.at(-1)?.status === "failed"}
+          notesLimit={state.revisionNotesLimit}
+          onSubmitted={() => { started.current = Date.now(); setPolling(true); void refresh(); }}
         />
       )}
       {state.tracks.length > 0 && (

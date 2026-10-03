@@ -44,7 +44,16 @@ export function apiError(error: unknown) {
       { status: error.status },
     );
   const code = error instanceof Error ? error.message : "";
-  if (/beta_limit|retry_limit/.test(code))
+  const revisionErrors: Record<string, string> = {
+    revision_limit: "You’ve used all three included revisions. All your versions are still available.",
+    revision_pending: "Your current revision is still being made. Listen to it before requesting another.",
+    revision_retry_required: "Retry the unfinished revision above before requesting another.",
+    original_not_ready: "Wait until your original song is ready before requesting a revision.",
+    payment_required: "Complete checkout before creating your song.",
+    retry_limit: "This generation could not finish after three attempts. Please contact us for help.",
+  };
+  if (revisionErrors[code]) return NextResponse.json({ error: revisionErrors[code] }, { status: 409, headers: privateHeaders });
+  if (/beta_limit/.test(code))
     return NextResponse.json(
       { error: "The daily song limit has been reached. Please try again tomorrow." },
       { status: 429 },

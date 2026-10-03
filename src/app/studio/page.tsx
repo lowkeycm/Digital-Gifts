@@ -4,6 +4,7 @@ import { GiftBrand } from "@/components/GiftBrand";
 import { StudioControls } from "@/components/StudioControls";
 import { isStudioOwner, studioConfigured } from "@/lib/studio-auth";
 import { betaReady } from "@/lib/beta-config";
+import { publicCheckoutMode, stripeReady } from "@/lib/payments";
 import {
   db,
   dailyJobCount,
@@ -70,8 +71,14 @@ export default async function StudioPage() {
       </div>
       <p>
         {dailyJobs} generation reservations in the last 24 hours / 100 maximum.
-        No payment is collected.
+        Public checkout: {publicCheckoutMode() === "free" ? "not required" : "live Stripe"}.
       </p>
+      <section className="card">
+        <h2>Stripe checkout</h2>
+        <p>Test connection: {stripeReady("test") ? "Configured" : "Needs test key and webhook secret"}. Live connection: {stripeReady("live") ? "Configured" : "Not configured"}.</p>
+        <p>$29 includes two original versions and three revisions. The private test flow uses Stripe test mode and real Kie generation credits.</p>
+        {stripeReady("test") && <Link className="pill primary" href="/create?checkout=test">Test Stripe checkout</Link>}
+      </section>
       <p>
         Private links below manage each test song. Reaction videos are for
         review only; ask the tester before publishing.
@@ -82,6 +89,7 @@ export default async function StudioPage() {
           return (
             <article className="card" key={s.id}>
               <h2>{s.raw_answers.recipientName}</h2>
+              <p className="help">{s.checkout_mode ?? "free"} / {s.payment_status ?? "not_required"}</p>
               <p>
                 {s.raw_answers.email} ·{" "}
                 {new Date(s.created_at).toLocaleDateString("en-US")}

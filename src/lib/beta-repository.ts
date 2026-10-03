@@ -12,6 +12,8 @@ export type BetaSession = {
   reaction_asset_id: string | null;
   raw_answers: Intake;
   created_at: string;
+  checkout_mode?: "free" | "test" | "live";
+  payment_status?: "not_required" | "pending" | "paid";
 };
 export type BetaJob = {
   id: string;
@@ -25,6 +27,8 @@ export type BetaJob = {
   created_at: string;
   error_code: string | null;
   music_direction?: SavedMusicDirection | null;
+  revision_number?: number;
+  request_id?: string | null;
 };
 export type BetaTrack = {
   id: string;
