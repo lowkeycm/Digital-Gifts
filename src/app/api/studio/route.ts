@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       const allowed = await studioEmailAllowed(values.email);
       if (!allowed) {
         if (values.action === "login") throw new ClientError("Email or password not recognized.", 401);
-        return NextResponse.json({ ok: true, message: "If this email has studio access, check your inbox for the next step." }, { headers: privateHeaders });
+        throw new ClientError("This email does not have studio access. Check the email address and try again.", 403);
       }
       const site = new URL(process.env.STRIPE_SITE_URL ?? "https://www.yourgiftsmith.com").origin;
       if (values.action === "recover") {

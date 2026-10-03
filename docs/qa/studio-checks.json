@@ -2,8 +2,9 @@
   "environment": "Actual production build, real Supabase JS/SSR clients, controlled Auth/REST transport. No real password or email entered; no provider credits or customer records used.",
   "checks": [
     "Actual production-build login, recovery and first-account setup render at 1440/390 without env-password copy or overflow",
+    "Unlisted signup clearly reports access denial, keeps entered fields and sends no email",
     "Mismatched passwords get actionable feedback before any account request",
-    "Signup sends the correct confirmation destination and stores PKCE verifier in HttpOnly cookie",
+    "Signup shows a dedicated confirmation state, correct destination and HttpOnly PKCE verifier",
     "Real Supabase SSR client exchanges PKCE code, writes secure HttpOnly account cookies and opens owner dashboard",
     "Verified owner can enter the private Stripe sandbox questionnaire",
     "Password changes through the site and logout removes dashboard access",

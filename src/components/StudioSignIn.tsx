@@ -16,6 +16,11 @@ export function StudioSignIn({ initialMode = "login", expired = false }: { initi
   const label = mode === "recover" ? "Send reset link" : mode === "signup" ? "Create my account" : mode === "password" ? "Save password" : "Sign in";
   function changeMode(value: Mode) { setMode(value); setError(""); setMessage(""); setPassword(""); setConfirm(""); }
   return <>
+    {message ? <div>
+      <h2>Check your email</h2>
+      <p role="status">{message}</p>
+      <p>{email}</p>
+    </div> : <>
     {mode === "recover" && <h2>Reset your password</h2>}
     {mode === "signup" && <h2>Set up your owner account</h2>}
     <form onSubmit={async event => {
@@ -43,9 +48,9 @@ export function StudioSignIn({ initialMode = "login", expired = false }: { initi
         <input id="studio-confirm" type="password" autoComplete="new-password" required value={confirm} onChange={e => setConfirm(e.target.value)} maxLength={200} />
       </div>}
       {error && <p role="alert" className="error-copy">{error}</p>}
-      {message && <p role="status">{message}</p>}
       <button className="pill primary" disabled={busy}>{busy ? "Working..." : label}</button>
     </form>
+    </>}
     {mode === "login" && <div className="studio-login-actions">
       <button type="button" disabled={busy} className="studio-text-button" onClick={() => changeMode("recover")}>Forgot password?</button>
       <button type="button" disabled={busy} className="studio-text-button" onClick={() => changeMode("signup")}>Set up my account</button>
