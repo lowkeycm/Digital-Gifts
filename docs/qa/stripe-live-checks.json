@@ -1,0 +1,14 @@
+{
+  "commit": "e5a09154bc1c50c630b6905f306929fdcc66d806",
+  "deployment": "dpl_5x6gRG583MoVsd1Zowi7BgJyLZAN",
+  "domain": "https://www.yourgiftsmith.com",
+  "checks": [
+    "Production deployment READY with www and apex domain aliases",
+    "Live $29/three revisions verified in hero, process and offer",
+    "Product CTA reaches enabled create form and optional custom sound",
+    "Health HTTP200, ok=true, musicProvider=kie, checkout=free, mode=customer",
+    "PR30 merged with two passing checks; feature branch deleted"
+  ],
+  "limits": "Smoke check; no real payment or production music generation. Stripe account not connected. Local desktop/mobile and real database verification recorded separately.",
+  "screenshot": "stripe-live-offer.jpg"
+}

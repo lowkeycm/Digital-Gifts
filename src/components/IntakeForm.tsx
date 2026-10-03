@@ -345,7 +345,7 @@ export function IntakeForm({ ready = true, checkoutMode = "free" }: { ready?: bo
 
       <div className="help story-budget" aria-live="polite">
         Story budget: {storyLength.toLocaleString()} / 2,400 characters. We keep
-        your words exactly as written, with room reserved for a revision.
+        your words exactly as written, with room reserved for your revisions.
       </div>
       {step === 3 && (
         <>
