@@ -4,7 +4,15 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (three gift experiences)
+## Last Session (mobile picker and teddy wind-up)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode, continuing the same review.
+- **Request:** Mobile Add image did not open the file manager; animate the teddy's wind-up handle as well.
+- **Changed:** Shared MediaFilePicker puts the native input across the full 48px button, so touch goes directly to the input. Photo inputs use image/* to request the native image chooser, retaining explicit JPG/PNG/WebP and size validation. Preview, private photo and reaction controls share the accessible component; selecting the same file again works. The existing brass key is isolated with CSS and rotates around its axle during actual playback, paused by the same state as the bow, and remains still for reduced motion. Artwork and other templates retained.
+- **Verification:** Check/build and focused production-build regression. Real filechooser events from mobile-emulated taps at center and both edges, selected image through reload and recipient page, exact saved note, key transforms during play and pause, reduced-motion audio, desktop/mobile screenshots. docs/qa/mobile-picker-teddy-evidence.json and teddy-windup-*.jpg. Physical Android/in-app browser unavailable; the original failure was not reproduced in desktop. Ask Clay to retry on the affected phone without presenting emulation as physical-device acceptance.
+- **Release:** Same clay/premium-song-studio / draft PR42 review preview, exact Digital Gifts Vercel project/team reverified. Existing publication authorization persists. Final hosted verification and deployment SHA in PR42. No database changes, production merge or payment activation.
+
+## Previous Session (three gift experiences)
 
 - **When / who:** October4,2026 / Clay / ChatGPT Work Mode, continuing review.
 - **Request:** Preserve Record Player as one experience; add reference-matched Teddy Bear and Equalizer. Each has Note, Card and Letter. Bear plays its instrument during playback and equalizer follows the music.

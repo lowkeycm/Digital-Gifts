@@ -20,6 +20,7 @@ export function GiftTeddy({
       }
     >
       <span className="teddy-body" aria-hidden="true" />
+      <span className="teddy-key" aria-hidden="true" />
       <span className="teddy-arm" aria-hidden="true" />
       <span
         className="teddy-name"

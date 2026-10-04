@@ -1,5 +1,13 @@
 # Gift experiences review, October 4
 
+## Mobile picker and wind-up follow-up
+
+Owner accepted the visual direction and reported that tapping Add image on mobile did not open a file manager. The original desktop label did produce a filechooser event; the physical Android/in-app failure could not be reproduced in this environment. Replaced the small native file button/wrapping label with a shared 48px native-input hit area, covering the visible button directly. No asynchronous or synthetic click is needed. Photo inputs request image/*; validation still rejects unsupported MIME types and oversize files. Preview and actual private upload use the same component, including same-file reselection and keyboard focus. This is a compatibility fix with physical-device acceptance still pending.
+
+The existing brass wind-up key is separated with complementary CSS clipping and turns around the axle while music plays. Static body/axle, nameplate and original texture remain. Both bow and key freeze on pause/buffering/end and reduced motion. No new artwork or animation dependency. The first rendered cut included a sliver of cabinet; tightened the clip to keep the cabinet stationary.
+
+`scripts/verify-mobile-picker-teddy.mjs` verifies actual chooser events from center/edge touchscreen taps, photo persistence through reload and gift page, exact note, changing/frozen key transforms, reduced-motion playback, no overflow and no browser errors. New 390px and 1440px renders inspected. Lint/types and build pass. Shared React review: semantic labeled native input, focus indicator, disabled state, no per-frame React updates, no extra media elements. Existing Marketing-Hub visual direction/research retained under its maintenance scope; six references and calibration anchors read through the GitHub connector because only the validator was present in the local Hub directory. No copy or offer redesign.
+
 Three independent experiences: Record Player, Teddy Bear and Equalizer. Each offers Note, Card and Letter. Internal presentation IDs remain record, portrait and letter so existing gifts retain their selection. Existing gifts default to the original record experience. No checkout or public payment settings changed.
 
 ## Visual production

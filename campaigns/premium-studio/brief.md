@@ -6,6 +6,8 @@ Owner review amendment, October 4: use the explicitly requested $59 reference pr
 
 # Premium song studio
 
+October 4 maintenance: owner accepted the three experiences and requested a mobile photo-picker fix plus a spinning teddy wind-up key. Retain the approved artwork, layouts and previous contract. New affected-state evidence: `../../docs/qa/mobile-picker-teddy-evidence.json`, `../../docs/qa/mobile-photo-picker.jpg`, `../../docs/qa/teddy-windup-1440.jpg`, `../../docs/qa/teddy-windup-390.jpg`. Native input fills a 48px direct touch target; image/* opens the photo chooser with supported-format validation. Existing brass artwork supplies the spinning key. Desktop/mobile-emulated play/pause and reduced-motion verified. Physical Android/in-app chooser acceptance remains for the affected device; no claim that emulation reproduces that browser.
+
 Owner approved the October 3 checkout audit and delegated execution. Existing $29 price, two originals and three revisions remain authoritative. The October 4 owner review supersedes the prior introductory-only price display with an explicit $59/$29 offer. Public checkout remains free until explicit paid launch. No automatic marketing campaigns are activated.
 
 Marketing-Hub Website System and six references, landing-page/build reference, direct-response copy and calibration anchors loaded at the recorded revision. Shared brand files resolved manually because the private Hub clone was unavailable; brand/assets.md is present, other profiles are absent. The approved audit supplies the buyer journey and offer. This is an existing most-aware checkout and purchased utility flow, not a cold-traffic landing-page rewrite. No invented customer VoC or measured conversion claims.

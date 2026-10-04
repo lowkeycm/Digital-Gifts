@@ -13,6 +13,7 @@ import { useStudioPreviewDraft } from "./StudioPreviewDraft";
 import { useRouter } from "next/navigation";
 import { GiftShare } from "./GiftShare";
 import { GiftUpload } from "./GiftUpload";
+import { MediaFilePicker } from "./MediaFilePicker";
 import { RevisionForm } from "./RevisionForm";
 import { SongCheckout } from "./SongCheckout";
 import { StudioPlayer, type StudioTrack } from "./StudioPlayer";
@@ -502,22 +503,20 @@ export function SongStudio({
                   <span className="studio-kicker">02 / MAKE IT THEIRS</span>
                   <h2>Personalize their gift.</h2>
                   {demonstration ? (
-                    <label className="demo-photo-picker">
-                      {demoPhoto ? "Change your photo" : "Add a favorite photo"}
-                      <input
-                        type="file"
-                        accept="image/jpeg,image/png,image/webp"
+                    <MediaFilePicker
+                        label={demoPhoto ? "Change your photo" : "Add a favorite photo"}
+                        accept="image/*"
                         onChange={async (e) => {
                           const f = e.target.files?.[0];
                           if (!f) return;
-                          if (f.size > 8 * 1024 * 1024) {
-                            setError("Choose a photo smaller than 8 MB.");
+                          if (!f.size || f.size > 8 * 1024 * 1024 || !["image/jpeg", "image/png", "image/webp"].includes(f.type)) {
+                            setError("Choose a JPG, PNG or WebP photo up to 8 MB.");
                             return;
                           }
+                          setError("");
                           await preview?.setPhoto(f);
                         }}
                       />
-                    </label>
                   ) : (
                     <GiftUpload
                       songId={id}
