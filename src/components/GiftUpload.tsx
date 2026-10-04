@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import type { Upload } from "tus-js-client";
+import { MediaFilePicker } from "./MediaFilePicker";
 type Prepared = {
   assetId: string;
   path: string;
@@ -163,22 +164,17 @@ export function GiftUpload({
           Download uploaded video
         </a>
       )}
-      <label className="upload-picker">
-        <span>
-          {assetId
+      <MediaFilePicker
+          label={assetId
             ? photo
               ? "Choose a different photo"
               : "Choose a different video"
             : photo
               ? "Choose a photo"
               : "Choose a video"}
-        </span>
-        <input
-          type="file"
-          aria-label={photo ? "Gift photo" : "Reaction video"}
           accept={
             photo
-              ? "image/jpeg,image/png,image/webp"
+              ? "image/*"
               : "video/mp4,video/quicktime,video/webm"
           }
           disabled={busy}
@@ -210,7 +206,6 @@ export function GiftUpload({
             setFile(f);
           }}
         />
-      </label>
       <p className="help">
         {photo
           ? "JPG, PNG or WebP · up to 8 MB."

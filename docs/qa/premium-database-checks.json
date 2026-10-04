@@ -1,0 +1,14 @@
+{
+  "scope": "Digital Gifts project. Real PostgreSQL checks with generated synthetic rows inside a rolled-back transaction; no customer records changed.",
+  "migration": "premium_song_studio",
+  "checks": [
+    "New gift note defaults to empty and enforces 600-character maximum",
+    "Gift-given timestamp accepts explicit customer action",
+    "Keepsake reservation rejects unpaid songs and missing gift selection",
+    "Repeated reservation returns the same fixed-$9 test order",
+    "Database rejects altered price",
+    "Keepsake table has RLS; anon/authenticated access and anonymous RPC execution denied",
+    "Service role can execute reservation",
+    "Only new advisory is expected RLS-without-policy information for backend-only table; pre-existing legacy RPC and Auth warnings remain"
+  ]
+}

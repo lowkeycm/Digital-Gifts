@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-04T04:16:39.412Z",
+  "scope": "Production build with real browser, SDK, FFmpeg, audio files and PDF generation; controlled synthetic REST/storage and paid-state transition. Separate Stripe contract tests validate fulfillment. No customer data, actual charges or generation credits.",
+  "checks": [
+    "Unpaid studio offers $29, one real 60-second player, and denies gift editing/full downloads",
+    "Paid state unlocks the same originals; version switching, full playback, seek, pause and reduced motion work",
+    "Saved equalizer/letter choices reach the recipient; spectrum receives audio through the private 307 storage redirect; invalid choices and recipient edits denied",
+    "Selection and personal note persist; recipient sees only the chosen gift and no owner key",
+    "Post-share reminder appears promptly; feedback has no preselected rating and remains discoverable after reload",
+    "My songs returns to verified device collection; private access file downloads; unconfigured email is not promised",
+    "Real watermarked keepsake preview and 8×10 PDF render; unpurchased and recipient access denied, paid download allowed",
+    "Listen, prepare, share, collection and keepsake have no overflow at 320,390,768,1440px",
+    "Mobile step navigation scrolls directly to the active gift task",
+    "Preview photo, note, selected template and preparation step survive the print detour and a full reload",
+    "portrait: original turntable, working record/transport controls, arm return, keyboard seeking and reduced-motion playback",
+    "record: original turntable, working record/transport controls, arm return, keyboard seeking and reduced-motion playback",
+    "letter: original turntable, working record/transport controls, arm return, keyboard seeking and reduced-motion playback",
+    "All three gift templates carry the selected song, full photo and exact note to the recipient view without overflow",
+    "Public preview supports checkout-to-studio walkthrough and keepsake inspection; public song page remains separate",
+    "No browser exceptions or duplicate original generations"
+  ]
+}

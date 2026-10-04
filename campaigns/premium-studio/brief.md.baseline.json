@@ -1,0 +1,183 @@
+{
+  "surface": "funnel",
+  "request": "Approved checkout audit: build a premium digital studio, $29 introductory offer, relevant keepsake upsell, focused listening/preparing/sharing stages, later feedback, and return access.",
+  "pages": [
+    {
+      "route": "/song/[id]",
+      "kind": "funnel",
+      "sections": [
+        "welcome",
+        "listening-room",
+        "gift-workbench",
+        "return-access",
+        "after-gifting"
+      ]
+    },
+    {
+      "route": "/my-songs",
+      "kind": "utility",
+      "sections": [
+        "library",
+        "recovery"
+      ]
+    },
+    {
+      "route": "/song/[id]/keepsake",
+      "kind": "funnel",
+      "sections": [
+        "preview",
+        "offer",
+        "download"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "studio-flow",
+      "route": "/song/[id]",
+      "category": "composition",
+      "sections": [
+        "welcome",
+        "gift-workbench",
+        "after-gifting"
+      ],
+      "source": "user",
+      "acceptance": "Customers see confirmation, choose a version, prepare and share. Feedback and reactions appear only after explicitly marking the gift given."
+    },
+    {
+      "id": "studio-depth",
+      "route": "/song/[id]",
+      "category": "depth",
+      "sections": [
+        "welcome",
+        "listening-room",
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The paid studio feels like a premium personal listening room, with visible physical depth beyond the heading."
+    },
+    {
+      "id": "studio-player",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "listening-room"
+      ],
+      "source": "user",
+      "acceptance": "One accessible player controls the active version; playback motion stops on pause and reduced motion retains all controls."
+    },
+    {
+      "id": "studio-offer",
+      "route": "/song/[id]",
+      "category": "conversion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "$29 introductory pricing, both versions, three revisions and gift page are clear before secure checkout."
+    },
+    {
+      "id": "library-access",
+      "route": "/my-songs",
+      "category": "components",
+      "sections": [
+        "library",
+        "recovery"
+      ],
+      "source": "user",
+      "acceptance": "Customers can return to songs saved on this device, export a recovery link and request email access when a sender is configured."
+    },
+    {
+      "id": "keepsake-offer",
+      "route": "/song/[id]/keepsake",
+      "category": "imagery",
+      "sections": [
+        "preview",
+        "offer",
+        "download"
+      ],
+      "source": "user",
+      "acceptance": "Customers inspect the personalized 8x10 PDF design and $9 optional offer; only verified paid orders receive the print file."
+    },
+    {
+      "id": "review-pricing-copy",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Show $59 crossed out and highlight $29 Introductory. Remove the requested filler and payment-check link; use a gift-oriented purchase CTA and describe the same lyrics with two melodies."
+    },
+    {
+      "id": "review-playback-flow",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Selecting a melody starts playback automatically. Revisions are present only in the selection step. The optional print offer appears before the continue action."
+    },
+    {
+      "id": "review-draft-persistence",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The uploaded photo, note, selected melody, template and preparation step survive the print detour and a reload. The recipient preview uses those choices."
+    },
+    {
+      "id": "review-gift-templates",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Provide Photo, Record and Letter layouts. Each displays For name, the exact personal note and song title without generic relationship commentary; photos remain fully visible."
+    },
+    {
+      "id": "review-share-reminder",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "After a sharing action show a reaction/feedback reminder with an obvious return link near the top of the studio. Copying or opening a share sheet never claims successful delivery."
+    },
+    {
+      "id": "preserve-record-production",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Restore the original dimensional record player. Template choices must retain its wood cabinet, continuous metal tonearm, grooved moving vinyl and layered materials; the complete personal photo and note stay visible. Desktop and mobile render comparison to the original is required."
+    },
+    {
+      "id": "gift-nine-combinations",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Record Player, Teddy Bear and Equalizer each offer Note, Card and Letter. All nine retain For name, exact note, song title and a fully visible photo; the original record player keeps its construction. Both choices persist through detour, reload and recipient sharing."
+    },
+    {
+      "id": "gift-musical-motion",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The teddy bowing arm moves only during actual playback. Equalizer frequency bands respond to the real song spectrum. Pause/end and reduced motion stop movement; playback and seeking remain available."
+    }
+  ]
+}

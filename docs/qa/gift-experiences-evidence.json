@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-04T04:18:06.183Z",
+  "scope": "Production build with synthetic IndexedDB gift drafts; 9 combinations, real audio spectrum from controlled WAV tones and actual bear animation.",
+  "checks": [
+    "teddy/record: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "record: teddy bow changes during playback, stays fixed on pause, motion off preserves audio",
+    "teddy/portrait: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "portrait: teddy bow changes during playback, stays fixed on pause, motion off preserves audio",
+    "teddy/letter: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "letter: teddy bow changes during playback, stays fixed on pause, motion off preserves audio",
+    "equalizer/record: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "equalizer/portrait: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "equalizer/letter: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "record/record: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "record/portrait: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "record/letter: desktop/mobile/320/768; complete photo and exact note; one player; no overlap/overflow",
+    "Equalizer actual bass tone: [0,0,0.8333333333333334,0,0,0,0,0,0,0]; pause/reduced motion stop display while audio remains usable",
+    "Equalizer actual treble tone: [0,0,0,0,0,0,0,0.8333333333333334,0,0]; pause/reduced motion stop display while audio remains usable",
+    "record: no photo/note and 600-character note with tall image",
+    "teddy: no photo/note and 600-character note with tall image",
+    "equalizer: no photo/note and 600-character note with tall image",
+    "Scene and presentation choices independently persist across reload"
+  ]
+}

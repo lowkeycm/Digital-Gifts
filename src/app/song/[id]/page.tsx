@@ -2,6 +2,7 @@ import { YourSongFooter } from "@/components/YourSongBrand";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { StudioHeader } from "@/components/StudioHeader";
 import { Nav } from "@/components/Nav";
 import { getSongSession } from "@/lib/song-repository";
 import { betaReady } from "@/lib/beta-config";
@@ -9,28 +10,85 @@ import { sessionFor } from "@/lib/beta-repository";
 import { SongStudio } from "@/components/SongStudio";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Your private studio | Your Song", robots: { index: false, follow: false } };
+export const metadata: Metadata = {
+  title: "Your private studio | Your Song",
+  robots: { index: false, follow: false },
+  referrer: "no-referrer",
+};
 
-export default async function SongPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ key?: string }> }) {
+export default async function SongPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ key?: string; step?: string }>;
+}) {
   const { id } = await params;
-  const { key } = await searchParams;
+  const { key, step } = await searchParams;
   if (!key) notFound();
-  if (betaReady() && await sessionFor(id, key)) return <><Nav/><main id="main-content" className="shell section delivery-shell"><SongStudio id={id} accessKey={key}/></main><YourSongFooter/></>;
+  if (betaReady() && (await sessionFor(id, key)))
+    return (
+      <>
+        <StudioHeader />
+        <main id="main-content" className="studio-world">
+          <div className="studio-shell">
+            <SongStudio id={id} accessKey={key} initialStep={step} />
+          </div>
+        </main>
+        <YourSongFooter />
+      </>
+    );
   const song = await getSongSession(id, key);
   if (!song) notFound();
   if (song.orderStatus !== "paid") redirect(`/preview/${id}?key=${key}`);
 
   return (
-    <><Nav/><main id="main-content" className="shell section delivery-shell">
-      <div className="delivery-heading"><span className="status">YOUR SONG</span><p>Private gift page</p></div>
-      <h1 className="delivery-title">For {song.recipientName}.</h1>
-      <p className="lede delivery-lede">This is a demo of your private gift page. Your story is saved, but real audio and downloads are not available yet. You can try the included revision below.</p>
-      <div className="delivery-player">
-        <div className="album-mark"><span>FOR</span><strong>{song.recipientName.slice(0, 1).toUpperCase()}</strong></div>
-        <div className="player-copy"><span className="eyebrow">Full song</span><h3>{song.occasion} edition</h3><div className="mock-player dark"><span className="play-dot" aria-hidden="true">♪</span><div><strong>Full-song placeholder</strong><small>Your finished song will be available here.</small></div></div></div>
-      </div>
-      <div className="delivery-actions"><button className="pill" disabled>Download unavailable in demo</button><Link className="pill" href={`/preview/${id}?key=${key}`}>Back to preview</Link></div>
-      <p>This older demo does not generate audio. <Link href="/create">Start a new song</Link>.</p>
-    </main><YourSongFooter/></>
+    <>
+      <Nav />
+      <main id="main-content" className="shell section delivery-shell">
+        <div className="delivery-heading">
+          <span className="status">YOUR SONG</span>
+          <p>Private gift page</p>
+        </div>
+        <h1 className="delivery-title">For {song.recipientName}.</h1>
+        <p className="lede delivery-lede">
+          This is a demo of your private gift page. Your story is saved, but
+          real audio and downloads are not available yet. You can try the
+          included revision below.
+        </p>
+        <div className="delivery-player">
+          <div className="album-mark">
+            <span>FOR</span>
+            <strong>{song.recipientName.slice(0, 1).toUpperCase()}</strong>
+          </div>
+          <div className="player-copy">
+            <span className="eyebrow">Full song</span>
+            <h3>{song.occasion} edition</h3>
+            <div className="mock-player dark">
+              <span className="play-dot" aria-hidden="true">
+                ♪
+              </span>
+              <div>
+                <strong>Full-song placeholder</strong>
+                <small>Your finished song will be available here.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="delivery-actions">
+          <button className="pill" disabled>
+            Download unavailable in demo
+          </button>
+          <Link className="pill" href={`/preview/${id}?key=${key}`}>
+            Back to preview
+          </Link>
+        </div>
+        <p>
+          This older demo does not generate audio.{" "}
+          <Link href="/create">Start a new song</Link>.
+        </p>
+      </main>
+      <YourSongFooter />
+    </>
   );
 }

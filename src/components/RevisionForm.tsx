@@ -62,10 +62,19 @@ export function RevisionForm({
   if (sent || pending || failed || used >= INCLUDED_REVISIONS) {
     return (
       <div className="card revision-success">
-        <span className="status">{used} / {INCLUDED_REVISIONS} revisions used</span>
-        <h3>{failed ? "Retry your unfinished revision above." : used >= INCLUDED_REVISIONS && !pending && !sent ? "All three revisions are yours to keep." : "Your new rendition is on its way."}</h3>
+        <span className="status">
+          {used} / {INCLUDED_REVISIONS} revisions used
+        </span>
+        <h3>
+          {failed
+            ? "Retry your unfinished revision above."
+            : used >= INCLUDED_REVISIONS && !pending && !sent
+              ? "All three revisions are yours to keep."
+              : "Your new rendition is on its way."}
+        </h3>
         <p>
-          {pending || sent ? "Follow its progress above. " : ""}Your originals and every finished revision stay available.
+          {pending || sent ? "Follow its progress above. " : ""}Your originals
+          and every finished revision stay available.
         </p>
       </div>
     );
@@ -74,11 +83,15 @@ export function RevisionForm({
   return (
     <form onSubmit={submit} className="card revision-card">
       <div>
-        <span className="eyebrow">{INCLUDED_REVISIONS - used} {INCLUDED_REVISIONS - used === 1 ? "revision" : "revisions"} remaining</span>
+        <span className="eyebrow">
+          {INCLUDED_REVISIONS - used}{" "}
+          {INCLUDED_REVISIONS - used === 1 ? "revision" : "revisions"} remaining
+        </span>
         <h3>Want to change something?</h3>
         <p>
           Tell us what missed. We’ll carry forward your earlier corrections and
-          make a new rendition from your story and these notes. The melody and delivery may change too.
+          make a new rendition from your story and these notes. The melody and
+          delivery may change too.
         </p>
       </div>
       <div className="field">
@@ -105,7 +118,14 @@ export function RevisionForm({
           onChange={(e) => setNotes(e.target.value)}
           placeholder="It says we met in 2018, but we met in 2017..."
         />
-        <p className="help">{notes.length} / {Math.max(0, Math.min(450, notesLimit - type.length - 2))} characters</p>
+        {notes.length >
+          Math.max(0, Math.min(450, notesLimit - type.length - 2)) - 60 && (
+          <p className="help">
+            {Math.max(0, Math.min(450, notesLimit - type.length - 2)) -
+              notes.length}{" "}
+            characters left.
+          </p>
+        )}
       </div>
       {error ? (
         <p role="alert" className="error-copy">

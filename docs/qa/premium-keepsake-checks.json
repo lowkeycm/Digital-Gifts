@@ -1,0 +1,12 @@
+{
+  "environment": "Real TypeScript routes, actual PDF generation and Stripe SDK signature verification, controlled database/provider transport. No actual payment or customer data.",
+  "checks": [
+    "Unpaid songs cannot buy a keepsake; a printable design is required before checkout",
+    "Fixed $9 USD hosted Checkout ignores client amount, reuses order, excludes private keys/story, and starts no music generation",
+    "Fulfillment rejects wrong amount, currency, live mode, product, session, order, app, reference and incomplete payment",
+    "Actual Stripe SDK signature validation rejects forged events; duplicate signed events grant one keepsake without altering base purchase",
+    "Checkout return requires owner cookie; missing cookie returns to My songs without exposing private access",
+    "Expired sessions renew with a new idempotency attempt; cross-origin creation is denied",
+    "Unprintable lettering, oversize names and excessive lyrics are rejected before a charge"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "environment": "Actual TypeScript library/routes with controlled Supabase Auth and email transport. No email sent; live sender configuration and delivery remain a launch dependency.",
+  "checks": [
+    "Device collection requires a valid private capability; malformed/forged entries cannot reveal songs; absent sender reports unavailable",
+    "Account library uses server getUser, confirmed mailbox and exact normalized email; expired/unconfirmed identity cannot list songs",
+    "Known and unknown email receive the same response; rate limits precede sending; email contains a single-use sign-in token, no song owner key",
+    "Explicit confirmation verifies the magic-link token; expired, malformed and cross-origin requests fail; owner and customer cookies stay separate"
+  ]
+}

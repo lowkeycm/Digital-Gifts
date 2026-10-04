@@ -36,3 +36,5 @@
 - 2026-10-02 evening: Customer-ready copy removes free-test/launch promotion and restores the $29 offer while checkout stays disabled. Existing product journey and visuals retained; scoped acceptance in docs/website-brief.md and docs/qa/customer-ready-*. No conversion results claimed.
 
 - 2026-10-03: Optional Your Song music-direction intake, backend translator and owner-only saved sound view. Existing four-step funnel and researched design retained. Implementation/research/review in docs/website-brief.md; acceptance in docs/qa/custom-sound-* and music-direction-checks.json. Success measure is correct custom intake and provider transmission; no conversion lift claimed.
+
+- 2026-10-04: `public/images/gift-teddy-atlas.webp` and `gift-equalizer.webp`, generated from owner-supplied gift references. Nine actual recipient thumbnails and playback-driven gestures/spectrum. Provenance, visual comparison and checks: `docs/qa/gift-experiences-notes.md`.

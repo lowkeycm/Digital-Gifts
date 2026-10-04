@@ -1,9 +1,22 @@
 "use client";
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  giftScene,
+  giftTemplate,
+  type GiftScene,
+  type GiftTemplate,
+} from "@/lib/gift-templates";
 import { giftTheme } from "@/lib/gift-themes";
-import { YourSongBrand } from "./YourSongBrand";
+import { GiftTurntable } from "./GiftTurntable";
+import { GiftTeddy } from "./GiftTeddy";
+import { GiftEqualizer } from "./GiftEqualizer";
+import { StudioIcon } from "./StudioIcon";
+
+const clock = (seconds: number) =>
+  `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
+
 export function GiftExperience({
   recipient,
   occasion,
@@ -11,6 +24,9 @@ export function GiftExperience({
   lyrics,
   audioUrl,
   photoUrl,
+  message,
+  template,
+  scene,
 }: {
   recipient: string;
   occasion: string;
@@ -18,26 +34,65 @@ export function GiftExperience({
   lyrics: string;
   audioUrl: string;
   photoUrl: string | null;
+  message?: string;
+  template?: GiftTemplate;
+  scene?: GiftScene;
 }) {
-  const armId = useId();
-  const theme = giftTheme(occasion),
-    audio = useRef<HTMLAudioElement>(null);
+  const layout = giftTemplate(template),
+    experience = giftScene(scene),
+    theme = giftTheme(occasion);
+  const audio = useRef<HTMLAudioElement>(null),
+    seekId = useId();
+  const graph = useRef<AudioContext | null>(null);
+  const analyser = useRef<AnalyserNode | null>(null);
+  useEffect(
+    () => () => {
+      void graph.current?.close();
+    },
+    [],
+  );
   const [playing, setPlaying] = useState(false),
     [error, setError] = useState("");
+  const [elapsed, setElapsed] = useState(0),
+    [duration, setDuration] = useState(0);
   async function toggle() {
-    const player = audio.current;
-    if (!player) return;
-    if (player.paused) {
-      try {
-        setError("");
-        await player.play();
-      } catch {
-        setError("Tap the audio player below to start your song.");
+    if (!audio.current) return;
+    if (!audio.current.paused) {
+      audio.current.pause();
+      return;
+    }
+    try {
+      setError("");
+      // Build only after a user gesture. The same media element remains the sole
+      // playback source, including seeking, pausing and native media controls.
+      if (experience === "equalizer" && !graph.current && window.AudioContext) {
+        let context: AudioContext | null = null;
+        try {
+          context = new AudioContext();
+          const node = context.createAnalyser();
+          node.fftSize = 8192;
+          node.smoothingTimeConstant = 0.76;
+          node.minDecibels = -90;
+          node.maxDecibels = -15;
+          node.connect(context.destination);
+          const source = context.createMediaElementSource(audio.current);
+          source.connect(node);
+          graph.current = context;
+          analyser.current = node;
+        } catch {
+          void context?.close();
+        }
       }
-    } else player.pause();
+      if (graph.current?.state === "suspended") await graph.current.resume();
+      await audio.current.play();
+    } catch {
+      setError("Your song couldn’t play. Tap play to try again.");
+    }
   }
   return (
-    <div className={`gift-world gift-world--${theme.id}`}>
+    <div
+      className={`gift-world gift-world--${theme.id} gift-page gift-page--${layout} gift-experience--${experience} ${photoUrl ? "with-photo" : "without-photo"}`}
+    >
       <div
         className={`gift-scenery scenery--${theme.motif}`}
         aria-hidden="true"
@@ -52,159 +107,164 @@ export function GiftExperience({
           <path d="M60 810 Q320 410 200 20 M170 610 Q20 520 70 430 Q190 450 170 610 M230 470 Q410 440 390 310 Q250 310 230 470 M235 310 Q100 230 140 120 Q250 150 235 310 M220 170 Q360 130 310 30 Q220 60 220 170" />
         </svg>
       </div>
-      <header className="gift-world-header">
-        <YourSongBrand />
-        <span>A gift with you in it.</span>
-      </header>
-      <main id="main-content" className="gift-world-main">
-        <section className={`gift-listening-room ${photoUrl ? "has-memory" : ""}`}>
+      <main id="main-content" className="gift-world-main gift-composition">
+        <section className="gift-listening-room">
           <div className="gift-dedication">
-            <span className="gift-occasion">{theme.label}</span>
-            <h1>
-              For <em>{recipient}.</em>
-            </h1>
-            <p>{theme.note}</p>
-            {photoUrl ? (
-              <a className="gift-memory" href={photoUrl} target="_blank" rel="noopener noreferrer" aria-label="Open the full gift photo">
-                <Image src={photoUrl} alt={`A photo chosen for ${recipient}`} width={640} height={640} unoptimized />
-                <span>A memory worth keeping. <small>Open photo ↗</small></span>
+            <div className="gift-address">
+              <h1>
+                For <em>{recipient}</em>
+              </h1>
+            </div>
+            {photoUrl && (
+              <a
+                className="gift-photo"
+                href={photoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open the full gift photo"
+              >
+                <Image
+                  src={photoUrl}
+                  alt={`A photo chosen for ${recipient}`}
+                  width={900}
+                  height={1000}
+                  unoptimized
+                />
               </a>
-            ) : (
-              <div className="gift-handwritten">
-                Made from the little things
-                <br />
-                that mean everything.
+            )}
+            {message && (
+              <div className="gift-note">
+                <p>{message}</p>
               </div>
             )}
           </div>
           <div className={`gift-scene ${playing ? "is-playing" : ""}`}>
-            <div className="gift-scene-light" />
-            {!photoUrl && (
-              <div className="gift-sleeve">
+            <div className="gift-scene-light" aria-hidden="true" />
+            {experience === "record" && (
+              <div className="gift-sleeve" aria-hidden="true">
                 <div className="gift-cover-art">
-                  <span>YOUR<br />SONG.</span>
+                  <span>{title}</span>
                   <div className="sleeve-orbit" />
                 </div>
                 <div className="sleeve-caption">
                   <span>YOUR SONG</span>
                   <strong>{recipient}</strong>
-                  <span>ONE OF A KIND</span>
                 </div>
               </div>
             )}
-            <div className="turntable">
-              <div className="turntable-plinth" />
-              <span className="turntable-maker">
-                YOUR SONG <small>STORY PLAYER / 01</small>
-              </span>
-              <button
-                className="gift-vinyl-button"
-                type="button"
-                aria-label={playing ? "Pause your song" : "Play your song"}
-                onClick={() => void toggle()}
-              >
-                <span className="gift-vinyl">
-                  <span className="vinyl-grooves" />
-                  <span className="vinyl-label">
-                    <small>A SONG FOR</small>
-                    <strong>{recipient}</strong>
-                    <small>YOUR STORY · YOUR SONG</small>
-                    <i />
-                  </span>
-                </span>
-                <span className="vinyl-glint" />
-                <span className="record-action" aria-hidden="true">
-                  {playing ? "Ⅱ" : "▶"}
-                </span>
-              </button>
-              <div className="tonearm" aria-hidden="true">
-                <svg viewBox="0 0 140 560" className="tonearm-assembly">
-                  <defs>
-                    <linearGradient id={`${armId}-metal`} x1="0" x2="1" y1="0" y2="0">
-                      <stop offset="0" stopColor="#555750" />
-                      <stop offset=".3" stopColor="#c6c7b5" />
-                      <stop offset=".55" stopColor="#f3efdb" />
-                      <stop offset=".8" stopColor="#a2a38f" />
-                      <stop offset="1" stopColor="#54594f" />
-                    </linearGradient>
-                    <radialGradient id={`${armId}-pivot`}>
-                      <stop offset="0" stopColor="#e3dfcc" />
-                      <stop offset=".35" stopColor="#8d9282" />
-                      <stop offset=".65" stopColor="#4d554b" />
-                      <stop offset="1" stopColor="#161e1d" />
-                    </radialGradient>
-                  </defs>
-                  {/* One continuous arm, with its rotation pinned to the bearing. */}
-                  <circle cx="70" cy="60" r="33" fill="#111b1d" />
-                  <circle cx="70" cy="60" r="28" fill={`url(#${armId}-pivot)`} stroke="#949987" strokeWidth="2" />
-                  <path d="M70 22 V387 Q70 414 54 437 L43 454" fill="none" stroke="#41483f" strokeWidth="14" strokeLinecap="round" />
-                  <path d="M70 22 V387 Q70 414 54 437 L43 454" fill="none" stroke={`url(#${armId}-metal)`} strokeWidth="10" strokeLinecap="round" />
-                  <rect x="50" y="8" width="40" height="32" rx="7" fill={`url(#${armId}-metal)`} stroke="#494e46" strokeWidth="2" />
-                  <path d="M55 15 H85 M55 22 H85 M55 29 H85" stroke="#5c6257" strokeWidth="1" opacity=".6" />
-                  <circle cx="70" cy="60" r="7" fill="#d2d0bb" stroke="#50574c" strokeWidth="3" />
-                  <g transform="translate(43 452) rotate(26)">
-                    <path d="M-15 -5 H15 L13 44 H-13 Z" fill={`url(#${armId}-metal)`} stroke="#555d55" strokeWidth="2" />
-                    <path d="M-7 4 V27 M0 4 V27 M7 4 V27" stroke="#3c4743" strokeWidth="3" strokeLinecap="round" />
-                    <path d="M14 4 H31 V-13" fill="none" stroke="#d4d5c2" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-                    <rect x="-10" y="37" width="20" height="21" rx="3" fill="#1e292c" stroke="#8c9387" strokeWidth="1.5" />
-                    <path d="M0 56 V65" stroke="#e2dfbd" strokeWidth="3" />
-                    <circle className="tonearm-stylus" cx="0" cy="65" r="2.5" fill="#e9d796" />
-                  </g>
-                </svg>
-              </div>
-              <div className="turntable-light" aria-hidden="true" />
-              <span className="turntable-speed">33⅓</span>
-            </div>
-            <p className="gift-scene-caption">
-              {playing
-                ? "A moment, just for you."
-                : "Press play. This one is yours."}
-            </p>
+            {experience === "record" ? (
+              <GiftTurntable
+                recipient={recipient}
+                playing={playing}
+                onToggle={() => void toggle()}
+              />
+            ) : experience === "teddy" ? (
+              <GiftTeddy
+                recipient={recipient}
+                playing={playing}
+                onToggle={() => void toggle()}
+              />
+            ) : (
+              <GiftEqualizer
+                recipient={recipient}
+                playing={playing}
+                analyser={analyser}
+                onToggle={() => void toggle()}
+              />
+            )}
           </div>
         </section>
-        <section className="gift-track-card" aria-label="Your song player">
-          <div>
-            <span className="eyebrow">Your song</span>
-            <h2>{title}</h2>
-            <p>Made from a story only you could recognize.</p>
-          </div>
+        <section
+          className="gift-track-card gift-song"
+          aria-label="Your song player"
+        >
+          <h2>{title}</h2>
           <div className="gift-player-controls">
             <audio
               ref={audio}
-              controls
               preload="metadata"
+              crossOrigin={experience === "equalizer" ? "anonymous" : undefined}
               src={audioUrl}
-              onPlay={() => setPlaying(true)}
+              onPlay={(e) => {
+                document.querySelectorAll("audio").forEach((a) => {
+                  if (a !== e.currentTarget) a.pause();
+                });
+              }}
+              onPlaying={() => setPlaying(true)}
+              onWaiting={() => setPlaying(false)}
               onPause={() => setPlaying(false)}
               onEnded={() => setPlaying(false)}
+              onTimeUpdate={(e) => setElapsed(e.currentTarget.currentTime)}
+              onLoadedMetadata={(e) => {
+                if (Number.isFinite(e.currentTarget.duration))
+                  setDuration(e.currentTarget.duration);
+              }}
               onError={() => {
                 setPlaying(false);
                 setError(
-                  "The song could not load. Refresh this page or try the MP3 download.",
+                  "The song could not load. Refresh or try the MP3 download.",
                 );
               }}
             />
-            <div className="gift-player-links">
-              <a href={`${audioUrl}&download=1`}>
-                Keep the MP3 <span aria-hidden="true">↓</span>
-              </a>
-              <span>Yours to listen to, again and again.</span>
+            <div className="gift-transport">
+              <button
+                className="gift-transport-play"
+                aria-label={playing ? "Pause song" : "Play song"}
+                onClick={() => void toggle()}
+              >
+                <StudioIcon name={playing ? "pause" : "play"} size={22} />
+              </button>
+              <div className="gift-progress">
+                <label className="visually-hidden" htmlFor={seekId}>
+                  Song position
+                </label>
+                <input
+                  id={seekId}
+                  type="range"
+                  min={0}
+                  max={duration || 1}
+                  step="0.1"
+                  value={Math.min(elapsed, duration || 1)}
+                  onChange={(e) => {
+                    const value = Number(e.target.value);
+                    if (audio.current && duration) {
+                      audio.current.currentTime = value;
+                      setElapsed(value);
+                    }
+                  }}
+                  style={
+                    {
+                      "--progress": `${duration ? (elapsed / duration) * 100 : 0}%`,
+                    } as React.CSSProperties
+                  }
+                />
+                <div className="gift-time">
+                  <span>{clock(elapsed)}</span>
+                  <span>{clock(duration)}</span>
+                </div>
+              </div>
             </div>
             {error && <p role="alert">{error}</p>}
           </div>
+          <div className="gift-song-actions">
+            <a
+              href={`${audioUrl}${audioUrl.includes("?") ? "&" : "?"}download=1`}
+              download
+            >
+              <StudioIcon name="download" size={15} />
+              Download MP3
+            </a>
+            {lyrics && (
+              <details>
+                <summary>Read lyrics</summary>
+                <p className="song-lyrics">{lyrics}</p>
+              </details>
+            )}
+          </div>
         </section>
-        {lyrics && (
-          <details className="gift-lyrics">
-            <summary>
-              The words, just for you <span aria-hidden="true">+</span>
-            </summary>
-            <p className="song-lyrics">{lyrics}</p>
-          </details>
-        )}
-        <footer className="gift-world-footer">
-          <span>A real story. A very personal gift.</span>
+        <footer className="gift-page-footer">
           <Link href="/">
-            Your Song by The Gift Smith
+            Your Song <span>by The Gift Smith</span>
           </Link>
         </footer>
       </main>

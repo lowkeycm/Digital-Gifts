@@ -4,7 +4,51 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (preview before checkout and blocked Stripe repair)
+## Last Session (mobile picker and teddy wind-up)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode, continuing the same review.
+- **Request:** Mobile Add image did not open the file manager; animate the teddy's wind-up handle as well.
+- **Changed:** Shared MediaFilePicker puts the native input across the full 48px button, so touch goes directly to the input. Photo inputs use image/* to request the native image chooser, retaining explicit JPG/PNG/WebP and size validation. Preview, private photo and reaction controls share the accessible component; selecting the same file again works. The existing brass key is isolated with CSS and rotates around its axle during actual playback, paused by the same state as the bow, and remains still for reduced motion. Artwork and other templates retained.
+- **Verification:** Check/build and focused production-build regression. Real filechooser events from mobile-emulated taps at center and both edges, selected image through reload and recipient page, exact saved note, key transforms during play and pause, reduced-motion audio, desktop/mobile screenshots. docs/qa/mobile-picker-teddy-evidence.json and teddy-windup-*.jpg. Physical Android/in-app browser unavailable; the original failure was not reproduced in desktop. Ask Clay to retry on the affected phone without presenting emulation as physical-device acceptance.
+- **Release:** Same clay/premium-song-studio / draft PR42 review preview, exact Digital Gifts Vercel project/team reverified. Existing publication authorization persists. Final hosted verification and deployment SHA in PR42. No database changes, production merge or payment activation.
+
+## Previous Session (three gift experiences)
+
+- **When / who:** October4,2026 / Clay / ChatGPT Work Mode, continuing review.
+- **Request:** Preserve Record Player as one experience; add reference-matched Teddy Bear and Equalizer. Each has Note, Card and Letter. Bear plays its instrument during playback and equalizer follows the music.
+- **Changed:** Independent experience/presentation selectors with nine actual render thumbnails. Original record preserved. Detailed generated bear atlas animates its bowing forearm; detailed walnut/brass cabinet carries a real10-band Web Audio spectrum. All use the existing single transport, photo and exact note. Pause/buffering/end stop motion; reduced motion preserves audio with still artwork. Choices persist through owner API, preview IndexedDB, print detour/reload and recipient sharing.
+- **Database:** Exact Digital Enterprise / Digital Gifts hyjmlkowbhftisynztui verified; additive gift_experiences registered20261004041130. gift_scene defaults record and allows record/teddy/equalizer. Real synthetic rollback checks pass; RLS/grants and advisory categories retained. No real data changed.
+- **Verification:** Check/build, nine combinations desktop1440/mobile390 plus320/768; actual bear transforms, bass/treble band response, pause/reduced-motion, exact note/photo separation; private recipient307 audio spectrum, invalid-scene and recipient-write rejection, existing payment/print/share/access regressions. React review and reference comparison recorded in docs/qa/gift-experiences-notes.md. New evidence in experience-* and gift-experiences-evidence.json; full regressions in premium-browser-evidence.json.
+- **Publication approval:** Clay explicitly approved publishing the source, generated artwork, migration and QA evidence to the public lowkeycm/Digital-Gifts repository on October 4 at 00:24 New York time. This resolves the prior automatic-review blocker. No credentials or customer records are in the payload; the API values in QA are unchanged dummy fixtures. Normal git push was retested and lacks command-line credentials, so use the authenticated GitHub connector, preserving the verified tree.
+- **Release:** Published app commit f699a99f937c475574af42884b4ec6fada675e20 to clay/premium-song-studio / draft PR42. Vercel digital-gifts preview dpl_3bx5UMHZh8FKoMzQv7PpuBjsTjmz READY and GitHub status success. Hosted browser verified Teddy Bear + Card bow movement during playback and pause; Equalizer + Letter produced nonzero live bands and reset on pause; saved choices and exact note survived studio/gift navigation. Screenshot: docs/qa/gift-experiences-hosted.jpg. This documentation follow-up changes no application files; final deployment outcome belongs in PR42. Production still requires visual acceptance; public checkout stays free.
+
+## Previous Session (original gift record player restored)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode, continuing the review.
+- **Request:** Clay rejected removal of the established record page and the lower production value of the flat replacement templates.
+- **Changed:** Restored the original CSS/SVG cabinet, grooved record, continuous metal arm, sleeve and lighting in every recipient layout. Record keeps the original occasion room; Photo adds a larger brass frame; Letter layers the exact note and full photo on stationery. Coordinated brass transport, functional labels only, actual render thumbnails. Original record is first/default for the design preview. Prior functional fixes and saved selections remain intact; no DB/payment change.
+- **Verification:** Lint/types/build; 15-check full production-build browser run with actual private route transport; record/arm play and pause, keyboard seeking and reduced motion in all styles. Final desktop/mobile/320/768 renders, unobscured photo bounds, no-photo state and tall image plus maximum note. Evidence in gift-restoration-evidence.json, premium-browser-evidence.json and gift-* captures. Original 9d1609a is the visual benchmark, not the rejected flat layouts.
+- **Release:** Update existing clay/premium-song-studio / draft PR42 and verify the exact Vercel preview. Target digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr in Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE. Production remains awaiting Clay's visual acceptance, checkout remains free. Final preview deployment outcome belongs in PR42.
+
+## Previous Session (studio review corrections)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode. Continuing the same review preview.
+- **Request:** Remove repeated aspirational copy, show the explicit $59/$29 introductory offer, autoplay melody selection, preserve gift drafts through the print detour, move the upsell before the CTA, hide revisions after selection, show a post-share reminder and add gift templates.
+- **Changed:** Concise checkout/studio copy and gift CTA; one autoplaying melody player; step-one-only revisions; prominent optional print; saved photo/note/template across preview navigation and reload. Recipient Photo / Record / Letter layouts emphasize For name, personal note, song title and a fully visible image. Sharing reveals feedback/reaction access near the top without claiming delivery. The owner-preview share control also records the reminder.
+- **Database:** Exact Digital Gifts project only. Additive gift_templates_and_share_reminder migration, version 20261004023221. Template allowlist and share-action timestamp tested in a rolled-back synthetic transaction. Existing access restrictions and advisory categories retained.
+- **Verification:** Lint/types and production build; Chromium desktop/mobile and 320/768 overflow; full photo/note detour and reload, all gift templates, actual private owner/recipient routes with controlled transport, autoplay, reminders and payment/access regressions. See docs/qa/premium-studio-review.md and premium-browser-evidence.json. No real payment, email or music generation.
+- **Release:** Update the existing clay/premium-song-studio review branch / PR42 and verify its Vercel preview. Production is not approved; keep public checkout free. Customer email configuration remains a separate launch dependency.
+
+## Previous Session (premium studio review preview)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode. Clay approved moving ahead with the checkout audit.
+- **Outcome:** Built the personal listening room, $29 introductory purchase offer, Listen / Prepare / Share stages, personal gift note, compact revision disclosure, after-gifting feedback, My songs return access and optional $9 printable lyric keepsake. The complete code is on clay/premium-song-studio for a visual review preview.
+- **Verification:** Production build and lint/types checked; actual desktop/mobile Chromium walkthrough, payment/access boundary checks and real database rollback checks. Full evidence and release boundaries: docs/qa/premium-studio-review.md and premium-* files. The printable PDF was rasterized after fixing embedded lettering. No customer data, real charges, generation credits or sent email in these checks.
+- **Database:** Additive premium_song_studio migration applied to the exact Digital Gifts project. Source: supabase/migrations/20261003234627_premium_song_studio.sql. Backend-only keepsake entitlement; RLS and RPC grants checked. Existing advisory categories retained.
+- **Configuration:** Customer email recovery is implemented but requires a verified sender configured through RESEND_API_KEY and SONG_EMAIL_FROM. Until then, the interface offers device collection and a downloadable private access file. Public checkout stays free; no production launch or pricing activation in this work.
+- **Next:** Review the clickable /studio-preview walkthrough before production approval. Preview includes sample recordings and a labeled simulated checkout transition. It is disabled in the production Vercel environment. After approval, merge and verify the exact production deployment; do not activate paid public checkout as part of that merge.
+
+## Previous Session (preview before checkout and blocked Stripe repair)
 
 - **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode. Continuing authorized site repair/publication.
 - **Request / choice:** Saved private sandbox song page could not continue to checkout. Customer must hear their custom song before purchase; Clay chose 60 seconds. Keep public CHECKOUT_MODE=free until explicit paid launch.

@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-04T05:04:47.385Z",
+  "environment": "Chromium mobile touch emulation and desktop viewport. Physical Android/embedded app not available.",
+  "checks": [
+    "390px touch center: actual filechooser event, selected photo retained",
+    "390px touch left edge: actual filechooser event, selected photo retained",
+    "390px touch right edge: actual filechooser event, selected photo retained",
+    "390px: key turns during actual playback, freezes on pause; photo and note retained; no overflow",
+    "1440px: key turns during actual playback, freezes on pause; photo and note retained; no overflow",
+    "Reduced motion: key remains still while audio plays"
+  ]
+}
