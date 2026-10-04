@@ -559,11 +559,7 @@ export function SongStudio({
                           <span
                             className={`template-swatch template-swatch--${template.id}`}
                             aria-hidden="true"
-                          >
-                            <i />
-                            <b />
-                            <em />
-                          </span>
+                          />
                           <strong>{template.name}</strong>
                         </button>
                       ))}

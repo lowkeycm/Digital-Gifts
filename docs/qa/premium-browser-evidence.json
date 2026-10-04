@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-04T02:43:12.958Z",
+  "date": "2026-10-04T03:29:34.158Z",
   "scope": "Production build with real browser, SDK, FFmpeg, audio files and PDF generation; controlled synthetic REST/storage and paid-state transition. Separate Stripe contract tests validate fulfillment. No customer data, actual charges or generation credits.",
   "checks": [
     "Unpaid studio offers $29, one real 60-second player, and denies gift editing/full downloads",
@@ -11,6 +11,9 @@
     "Listen, prepare, share, collection and keepsake have no overflow at 320,390,768,1440px",
     "Mobile step navigation scrolls directly to the active gift task",
     "Preview photo, note, selected template and preparation step survive the print detour and a full reload",
+    "portrait: original turntable, working record/transport controls, arm return, keyboard seeking and reduced-motion playback",
+    "record: original turntable, working record/transport controls, arm return, keyboard seeking and reduced-motion playback",
+    "letter: original turntable, working record/transport controls, arm return, keyboard seeking and reduced-motion playback",
     "All three gift templates carry the selected song, full photo and exact note to the recipient view without overflow",
     "Public preview supports checkout-to-studio walkthrough and keepsake inspection; public song page remains separate",
     "No browser exceptions or duplicate original generations"

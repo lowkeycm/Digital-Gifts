@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-04T03:33:31.382Z",
+  "scope": "Final production build; actual GiftExperience with synthetic IndexedDB draft. Playback/arm/reduced-motion and real private routes verified in premium-browser-evidence.json.",
+  "checks": [
+    "record: desktop/mobile/320/768, full photo clear of complete original turntable, one heading/player, exact personal note",
+    "portrait: desktop/mobile/320/768, full photo clear of complete original turntable, one heading/player, exact personal note",
+    "letter: desktop/mobile/320/768, full photo clear of complete original turntable, one heading/player, exact personal note",
+    "Original record experience remains complete without an uploaded photo or note",
+    "Tall image and maximum 600-character note stay fully visible on mobile"
+  ]
+}

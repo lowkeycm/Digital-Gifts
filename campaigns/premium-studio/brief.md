@@ -1,4 +1,6 @@
-Owner review amendment, October 4: use the explicitly requested $59 reference price with $29 Introductory highlighted. This supersedes the earlier introductory-only implementation. The user rejected repeated aspirational copy; controls now describe their action directly. The recipient templates retain the existing navy/olive/ivory typography and material treatment, with the customer's photo and note as the focal content. Photo uses a large image beside the message/player; Record pairs a sleeve with a smaller separate vinyl; Letter uses a paper composition. No new stock imagery or claims of conversion lift. Actual sharing actions reveal a reminder without asserting delivery.
+Owner correction, October 4: “Why would you remove the record page we had previously and think the templates you just did were a good replacement?” The reduced flat layouts were rejected. Restore the original record player from 9d1609a as the visual baseline in every option. Keep the functional corrections, exact customer note and complete photo. Use the original screenshot and existing project research; this is correction within the established art direction, not a new visual system. Original materials and play/arm behavior are preserved; photo framing and letter stationery add matched material depth.
+
+Owner review amendment, October 4: use the explicitly requested $59 reference price with $29 Introductory highlighted. This supersedes the earlier introductory-only implementation. The user rejected repeated aspirational copy; controls now describe their action directly. The first template implementation was later rejected because it removed the custom player. The corrected templates all retain the original dimensional record player and layer the photo/note treatment around it. No new stock imagery or claims of conversion lift. Actual sharing actions reveal a reminder without asserting delivery.
 
 # Premium song studio
 
@@ -20,7 +22,7 @@ Email recovery dependency: this project has no customer delivery email configura
   "surface": "funnel",
   "request": "Approved checkout audit: build a premium digital studio, $29 introductory offer, relevant keepsake upsell, focused listening/preparing/sharing stages, later feedback, and return access.",
   "hub_revision": "911e97931fb0313bce0dd513afb9ece30f672719",
-  "build_revision": "studio-review-bb7f48f9a0f9",
+  "build_revision": "record-restored-d6e7d75024ad",
   "pages": [
     {
       "route": "/song/[id]",
@@ -74,19 +76,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-share-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-share-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ],
       "user_waiver": {
@@ -113,19 +115,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -146,25 +148,25 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "reduced-motion",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -185,13 +187,13 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-checkout-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -213,19 +215,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-library-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-library-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -248,25 +250,25 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-keepsake-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-keepsake-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-lyric-render.png",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -287,13 +289,13 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-checkout-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -314,19 +316,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-prepare-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-prepare-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -347,19 +349,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-prepare-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-prepare-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -372,51 +374,51 @@ Email recovery dependency: this project has no customer delivery email configura
       ],
       "source": "user",
       "acceptance": "Provide Photo, Record and Letter layouts. Each displays For name, the exact personal note and song title without generic relationship commentary; photos remain fully visible.",
-      "implementation": "October 4 owner review corrections across checkout, studio and recipient preview.",
+      "implementation": "Every option uses the original full turntable: occasion-colored record room, larger brass photo frame, or layered letter stationery. Real render thumbnails replace abstract placeholders.",
       "status": "pass",
-      "observation": "Photo, Record and Letter carry the selected song/photo/note; all images decode and use contain sizing. All layouts pass desktop/mobile and 320/768 overflow.",
+      "observation": "Exact photo/note/song, unobscured photo and original dimensional player observed in all three styles. Maximum note length, tall image and no-photo states verified. User visual acceptance is still pending.",
       "evidence": [
         {
           "path": "../../docs/qa/gift-portrait-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/gift-portrait-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/gift-record-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/gift-record-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/gift-letter-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/gift-letter-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -437,19 +439,82 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-share-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-share-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
+        }
+      ]
+    },
+    {
+      "id": "preserve-record-production",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Restore the original dimensional record player. Template choices must retain its wood cabinet, continuous metal tonearm, grooved moving vinyl and layered materials; the complete personal photo and note stay visible. Desktop and mobile render comparison to the original is required.",
+      "implementation": "Restore original CSS/SVG turntable in every template; compose record room, framed photo room and stationery room around it. Preserve customer content and existing access/data flow.",
+      "status": "pass",
+      "observation": "Compared to the original 9d1609a render: complete cabinet/plinth, lacquered vinyl, metal arm and matching sleeve restored. Desktop and phone retain full photo outside the player, exact note, a coordinated brass transport and real scene thumbnails. Browser playback, tonearm return, keyboard seek and reduced motion passed for all three options.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/gift-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-record-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-letter-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-letter-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-portrait-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-portrait-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "reduced-motion",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-restoration-evidence.json",
+          "kind": "browser-log",
+          "viewport": "mobile",
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     }
@@ -508,6 +573,11 @@ Email recovery dependency: this project has no customer delivery email configura
       "path": "../../src/lib/keepsake-art.ts",
       "role": "Actual printable keepsake artwork, shared preview/download design",
       "status": "ready"
+    },
+    {
+      "path": "../../src/components/GiftTurntable.tsx",
+      "role": "Original detailed turntable and continuous metal tonearm restored from 9d1609a",
+      "status": "ready"
     }
   ],
   "prototype": {
@@ -517,27 +587,39 @@ Email recovery dependency: this project has no customer delivery email configura
       "listening-room",
       "gift-workbench"
     ],
-    "revision": "studio-review-bb7f48f9a0f9",
+    "revision": "record-restored-d6e7d75024ad",
     "status": "pass",
-    "observation": "Rendered review passed: focused record/player and contextual workbench across desktop and mobile. Interaction evidence verifies playback and task flow.",
+    "observation": "Original record room restored and compared on desktop/mobile with the previous dimensional player. Material depth, sleeve, photo separation and play/arm behavior retained. Flat prior templates explicitly rejected by owner; not used as a quality benchmark.",
     "evidence": [
       {
         "path": "../../docs/qa/premium-studio-1440.jpg",
         "kind": "screenshot",
         "viewport": "desktop",
-        "revision": "studio-review-bb7f48f9a0f9"
+        "revision": "record-restored-d6e7d75024ad"
       },
       {
         "path": "../../docs/qa/premium-studio-390.jpg",
         "kind": "screenshot",
         "viewport": "mobile",
-        "revision": "studio-review-bb7f48f9a0f9"
+        "revision": "record-restored-d6e7d75024ad"
       },
       {
         "path": "../../docs/qa/premium-browser-evidence.json",
         "kind": "browser-log",
         "viewport": "desktop",
-        "revision": "studio-review-bb7f48f9a0f9"
+        "revision": "record-restored-d6e7d75024ad"
+      },
+      {
+        "path": "../../docs/qa/gift-record-1440.jpg",
+        "kind": "screenshot",
+        "viewport": "desktop",
+        "revision": "record-restored-d6e7d75024ad"
+      },
+      {
+        "path": "../../docs/qa/gift-record-390.jpg",
+        "kind": "screenshot",
+        "viewport": "mobile",
+        "revision": "record-restored-d6e7d75024ad"
       }
     ]
   },
@@ -545,25 +627,43 @@ Email recovery dependency: this project has no customer delivery email configura
     {
       "route": "/song/[id]",
       "status": "pass",
-      "observation": "Premium listening space, single task panel and compact revisions; mobile task navigation moves into view.",
+      "observation": "Original studio flow remains verified. Recipient redesign compared to original 9d1609a: full turntable construction retained in every style; matched photo framing, paper edges and brass transport. Exact customer content, full imagery and no generic commentary. User visual approval remains pending.",
       "evidence": [
         {
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-picker-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-picker-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "record-restored-d6e7d75024ad"
+        },
+        {
+          "path": "../../docs/qa/gift-restoration-evidence.json",
+          "kind": "browser-log",
+          "viewport": "mobile",
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -576,19 +676,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-library-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-library-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     },
@@ -601,19 +701,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-keepsake-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-keepsake-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "studio-review-bb7f48f9a0f9"
+          "revision": "record-restored-d6e7d75024ad"
         }
       ]
     }

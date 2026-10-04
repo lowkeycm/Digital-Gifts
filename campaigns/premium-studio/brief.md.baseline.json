@@ -148,6 +148,16 @@
       ],
       "source": "user",
       "acceptance": "After a sharing action show a reaction/feedback reminder with an obvious return link near the top of the studio. Copying or opening a share sheet never claims successful delivery."
+    },
+    {
+      "id": "preserve-record-production",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Restore the original dimensional record player. Template choices must retain its wood cabinet, continuous metal tonearm, grooved moving vinyl and layered materials; the complete personal photo and note stay visible. Desktop and mobile render comparison to the original is required."
     }
   ]
 }

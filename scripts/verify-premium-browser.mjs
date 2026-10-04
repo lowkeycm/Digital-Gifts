@@ -231,7 +231,7 @@ try {
   page.on("pageerror", (e) => errors.push(e.message));
   const privatePath = `/song/${id}?key=${owner}`;
   const shot = async (name) => {
-    await page.evaluate(() => { if (document.activeElement instanceof HTMLElement) document.activeElement.blur(); return document.fonts.ready; });
+    await page.evaluate(() => { if (document.activeElement instanceof HTMLElement) document.activeElement.blur(); window.scrollTo(0, 0); return document.fonts.ready; });
     await page.screenshot({
       path: `${root}/docs/qa/${name}.jpg`,
       fullPage: true,
@@ -673,6 +673,28 @@ try {
       "contain",
     );
     assert.equal(await page.locator("audio").count(), 1);
+    assert.equal(await page.locator(".turntable .tonearm-assembly").count(), 1);
+    assert.equal(await page.locator(".vinyl-grooves").count(), 1);
+    await page.getByRole("button", { name: "Play your song", exact: true }).click();
+    await page.waitForFunction(() => { const a = document.querySelector("audio"); return a && !a.paused && a.currentTime > 0; });
+    assert.equal(await page.locator(".gift-vinyl").evaluate(e => getComputedStyle(e).animationPlayState), "running");
+    await page.waitForTimeout(1000);
+    const playingArm = await page.locator(".tonearm").evaluate(e => getComputedStyle(e).transform);
+    await page.getByRole("button", { name: "Pause song", exact: true }).click();
+    await page.waitForTimeout(1000);
+    const stoppedArm = await page.locator(".tonearm").evaluate(e => getComputedStyle(e).transform);
+    assert.notEqual(playingArm, stoppedArm, "The continuous metal arm moves with playback");
+    assert.equal(await page.locator(".gift-vinyl").evaluate(e => getComputedStyle(e).animationPlayState), "paused");
+    await page.getByRole("slider", { name: "Song position" }).focus();
+    await page.keyboard.press("ArrowRight");
+    assert.ok(await page.locator("audio").evaluate(e => e.currentTime > 0));
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.getByRole("button", { name: "Play song", exact: true }).click();
+    assert.equal(await page.locator(".gift-vinyl").evaluate(e => getComputedStyle(e).animationName), "none");
+    assert.equal(await page.locator("audio").evaluate(e => e.paused), false);
+    await page.getByRole("button", { name: "Pause song", exact: true }).click();
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    pass(`${template}: original turntable, working record/transport controls, arm return, keyboard seeking and reduced-motion playback`);
     for (const width of [1440, 390, 320, 768]) {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
       assert.equal(

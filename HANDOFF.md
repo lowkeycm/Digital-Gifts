@@ -4,7 +4,15 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (studio review corrections)
+## Last Session (original gift record player restored)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode, continuing the review.
+- **Request:** Clay rejected removal of the established record page and the lower production value of the flat replacement templates.
+- **Changed:** Restored the original CSS/SVG cabinet, grooved record, continuous metal arm, sleeve and lighting in every recipient layout. Record keeps the original occasion room; Photo adds a larger brass frame; Letter layers the exact note and full photo on stationery. Coordinated brass transport, functional labels only, actual render thumbnails. Original record is first/default for the design preview. Prior functional fixes and saved selections remain intact; no DB/payment change.
+- **Verification:** Lint/types/build; 15-check full production-build browser run with actual private route transport; record/arm play and pause, keyboard seeking and reduced motion in all styles. Final desktop/mobile/320/768 renders, unobscured photo bounds, no-photo state and tall image plus maximum note. Evidence in gift-restoration-evidence.json, premium-browser-evidence.json and gift-* captures. Original 9d1609a is the visual benchmark, not the rejected flat layouts.
+- **Release:** Update existing clay/premium-song-studio / draft PR42 and verify the exact Vercel preview. Target digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr in Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE. Production remains awaiting Clay's visual acceptance, checkout remains free. Final preview deployment outcome belongs in PR42.
+
+## Previous Session (studio review corrections)
 
 - **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode. Continuing the same review preview.
 - **Request:** Remove repeated aspirational copy, show the explicit $59/$29 introductory offer, autoplay melody selection, preserve gift drafts through the print detour, move the upsell before the CTA, hide revisions after selection, show a post-share reminder and add gift templates.

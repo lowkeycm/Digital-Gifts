@@ -160,6 +160,9 @@ The current provisional visual direction is documented in `docs/website-brief.md
 
 ### 2.9 Copy doctrine
 
+- **Gift page production value (October 4, 2026):** Retain the original dimensional record player when simplifying gift copy or adding templates. Every option must preserve its cabinet, metal arm, grooved vinyl and material depth. Keep the full uploaded photo clear of the player and the customer's exact note visible. Removing filler is not permission to replace the established experience with flat layouts. Compare renders to the original before presenting revisions.
+
+
 Doctrine item 10 applies. In addition for this project:
 
 - Marketing-Hub is the canonical marketing and conversion methodology. Use the committed `hub-` skill pointers in `.claude/skills/`.
