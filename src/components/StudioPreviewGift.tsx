@@ -31,6 +31,7 @@ export function StudioPreviewGift() {
         }
         photoUrl={preview.photoUrl}
         message={state.giftMessage}
+        scene={state.giftScene}
         template={state.giftTemplate}
       />
     </>

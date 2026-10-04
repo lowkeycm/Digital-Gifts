@@ -76,6 +76,7 @@ const session = {
   payment_status: "pending",
   email: "synthetic@example.com",
   gift_message: "",
+  gift_scene: "record",
   gift_given_at: null,
   raw_answers: {
     email: "synthetic@example.com",
@@ -116,6 +117,7 @@ const tables = {
 const signed = [];
 let originalReservations = 0;
 const fixture = http.createServer(async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   const u = new URL(req.url, "http://127.0.0.1:4133");
   let raw = "";
   for await (const c of req) raw += c;
@@ -356,6 +358,12 @@ try {
   await page.getByRole("button", { name: "Letter", exact: true }).click();
   await page.locator(".gift-template-picker button[aria-pressed=true]").filter({ hasText: "Letter" }).waitFor();
   assert.equal(session.gift_template, "letter");
+  await page.getByRole("button", { name: "Equalizer", exact: true }).click();
+  await page.getByRole("button", { name: "Equalizer", exact: true, pressed: true }).waitFor();
+  assert.equal(session.gift_scene, "equalizer");
+  assert.equal((await post("/api/song-gift", { songId: id, accessToken: owner, scene: "unknown" })).status(),400);
+  assert.equal((await post("/api/song-gift", { songId: id, accessToken: gift, scene: "teddy" })).status(),404);
+
   await page
     .getByLabel("A note from you")
     .fill("Every ordinary day with you is my favorite.");
@@ -408,6 +416,14 @@ try {
   assert.equal(await recipient.locator("audio").count(), 1);
   await recipient.locator(".gift-photo img").evaluate((img) => img.decode());
   assert.equal(await recipient.locator(".gift-page--letter").count(), 1);
+  await recipient.locator(".gift-experience--equalizer").waitFor();
+  await recipient.getByRole("button", {name:"Play song",exact:true}).click();
+  await recipient.waitForFunction(()=>document.querySelector('audio').currentTime>1);
+  await recipient.waitForFunction(()=>[...document.querySelectorAll('.eq-band')].some(b=>Number(b.style.getPropertyValue('--level'))>.1));
+  await recipient.getByRole("button", {name:"Pause song",exact:true}).click();
+  await recipient.waitForFunction(()=>[...document.querySelectorAll('.eq-band')].every(b=>Number(b.style.getPropertyValue('--level'))===0));
+  pass("Saved equalizer/letter choices reach the recipient; spectrum receives audio through the private 307 storage redirect; invalid choices and recipient edits denied");
+
   assert.equal(
     (
       await recipient.request.get(
@@ -609,7 +625,8 @@ try {
   await page
     .getByLabel("A note from you")
     .fill("For the whole crew. Same friends, new memories.");
-  await page.getByRole("button", { name: "Record", exact: true }).click();
+  await page.getByRole("button", { name: "Note", exact: true }).click();
+  await page.getByRole("button", { name: "Teddy Bear", exact: true }).click();
   const upsell = await page.locator(".keepsake-teaser").boundingBox();
   const continueButton = await page
     .getByRole("button", { name: "Continue to sharing", exact: true })
@@ -631,7 +648,7 @@ try {
   await page.locator(".sleeve-photo").waitFor();
   assert.equal(
     await page
-      .getByRole("button", { name: "Record", exact: true })
+      .getByRole("button", { name: "Note", exact: true })
       .getAttribute("aria-pressed"),
     "true",
   );
@@ -647,9 +664,11 @@ try {
   pass(
     "Preview photo, note, selected template and preparation step survive the print detour and a full reload",
   );
+  assert.equal(await page.getByRole("button", {name:"Teddy Bear",exact:true}).getAttribute("aria-pressed"),"true");
+  await page.getByRole("button", {name:"Record Player",exact:true}).click();
   for (const [name, template] of [
-    ["Photo", "portrait"],
-    ["Record", "record"],
+    ["Card", "portrait"],
+    ["Note", "record"],
     ["Letter", "letter"],
   ]) {
     await page.getByRole("button", { name, exact: true }).click();

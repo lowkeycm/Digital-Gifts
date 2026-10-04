@@ -1,3 +1,5 @@
+October 4 expansion: The record player can be one template (it has 3 options, the note, the card, the letter) just like you have it. Attached are two additional templates (let’s give those the note, the card, and the letter). Preserve the record experience and add two equally detailed choices. Artwork references supplied by Clay; generated cutouts use original materials. Playback is the only animation trigger. Note/Card/Letter keep the established presentation IDs for saved gifts. Supplied visual evidence and prior inspected project research reused.
+
 Owner correction, October 4: “Why would you remove the record page we had previously and think the templates you just did were a good replacement?” The reduced flat layouts were rejected. Restore the original record player from 9d1609a as the visual baseline in every option. Keep the functional corrections, exact customer note and complete photo. Use the original screenshot and existing project research; this is correction within the established art direction, not a new visual system. Original materials and play/arm behavior are preserved; photo framing and letter stationery add matched material depth.
 
 Owner review amendment, October 4: use the explicitly requested $59 reference price with $29 Introductory highlighted. This supersedes the earlier introductory-only implementation. The user rejected repeated aspirational copy; controls now describe their action directly. The first template implementation was later rejected because it removed the custom player. The corrected templates all retain the original dimensional record player and layer the photo/note treatment around it. No new stock imagery or claims of conversion lift. Actual sharing actions reveal a reminder without asserting delivery.
@@ -22,7 +24,7 @@ Email recovery dependency: this project has no customer delivery email configura
   "surface": "funnel",
   "request": "Approved checkout audit: build a premium digital studio, $29 introductory offer, relevant keepsake upsell, focused listening/preparing/sharing stages, later feedback, and return access.",
   "hub_revision": "911e97931fb0313bce0dd513afb9ece30f672719",
-  "build_revision": "record-restored-d6e7d75024ad",
+  "build_revision": "gift-experiences-aa8bbef3f800",
   "pages": [
     {
       "route": "/song/[id]",
@@ -76,19 +78,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-share-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-share-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ],
       "user_waiver": {
@@ -115,19 +117,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -148,25 +150,25 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "reduced-motion",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -187,13 +189,13 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-checkout-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -215,19 +217,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-library-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-library-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -250,25 +252,25 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-keepsake-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-keepsake-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-lyric-render.png",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -289,13 +291,13 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-checkout-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -316,19 +318,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-prepare-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-prepare-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -349,19 +351,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-prepare-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-prepare-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -375,52 +377,56 @@ Email recovery dependency: this project has no customer delivery email configura
       "source": "user",
       "acceptance": "Provide Photo, Record and Letter layouts. Each displays For name, the exact personal note and song title without generic relationship commentary; photos remain fully visible.",
       "implementation": "Every option uses the original full turntable: occasion-colored record room, larger brass photo frame, or layered letter stationery. Real render thumbnails replace abstract placeholders.",
-      "status": "pass",
+      "status": "waived",
       "observation": "Exact photo/note/song, unobscured photo and original dimensional player observed in all three styles. Maximum note length, tall image and no-photo states verified. User visual acceptance is still pending.",
       "evidence": [
         {
           "path": "../../docs/qa/gift-portrait-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-portrait-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-record-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-record-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-letter-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-letter-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
-      ]
+      ],
+      "user_waiver": {
+        "quote": "The record player can be one template (it has 3 options, the note, the card, the letter) just like you have it. Attached are two additional templates (let\u2019s give those the note, the card, and the letter).",
+        "source": "Clay, current October 4 conversation: three experiences with three presentations each."
+      }
     },
     {
       "id": "review-share-reminder",
@@ -439,19 +445,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-share-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-share-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -465,56 +471,162 @@ Email recovery dependency: this project has no customer delivery email configura
       "source": "user",
       "acceptance": "Restore the original dimensional record player. Template choices must retain its wood cabinet, continuous metal tonearm, grooved moving vinyl and layered materials; the complete personal photo and note stay visible. Desktop and mobile render comparison to the original is required.",
       "implementation": "Restore original CSS/SVG turntable in every template; compose record room, framed photo room and stationery room around it. Preserve customer content and existing access/data flow.",
-      "status": "pass",
+      "status": "waived",
       "observation": "Compared to the original 9d1609a render: complete cabinet/plinth, lacquered vinyl, metal arm and matching sleeve restored. Desktop and phone retain full photo outside the player, exact note, a coordinated brass transport and real scene thumbnails. Browser playback, tonearm return, keyboard seek and reduced motion passed for all three options.",
       "evidence": [
         {
           "path": "../../docs/qa/gift-record-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-record-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-letter-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-letter-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-portrait-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/gift-portrait-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "reduced-motion",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
-          "path": "../../docs/qa/gift-restoration-evidence.json",
+          "path": "../../docs/qa/gift-experiences-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
+        }
+      ],
+      "user_waiver": {
+        "quote": "The record player can be one template (it has 3 options, the note, the card, the letter) just like you have it. Attached are two additional templates (let\u2019s give those the note, the card, and the letter).",
+        "source": "Clay, current October 4 conversation: three experiences with three presentations each."
+      }
+    },
+    {
+      "id": "gift-nine-combinations",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Record Player, Teddy Bear and Equalizer each offer Note, Card and Letter. All nine retain For name, exact note, song title and a fully visible photo; the original record player keeps its construction. Both choices persist through detour, reload and recipient sharing.",
+      "implementation": "Independent gift_scene and existing gift_template, live render thumbnails and additive service-only persistence.",
+      "status": "pass",
+      "observation": "Actual nine-combination desktop/mobile renders inspected against supplied bear/hi-fi references and unchanged original turntable. Full photo and exact note remain clear. Bow articulation observed through play/pause. Controlled 125Hz and 4kHz tones light only their correct bands; actual private recipient audio redirect also yields nonzero spectrum. Reduced motion retains playback and stops the display.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/experience-teddy-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-teddy-record-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-equalizer-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-equalizer-letter-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/gift-experiences-evidence.json",
+          "kind": "browser-log",
+          "viewport": "reduced-motion",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
+        }
+      ]
+    },
+    {
+      "id": "gift-musical-motion",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The teddy bowing arm moves only during actual playback. Equalizer frequency bands respond to the real song spectrum. Pause/end and reduced motion stop movement; playback and seeking remain available.",
+      "implementation": "Transparent articulated bear atlas and detailed hi-fi cabinet with live Web Audio segmented display, one shared transport and audio element.",
+      "status": "pass",
+      "observation": "Actual nine-combination desktop/mobile renders inspected against supplied bear/hi-fi references and unchanged original turntable. Full photo and exact note remain clear. Bow articulation observed through play/pause. Controlled 125Hz and 4kHz tones light only their correct bands; actual private recipient audio redirect also yields nonzero spectrum. Reduced motion retains playback and stops the display.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/experience-teddy-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-teddy-record-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-equalizer-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-equalizer-letter-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/gift-experiences-evidence.json",
+          "kind": "browser-log",
+          "viewport": "reduced-motion",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     }
@@ -578,48 +690,63 @@ Email recovery dependency: this project has no customer delivery email configura
       "path": "../../src/components/GiftTurntable.tsx",
       "role": "Original detailed turntable and continuous metal tonearm restored from 9d1609a",
       "status": "ready"
+    },
+    {
+      "path": "../../public/images/gift-teddy-atlas.webp",
+      "role": "Generated from supplied teddy reference: complete music box plus separate bowing arm",
+      "status": "ready"
+    },
+    {
+      "path": "../../public/images/gift-equalizer.webp",
+      "role": "Generated reference-matched walnut cabinet; live spectrum and name overlays",
+      "status": "ready"
     }
   ],
   "prototype": {
     "route": "/song/[id]",
     "sections": [
-      "welcome",
       "listening-room",
       "gift-workbench"
     ],
-    "revision": "record-restored-d6e7d75024ad",
+    "revision": "gift-experiences-aa8bbef3f800",
     "status": "pass",
-    "observation": "Original record room restored and compared on desktop/mobile with the previous dimensional player. Material depth, sleeve, photo separation and play/arm behavior retained. Flat prior templates explicitly rejected by owner; not used as a quality benchmark.",
+    "observation": "Representative teddy Note and Equalizer Note rendered with final artwork on desktop/mobile; arm attachment and movement inspected, real spectrum tested with separate bass/treble fixtures before release. Components are 2D articulated artwork and live audio display, not a free-moving 3D scene.",
     "evidence": [
       {
-        "path": "../../docs/qa/premium-studio-1440.jpg",
+        "path": "../../docs/qa/experience-teddy-record-1440.jpg",
         "kind": "screenshot",
         "viewport": "desktop",
-        "revision": "record-restored-d6e7d75024ad"
+        "revision": "gift-experiences-aa8bbef3f800"
       },
       {
-        "path": "../../docs/qa/premium-studio-390.jpg",
+        "path": "../../docs/qa/experience-teddy-record-390.jpg",
         "kind": "screenshot",
         "viewport": "mobile",
-        "revision": "record-restored-d6e7d75024ad"
+        "revision": "gift-experiences-aa8bbef3f800"
+      },
+      {
+        "path": "../../docs/qa/experience-equalizer-record-1440.jpg",
+        "kind": "screenshot",
+        "viewport": "desktop",
+        "revision": "gift-experiences-aa8bbef3f800"
+      },
+      {
+        "path": "../../docs/qa/experience-equalizer-letter-390.jpg",
+        "kind": "screenshot",
+        "viewport": "mobile",
+        "revision": "gift-experiences-aa8bbef3f800"
+      },
+      {
+        "path": "../../docs/qa/gift-experiences-evidence.json",
+        "kind": "browser-log",
+        "viewport": "reduced-motion",
+        "revision": "gift-experiences-aa8bbef3f800"
       },
       {
         "path": "../../docs/qa/premium-browser-evidence.json",
         "kind": "browser-log",
         "viewport": "desktop",
-        "revision": "record-restored-d6e7d75024ad"
-      },
-      {
-        "path": "../../docs/qa/gift-record-1440.jpg",
-        "kind": "screenshot",
-        "viewport": "desktop",
-        "revision": "record-restored-d6e7d75024ad"
-      },
-      {
-        "path": "../../docs/qa/gift-record-390.jpg",
-        "kind": "screenshot",
-        "viewport": "mobile",
-        "revision": "record-restored-d6e7d75024ad"
+        "revision": "gift-experiences-aa8bbef3f800"
       }
     ]
   },
@@ -627,43 +754,79 @@ Email recovery dependency: this project has no customer delivery email configura
     {
       "route": "/song/[id]",
       "status": "pass",
-      "observation": "Original studio flow remains verified. Recipient redesign compared to original 9d1609a: full turntable construction retained in every style; matched photo framing, paper edges and brass transport. Exact customer content, full imagery and no generic commentary. User visual approval remains pending.",
+      "observation": "All nine gift combinations and two-stage chooser inspected in production-build Chromium. Reference-matched fur, polished instrument, brass nameplate and walnut box; detailed walnut/metal equalizer with real frequency display; original record construction unchanged. Full image and note clear on mobile; dark/light presentation contrast checked. Owner visual acceptance remains pending.",
       "evidence": [
         {
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
-          "path": "../../docs/qa/gift-picker-1440.jpg",
+          "path": "../../docs/qa/experience-picker-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
-          "path": "../../docs/qa/gift-picker-390.jpg",
+          "path": "../../docs/qa/experience-picker-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
-          "path": "../../docs/qa/gift-restoration-evidence.json",
+          "path": "../../docs/qa/gift-experiences-evidence.json",
           "kind": "browser-log",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-teddy-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-teddy-record-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-equalizer-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/experience-equalizer-letter-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/gift-experiences-evidence.json",
+          "kind": "browser-log",
+          "viewport": "reduced-motion",
+          "revision": "gift-experiences-aa8bbef3f800"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "desktop",
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -676,19 +839,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-library-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-library-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     },
@@ -701,19 +864,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-keepsake-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-keepsake-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "record-restored-d6e7d75024ad"
+          "revision": "gift-experiences-aa8bbef3f800"
         }
       ]
     }

@@ -98,6 +98,7 @@ export async function GET(
         selectedTrackId: session.selected_track_id,
         giftPhotoId: session.gift_photo_id,
         giftMessage: session.gift_message ?? "",
+        giftScene: session.gift_scene ?? "record",
         giftTemplate: session.gift_template ?? "portrait",
         giftSharedAt: session.gift_shared_at ?? null,
         giftGivenAt: session.gift_given_at ?? null,

@@ -1,9 +1,10 @@
 {
-  "date": "2026-10-04T03:29:34.158Z",
+  "date": "2026-10-04T04:16:39.412Z",
   "scope": "Production build with real browser, SDK, FFmpeg, audio files and PDF generation; controlled synthetic REST/storage and paid-state transition. Separate Stripe contract tests validate fulfillment. No customer data, actual charges or generation credits.",
   "checks": [
     "Unpaid studio offers $29, one real 60-second player, and denies gift editing/full downloads",
     "Paid state unlocks the same originals; version switching, full playback, seek, pause and reduced motion work",
+    "Saved equalizer/letter choices reach the recipient; spectrum receives audio through the private 307 storage redirect; invalid choices and recipient edits denied",
     "Selection and personal note persist; recipient sees only the chosen gift and no owner key",
     "Post-share reminder appears promptly; feedback has no preselected rating and remains discoverable after reload",
     "My songs returns to verified device collection; private access file downloads; unconfigured email is not promised",

@@ -16,6 +16,7 @@ const schema = z.object({
   message: z.string().trim().max(600).optional(),
   given: z.boolean().optional(),
   shared: z.literal(true).optional(),
+  scene: z.enum(["record", "teddy", "equalizer"]).optional(),
   template: z.enum(["portrait", "record", "letter"]).optional(),
 });
 export async function POST(request: Request) {
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
     }
     if (p.removePhoto) updates.gift_photo_id = null;
     if (p.template !== undefined) updates.gift_template = p.template;
+    if (p.scene !== undefined) updates.gift_scene = p.scene;
     if (p.shared) updates.gift_shared_at = new Date().toISOString();
     if (p.message !== undefined) updates.gift_message = p.message;
     if (p.given !== undefined)

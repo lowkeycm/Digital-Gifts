@@ -160,7 +160,7 @@ The current provisional visual direction is documented in `docs/website-brief.md
 
 ### 2.9 Copy doctrine
 
-- **Gift page production value (October 4, 2026):** Retain the original dimensional record player when simplifying gift copy or adding templates. Every option must preserve its cabinet, metal arm, grooved vinyl and material depth. Keep the full uploaded photo clear of the player and the customer's exact note visible. Removing filler is not permission to replace the established experience with flat layouts. Compare renders to the original before presenting revisions.
+- **Gift page production value (October 4, 2026):** Retain the original dimensional record player when simplifying gift copy or adding templates. Every Record Player presentation must preserve its cabinet, metal arm, grooved vinyl and material depth. Owner expansion later October 4 explicitly adds Teddy Bear and Equalizer as independent experiences, each with Note, Card and Letter. New experiences must match the supplied material quality; preserve the record option. Keep the full uploaded photo clear of the player and the customer's exact note visible. Removing filler is not permission to replace the established experience with flat layouts. Compare renders to the original before presenting revisions.
 
 
 Doctrine item 10 applies. In addition for this project:

@@ -12,6 +12,7 @@ export const studioPreview: StudioState = {
   giftGivenAt: null,
   giftSharedAt: null,
   giftTemplate: "record",
+  giftScene: "record",
   emailEnabled: false,
   keepsake: { available: true, paid: false },
   checkout: { mode: "test", status: "paid", previewReady: true },

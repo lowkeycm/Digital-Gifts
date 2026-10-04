@@ -1,10 +1,17 @@
 "use client";
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { giftTemplate, type GiftTemplate } from "@/lib/gift-templates";
+import {
+  giftScene,
+  giftTemplate,
+  type GiftScene,
+  type GiftTemplate,
+} from "@/lib/gift-templates";
 import { giftTheme } from "@/lib/gift-themes";
 import { GiftTurntable } from "./GiftTurntable";
+import { GiftTeddy } from "./GiftTeddy";
+import { GiftEqualizer } from "./GiftEqualizer";
 import { StudioIcon } from "./StudioIcon";
 
 const clock = (seconds: number) =>
@@ -19,6 +26,7 @@ export function GiftExperience({
   photoUrl,
   message,
   template,
+  scene,
 }: {
   recipient: string;
   occasion: string;
@@ -28,11 +36,21 @@ export function GiftExperience({
   photoUrl: string | null;
   message?: string;
   template?: GiftTemplate;
+  scene?: GiftScene;
 }) {
   const layout = giftTemplate(template),
+    experience = giftScene(scene),
     theme = giftTheme(occasion);
   const audio = useRef<HTMLAudioElement>(null),
     seekId = useId();
+  const graph = useRef<AudioContext | null>(null);
+  const analyser = useRef<AnalyserNode | null>(null);
+  useEffect(
+    () => () => {
+      void graph.current?.close();
+    },
+    [],
+  );
   const [playing, setPlaying] = useState(false),
     [error, setError] = useState("");
   const [elapsed, setElapsed] = useState(0),
@@ -45,6 +63,27 @@ export function GiftExperience({
     }
     try {
       setError("");
+      // Build only after a user gesture. The same media element remains the sole
+      // playback source, including seeking, pausing and native media controls.
+      if (experience === "equalizer" && !graph.current && window.AudioContext) {
+        let context: AudioContext | null = null;
+        try {
+          context = new AudioContext();
+          const node = context.createAnalyser();
+          node.fftSize = 8192;
+          node.smoothingTimeConstant = 0.76;
+          node.minDecibels = -90;
+          node.maxDecibels = -15;
+          node.connect(context.destination);
+          const source = context.createMediaElementSource(audio.current);
+          source.connect(node);
+          graph.current = context;
+          analyser.current = node;
+        } catch {
+          void context?.close();
+        }
+      }
+      if (graph.current?.state === "suspended") await graph.current.resume();
       await audio.current.play();
     } catch {
       setError("Your song couldn’t play. Tap play to try again.");
@@ -52,7 +91,7 @@ export function GiftExperience({
   }
   return (
     <div
-      className={`gift-world gift-world--${theme.id} gift-page gift-page--${layout} ${photoUrl ? "with-photo" : "without-photo"}`}
+      className={`gift-world gift-world--${theme.id} gift-page gift-page--${layout} gift-experience--${experience} ${photoUrl ? "with-photo" : "without-photo"}`}
     >
       <div
         className={`gift-scenery scenery--${theme.motif}`}
@@ -101,21 +140,38 @@ export function GiftExperience({
           </div>
           <div className={`gift-scene ${playing ? "is-playing" : ""}`}>
             <div className="gift-scene-light" aria-hidden="true" />
-            <div className="gift-sleeve" aria-hidden="true">
-              <div className="gift-cover-art">
-                <span>{title}</span>
-                <div className="sleeve-orbit" />
+            {experience === "record" && (
+              <div className="gift-sleeve" aria-hidden="true">
+                <div className="gift-cover-art">
+                  <span>{title}</span>
+                  <div className="sleeve-orbit" />
+                </div>
+                <div className="sleeve-caption">
+                  <span>YOUR SONG</span>
+                  <strong>{recipient}</strong>
+                </div>
               </div>
-              <div className="sleeve-caption">
-                <span>YOUR SONG</span>
-                <strong>{recipient}</strong>
-              </div>
-            </div>
-            <GiftTurntable
-              recipient={recipient}
-              playing={playing}
-              onToggle={() => void toggle()}
-            />
+            )}
+            {experience === "record" ? (
+              <GiftTurntable
+                recipient={recipient}
+                playing={playing}
+                onToggle={() => void toggle()}
+              />
+            ) : experience === "teddy" ? (
+              <GiftTeddy
+                recipient={recipient}
+                playing={playing}
+                onToggle={() => void toggle()}
+              />
+            ) : (
+              <GiftEqualizer
+                recipient={recipient}
+                playing={playing}
+                analyser={analyser}
+                onToggle={() => void toggle()}
+              />
+            )}
           </div>
         </section>
         <section
@@ -127,13 +183,15 @@ export function GiftExperience({
             <audio
               ref={audio}
               preload="metadata"
+              crossOrigin={experience === "equalizer" ? "anonymous" : undefined}
               src={audioUrl}
               onPlay={(e) => {
                 document.querySelectorAll("audio").forEach((a) => {
                   if (a !== e.currentTarget) a.pause();
                 });
-                setPlaying(true);
               }}
+              onPlaying={() => setPlaying(true)}
+              onWaiting={() => setPlaying(false)}
               onPause={() => setPlaying(false)}
               onEnded={() => setPlaying(false)}
               onTimeUpdate={(e) => setElapsed(e.currentTarget.currentTime)}

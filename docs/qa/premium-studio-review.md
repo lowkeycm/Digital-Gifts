@@ -43,3 +43,8 @@ The final renders were compared to the original record page on desktop and mobil
 `npm run check` and production build pass. The existing full browser suite passes all 15 checks, including real private routes under controlled transport, upload/note persistence through the print detour and reload, recipient-only access, mobile step navigation and sharing reminders. Added checks verify actual record playback, continuous arm movement/return, pause, keyboard seek and reduced-motion playback in all three styles. `verify-gift-restoration.mjs` captures the final recipient and picker layouts, checks nonoverlapping image/player bounds at 1440/390/320/768, plus a tall photo, 600-character note and empty optional content. Final renders: gift-record/portrait/letter, gift-picker, gift-record-no-photo and gift-letter-long-note. Test fixture photos/copy are only sample content.
 
 React review: one audio element, playback state from media events, native labeled range input, accessible play/pause names, per-instance SVG gradient IDs, no new runtime dependencies or API changes. Motion-off keeps physical depth and working controls. Database, payment settings and public checkout mode were not changed by this correction. This remains a review preview; technical and rendered checks do not substitute for Clay's visual acceptance.
+
+
+## Three independent experiences
+
+Owner expansion now adds Teddy Bear and Equalizer beside the preserved Record Player. Each offers Note, Card and Letter. Full visual, playback and persistence evidence is in [gift-experiences-notes.md](gift-experiences-notes.md). This supersedes the earlier rule that every experience must use a record player, while retaining that exact player in all three Record Player presentations.

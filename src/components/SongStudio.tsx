@@ -3,6 +3,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   giftTemplates,
+  giftScenes,
+  giftScene,
+  type GiftScene,
   giftTemplate,
   type GiftTemplate,
 } from "@/lib/gift-templates";
@@ -35,6 +38,7 @@ export type StudioState = {
   giftMessage?: string;
   giftGivenAt?: string | null;
   giftTemplate?: GiftTemplate;
+  giftScene?: GiftScene;
   giftSharedAt?: string | null;
   jobs: Job[];
   tracks: StudioTrack[];
@@ -168,6 +172,9 @@ export function SongStudio({
                   : {}),
                 ...(extra.template !== undefined
                   ? { giftTemplate: giftTemplate(extra.template) }
+                  : {}),
+                ...(extra.scene !== undefined
+                  ? { giftScene: giftScene(extra.scene) }
                   : {}),
                 ...(extra.shared
                   ? { giftSharedAt: new Date().toISOString() }
@@ -539,8 +546,32 @@ export function SongStudio({
                       Remove photo
                     </button>
                   )}
-                  <fieldset className="gift-template-picker">
-                    <legend>Gift page style</legend>
+                  <fieldset className="gift-template-picker gift-scene-picker">
+                    <legend>Choose an experience</legend>
+                    <div>
+                      {giftScenes.map((scene) => (
+                        <button
+                          key={scene.id}
+                          type="button"
+                          aria-pressed={giftScene(state.giftScene) === scene.id}
+                          disabled={busy}
+                          onClick={() =>
+                            void action("/api/song-gift", { scene: scene.id })
+                          }
+                        >
+                          <span
+                            className="template-swatch"
+                            style={{
+                              backgroundImage: `url(/images/gift-template-${scene.id}-record.webp)`,
+                            }}
+                          />
+                          <strong>{scene.name}</strong>
+                        </button>
+                      ))}
+                    </div>
+                  </fieldset>
+                  <fieldset className="gift-template-picker gift-presentation-picker">
+                    <legend>Choose a presentation</legend>
                     <div>
                       {giftTemplates.map((template) => (
                         <button
@@ -557,7 +588,10 @@ export function SongStudio({
                           disabled={busy}
                         >
                           <span
-                            className={`template-swatch template-swatch--${template.id}`}
+                            className="template-swatch"
+                            style={{
+                              backgroundImage: `url(/images/gift-template-${giftScene(state.giftScene)}-${template.id}.webp)`,
+                            }}
                             aria-hidden="true"
                           />
                           <strong>{template.name}</strong>

@@ -4,7 +4,17 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (original gift record player restored)
+## Last Session (three gift experiences)
+
+- **When / who:** October4,2026 / Clay / ChatGPT Work Mode, continuing review.
+- **Request:** Preserve Record Player as one experience; add reference-matched Teddy Bear and Equalizer. Each has Note, Card and Letter. Bear plays its instrument during playback and equalizer follows the music.
+- **Changed:** Independent experience/presentation selectors with nine actual render thumbnails. Original record preserved. Detailed generated bear atlas animates its bowing forearm; detailed walnut/brass cabinet carries a real10-band Web Audio spectrum. All use the existing single transport, photo and exact note. Pause/buffering/end stop motion; reduced motion preserves audio with still artwork. Choices persist through owner API, preview IndexedDB, print detour/reload and recipient sharing.
+- **Database:** Exact Digital Enterprise / Digital Gifts hyjmlkowbhftisynztui verified; additive gift_experiences registered20261004041130. gift_scene defaults record and allows record/teddy/equalizer. Real synthetic rollback checks pass; RLS/grants and advisory categories retained. No real data changed.
+- **Verification:** Check/build, nine combinations desktop1440/mobile390 plus320/768; actual bear transforms, bass/treble band response, pause/reduced-motion, exact note/photo separation; private recipient307 audio spectrum, invalid-scene and recipient-write rejection, existing payment/print/share/access regressions. React review and reference comparison recorded in docs/qa/gift-experiences-notes.md. New evidence in experience-* and gift-experiences-evidence.json; full regressions in premium-browser-evidence.json.
+- **Publication approval:** Clay explicitly approved publishing the source, generated artwork, migration and QA evidence to the public lowkeycm/Digital-Gifts repository on October 4 at 00:24 New York time. This resolves the prior automatic-review blocker. No credentials or customer records are in the payload; the API values in QA are unchanged dummy fixtures. Normal git push was retested and lacks command-line credentials, so use the authenticated GitHub connector, preserving the verified tree.
+- **Release:** Publish to existing clay/premium-song-studio / draft PR42, Vercel digital-gifts prj_naAJ6e1cVre7JrijE52Ox8tM60Jr / Pride Family Realty team_K0quIbtPFw7RIl9M7bG54yTE. Verify exact preview SHA and hosted interactions. Final deployment outcome in PR42. Production still requires visual acceptance; public checkout stays free.
+
+## Previous Session (original gift record player restored)
 
 - **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode, continuing the review.
 - **Request:** Clay rejected removal of the established record page and the lower production value of the flat replacement templates.

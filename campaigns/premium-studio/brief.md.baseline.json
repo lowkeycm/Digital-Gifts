@@ -158,6 +158,26 @@
       ],
       "source": "user",
       "acceptance": "Restore the original dimensional record player. Template choices must retain its wood cabinet, continuous metal tonearm, grooved moving vinyl and layered materials; the complete personal photo and note stay visible. Desktop and mobile render comparison to the original is required."
+    },
+    {
+      "id": "gift-nine-combinations",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Record Player, Teddy Bear and Equalizer each offer Note, Card and Letter. All nine retain For name, exact note, song title and a fully visible photo; the original record player keeps its construction. Both choices persist through detour, reload and recipient sharing."
+    },
+    {
+      "id": "gift-musical-motion",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The teddy bowing arm moves only during actual playback. Equalizer frequency bands respond to the real song spectrum. Pause/end and reduced motion stop movement; playback and seeking remain available."
     }
   ]
 }
