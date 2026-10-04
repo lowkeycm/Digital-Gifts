@@ -1,6 +1,8 @@
+Owner review amendment, October 4: use the explicitly requested $59 reference price with $29 Introductory highlighted. This supersedes the earlier introductory-only implementation. The user rejected repeated aspirational copy; controls now describe their action directly. The recipient templates retain the existing navy/olive/ivory typography and material treatment, with the customer's photo and note as the focal content. Photo uses a large image beside the message/player; Record pairs a sleeve with a smaller separate vinyl; Letter uses a paper composition. No new stock imagery or claims of conversion lift. Actual sharing actions reveal a reminder without asserting delivery.
+
 # Premium song studio
 
-Owner approved the October 3 checkout audit and delegated execution. Existing $29 price, two originals and three revisions remain authoritative. $59 has no established regular-price history, so use introductory pricing. Public checkout remains free until explicit paid launch. No automatic marketing campaigns are activated.
+Owner approved the October 3 checkout audit and delegated execution. Existing $29 price, two originals and three revisions remain authoritative. The October 4 owner review supersedes the prior introductory-only price display with an explicit $59/$29 offer. Public checkout remains free until explicit paid launch. No automatic marketing campaigns are activated.
 
 Marketing-Hub Website System and six references, landing-page/build reference, direct-response copy and calibration anchors loaded at the recorded revision. Shared brand files resolved manually because the private Hub clone was unavailable; brand/assets.md is present, other profiles are absent. The approved audit supplies the buyer journey and offer. This is an existing most-aware checkout and purchased utility flow, not a cold-traffic landing-page rewrite. No invented customer VoC or measured conversion claims.
 
@@ -8,7 +10,7 @@ Selected direction: personal listening room. Cream product header over a navy ac
 
 Research is scoped to the changed product interface. Reuse the live Wonderbly/Flowerdose/Songfinch and static mobile Superpower observations in docs/website-brief.md. Additional October 3 rendered research: Awwwards Flower Dose product upsell gallery; Godly redirected to Recent, whose 3D Vinyl Player gallery shows physical object layering; 21st ElevenLabs Audio Player shows version list plus shared transport. Gallery captures establish visual direction, not conversion performance or live 3D behavior.
 
-Copy review: existing flow scored 42/70 in approved audit. Selected purchase copy: “Make their first listen a moment.” / “Keep both full songs, then make a personal gift page for them.” / “$29 introductory price” / “Keep my songs”. Paid copy: “Your songs are yours to keep.” / “Choose the version you want them to hear.” Supporting facts remain beside the purchase. Editorial scores: clarity9 specificity8 voice8 desire8 proof9 urgency7 flow9 =58/70. Urgency comes from finishing the gift for its occasion, with no countdown or scarcity claim. This is an editorial judgment, not measured conversion. No A/B routes without an agreed competing offer.
+Copy review, October 4: the owner’s specific rejection of filler supersedes the previous copy choices. Use “Choose a melody”, “Same lyrics. Two melodies”, “Unlock their song · $29”, “Personalize their gift” and “Continue to sharing”. Keep the recipient’s own note intact. The price, included revisions and optional $9 print are factual offer details, with no scarcity or performance claims. The gift page is a utility for receiving the gift, not another sales pitch.
 
 Email recovery dependency: this project has no customer delivery email configuration. Implement a server-only Resend adapter and passwordless verification; device access and downloadable private link remain available. Do not claim email was sent if unavailable. External sending and domain setup require the owner's service configuration.
 
@@ -18,7 +20,7 @@ Email recovery dependency: this project has no customer delivery email configura
   "surface": "funnel",
   "request": "Approved checkout audit: build a premium digital studio, $29 introductory offer, relevant keepsake upsell, focused listening/preparing/sharing stages, later feedback, and return access.",
   "hub_revision": "911e97931fb0313bce0dd513afb9ece30f672719",
-  "build_revision": "premium-studio-bb25839f9588",
+  "build_revision": "studio-review-bb7f48f9a0f9",
   "pages": [
     {
       "route": "/song/[id]",
@@ -65,28 +67,32 @@ Email recovery dependency: this project has no customer delivery email configura
       "source": "user",
       "acceptance": "Customers see confirmation, choose a version, prepare and share. Feedback and reactions appear only after explicitly marking the gift given.",
       "implementation": "Three stages, contextual secondary revision disclosure and separate after-gifting state.",
-      "status": "pass",
+      "status": "waived",
       "observation": "Walkthrough verified Listen / Prepare / Share, persisted choice/note, optional note saved before keepsake detour, and feedback hidden until gift given.",
       "evidence": [
         {
           "path": "../../docs/qa/premium-share-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-share-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
-      ]
+      ],
+      "user_waiver": {
+        "quote": "The \"After the Gift section\" is hidden (No one is coming back to find that); This should be shown after the gift is sent as a reminder. Then when they return to the studio something they can obviously find.",
+        "source": "Clay, October 4 review feedback in this conversation"
+      }
     },
     {
       "id": "studio-depth",
@@ -107,19 +113,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     },
@@ -140,25 +146,25 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "reduced-motion",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     },
@@ -173,19 +179,19 @@ Email recovery dependency: this project has no customer delivery email configura
       "acceptance": "$29 introductory pricing, both versions, three revisions and gift page are clear before secure checkout.",
       "implementation": "Exact offer beside personal previews, no invented former price or scarcity.",
       "status": "pass",
-      "observation": "Inspected $29 introductory offer, both songs, three revisions and gift-page inclusion. No invented former-price anchor.",
+      "observation": "Owner-directed $59 strike-through and highlighted $29 Introductory price appear beside the gift-oriented purchase action; included melodies/revisions/page remain clear.",
       "evidence": [
         {
           "path": "../../docs/qa/premium-checkout-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     },
@@ -207,19 +213,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-library-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-library-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     },
@@ -242,25 +248,208 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-keepsake-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-keepsake-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-lyric-render.png",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
+        }
+      ]
+    },
+    {
+      "id": "review-pricing-copy",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Show $59 crossed out and highlight $29 Introductory. Remove the requested filler and payment-check link; use a gift-oriented purchase CTA and describe the same lyrics with two melodies.",
+      "implementation": "October 4 owner review corrections across checkout, studio and recipient preview.",
+      "status": "pass",
+      "observation": "Rendered checkout contains the $59 strike-through, highlighted $29 offer and Unlock their song action. Requested filler/payment-check control absent.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/premium-checkout-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        }
+      ]
+    },
+    {
+      "id": "review-playback-flow",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Selecting a melody starts playback automatically. Revisions are present only in the selection step. The optional print offer appears before the continue action.",
+      "implementation": "October 4 owner review corrections across checkout, studio and recipient preview.",
+      "status": "pass",
+      "observation": "Clicking a melody plays it without a second click; only one audio element. No revisions in Prepare/Share; print offer precedes Continue to sharing.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/premium-prepare-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-prepare-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        }
+      ]
+    },
+    {
+      "id": "review-draft-persistence",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The uploaded photo, note, selected melody, template and preparation step survive the print detour and a reload. The recipient preview uses those choices.",
+      "implementation": "October 4 owner review corrections across checkout, studio and recipient preview.",
+      "status": "pass",
+      "observation": "Uploaded photo Blob, exact note, chosen melody and template survive the print detour, return to Prepare and full browser reload.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/premium-prepare-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-prepare-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        }
+      ]
+    },
+    {
+      "id": "review-gift-templates",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Provide Photo, Record and Letter layouts. Each displays For name, the exact personal note and song title without generic relationship commentary; photos remain fully visible.",
+      "implementation": "October 4 owner review corrections across checkout, studio and recipient preview.",
+      "status": "pass",
+      "observation": "Photo, Record and Letter carry the selected song/photo/note; all images decode and use contain sizing. All layouts pass desktop/mobile and 320/768 overflow.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/gift-portrait-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/gift-portrait-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/gift-record-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/gift-record-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/gift-letter-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/gift-letter-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        }
+      ]
+    },
+    {
+      "id": "review-share-reminder",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "After a sharing action show a reaction/feedback reminder with an obvious return link near the top of the studio. Copying or opening a share sheet never claims successful delivery.",
+      "implementation": "October 4 owner review corrections across checkout, studio and recipient preview.",
+      "status": "pass",
+      "observation": "Copying the recipient link reveals the reminder and top return link, while gift-given remains unset. Explicit given state and return access survive reload.",
+      "evidence": [
+        {
+          "path": "../../docs/qa/premium-share-1440.jpg",
+          "kind": "screenshot",
+          "viewport": "desktop",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-browser-evidence.json",
+          "kind": "browser-log",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
+        },
+        {
+          "path": "../../docs/qa/premium-share-390.jpg",
+          "kind": "screenshot",
+          "viewport": "mobile",
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     }
@@ -328,7 +517,7 @@ Email recovery dependency: this project has no customer delivery email configura
       "listening-room",
       "gift-workbench"
     ],
-    "revision": "premium-studio-bb25839f9588",
+    "revision": "studio-review-bb7f48f9a0f9",
     "status": "pass",
     "observation": "Rendered review passed: focused record/player and contextual workbench across desktop and mobile. Interaction evidence verifies playback and task flow.",
     "evidence": [
@@ -336,19 +525,19 @@ Email recovery dependency: this project has no customer delivery email configura
         "path": "../../docs/qa/premium-studio-1440.jpg",
         "kind": "screenshot",
         "viewport": "desktop",
-        "revision": "premium-studio-bb25839f9588"
+        "revision": "studio-review-bb7f48f9a0f9"
       },
       {
         "path": "../../docs/qa/premium-studio-390.jpg",
         "kind": "screenshot",
         "viewport": "mobile",
-        "revision": "premium-studio-bb25839f9588"
+        "revision": "studio-review-bb7f48f9a0f9"
       },
       {
         "path": "../../docs/qa/premium-browser-evidence.json",
         "kind": "browser-log",
         "viewport": "desktop",
-        "revision": "premium-studio-bb25839f9588"
+        "revision": "studio-review-bb7f48f9a0f9"
       }
     ]
   },
@@ -362,19 +551,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-studio-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-studio-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     },
@@ -387,19 +576,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-library-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-library-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     },
@@ -412,19 +601,19 @@ Email recovery dependency: this project has no customer delivery email configura
           "path": "../../docs/qa/premium-keepsake-1440.jpg",
           "kind": "screenshot",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-keepsake-390.jpg",
           "kind": "screenshot",
           "viewport": "mobile",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         },
         {
           "path": "../../docs/qa/premium-browser-evidence.json",
           "kind": "browser-log",
           "viewport": "desktop",
-          "revision": "premium-studio-bb25839f9588"
+          "revision": "studio-review-bb7f48f9a0f9"
         }
       ]
     }

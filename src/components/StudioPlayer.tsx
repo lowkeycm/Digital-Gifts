@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StudioIcon } from "./StudioIcon";
 
 export type StudioTrack = {
@@ -20,6 +20,7 @@ export function StudioPlayer({
   previewOnly,
   version,
   photoUrl,
+  playRequest = 0,
 }: {
   track: StudioTrack;
   src: string;
@@ -28,6 +29,7 @@ export function StudioPlayer({
   previewOnly: boolean;
   version: number;
   photoUrl: string | null;
+  playRequest?: number;
 }) {
   const audio = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false),
@@ -35,6 +37,13 @@ export function StudioPlayer({
     [duration, setDuration] = useState(track.duration ?? 0);
   const [volume, setVolume] = useState(1),
     [error, setError] = useState("");
+  useEffect(() => {
+    if (playRequest > 0) {
+      void audio.current
+        ?.play()
+        .catch(() => setError("Tap play to start this melody."));
+    }
+  }, [playRequest]);
   async function toggle() {
     if (!audio.current) return;
     if (!audio.current.paused) {
@@ -60,8 +69,8 @@ export function StudioPlayer({
           {playing
             ? "Now playing"
             : previewOnly
-              ? "Your first listen"
-              : "Yours to keep"}
+              ? "60-second preview"
+              : "Ready to play"}
         </span>
       </div>
       <div className="album-stage" aria-hidden="true">
@@ -70,7 +79,6 @@ export function StudioPlayer({
           <div className="studio-record-label">
             <span>YOUR SONG</span>
             <strong>{String(version).padStart(2, "0")}</strong>
-            <small>A STORY ONLY YOU COULD TELL</small>
           </div>
         </div>
         <div className={`studio-album-sleeve ${photoUrl ? "has-photo" : ""}`}>
@@ -89,16 +97,10 @@ export function StudioPlayer({
             <strong>{recipient}</strong>
             <small>{occasion}</small>
           </div>
-          <span className="sleeve-bottom">A story only you could tell.</span>
         </div>
       </div>
       <div className="room-track">
-        <span className="studio-kicker">
-          VERSION {String(version).padStart(2, "0")}{" "}
-          {previewOnly ? " / 60-SECOND PREVIEW" : " / FULL SONG"}
-        </span>
         <h2>{track.title}</h2>
-        <p>One story. A sound all its own.</p>
       </div>
       <audio
         ref={audio}

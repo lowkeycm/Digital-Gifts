@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ view?: string }>;
+  searchParams: Promise<{ view?: string; step?: string }>;
 }) {
-  const { view } = await searchParams;
+  const { view, step } = await searchParams;
   const demo =
     view === "checkout"
       ? {
@@ -28,7 +28,13 @@ export default async function Page({
       <StudioHeader />
       <main id="main-content" className="studio-world">
         <div className="studio-shell">
-          <SongStudio id="preview" accessKey="preview" demonstration={demo} />
+          <SongStudio
+            key={view ?? "paid"}
+            id="preview"
+            accessKey="preview"
+            initialStep={step}
+            demonstration={demo}
+          />
         </div>
       </main>
       <YourSongFooter />

@@ -15,6 +15,8 @@ const schema = z.object({
   removePhoto: z.boolean().optional(),
   message: z.string().trim().max(600).optional(),
   given: z.boolean().optional(),
+  shared: z.literal(true).optional(),
+  template: z.enum(["portrait", "record", "letter"]).optional(),
 });
 export async function POST(request: Request) {
   try {
@@ -36,6 +38,8 @@ export async function POST(request: Request) {
       updates.selected_track_id = p.trackId;
     }
     if (p.removePhoto) updates.gift_photo_id = null;
+    if (p.template !== undefined) updates.gift_template = p.template;
+    if (p.shared) updates.gift_shared_at = new Date().toISOString();
     if (p.message !== undefined) updates.gift_message = p.message;
     if (p.given !== undefined)
       updates.gift_given_at = p.given ? new Date().toISOString() : null;

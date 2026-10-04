@@ -98,6 +98,56 @@
       ],
       "source": "user",
       "acceptance": "Customers inspect the personalized 8x10 PDF design and $9 optional offer; only verified paid orders receive the print file."
+    },
+    {
+      "id": "review-pricing-copy",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Show $59 crossed out and highlight $29 Introductory. Remove the requested filler and payment-check link; use a gift-oriented purchase CTA and describe the same lyrics with two melodies."
+    },
+    {
+      "id": "review-playback-flow",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Selecting a melody starts playback automatically. Revisions are present only in the selection step. The optional print offer appears before the continue action."
+    },
+    {
+      "id": "review-draft-persistence",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The uploaded photo, note, selected melody, template and preparation step survive the print detour and a reload. The recipient preview uses those choices."
+    },
+    {
+      "id": "review-gift-templates",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "Provide Photo, Record and Letter layouts. Each displays For name, the exact personal note and song title without generic relationship commentary; photos remain fully visible."
+    },
+    {
+      "id": "review-share-reminder",
+      "route": "/song/[id]",
+      "category": "components",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "After a sharing action show a reaction/feedback reminder with an obvious return link near the top of the studio. Copying or opening a share sheet never claims successful delivery."
     }
   ]
 }

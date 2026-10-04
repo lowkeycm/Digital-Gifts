@@ -12,6 +12,8 @@ export type BetaSession = {
   gift_photo_id: string | null;
   reaction_asset_id: string | null;
   gift_message?: string;
+  gift_template?: "portrait" | "record" | "letter";
+  gift_shared_at?: string | null;
   gift_given_at?: string | null;
   raw_answers: Intake;
   created_at: string;

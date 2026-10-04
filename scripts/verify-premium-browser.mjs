@@ -132,8 +132,15 @@ const fixture = http.createServer(async (req, res) => {
     });
   }
   if (u.pathname.startsWith("/storage/v1/object/public/")) {
-    res.setHeader("Content-Type", "audio/mpeg");
-    const bytes = u.pathname.includes(".preview.") ? clip : source;
+    res.setHeader(
+      "Content-Type",
+      u.pathname.endsWith(".webp") ? "image/webp" : "audio/mpeg",
+    );
+    const bytes = u.pathname.endsWith(".webp")
+      ? fs.readFileSync(root + "/public/images/album-brother-to-sister.webp")
+      : u.pathname.includes(".preview.")
+        ? clip
+        : source;
     res.setHeader("Accept-Ranges", "bytes");
     const range = /bytes=(\d+)-(\d*)/.exec(req.headers.range ?? "");
     if (range) {
@@ -207,12 +214,9 @@ function pass(s) {
   console.log("PASS", s);
 }
 try {
-  for (let n = 0; n < 100; n++) {
-    try {
-      if ((await fetch(origin + "/studio-preview")).ok) break;
-    } catch {}
+  for (let n = 0; n < 100 && !logs.includes("Ready in"); n++)
     await new Promise((r) => setTimeout(r, 100));
-  }
+  assert.ok(logs.includes("Ready in"), "Next server starts");
   browser = await chromium.launch({
     executablePath: await chrome.executablePath(),
     args: chrome.args,
@@ -220,13 +224,14 @@ try {
   });
   const context = await browser.newContext({
       viewport: { width: 1440, height: 900 },
+      permissions: ["clipboard-read", "clipboard-write"],
     }),
     page = await context.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   const privatePath = `/song/${id}?key=${owner}`;
   const shot = async (name) => {
-    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => { if (document.activeElement instanceof HTMLElement) document.activeElement.blur(); return document.fonts.ready; });
     await page.screenshot({
       path: `${root}/docs/qa/${name}.jpg`,
       fullPage: true,
@@ -237,7 +242,7 @@ try {
     page.request.post(origin + url, { data, headers: { origin } });
   await page.goto(origin + privatePath);
   await page.getByRole("heading", { name: "For Jennifer." }).waitFor();
-  await page.getByRole("button", { name: "Keep my songs" }).waitFor();
+  await page.getByRole("button", { name: "Unlock their song · $29" }).waitFor();
   assert.equal(await page.locator("audio").count(), 1);
   assert.equal(
     await page.getByText("AFTER THE GIFT", { exact: true }).count(),
@@ -249,6 +254,15 @@ try {
       .innerText()
       .catch(() => page.locator(".workbench-panel").innerText()),
     /29/,
+  );
+  assert.equal(await page.locator(".purchase-price del").innerText(), "$59");
+  assert.match(
+    await page.locator(".intro-price").innerText(),
+    /\$29.*Introductory/s,
+  );
+  assert.equal(
+    await page.getByText("Already paid? Check my payment").count(),
+    0,
   );
   await shot("premium-checkout-1440");
   await page.getByRole("button", { name: "Play song", exact: true }).click();
@@ -275,6 +289,14 @@ try {
     "Unpaid studio offers $29, one real 60-second player, and denies gift editing/full downloads",
   );
   session.payment_status = "paid";
+  session.gift_photo_id = "99999999-9999-4999-8999-999999999999";
+  tables.song_beta_media.push({
+    id: session.gift_photo_id,
+    session_id: id,
+    kind: "photo",
+    status: "ready",
+    storage_path: "synthetic-photo.webp",
+  });
   await page.reload();
   await page
     .locator(".ownership-seal")
@@ -301,7 +323,7 @@ try {
   await page
     .getByRole("heading", { name: "Always You", exact: true })
     .waitFor();
-  await page.getByRole("button", { name: "Play song", exact: true }).click();
+  // Clicking a melody must start playback without a second click.
   await page.waitForFunction(
     () =>
       document.querySelector("audio").currentTime > 0 &&
@@ -323,14 +345,25 @@ try {
     "Paid state unlocks the same originals; version switching, full playback, seek, pause and reduced motion work",
   );
   await page.getByRole("button", { name: "Give this version" }).click();
-  await page.getByRole("heading", { name: "A little more you." }).waitFor();
+  await page
+    .getByRole("heading", { name: "Personalize their gift." })
+    .waitFor();
   assert.equal(session.selected_track_id, t2);
+  await page
+    .getByRole("heading", { name: "Personalize their gift." })
+    .waitFor();
+  assert.equal(await page.locator(".studio-revision").count(), 0);
+  await page.getByRole("button", { name: "Letter", exact: true }).click();
+  await page.locator(".gift-template-picker button[aria-pressed=true]").filter({ hasText: "Letter" }).waitFor();
+  assert.equal(session.gift_template, "letter");
   await page
     .getByLabel("A note from you")
     .fill("Every ordinary day with you is my favorite.");
   await shot("premium-prepare-1440");
-  await page.getByRole("link", { name: /See your keepsake/ }).click();
-  await page.getByRole("heading", { name: /Somewhere they/ }).waitFor();
+  await page.getByRole("link", { name: /Preview the print/ }).click();
+  await page
+    .getByRole("heading", { name: /Personalized lyric print/ })
+    .waitFor();
   assert.equal(
     session.gift_message,
     "Every ordinary day with you is my favorite.",
@@ -338,16 +371,14 @@ try {
   await page
     .getByRole("link", { name: "Back to your gift", exact: false })
     .click();
-  await page.getByRole("button", { name: "Get my gift ready" }).waitFor();
+  await page.getByRole("button", { name: "Continue to sharing" }).waitFor();
   assert.equal(
     await page.getByLabel("A note from you").inputValue(),
     session.gift_message,
   );
 
-  await page.getByRole("button", { name: "Get my gift ready" }).click();
-  await page
-    .getByRole("heading", { name: "Ready for their first listen." })
-    .waitFor();
+  await page.getByRole("button", { name: "Continue to sharing" }).click();
+  await page.getByRole("heading", { name: "Your gift is ready." }).waitFor();
   assert.equal(
     session.gift_message,
     "Every ordinary day with you is my favorite.",
@@ -362,12 +393,21 @@ try {
   const shared = await page.getByLabel("Recipient’s gift link").inputValue();
   assert.ok(shared.includes(gift));
   assert.ok(!shared.includes(owner));
+  await page.locator(".studio-after-link").waitFor();
+  assert.ok(session.gift_shared_at);
+  assert.equal(
+    session.gift_given_at,
+    null,
+    "Sharing is not delivery confirmation",
+  );
   await shot("premium-share-1440");
   const recipient = await context.newPage();
   await recipient.goto(origin + `/gift/${id}?key=${gift}`);
   await recipient.getByText(session.gift_message, { exact: true }).waitFor();
   assert.ok(!(await recipient.content()).includes(owner));
   assert.equal(await recipient.locator("audio").count(), 1);
+  await recipient.locator(".gift-photo img").evaluate((img) => img.decode());
+  assert.equal(await recipient.locator(".gift-page--letter").count(), 1);
   assert.equal(
     (
       await recipient.request.get(
@@ -376,6 +416,7 @@ try {
     ).status(),
     404,
   );
+  await recipient.evaluate(() => { if (document.activeElement instanceof HTMLElement) document.activeElement.blur(); });
   await recipient.screenshot({
     path: root + "/docs/qa/premium-recipient-1440.jpg",
     fullPage: true,
@@ -392,7 +433,7 @@ try {
     "Selection and personal note persist; recipient sees only the chosen gift and no owner key",
   );
   await page
-    .getByRole("button", { name: "I’ve given the gift", exact: true })
+    .getByRole("button", { name: "I’ve sent the gift", exact: true })
     .click();
   await page.getByText("AFTER THE GIFT", { exact: true }).waitFor();
   assert.ok(session.gift_given_at);
@@ -409,7 +450,7 @@ try {
   await page.reload();
   await page.getByText("AFTER THE GIFT", { exact: true }).waitFor();
   pass(
-    "Feedback appears only after gift-given action; rating is never preselected and saved state survives reload",
+    "Post-share reminder appears promptly; feedback has no preselected rating and remains discoverable after reload",
   );
   const download = page.waitForEvent("download");
   await page
@@ -440,7 +481,9 @@ try {
     "My songs returns to verified device collection; private access file downloads; unconfigured email is not promised",
   );
   await page.goto(origin + `/song/${id}/keepsake?key=${owner}`);
-  await page.getByRole("heading", { name: /Somewhere they/ }).waitFor();
+  await page
+    .getByRole("heading", { name: /Personalized lyric print/ })
+    .waitFor();
   await page.locator(".keepsake-frame img").evaluate((img) => img.decode());
   await shot("premium-keepsake-1440");
   assert.equal(
@@ -493,6 +536,7 @@ try {
     "Real watermarked keepsake preview and 8×10 PDF render; unpurchased and recipient access denied, paid download allowed",
   );
   session.gift_given_at = null;
+  session.gift_shared_at = null;
   for (const width of [390, 320, 768, 1440]) {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
     for (const route of [
@@ -542,10 +586,10 @@ try {
   pass("Mobile step navigation scrolls directly to the active gift task");
   await page.goto(origin + "/studio-preview?view=checkout");
   await page
-    .getByRole("button", { name: "Keep my songs", exact: true })
+    .getByRole("button", { name: "Unlock their song · $29", exact: true })
     .waitFor();
   await page
-    .getByRole("button", { name: "Keep my songs", exact: true })
+    .getByRole("button", { name: "Unlock their song · $29", exact: true })
     .click();
   await page
     .locator(".ownership-seal")
@@ -554,9 +598,101 @@ try {
   await page
     .getByRole("button", { name: "Give this version", exact: true })
     .click();
-  await page.getByRole("link", { name: /See your keepsake/ }).waitFor();
-  await page.getByRole("link", { name: /See your keepsake/ }).click();
+  await page
+    .getByRole("heading", { name: "Personalize their gift." })
+    .waitFor();
+  assert.equal(await page.locator(".studio-revision").count(), 0);
+  await page
+    .locator('input[type="file"]')
+    .setInputFiles(root + "/public/images/album-brother-to-sister.webp");
+  await page.locator(".sleeve-photo").waitFor();
+  await page
+    .getByLabel("A note from you")
+    .fill("For the whole crew. Same friends, new memories.");
+  await page.getByRole("button", { name: "Record", exact: true }).click();
+  const upsell = await page.locator(".keepsake-teaser").boundingBox();
+  const continueButton = await page
+    .getByRole("button", { name: "Continue to sharing", exact: true })
+    .boundingBox();
+  assert.ok(
+    upsell.y < continueButton.y,
+    "Upsell appears before the primary continue action",
+  );
+  await page.getByRole("link", { name: /Preview the print/ }).click();
   await page.locator(".keepsake-frame img").evaluate((img) => img.decode());
+  await page.getByRole("link", { name: /Back to your gift/ }).click();
+  await page
+    .getByRole("heading", { name: "Personalize their gift." })
+    .waitFor();
+  assert.equal(
+    await page.getByLabel("A note from you").inputValue(),
+    "For the whole crew. Same friends, new memories.",
+  );
+  await page.locator(".sleeve-photo").waitFor();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Record", exact: true })
+      .getAttribute("aria-pressed"),
+    "true",
+  );
+  await page.reload();
+  await page
+    .getByRole("heading", { name: "Personalize their gift." })
+    .waitFor();
+  await page.locator(".sleeve-photo").waitFor();
+  assert.equal(
+    await page.getByLabel("A note from you").inputValue(),
+    "For the whole crew. Same friends, new memories.",
+  );
+  pass(
+    "Preview photo, note, selected template and preparation step survive the print detour and a full reload",
+  );
+  for (const [name, template] of [
+    ["Photo", "portrait"],
+    ["Record", "record"],
+    ["Letter", "letter"],
+  ]) {
+    await page.getByRole("button", { name, exact: true }).click();
+    await page
+      .getByRole("button", { name: "Continue to sharing", exact: true })
+      .click();
+    await page
+      .getByRole("link", { name: "Open their gift page", exact: true })
+      .click();
+    await page.locator(`.gift-page--${template}`).waitFor();
+    await page
+      .getByText("For the whole crew. Same friends, new memories.", {
+        exact: true,
+      })
+      .waitFor();
+    await page.locator(".gift-photo img").evaluate((img) => img.decode());
+    assert.equal(
+      await page
+        .locator(".gift-photo img")
+        .evaluate((img) => getComputedStyle(img).objectFit),
+      "contain",
+    );
+    assert.equal(await page.locator("audio").count(), 1);
+    for (const width of [1440, 390, 320, 768]) {
+      await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth + 1,
+        ),
+        false,
+        `${template} overflow ${width}`,
+      );
+      if (width === 1440 || width === 390)
+        await shot(`gift-${template}-${width}`);
+    }
+    await page
+      .getByRole("link", { name: "Back to studio", exact: true })
+      .click();
+    await page.getByRole("button", { name: /Make it theirs/ }).click();
+  }
+  pass(
+    "All three gift templates carry the selected song, full photo and exact note to the recipient view without overflow",
+  );
   await page.goto(origin + "/your-song");
   assert.equal(await page.locator(".studio-player-room").count(), 0);
   assert.equal(

@@ -1,5 +1,12 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import {
+  giftTemplates,
+  giftTemplate,
+  type GiftTemplate,
+} from "@/lib/gift-templates";
+import { useStudioPreviewDraft } from "./StudioPreviewDraft";
 import { useRouter } from "next/navigation";
 import { GiftShare } from "./GiftShare";
 import { GiftUpload } from "./GiftUpload";
@@ -27,6 +34,8 @@ export type StudioState = {
   reactionAssetId: string | null;
   giftMessage?: string;
   giftGivenAt?: string | null;
+  giftTemplate?: GiftTemplate;
+  giftSharedAt?: string | null;
   jobs: Job[];
   tracks: StudioTrack[];
   feedbackSaved: boolean;
@@ -51,23 +60,43 @@ export function SongStudio({
   demonstration?: StudioState;
 }) {
   const router = useRouter();
-  const [state, setState] = useState<StudioState | null>(demonstration ?? null),
+  const preview = useStudioPreviewDraft();
+  const [storedState, setStoredState] = useState<StudioState | null>(
+      demonstration ?? null,
+    ),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
-  const [step, setStep] = useState(
+  const [storedStep, setStoredStep] = useState(
       ["listen", "prepare", "share"].includes(initialStep)
         ? initialStep
         : "listen",
     ),
     [activeTrack, setActiveTrack] = useState<string | null>(null);
+  const state = demonstration && preview ? preview.draft.state : storedState;
+  const setState = demonstration && preview ? preview.setState : setStoredState;
+  const step = demonstration && preview ? preview.draft.step : storedStep;
+  const setStep = demonstration && preview ? preview.setStep : setStoredStep;
+  const [playRequest, setPlayRequest] = useState(0);
   const [message, setMessage] = useState<string | null>(null),
     [savedMessage, setSavedMessage] = useState(false);
   const [rating, setRating] = useState(""),
     [comments, setComments] = useState(""),
     [mayContact, setMayContact] = useState(false),
     [feedback, setFeedback] = useState(false);
-  const [polling, setPolling] = useState(true),
-    [demoPhoto, setDemoPhoto] = useState<string | null>(null);
+  const [polling, setPolling] = useState(true);
+  const demoPhoto = preview?.photoUrl ?? null;
+  const initialized = useRef(false);
+  useEffect(() => {
+    if (!demonstration || !preview?.ready || initialized.current) return;
+    const timer = setTimeout(() => {
+      initialized.current = true;
+      preview.setState((s) =>
+        s ? { ...s, checkout: demonstration.checkout } : s,
+      );
+      if (initialStep !== "listen") preview.setStep(initialStep);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [demonstration, preview, initialStep]);
   const started = useRef(0),
     workbench = useRef<HTMLDivElement>(null),
     previousStep = useRef(step);
@@ -92,7 +121,7 @@ export function SongStudio({
       });
       const b = await r.json();
       if (!r.ok) throw new Error(b.error);
-      setState(b);
+      setStoredState(b);
       setError("");
     } catch (e) {
       setError(
@@ -122,12 +151,6 @@ export function SongStudio({
     }, 10000);
     return () => clearInterval(timer);
   }, [refresh, pending, state, polling]);
-  useEffect(
-    () => () => {
-      if (demoPhoto) URL.revokeObjectURL(demoPhoto);
-    },
-    [demoPhoto],
-  );
   async function action(path: string, extra: Record<string, unknown>) {
     setBusy(true);
     setError("");
@@ -143,6 +166,12 @@ export function SongStudio({
                 ...(extra.message !== undefined
                   ? { giftMessage: String(extra.message) }
                   : {}),
+                ...(extra.template !== undefined
+                  ? { giftTemplate: giftTemplate(extra.template) }
+                  : {}),
+                ...(extra.shared
+                  ? { giftSharedAt: new Date().toISOString() }
+                  : {}),
                 ...(extra.given !== undefined
                   ? {
                       giftGivenAt: extra.given
@@ -156,6 +185,7 @@ export function SongStudio({
               }
             : s,
         );
+        await preview?.flush();
         return true;
       }
       const r = await fetch(path, {
@@ -174,7 +204,7 @@ export function SongStudio({
       setBusy(false);
     }
   }
-  if (!state)
+  if (!state || (demonstration && !preview?.ready))
     return (
       <div className="studio-loading">
         <span className="studio-kicker">YOUR PRIVATE STUDIO</span>
@@ -195,7 +225,9 @@ export function SongStudio({
   const previewOnly =
     state.checkout?.mode !== "free" && state.checkout?.status === "pending";
   const track =
-    state.tracks.find((t) => t.id === activeTrack) ??
+    (step === "listen"
+      ? state.tracks.find((t) => t.id === activeTrack)
+      : undefined) ??
     state.tracks.find((t) => t.id === state.selectedTrackId) ??
     state.tracks[0];
   const selected = state.tracks.find((t) => t.id === state.selectedTrackId);
@@ -223,9 +255,10 @@ export function SongStudio({
     <div className="personal-studio">
       {demonstration && (
         <div className="studio-demo-notice">
-          Design preview with sample songs. No purchases or customer changes are
-          made here. <a href="/studio-preview?view=checkout">See checkout</a>{" "}
+          Design preview · Sample audio · No charges.{" "}
+          <a href="/studio-preview?view=checkout">See checkout</a>{" "}
           <a href="/studio-preview">See purchased studio</a>
+          {preview?.error && <p role="alert">{preview.error}</p>}
         </div>
       )}
       <div className="studio-welcome">
@@ -235,11 +268,6 @@ export function SongStudio({
             For {state.recipientName}
             <span>.</span>
           </h1>
-          <p>
-            {previewOnly
-              ? "Your story is in the music. Take your first listen."
-              : "Your songs are yours to keep. Let’s get your gift ready."}
-          </p>
         </div>
         {!previewOnly && state.tracks.length > 0 && (
           <div className="ownership-seal">
@@ -344,6 +372,11 @@ export function SongStudio({
               ))}
             </nav>
           )}
+          {(state.giftSharedAt || state.giftGivenAt) && !previewOnly && (
+            <a className="studio-after-link" href="#after-the-gift">
+              Reactions & feedback <StudioIcon name="arrow" size={16} />
+            </a>
+          )}
           <div className="studio-workspace">
             <StudioPlayer
               key={`${track.id}-${previewOnly ? "preview" : "full"}`}
@@ -354,24 +387,20 @@ export function SongStudio({
               previewOnly={previewOnly}
               version={state.tracks.indexOf(track) + 1}
               photoUrl={photoUrl}
+              playRequest={playRequest}
             />
             <div className="studio-workbench" ref={workbench}>
               {currentStep === "listen" && (
                 <section className="workbench-panel">
                   <span className="studio-kicker">
                     {previewOnly
-                      ? "TWO WAYS TO TELL YOUR STORY"
+                      ? "YOUR SONG PREVIEWS"
                       : "01 / LISTEN & CHOOSE"}
                   </span>
-                  <h2>
-                    Which one feels
-                    <br />
-                    like them?
-                  </h2>
+                  <h2>Choose a melody.</h2>
                   <p>
-                    {previewOnly
-                      ? "Hear both previews. Your purchase keeps both full versions."
-                      : "Listen to both. Choose the one you want them to hear. Every version stays in your collection."}
+                    Same lyrics. Two melodies.
+                    {previewOnly ? " Listen to the 60-second previews." : ""}
                   </p>
                   <div className="version-list" aria-label="Song versions">
                     {state.tracks.map((t, i) => (
@@ -379,7 +408,10 @@ export function SongStudio({
                         key={t.id}
                         className={`version-row ${track.id === t.id ? "is-active" : ""}`}
                         aria-pressed={track.id === t.id}
-                        onClick={() => setActiveTrack(t.id)}
+                        onClick={() => {
+                          setActiveTrack(t.id);
+                          setPlayRequest((n) => n + 1);
+                        }}
                       >
                         <span className="version-number">
                           {String(i + 1).padStart(2, "0")}
@@ -389,7 +421,7 @@ export function SongStudio({
                           <small>
                             {revisions.some((j) => j.id === t.jobId)
                               ? "Revised rendition"
-                              : "Original version"}
+                              : `Melody ${i + 1}`}
                             {state.selectedTrackId === t.id
                               ? " · Gift choice"
                               : ""}
@@ -425,9 +457,6 @@ export function SongStudio({
                             : "Give this version"}
                         <StudioIcon name="arrow" size={18} />
                       </button>
-                      <p className="workbench-footnote">
-                        You keep every version. They hear your favorite.
-                      </p>
                     </>
                   )}
                   {previewOnly && state.checkout?.previewReady && (
@@ -464,20 +493,21 @@ export function SongStudio({
               {currentStep === "prepare" && (
                 <section className="workbench-panel" id="gift-preparation">
                   <span className="studio-kicker">02 / MAKE IT THEIRS</span>
-                  <h2>A little more you.</h2>
-                  <p>
-                    A favorite photo. A few words from the heart. Both are
-                    optional.
-                  </p>
+                  <h2>Personalize their gift.</h2>
                   {demonstration ? (
                     <label className="demo-photo-picker">
                       {demoPhoto ? "Change your photo" : "Add a favorite photo"}
                       <input
                         type="file"
                         accept="image/jpeg,image/png,image/webp"
-                        onChange={(e) => {
+                        onChange={async (e) => {
                           const f = e.target.files?.[0];
-                          if (f) setDemoPhoto(URL.createObjectURL(f));
+                          if (!f) return;
+                          if (f.size > 8 * 1024 * 1024) {
+                            setError("Choose a photo smaller than 8 MB.");
+                            return;
+                          }
+                          await preview?.setPhoto(f);
                         }}
                       />
                     </label>
@@ -490,6 +520,14 @@ export function SongStudio({
                       onSaved={refresh}
                     />
                   )}
+                  {demonstration && demoPhoto && (
+                    <button
+                      className="studio-text-button"
+                      onClick={() => void preview?.setPhoto(null)}
+                    >
+                      Remove photo
+                    </button>
+                  )}
                   {state.giftPhotoId && !demonstration && (
                     <button
                       className="studio-text-button"
@@ -501,7 +539,38 @@ export function SongStudio({
                       Remove photo
                     </button>
                   )}
+                  <fieldset className="gift-template-picker">
+                    <legend>Gift page style</legend>
+                    <div>
+                      {giftTemplates.map((template) => (
+                        <button
+                          key={template.id}
+                          type="button"
+                          aria-pressed={
+                            giftTemplate(state.giftTemplate) === template.id
+                          }
+                          onClick={() =>
+                            void action("/api/song-gift", {
+                              template: template.id,
+                            })
+                          }
+                          disabled={busy}
+                        >
+                          <span
+                            className={`template-swatch template-swatch--${template.id}`}
+                            aria-hidden="true"
+                          >
+                            <i />
+                            <b />
+                            <em />
+                          </span>
+                          <strong>{template.name}</strong>
+                        </button>
+                      ))}
+                    </div>
+                  </fieldset>
                   <form
+                    id="gift-message-form"
                     className="studio-message"
                     onSubmit={async (e) => {
                       e.preventDefault();
@@ -525,24 +594,19 @@ export function SongStudio({
                       value={message ?? state.giftMessage ?? ""}
                       onChange={(e) => {
                         setMessage(e.target.value);
+                        if (demonstration)
+                          setState((s) =>
+                            s ? { ...s, giftMessage: e.target.value } : s,
+                          );
                         setSavedMessage(false);
                       }}
-                      placeholder="What you want them to know before they press play..."
+                      placeholder="Write your note..."
                     />
-                    <button
-                      className="studio-button studio-button-main"
-                      disabled={busy}
-                    >
-                      {busy ? "Saving..." : "Get my gift ready"}
-                      <StudioIcon name="arrow" size={18} />
-                    </button>
-                    {savedMessage && <p role="status">Your note is saved.</p>}
                   </form>
                   {(state.keepsake?.available || demonstration) && (
                     <a
                       className="keepsake-teaser"
                       onClick={async (e) => {
-                        if (demonstration) return;
                         e.preventDefault();
                         if (busy) return;
                         if (
@@ -550,7 +614,11 @@ export function SongStudio({
                             message: message ?? state.giftMessage ?? "",
                           })
                         ) {
-                          router.push(`/song/${id}/keepsake?key=${accessKey}`);
+                          router.push(
+                            demonstration
+                              ? "/studio-preview/keepsake"
+                              : `/song/${id}/keepsake?key=${accessKey}`,
+                          );
                         }
                       }}
                       href={
@@ -568,42 +636,41 @@ export function SongStudio({
                         <small>YOUR SONG</small>
                       </div>
                       <div>
-                        <span className="studio-kicker">
-                          A LITTLE SOMETHING TO KEEP
-                        </span>
+                        <span className="studio-kicker">OPTIONAL ADD-ON</span>
                         <h3>
                           {state.keepsake?.paid
                             ? "Your lyric keepsake"
-                            : "Their song, in print."}
+                            : "Add a lyric print"}
                         </h3>
                         <p>
                           {state.keepsake?.paid
                             ? "Open your printable keepsake."
-                            : "A personalized 8 × 10 lyric print. Add it for $9."}
+                            : "Personalized 8 × 10 PDF · $9"}
                         </p>
                         <strong>
                           {state.keepsake?.paid
                             ? "Download your keepsake"
-                            : "See your keepsake"}{" "}
+                            : "Preview the print"}{" "}
                           <span aria-hidden="true">↗</span>
                         </strong>
                       </div>
                     </a>
                   )}
+                  <button
+                    className="studio-button studio-button-main"
+                    form="gift-message-form"
+                    disabled={busy}
+                  >
+                    {busy ? "Saving..." : "Continue to sharing"}
+                    <StudioIcon name="arrow" size={18} />
+                  </button>
+                  {savedMessage && <p role="status">Your note is saved.</p>}
                 </section>
               )}
               {currentStep === "share" && (
                 <section className="workbench-panel">
                   <span className="studio-kicker">03 / GIVE YOUR GIFT</span>
-                  <h2>
-                    Ready for their
-                    <br />
-                    first listen.
-                  </h2>
-                  <p>
-                    Their gift page plays your chosen song. Your other versions
-                    and editing tools stay private.
-                  </p>
+                  <h2>Your gift is ready.</h2>
                   <div className="gift-summary">
                     <div className="gift-summary-record" aria-hidden="true">
                       <StudioIcon name="music" size={25} />
@@ -621,29 +688,32 @@ export function SongStudio({
                       </span>
                     </div>
                   </div>
-                  <a
+                  <Link
                     className="studio-button studio-button-main"
                     href={previewPath}
                   >
-                    Preview their gift
+                    Open their gift page
                     <StudioIcon name="arrow" size={18} />
-                  </a>
-                  {demonstration ? (
-                    <p className="workbench-footnote">
-                      The real studio creates a private recipient link here.
+                  </Link>
+                  <GiftShare
+                    giftPath={
+                      demonstration
+                        ? "/studio-preview/gift"
+                        : `/gift/${id}?key=${state.giftToken}`
+                    }
+                    recipient={state.recipientName}
+                    onShareAction={() =>
+                      void action("/api/song-gift", { shared: true })
+                    }
+                  />
+                  {(state.giftSharedAt || state.giftGivenAt) && (
+                    <p className="gift-followup">
+                      After they listen,{" "}
+                      <a href="#after-the-gift">share a reaction or feedback</a>
+                      .
                     </p>
-                  ) : (
-                    <GiftShare
-                      giftPath={`/gift/${id}?key=${state.giftToken}`}
-                      recipient={state.recipientName}
-                    />
                   )}
                   <div className="given-gift">
-                    <p>
-                      {state.giftGivenAt
-                        ? "Gift given. We hope it was a moment worth keeping."
-                        : "Come back after you’ve given it."}
-                    </p>
                     <button
                       className="studio-text-button"
                       disabled={busy}
@@ -655,73 +725,68 @@ export function SongStudio({
                     >
                       {state.giftGivenAt
                         ? "I haven’t given it yet"
-                        : "I’ve given the gift"}
+                        : "I’ve sent the gift"}
                     </button>
                   </div>
                 </section>
               )}
             </div>
           </div>
-          {!previewOnly && originals.some((j) => j.status === "complete") && (
-            <details className="studio-revision">
-              <summary>
-                <span>Something not quite right?</span>
-                <span>
-                  Request a revision{" "}
-                  <small>{Math.max(0, 3 - used)} remaining</small>
-                  <b aria-hidden="true">+</b>
-                </span>
-              </summary>
-              {demonstration ? (
-                <div className="studio-demo-revision">
-                  <h3>Tell us what needs changing.</h3>
-                  <p>
-                    Your three included revisions make a new rendition. The
-                    melody and delivery may change too.
-                  </p>
-                  <label>
-                    Revision notes
-                    <textarea placeholder="It says 2018, but we met in 2017..." />
-                  </label>
-                  <p>This preview doesn’t send generation requests.</p>
-                </div>
-              ) : (
-                <RevisionForm
-                  key={`revision-${revisions.at(-1)?.id ?? "first"}-${revisions.at(-1)?.status ?? "ready"}`}
-                  songId={id}
-                  accessToken={accessKey}
-                  used={used}
-                  pending={revisions.some(
-                    (j) => !["complete", "failed"].includes(j.status),
-                  )}
-                  failed={revisions.at(-1)?.status === "failed"}
-                  notesLimit={state.revisionNotesLimit}
-                  onSubmitted={() => {
-                    started.current = Date.now();
-                    setPolling(true);
-                    void refresh();
-                  }}
-                />
-              )}
-            </details>
-          )}
+          {!previewOnly &&
+            currentStep === "listen" &&
+            originals.some((j) => j.status === "complete") && (
+              <details className="studio-revision">
+                <summary>
+                  <span>Something not quite right?</span>
+                  <span>
+                    Request a revision{" "}
+                    <small>{Math.max(0, 3 - used)} remaining</small>
+                    <b aria-hidden="true">+</b>
+                  </span>
+                </summary>
+                {demonstration ? (
+                  <div className="studio-demo-revision">
+                    <h3>Tell us what needs changing.</h3>
+                    <p>
+                      Your three included revisions make a new rendition. The
+                      melody and delivery may change too.
+                    </p>
+                    <label>
+                      Revision notes
+                      <textarea placeholder="It says 2018, but we met in 2017..." />
+                    </label>
+                    <p>This preview doesn’t send generation requests.</p>
+                  </div>
+                ) : (
+                  <RevisionForm
+                    key={`revision-${revisions.at(-1)?.id ?? "first"}-${revisions.at(-1)?.status ?? "ready"}`}
+                    songId={id}
+                    accessToken={accessKey}
+                    used={used}
+                    pending={revisions.some(
+                      (j) => !["complete", "failed"].includes(j.status),
+                    )}
+                    failed={revisions.at(-1)?.status === "failed"}
+                    notesLimit={state.revisionNotesLimit}
+                    onSubmitted={() => {
+                      started.current = Date.now();
+                      setPolling(true);
+                      void refresh();
+                    }}
+                  />
+                )}
+              </details>
+            )}
         </>
       )}
-      {!demonstration && (
-        <StudioAccess
-          songId={id}
-          accessKey={accessKey}
-          emailEnabled={state.emailEnabled ?? false}
-        />
-      )}
-      {state.giftGivenAt && !previewOnly && (
-        <section className="after-gifting">
+      {(state.giftSharedAt || state.giftGivenAt) && !previewOnly && (
+        <section className="after-gifting" id="after-the-gift">
           <div className="after-gifting-intro">
             <span className="studio-kicker">AFTER THE GIFT</span>
-            <h2>How did it feel?</h2>
+            <h2>Reactions & feedback</h2>
             <p>
-              If you’d like to tell us, we’d love to hear. This part is entirely
-              up to you.
+              After they’ve listened, share their reaction or tell us how it
+              went. You can return here from the top of your studio.
             </p>
             <a className="studio-button" href="/create">
               Make another song
@@ -808,6 +873,13 @@ export function SongStudio({
             </details>
           </div>
         </section>
+      )}
+      {!demonstration && (
+        <StudioAccess
+          songId={id}
+          accessKey={accessKey}
+          emailEnabled={state.emailEnabled ?? false}
+        />
       )}
     </div>
   );

@@ -1,0 +1,16 @@
+{
+  "project": "Digital Gifts",
+  "migration": "20261004023221_gift_templates_and_share_reminder",
+  "checks": [
+    "gift_template defaults to portrait with portrait/record/letter CHECK",
+    "gift_shared_at is nullable and means share action, not delivery",
+    "RLS enabled; anon SELECT false; authenticated UPDATE false",
+    "Real synthetic rollback transaction stored record and timestamp and rejected invalid template"
+  ],
+  "advisories": {
+    "rls_enabled_no_policy": 14,
+    "anon_security_definer_function_executable": 6,
+    "auth_leaked_password_protection": 1
+  },
+  "new_advisory_categories": false
+}

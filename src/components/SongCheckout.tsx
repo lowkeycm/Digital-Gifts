@@ -56,17 +56,20 @@ export function SongCheckout({
     <section className="studio-purchase">
       <div className="purchase-heading">
         <div>
-          <span className="studio-kicker">MAKE IT THEIRS</span>
-          <h3>Keep the whole story.</h3>
+          <h3>The complete song gift</h3>
         </div>
         <div className="purchase-price">
-          $29<small>Introductory price</small>
+          <del aria-label="Regular price 59 dollars">$59</del>
+          <span className="intro-price">
+            <strong>$29</strong>
+            <small>Introductory</small>
+          </span>
         </div>
       </div>
       <ul>
         <li>
           <StudioIcon name="check" size={15} />
-          Both full songs, ready to download
+          Both melodies, full-length MP3s
         </li>
         <li>
           <StudioIcon name="check" size={15} />
@@ -82,18 +85,10 @@ export function SongCheckout({
         disabled={busy}
         onClick={() => void checkout()}
       >
-        {busy ? "Opening secure checkout..." : "Keep my songs"}
+        {busy ? "Opening secure checkout..." : "Unlock their song · $29"}
         <StudioIcon name="arrow" size={18} />
       </button>
-      <p className="workbench-footnote">
-        One payment. Both versions are yours.
-      </p>
-      {demonstration && (
-        <p className="help">
-          Preview only. This button shows the purchased studio without taking
-          payment.
-        </p>
-      )}
+      {demonstration && <p className="help">Preview checkout. No charge.</p>}
       {mode === "test" && !demonstration && (
         <p className="help">Private Stripe test checkout. No real charge.</p>
       )}
@@ -102,9 +97,6 @@ export function SongCheckout({
           {error}
         </p>
       )}
-      <button className="studio-text-button purchase-check" onClick={onPaid}>
-        Already paid? Check my payment
-      </button>
     </section>
   );
 }

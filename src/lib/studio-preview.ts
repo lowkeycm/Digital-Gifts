@@ -10,6 +10,8 @@ export const studioPreview: StudioState = {
   feedbackSaved: false,
   giftMessage: "",
   giftGivenAt: null,
+  giftSharedAt: null,
+  giftTemplate: "portrait",
   emailEnabled: false,
   keepsake: { available: true, paid: false },
   checkout: { mode: "test", status: "paid", previewReady: true },
@@ -37,7 +39,7 @@ export const studioPreview: StudioState = {
       title: "Always You",
       duration: 235,
       lyrics:
-        "A different way to tell the story\nA different melody to keep\nFor all the moments made together\nFor every promise that we keep",
+        "The coffee going cold beside the window\nThe laughter coming down the hall\nOf all the roads that brought me here\nI'd choose the one that led to you\n\nEvery little thing we are\nEvery ordinary day\nA thousand quiet reasons\nI'd choose you anyway\n\nThe photographs we never printed\nThe stories only we would know\nAll the moments in between\nBecame the life I call my own\n\nEvery little thing we are\nEvery ordinary day\nA thousand quiet reasons\nI'd choose you anyway",
     },
   ],
 };

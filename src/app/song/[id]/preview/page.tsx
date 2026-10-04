@@ -57,12 +57,13 @@ export default async function GiftPreviewPage({
             </div>
             <Link
               className="gift-preview-back"
-              href={`${editPath}#gift-preparation`}
+              href={`${editPath}&step=prepare`}
             >
-              ← Back to your songs & photo
+              ← Edit your gift
             </Link>
           </div>
           <GiftShare
+            owner={{ songId: id, accessToken: key }}
             giftPath={giftPath}
             recipient={session.raw_answers.recipientName}
           />
@@ -70,6 +71,7 @@ export default async function GiftPreviewPage({
       </section>
       <GiftExperience
         message={session.gift_message}
+        template={session.gift_template}
         recipient={session.raw_answers.recipientName}
         occasion={session.raw_answers.occasion}
         title={track.title}

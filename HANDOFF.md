@@ -4,7 +4,16 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (premium studio review preview)
+## Last Session (studio review corrections)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode. Continuing the same review preview.
+- **Request:** Remove repeated aspirational copy, show the explicit $59/$29 introductory offer, autoplay melody selection, preserve gift drafts through the print detour, move the upsell before the CTA, hide revisions after selection, show a post-share reminder and add gift templates.
+- **Changed:** Concise checkout/studio copy and gift CTA; one autoplaying melody player; step-one-only revisions; prominent optional print; saved photo/note/template across preview navigation and reload. Recipient Photo / Record / Letter layouts emphasize For name, personal note, song title and a fully visible image. Sharing reveals feedback/reaction access near the top without claiming delivery. The owner-preview share control also records the reminder.
+- **Database:** Exact Digital Gifts project only. Additive gift_templates_and_share_reminder migration, version 20261004023221. Template allowlist and share-action timestamp tested in a rolled-back synthetic transaction. Existing access restrictions and advisory categories retained.
+- **Verification:** Lint/types and production build; Chromium desktop/mobile and 320/768 overflow; full photo/note detour and reload, all gift templates, actual private owner/recipient routes with controlled transport, autoplay, reminders and payment/access regressions. See docs/qa/premium-studio-review.md and premium-browser-evidence.json. No real payment, email or music generation.
+- **Release:** Update the existing clay/premium-song-studio review branch / PR42 and verify its Vercel preview. Production is not approved; keep public checkout free. Customer email configuration remains a separate launch dependency.
+
+## Previous Session (premium studio review preview)
 
 - **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode. Clay approved moving ahead with the checkout audit.
 - **Outcome:** Built the personal listening room, $29 introductory purchase offer, Listen / Prepare / Share stages, personal gift note, compact revision disclosure, after-gifting feedback, My songs return access and optional $9 printable lyric keepsake. The complete code is on clay/premium-song-studio for a visual review preview.

@@ -45,6 +45,7 @@ export default async function GiftPage({
   return (
     <GiftExperience
       message={session.gift_message}
+      template={session.gift_template}
       recipient={session.raw_answers.recipientName}
       occasion={session.raw_answers.occasion}
       title={track.title}

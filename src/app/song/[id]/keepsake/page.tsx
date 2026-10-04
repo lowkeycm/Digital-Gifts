@@ -84,17 +84,10 @@ export default async function KeepsakePage({
             </div>
             <section className="workbench-panel">
               <span className="studio-kicker">THE LYRIC KEEPSAKE</span>
-              <h1>
-                The words.
-                <br />
-                Somewhere they
-                <br />
-                can see them.
-              </h1>
+              <h1>Personalized lyric print</h1>
               <p>
-                The lyrics to <strong>{track.title}</strong>, designed just for{" "}
-                {session.raw_answers.recipientName}. Print it, frame it, or tuck
-                it into a card.
+                <strong>{track.title}</strong> · For{" "}
+                {session.raw_answers.recipientName}
               </p>
               <ul className="keepsake-details">
                 <li>Personalized 8 × 10 inch PDF</li>
@@ -109,7 +102,7 @@ export default async function KeepsakePage({
               ) : paid ? (
                 <>
                   <div className="keepsake-paid" role="status">
-                    Your keepsake is yours to keep.
+                    Payment confirmed.
                   </div>
                   <a
                     className="studio-button studio-button-main"
