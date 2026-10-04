@@ -44,6 +44,7 @@ export default async function GiftPage({
   if (!track) notFound();
   return (
     <GiftExperience
+      message={session.gift_message}
       recipient={session.raw_answers.recipientName}
       occasion={session.raw_answers.occasion}
       title={track.title}

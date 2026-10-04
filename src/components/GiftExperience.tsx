@@ -11,6 +11,7 @@ export function GiftExperience({
   lyrics,
   audioUrl,
   photoUrl,
+  message,
 }: {
   recipient: string;
   occasion: string;
@@ -18,6 +19,7 @@ export function GiftExperience({
   lyrics: string;
   audioUrl: string;
   photoUrl: string | null;
+  message?: string;
 }) {
   const armId = useId();
   const theme = giftTheme(occasion),
@@ -57,17 +59,39 @@ export function GiftExperience({
         <span>A gift with you in it.</span>
       </header>
       <main id="main-content" className="gift-world-main">
-        <section className={`gift-listening-room ${photoUrl ? "has-memory" : ""}`}>
+        <section
+          className={`gift-listening-room ${photoUrl ? "has-memory" : ""}`}
+        >
           <div className="gift-dedication">
             <span className="gift-occasion">{theme.label}</span>
             <h1>
               For <em>{recipient}.</em>
             </h1>
             <p>{theme.note}</p>
+            {message && (
+              <div className="gift-personal-note">
+                <span className="eyebrow">A note for you</span>
+                <p>{message}</p>
+              </div>
+            )}
             {photoUrl ? (
-              <a className="gift-memory" href={photoUrl} target="_blank" rel="noopener noreferrer" aria-label="Open the full gift photo">
-                <Image src={photoUrl} alt={`A photo chosen for ${recipient}`} width={640} height={640} unoptimized />
-                <span>A memory worth keeping. <small>Open photo ↗</small></span>
+              <a
+                className="gift-memory"
+                href={photoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open the full gift photo"
+              >
+                <Image
+                  src={photoUrl}
+                  alt={`A photo chosen for ${recipient}`}
+                  width={640}
+                  height={640}
+                  unoptimized
+                />
+                <span>
+                  A memory worth keeping. <small>Open photo ↗</small>
+                </span>
               </a>
             ) : (
               <div className="gift-handwritten">
@@ -82,7 +106,11 @@ export function GiftExperience({
             {!photoUrl && (
               <div className="gift-sleeve">
                 <div className="gift-cover-art">
-                  <span>YOUR<br />SONG.</span>
+                  <span>
+                    YOUR
+                    <br />
+                    SONG.
+                  </span>
                   <div className="sleeve-orbit" />
                 </div>
                 <div className="sleeve-caption">
@@ -120,7 +148,13 @@ export function GiftExperience({
               <div className="tonearm" aria-hidden="true">
                 <svg viewBox="0 0 140 560" className="tonearm-assembly">
                   <defs>
-                    <linearGradient id={`${armId}-metal`} x1="0" x2="1" y1="0" y2="0">
+                    <linearGradient
+                      id={`${armId}-metal`}
+                      x1="0"
+                      x2="1"
+                      y1="0"
+                      y2="0"
+                    >
                       <stop offset="0" stopColor="#555750" />
                       <stop offset=".3" stopColor="#c6c7b5" />
                       <stop offset=".55" stopColor="#f3efdb" />
@@ -136,19 +170,91 @@ export function GiftExperience({
                   </defs>
                   {/* One continuous arm, with its rotation pinned to the bearing. */}
                   <circle cx="70" cy="60" r="33" fill="#111b1d" />
-                  <circle cx="70" cy="60" r="28" fill={`url(#${armId}-pivot)`} stroke="#949987" strokeWidth="2" />
-                  <path d="M70 22 V387 Q70 414 54 437 L43 454" fill="none" stroke="#41483f" strokeWidth="14" strokeLinecap="round" />
-                  <path d="M70 22 V387 Q70 414 54 437 L43 454" fill="none" stroke={`url(#${armId}-metal)`} strokeWidth="10" strokeLinecap="round" />
-                  <rect x="50" y="8" width="40" height="32" rx="7" fill={`url(#${armId}-metal)`} stroke="#494e46" strokeWidth="2" />
-                  <path d="M55 15 H85 M55 22 H85 M55 29 H85" stroke="#5c6257" strokeWidth="1" opacity=".6" />
-                  <circle cx="70" cy="60" r="7" fill="#d2d0bb" stroke="#50574c" strokeWidth="3" />
+                  <circle
+                    cx="70"
+                    cy="60"
+                    r="28"
+                    fill={`url(#${armId}-pivot)`}
+                    stroke="#949987"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M70 22 V387 Q70 414 54 437 L43 454"
+                    fill="none"
+                    stroke="#41483f"
+                    strokeWidth="14"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M70 22 V387 Q70 414 54 437 L43 454"
+                    fill="none"
+                    stroke={`url(#${armId}-metal)`}
+                    strokeWidth="10"
+                    strokeLinecap="round"
+                  />
+                  <rect
+                    x="50"
+                    y="8"
+                    width="40"
+                    height="32"
+                    rx="7"
+                    fill={`url(#${armId}-metal)`}
+                    stroke="#494e46"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M55 15 H85 M55 22 H85 M55 29 H85"
+                    stroke="#5c6257"
+                    strokeWidth="1"
+                    opacity=".6"
+                  />
+                  <circle
+                    cx="70"
+                    cy="60"
+                    r="7"
+                    fill="#d2d0bb"
+                    stroke="#50574c"
+                    strokeWidth="3"
+                  />
                   <g transform="translate(43 452) rotate(26)">
-                    <path d="M-15 -5 H15 L13 44 H-13 Z" fill={`url(#${armId}-metal)`} stroke="#555d55" strokeWidth="2" />
-                    <path d="M-7 4 V27 M0 4 V27 M7 4 V27" stroke="#3c4743" strokeWidth="3" strokeLinecap="round" />
-                    <path d="M14 4 H31 V-13" fill="none" stroke="#d4d5c2" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-                    <rect x="-10" y="37" width="20" height="21" rx="3" fill="#1e292c" stroke="#8c9387" strokeWidth="1.5" />
+                    <path
+                      d="M-15 -5 H15 L13 44 H-13 Z"
+                      fill={`url(#${armId}-metal)`}
+                      stroke="#555d55"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M-7 4 V27 M0 4 V27 M7 4 V27"
+                      stroke="#3c4743"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M14 4 H31 V-13"
+                      fill="none"
+                      stroke="#d4d5c2"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <rect
+                      x="-10"
+                      y="37"
+                      width="20"
+                      height="21"
+                      rx="3"
+                      fill="#1e292c"
+                      stroke="#8c9387"
+                      strokeWidth="1.5"
+                    />
                     <path d="M0 56 V65" stroke="#e2dfbd" strokeWidth="3" />
-                    <circle className="tonearm-stylus" cx="0" cy="65" r="2.5" fill="#e9d796" />
+                    <circle
+                      className="tonearm-stylus"
+                      cx="0"
+                      cy="65"
+                      r="2.5"
+                      fill="#e9d796"
+                    />
                   </g>
                 </svg>
               </div>
@@ -203,9 +309,7 @@ export function GiftExperience({
         )}
         <footer className="gift-world-footer">
           <span>A real story. A very personal gift.</span>
-          <Link href="/">
-            Your Song by The Gift Smith
-          </Link>
+          <Link href="/">Your Song by The Gift Smith</Link>
         </footer>
       </main>
     </div>

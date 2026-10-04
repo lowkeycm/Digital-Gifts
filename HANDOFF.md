@@ -4,7 +4,16 @@ Read both blocks below before starting work. Doctrine item 12 in `AGENTS.md` exp
 
 Every session ends by updating this file, committing, and pushing. Not committed means the session did not happen.
 
-## Last Session (preview before checkout and blocked Stripe repair)
+## Last Session (premium studio review preview)
+
+- **When / who:** October 4, 2026 / Clay / ChatGPT Work Mode. Clay approved moving ahead with the checkout audit.
+- **Outcome:** Built the personal listening room, $29 introductory purchase offer, Listen / Prepare / Share stages, personal gift note, compact revision disclosure, after-gifting feedback, My songs return access and optional $9 printable lyric keepsake. The complete code is on clay/premium-song-studio for a visual review preview.
+- **Verification:** Production build and lint/types checked; actual desktop/mobile Chromium walkthrough, payment/access boundary checks and real database rollback checks. Full evidence and release boundaries: docs/qa/premium-studio-review.md and premium-* files. The printable PDF was rasterized after fixing embedded lettering. No customer data, real charges, generation credits or sent email in these checks.
+- **Database:** Additive premium_song_studio migration applied to the exact Digital Gifts project. Source: supabase/migrations/20261003234627_premium_song_studio.sql. Backend-only keepsake entitlement; RLS and RPC grants checked. Existing advisory categories retained.
+- **Configuration:** Customer email recovery is implemented but requires a verified sender configured through RESEND_API_KEY and SONG_EMAIL_FROM. Until then, the interface offers device collection and a downloadable private access file. Public checkout stays free; no production launch or pricing activation in this work.
+- **Next:** Review the clickable /studio-preview walkthrough before production approval. Preview includes sample recordings and a labeled simulated checkout transition. It is disabled in the production Vercel environment. After approval, merge and verify the exact production deployment; do not activate paid public checkout as part of that merge.
+
+## Previous Session (preview before checkout and blocked Stripe repair)
 
 - **When / who:** October 3, 2026 / Clay / ChatGPT Work Mode. Continuing authorized site repair/publication.
 - **Request / choice:** Saved private sandbox song page could not continue to checkout. Customer must hear their custom song before purchase; Clay chose 60 seconds. Keep public CHECKOUT_MODE=free until explicit paid launch.

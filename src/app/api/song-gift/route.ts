@@ -13,11 +13,14 @@ const schema = z.object({
   accessToken: z.string().uuid(),
   trackId: z.string().uuid().optional(),
   removePhoto: z.boolean().optional(),
+  message: z.string().trim().max(600).optional(),
+  given: z.boolean().optional(),
 });
 export async function POST(request: Request) {
   try {
     const parsed = schema.safeParse(await bodyJSON(request));
-    if (!parsed.success) throw new ClientError("Choose a song or photo to update.");
+    if (!parsed.success)
+      throw new ClientError("Choose a song or photo to update.");
     const p = parsed.data;
     requireFullSongAccess(await requireSession(p.songId, p.accessToken));
     const updates: Record<string, unknown> = {};
@@ -33,6 +36,9 @@ export async function POST(request: Request) {
       updates.selected_track_id = p.trackId;
     }
     if (p.removePhoto) updates.gift_photo_id = null;
+    if (p.message !== undefined) updates.gift_message = p.message;
+    if (p.given !== undefined)
+      updates.gift_given_at = p.given ? new Date().toISOString() : null;
     if (!Object.keys(updates).length)
       throw new ClientError("Choose a song or photo to update.");
     const { error } = await db()

@@ -4,7 +4,14 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   serverExternalPackages: ["ffmpeg-static"],
   outputFileTracingIncludes: {
-    "/api/*": ["./node_modules/ffmpeg-static/ffmpeg"],
+    "/song/*/keepsake": ["./src/assets/fonts/cormorant-garamond-regular.ttf"],
+    "/studio-preview/keepsake": [
+      "./src/assets/fonts/cormorant-garamond-regular.ttf",
+    ],
+    "/api/*": [
+      "./node_modules/ffmpeg-static/ffmpeg",
+      "./src/assets/fonts/cormorant-garamond-regular.ttf",
+    ],
   },
 };
 

@@ -1,0 +1,103 @@
+{
+  "surface": "funnel",
+  "request": "Approved checkout audit: build a premium digital studio, $29 introductory offer, relevant keepsake upsell, focused listening/preparing/sharing stages, later feedback, and return access.",
+  "pages": [
+    {
+      "route": "/song/[id]",
+      "kind": "funnel",
+      "sections": [
+        "welcome",
+        "listening-room",
+        "gift-workbench",
+        "return-access",
+        "after-gifting"
+      ]
+    },
+    {
+      "route": "/my-songs",
+      "kind": "utility",
+      "sections": [
+        "library",
+        "recovery"
+      ]
+    },
+    {
+      "route": "/song/[id]/keepsake",
+      "kind": "funnel",
+      "sections": [
+        "preview",
+        "offer",
+        "download"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "studio-flow",
+      "route": "/song/[id]",
+      "category": "composition",
+      "sections": [
+        "welcome",
+        "gift-workbench",
+        "after-gifting"
+      ],
+      "source": "user",
+      "acceptance": "Customers see confirmation, choose a version, prepare and share. Feedback and reactions appear only after explicitly marking the gift given."
+    },
+    {
+      "id": "studio-depth",
+      "route": "/song/[id]",
+      "category": "depth",
+      "sections": [
+        "welcome",
+        "listening-room",
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "The paid studio feels like a premium personal listening room, with visible physical depth beyond the heading."
+    },
+    {
+      "id": "studio-player",
+      "route": "/song/[id]",
+      "category": "motion",
+      "sections": [
+        "listening-room"
+      ],
+      "source": "user",
+      "acceptance": "One accessible player controls the active version; playback motion stops on pause and reduced motion retains all controls."
+    },
+    {
+      "id": "studio-offer",
+      "route": "/song/[id]",
+      "category": "conversion",
+      "sections": [
+        "gift-workbench"
+      ],
+      "source": "user",
+      "acceptance": "$29 introductory pricing, both versions, three revisions and gift page are clear before secure checkout."
+    },
+    {
+      "id": "library-access",
+      "route": "/my-songs",
+      "category": "components",
+      "sections": [
+        "library",
+        "recovery"
+      ],
+      "source": "user",
+      "acceptance": "Customers can return to songs saved on this device, export a recovery link and request email access when a sender is configured."
+    },
+    {
+      "id": "keepsake-offer",
+      "route": "/song/[id]/keepsake",
+      "category": "imagery",
+      "sections": [
+        "preview",
+        "offer",
+        "download"
+      ],
+      "source": "user",
+      "acceptance": "Customers inspect the personalized 8x10 PDF design and $9 optional offer; only verified paid orders receive the print file."
+    }
+  ]
+}

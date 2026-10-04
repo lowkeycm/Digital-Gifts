@@ -11,6 +11,8 @@ export type BetaSession = {
   selected_track_id: string | null;
   gift_photo_id: string | null;
   reaction_asset_id: string | null;
+  gift_message?: string;
+  gift_given_at?: string | null;
   raw_answers: Intake;
   created_at: string;
   checkout_mode?: "free" | "test" | "live";

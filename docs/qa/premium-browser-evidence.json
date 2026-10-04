@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-04T00:46:22.107Z",
+  "scope": "Production build with real browser, SDK, FFmpeg, audio files and PDF generation; controlled synthetic REST/storage and paid-state transition. Separate Stripe contract tests validate fulfillment. No customer data, actual charges or generation credits.",
+  "checks": [
+    "Unpaid studio offers $29, one real 60-second player, and denies gift editing/full downloads",
+    "Paid state unlocks the same originals; version switching, full playback, seek, pause and reduced motion work",
+    "Selection and personal note persist; recipient sees only the chosen gift and no owner key",
+    "Feedback appears only after gift-given action; rating is never preselected and saved state survives reload",
+    "My songs returns to verified device collection; private access file downloads; unconfigured email is not promised",
+    "Real watermarked keepsake preview and 8\u00d710 PDF render; unpurchased and recipient access denied, paid download allowed",
+    "Listen, prepare, share, collection and keepsake have no overflow at 320,390,768,1440px",
+    "Mobile step navigation scrolls directly to the active gift task",
+    "Public preview supports checkout-to-studio walkthrough and keepsake inspection; public song page remains separate",
+    "No browser exceptions or duplicate original generations"
+  ],
+  "buildRevision": "premium-studio-bb25839f9588"
+}
